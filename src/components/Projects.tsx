@@ -37,10 +37,12 @@ const Projects = () => {
     >
       <div className="max-w-7xl mx-auto">
         <h2 className="text-xs font-mono font-black tracking-mega text-brutalist-red mb-4 uppercase">・Selected Work</h2>
-        <p className="text-3xl md:text-5xl font-sans font-black leading-none tracking-tight uppercase text-black mb-16">
+        <p className="text-3xl md:text-5xl font-sans font-black leading-none tracking-tight uppercase text-black mb-4">
           Featured Engineering Projects
         </p>
-        
+        <p className="max-w-3xl text-sm font-mono text-zinc-700 mb-12">
+          Each project includes a live demo link so visitors can preview the deployed app directly from this section.
+        </p>
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project) => (
             <div 
