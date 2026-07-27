@@ -14,83 +14,83 @@ export const buildingDatabase: Record<string, BuildingDetails> = {
   'anand-hq': {
     id: 'anand-hq',
     title: 'Anand Jadhav Central HQ',
-    category: 'Engineering Headquarter',
-    description: 'Central command tower representing Anand Jadhav — B.Tech Computer Science student at Parul University. Specializing in SAP ABAP Cloud & BTP architectures, Full-Stack Web (MEAN/MERN), and native iOS development (SwiftUI).',
+    category: 'Main Headquarters Tower',
+    description: 'Central skyscraper representing Anand Jadhav — B.Tech Computer Science student at Parul University. Specializing in SAP ABAP Cloud & BTP architectures, Full-Stack Web (MEAN/MERN), and native iOS development (SwiftUI).',
     tags: ['SAP ABAP Cloud', 'SAP BTP', 'React / Next.js', 'SwiftUI', 'Node.js', 'TypeScript'],
     commits: 620,
-    height: 20,
+    height: 22,
     highlight: true,
-  },
-  'elvora-media': {
-    id: 'elvora-media',
-    title: 'Elvora Media Platform',
-    category: 'Production Agency Web App',
-    description: 'High-performance digital production agency web platform engineered for dynamic content delivery, responsive layouts, and modern visual storytelling.',
-    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Netlify'],
-    liveUrl: 'https://elvora-media.netlify.app',
-    githubUrl: 'https://github.com/anandjadhav42004/Elvora-Media-Premium-Digital-Media-Production-Agency',
-    commits: 142,
-    height: 14,
   },
   'ks-beauty': {
     id: 'ks-beauty',
-    title: 'KS Beauty Web Application',
-    category: 'E-Commerce & Service Web App',
+    title: 'KS Beauty Luxury Tower',
+    category: 'Luxury Pink Glass Skyscraper',
     description: 'Modern beauty and service platform crafted with modular React components, custom interactive quote calculators, and optimized responsive user journeys.',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Vercel'],
     liveUrl: 'https://ks-beauty-website.vercel.app',
     githubUrl: 'https://github.com/anandjadhav42004/ks-beauty-website',
     commits: 118,
-    height: 12,
+    height: 14,
   },
-  'event-management': {
-    id: 'event-management',
-    title: 'Event Management (Utsav26)',
-    category: 'Enterprise Event System',
-    description: 'Comprehensive campus event management system featuring live schedule tracking, participant registrations, ticket verifications, and real-time status updates.',
-    tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Netlify'],
-    liveUrl: 'https://utsav26.netlify.app',
-    githubUrl: 'https://github.com/anandjadhav42004/event_management',
-    commits: 96,
-    height: 11,
+  'elvora-media': {
+    id: 'elvora-media',
+    title: 'Elvora Media Production Building',
+    category: 'Purple Media & LED Tower',
+    description: 'High-performance digital production agency web platform engineered for dynamic content delivery, responsive layouts, and modern visual storytelling.',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Netlify'],
+    liveUrl: 'https://elvora-media.netlify.app',
+    githubUrl: 'https://github.com/anandjadhav42004/Elvora-Media-Premium-Digital-Media-Production-Agency',
+    commits: 142,
+    height: 15,
   },
   'funflix': {
     id: 'funflix',
-    title: 'FunFlix Entertainment Hub',
-    category: 'Media Discovery App',
+    title: 'FunFlix Cinema Tower',
+    category: 'Entertainment & Movie Center',
     description: 'Streaming & entertainment discovery application with real-time media search, category filtering, user watchlists, and interactive previews.',
     tags: ['React', 'REST API', 'CSS Glassmorphism', 'Netlify'],
     liveUrl: 'https://funflix03.netlify.app',
     githubUrl: 'https://github.com/anandjadhav42004/FunFlix',
     commits: 85,
-    height: 10,
+    height: 12,
   },
   'anashi-store': {
     id: 'anashi-store',
-    title: 'Anashi Cinematic Thrift Store',
-    category: 'E-Commerce Storefront',
+    title: 'Anashi Thrift Shopping Mall',
+    category: 'E-Commerce Marketplace',
     description: 'Curated e-commerce storefront featuring vintage fashion catalogs, smooth cart management, product filtering, and mobile-first design.',
     tags: ['React', 'Tailwind CSS', 'State Management', 'Netlify'],
     liveUrl: 'https://anashistore.netlify.app',
     githubUrl: 'https://github.com/anandjadhav42004/anashi-cinematic-thrift',
     commits: 78,
-    height: 9,
+    height: 11,
+  },
+  'event-management': {
+    id: 'event-management',
+    title: 'Event Management (Utsav26)',
+    category: 'Campus Event Center',
+    description: 'Comprehensive campus event management system featuring live schedule tracking, participant registrations, ticket verifications, and real-time status updates.',
+    tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Netlify'],
+    liveUrl: 'https://utsav26.netlify.app',
+    githubUrl: 'https://github.com/anandjadhav42004/event_management',
+    commits: 96,
+    height: 13,
   },
   'proflow-sap': {
     id: 'proflow-sap',
-    title: 'ProFlow SAP Enterprise AI',
-    category: 'SAP BTP & Gemini AI',
+    title: 'ProFlow SAP Futuristic Tech Tower',
+    category: 'Royal Blue SAP AI Tower',
     description: 'Enterprise workflow automation system combining MEAN stack with Google Gemini AI to process, summarize, and route SAP system requests.',
     tags: ['SAP BTP', 'ABAP Cloud', 'Angular', 'Node.js', 'Gemini AI'],
     liveUrl: 'https://portfolio-three-swart-hx117dkm4.vercel.app',
     githubUrl: 'https://github.com/anandjadhav42004/portfolio',
     commits: 180,
-    height: 16,
+    height: 18,
   },
   'abap-cloud': {
     id: 'abap-cloud',
-    title: 'ABAP Cloud & RAP Tower',
-    category: 'SAP Technical Competency',
+    title: 'ABAP Cloud Tech Pavilion',
+    category: 'SAP Core Competency',
     description: 'Certified expertise in SAP ABAP Cloud, RESTful Application Programming Model (RAP), OData V2/V4 services, and SAP Business Technology Platform (BTP).',
     tags: ['ABAP Cloud', 'SAP BTP', 'RAP', 'CDS Views', 'OData V4'],
     commits: 130,
@@ -98,8 +98,8 @@ export const buildingDatabase: Record<string, BuildingDetails> = {
   },
   'react-stack': {
     id: 'react-stack',
-    title: 'React & TypeScript Tower',
-    category: 'Full-Stack Web Competency',
+    title: 'React & TypeScript Campus',
+    category: 'Full-Stack Competency',
     description: '94% proficiency in frontend web architecture using React 18, Next.js, TypeScript, Tailwind CSS, and state management.',
     tags: ['React 18', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vite'],
     commits: 210,
@@ -107,47 +107,46 @@ export const buildingDatabase: Record<string, BuildingDetails> = {
   },
   'swiftui-stack': {
     id: 'swiftui-stack',
-    title: 'SwiftUI Native Mobile Hub',
+    title: 'SwiftUI Mobile Pavilion',
     category: 'iOS Native Competency',
     description: '86% proficiency in native iOS application development with Swift, SwiftUI, Combine framework, and offline CoreData storage.',
     tags: ['Swift', 'SwiftUI', 'Combine', 'CoreData', 'iOS SDK'],
     commits: 90,
-    height: 12,
+    height: 13,
   },
   'sap-cert-tower': {
     id: 'sap-cert-tower',
-    title: 'SAP Certified ABAP Cloud',
+    title: 'SAP Credential Museum',
     category: 'Official SAP Credential',
     description: 'SAP Certified Associate - Back-End Developer - ABAP Cloud (Jul 2025 - Jul 2026). Credential ID: 99fc1274-a818-4ca7-8f0c-a1160e29a2d9.',
     tags: ['SAP Certified', 'ABAP Cloud', 'BTP', 'HANA Cloud'],
     liveUrl: 'https://www.credly.com/badges/99fc1274-a818-4ca7-8f0c-a1160e29a2d9',
     commits: 100,
-    height: 13,
+    height: 14,
   },
   'oracle-ai-tower': {
     id: 'oracle-ai-tower',
-    title: 'Oracle Cloud AI Certified',
+    title: 'Oracle Cloud AI Museum',
     category: 'Official Oracle Credential',
     description: 'Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate (Sep 2025). Certified in OCI Cloud AI & Machine Learning.',
     tags: ['Oracle Cloud', 'AI Foundations', 'Machine Learning', 'OCI'],
     liveUrl: 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=936D3B09FF91E2F3CD05BB488DB2D49679D6D917C54313C9B9941AB15A548553',
     commits: 95,
-    height: 12,
+    height: 13,
   },
   'ai-hub-node': {
     id: 'ai-hub-node',
-    title: 'AI Innovation Hub & Analyzer',
+    title: 'AI Smart Innovation Hub',
     category: 'AI Assistant & Job Matcher',
     description: 'Interactive AI Recruiter Chatbot trained on Anand Jadhav background and Job Description Match Analyzer powered by Claude AI API.',
     tags: ['Claude 3.5 Sonnet', 'Gemini AI', 'Job Match Analyzer', 'AI Chatbot'],
     commits: 160,
-    height: 15,
+    height: 16,
   }
 };
 
 export const Background3D: React.FC<Background3DProps> = ({
   activeDistrict = 'hero',
-  selectedFilter = 'all',
   onSelectBuilding,
   onHoverBuilding,
 }) => {
@@ -155,33 +154,33 @@ export const Background3D: React.FC<Background3DProps> = ({
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
   const controlsRef = useRef<OrbitControls | null>(null);
   
-  const targetCamPos = useRef<{ x: number; y: number; z: number }>({ x: 42, y: 36, z: 42 });
+  const targetCamPos = useRef<{ x: number; y: number; z: number }>({ x: 45, y: 38, z: 45 });
   const targetLookAt = useRef<{ x: number; y: number; z: number }>({ x: 0, y: 5, z: 0 });
 
   useEffect(() => {
     switch (activeDistrict) {
       case 'hero':
-        targetCamPos.current = { x: 42, y: 36, z: 42 };
+        targetCamPos.current = { x: 45, y: 38, z: 45 };
         targetLookAt.current = { x: 0, y: 5, z: 0 };
         break;
       case 'projects':
-        targetCamPos.current = { x: -28, y: 24, z: 28 };
-        targetLookAt.current = { x: -10, y: 6, z: 0 };
+        targetCamPos.current = { x: -30, y: 25, z: 30 };
+        targetLookAt.current = { x: -12, y: 6, z: 0 };
         break;
       case 'skills':
-        targetCamPos.current = { x: 28, y: 22, z: -24 };
-        targetLookAt.current = { x: 10, y: 5, z: -4 };
+        targetCamPos.current = { x: 30, y: 24, z: -25 };
+        targetLookAt.current = { x: 12, y: 5, z: -5 };
         break;
       case 'certifications':
-        targetCamPos.current = { x: -20, y: 20, z: -28 };
-        targetLookAt.current = { x: -4, y: 4, z: -14 };
+        targetCamPos.current = { x: -22, y: 22, z: -30 };
+        targetLookAt.current = { x: -4, y: 5, z: -15 };
         break;
       case 'ai-lab':
-        targetCamPos.current = { x: 28, y: 24, z: 28 };
+        targetCamPos.current = { x: 30, y: 25, z: 30 };
         targetLookAt.current = { x: 14, y: 6, z: 14 };
         break;
       default:
-        targetCamPos.current = { x: 42, y: 36, z: 42 };
+        targetCamPos.current = { x: 45, y: 38, z: 45 };
         targetLookAt.current = { x: 0, y: 5, z: 0 };
     }
   }, [activeDistrict]);
@@ -189,18 +188,19 @@ export const Background3D: React.FC<Background3DProps> = ({
   useEffect(() => {
     if (!mountRef.current) return;
 
-    // 1. Scene & Fog Setup
+    // 1. Scene & Warm Golden-Hour Fog
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x0b0c10, 0.006);
+    scene.background = new THREE.Color(0xa0c4ff);
+    scene.fog = new THREE.FogExp2(0xa0c4ff, 0.0035);
 
     // 2. Camera Setup
     const aspect = window.innerWidth / window.innerHeight;
     const camera = new THREE.PerspectiveCamera(45, aspect, 1, 1000);
-    camera.position.set(42, 36, 42);
+    camera.position.set(45, 38, 45);
     camera.lookAt(0, 5, 0);
     cameraRef.current = camera;
 
-    // 3. Renderer Setup
+    // 3. Renderer
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -213,120 +213,216 @@ export const Background3D: React.FC<Background3DProps> = ({
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
     controls.maxPolarAngle = Math.PI / 2.1;
-    controls.minDistance = 10;
-    controls.maxDistance = 120;
+    controls.minDistance = 12;
+    controls.maxDistance = 130;
     controlsRef.current = controls;
 
-    // 5. Dusk Lighting
-    const ambientLight = new THREE.AmbientLight(0x38bdf8, 0.6);
+    // 5. Warm Golden-Hour Sunlight & Ambient Sky Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
     scene.add(ambientLight);
 
-    const sunLight = new THREE.DirectionalLight(0xf97316, 1.4);
-    sunLight.position.set(60, 50, -50);
+    const sunLight = new THREE.DirectionalLight(0xffb703, 1.4);
+    sunLight.position.set(60, 60, -40);
     sunLight.castShadow = true;
+    sunLight.shadow.mapSize.width = 2048;
+    sunLight.shadow.mapSize.height = 2048;
     scene.add(sunLight);
 
-    const centralLight = new THREE.PointLight(0x39d353, 3, 100);
-    centralLight.position.set(0, 22, 0);
-    scene.add(centralLight);
+    const fillLight = new THREE.DirectionalLight(0x74b9ff, 0.5);
+    fillLight.position.set(-40, 40, 40);
+    scene.add(fillLight);
 
-    // 6. Water Bay Surface
-    const waterGeo = new THREE.PlaneGeometry(140, 36);
-    const waterMat = new THREE.MeshPhongMaterial({
-      color: 0x0f172a,
-      shininess: 95,
+    // 6. Lush Emerald Green Grass Terrain Base
+    const grassGeo = new THREE.PlaneGeometry(160, 160);
+    const grassMat = new THREE.MeshLambertMaterial({ color: 0x2ecc71 });
+    const grassMesh = new THREE.Mesh(grassGeo, grassMat);
+    grassMesh.rotation.x = -Math.PI / 2;
+    grassMesh.position.y = -0.1;
+    grassMesh.receiveShadow = true;
+    scene.add(grassMesh);
+
+    // 7. Dark Concrete Asphalt Roads & Crosswalks
+    const roadGroup = new THREE.Group();
+    scene.add(roadGroup);
+
+    const mainRoadGeo = new THREE.PlaneGeometry(12, 160);
+    const roadMat = new THREE.MeshLambertMaterial({ color: 0x34495e });
+
+    const roadNS = new THREE.Mesh(mainRoadGeo, roadMat);
+    roadNS.rotation.x = -Math.PI / 2;
+    roadNS.position.y = 0.02;
+    roadNS.receiveShadow = true;
+    roadGroup.add(roadNS);
+
+    const roadEW = new THREE.Mesh(mainRoadGeo, roadMat);
+    roadEW.rotation.x = -Math.PI / 2;
+    roadEW.rotation.z = Math.PI / 2;
+    roadEW.position.y = 0.02;
+    roadEW.receiveShadow = true;
+    roadGroup.add(roadEW);
+
+    // 8. Animated Blue River & Curved Bridges
+    const riverGeo = new THREE.PlaneGeometry(160, 18);
+    const riverMat = new THREE.MeshPhongMaterial({
+      color: 0x3498db,
+      shininess: 90,
       transparent: true,
-      opacity: 0.9,
+      opacity: 0.88,
     });
-    const waterMesh = new THREE.Mesh(waterGeo, waterMat);
-    waterMesh.rotation.x = -Math.PI / 2;
-    waterMesh.position.set(0, -0.2, 32);
-    scene.add(waterMesh);
+    const riverMesh = new THREE.Mesh(riverGeo, riverMat);
+    riverMesh.rotation.x = -Math.PI / 2;
+    riverMesh.position.set(0, 0.05, 42);
+    scene.add(riverMesh);
 
-    // 7. Base Grid
-    const gridHelper = new THREE.GridHelper(60, 30, 0x6366f1, 0x1e293b);
-    gridHelper.position.y = 0;
-    scene.add(gridHelper);
+    // Wooden Bridge
+    const bridgeGeo = new THREE.BoxGeometry(14, 1.2, 22);
+    const bridgeMat = new THREE.MeshLambertMaterial({ color: 0xe67e22 });
+    const bridgeMesh = new THREE.Mesh(bridgeGeo, bridgeMat);
+    bridgeMesh.position.set(0, 0.6, 42);
+    scene.add(bridgeMesh);
 
-    // 8. 3D City Skyscraper Mesh Construction
+    // 9. Low-Poly Cartoon Trees & Parks
+    const treeGroup = new THREE.Group();
+    scene.add(treeGroup);
+
+    const createTree = (x: number, z: number) => {
+      const trunkGeo = new THREE.CylinderGeometry(0.3, 0.4, 2, 6);
+      const trunkMat = new THREE.MeshLambertMaterial({ color: 0x795548 });
+      const trunk = new THREE.Mesh(trunkGeo, trunkMat);
+      trunk.position.set(x, 1, z);
+      trunk.castShadow = true;
+
+      const canopyGeo = new THREE.DodecahedronGeometry(1.6, 1);
+      const canopyMat = new THREE.MeshLambertMaterial({ color: 0x27ae60, flatShading: true });
+      const canopy = new THREE.Mesh(canopyGeo, canopyMat);
+      canopy.position.set(x, 2.6, z);
+      canopy.castShadow = true;
+
+      treeGroup.add(trunk);
+      treeGroup.add(canopy);
+    };
+
+    // Plant trees along parks & road margins
+    [
+      [-18, -18], [-22, -14], [-16, 20], [-24, 22],
+      [18, -18], [22, -12], [20, 20], [24, 24],
+      [-28, 0], [28, 0], [0, -32], [0, 30]
+    ].forEach(([tx, tz]) => createTree(tx, tz));
+
+    // 10. Low-Poly Floating Clouds
+    const cloudGroup = new THREE.Group();
+    scene.add(cloudGroup);
+
+    for (let i = 0; i < 8; i++) {
+      const cloud = new THREE.Group();
+      const p1 = new THREE.Mesh(new THREE.DodecahedronGeometry(3, 1), new THREE.MeshLambertMaterial({ color: 0xffffff, flatShading: true }));
+      const p2 = new THREE.Mesh(new THREE.DodecahedronGeometry(2.2, 1), new THREE.MeshLambertMaterial({ color: 0xffffff, flatShading: true }));
+      p2.position.set(2, 0.5, 0);
+      cloud.add(p1);
+      cloud.add(p2);
+
+      cloud.position.set((Math.random() - 0.5) * 120, 28 + Math.random() * 8, (Math.random() - 0.5) * 120);
+      cloudGroup.add(cloud);
+    }
+
+    // 11. Custom Stylized Pixar Cartoon Skyscrapers
     const cityGroup = new THREE.Group();
     scene.add(cityGroup);
 
     const interactiveMeshList: THREE.Mesh[] = [];
 
     const cityLayout = [
-      { id: 'anand-hq', x: 0, z: 0, w: 4.8, d: 4.8, h: 20, color: 0x39d353 },
-      { id: 'proflow-sap', x: -6, z: -5, w: 3.8, d: 3.8, h: 16, color: 0x6366f1 },
-      { id: 'elvora-media', x: -12, z: -4, w: 3.6, d: 3.6, h: 14, color: 0x38bdf8 },
-      { id: 'ks-beauty', x: -14, z: 6, w: 3.4, d: 3.4, h: 12, color: 0x10b981 },
-      { id: 'event-management', x: -8, z: -14, w: 3.2, d: 3.2, h: 11, color: 0x818cf8 },
-      { id: 'funflix', x: -16, z: -12, w: 3.2, d: 3.2, h: 10, color: 0xf59e0b },
-      { id: 'anashi-store', x: -10, z: 14, w: 3.0, d: 3.0, h: 9, color: 0xec4899 },
+      // Central Anand HQ Skyscraper (Emerald & Warm Gold)
+      { id: 'anand-hq', x: 0, z: 0, w: 5.2, d: 5.2, h: 22, color: 0x00b894, roofColor: 0xffb703 },
 
-      { id: 'react-stack', x: 12, z: 6, w: 3.6, d: 3.6, h: 16, color: 0x38bdf8 },
-      { id: 'abap-cloud', x: 10, z: -4, w: 3.6, d: 3.6, h: 15, color: 0x6366f1 },
-      { id: 'swiftui-stack', x: 8, z: 14, w: 3.2, d: 3.2, h: 12, color: 0x10b981 },
+      // KS Beauty (Luxury Pink Glass Tower with Gold Accents)
+      { id: 'ks-beauty', x: -14, z: 8, w: 3.8, d: 3.8, h: 14, color: 0xfd79a8, roofColor: 0xffb703 },
 
-      { id: 'sap-cert-tower', x: -4, z: -22, w: 3.8, d: 3.8, h: 13, color: 0x6366f1 },
-      { id: 'oracle-ai-tower', x: 4, z: -22, w: 3.8, d: 3.8, h: 12, color: 0xf43f5e },
+      // Elvora Media (Vibrant Purple Tower with LED Billboard)
+      { id: 'elvora-media', x: -14, z: -6, w: 4.0, d: 4.0, h: 15, color: 0x6c5ce7, roofColor: 0xa29bfe },
 
-      { id: 'ai-hub-node', x: 14, z: 14, w: 4.2, d: 4.2, h: 15, color: 0xa855f7 }
+      // FunFlix (Cinema Tower with Cinema Red Accents)
+      { id: 'funflix', x: -18, z: -14, w: 3.6, d: 3.6, h: 12, color: 0xff7675, roofColor: 0xd63031 },
+
+      // Anashi Store (Shopping Mall with Warm Yellow Roof)
+      { id: 'anashi-store', x: -12, z: 18, w: 3.5, d: 3.5, h: 11, color: 0xfdcb6e, roofColor: 0xe17055 },
+
+      // Event Management Utsav26 (Campus Center)
+      { id: 'event-management', x: -8, z: -16, w: 3.6, d: 3.6, h: 13, color: 0x0984e3, roofColor: 0x74b9ff },
+
+      // ProFlow SAP AI (Futuristic Royal Blue Tech Tower)
+      { id: 'proflow-sap', x: -7, z: -6, w: 4.2, d: 4.2, h: 18, color: 0x0984e3, roofColor: 0x6c5ce7 },
+
+      // Skills Tech Campus
+      { id: 'react-stack', x: 14, z: 8, w: 4.0, d: 4.0, h: 16, color: 0x74b9ff, roofColor: 0x0984e3 },
+      { id: 'abap-cloud', x: 12, z: -5, w: 4.0, d: 4.0, h: 15, color: 0x6c5ce7, roofColor: 0xa29bfe },
+      { id: 'swiftui-stack', x: 10, z: 16, w: 3.6, d: 3.6, h: 13, color: 0x00b894, roofColor: 0x55efc4 },
+
+      // Credentials Museum Plaza
+      { id: 'sap-cert-tower', x: -5, z: -24, w: 4.2, d: 4.2, h: 14, color: 0x6c5ce7, roofColor: 0xffb703 },
+      { id: 'oracle-ai-tower', x: 5, z: -24, w: 4.2, d: 4.2, h: 13, color: 0xff7675, roofColor: 0xfdcb6e },
+
+      // AI Innovation Hub
+      { id: 'ai-hub-node', x: 16, z: 16, w: 4.6, d: 4.6, h: 16, color: 0xa29bfe, roofColor: 0x00cec9 }
     ];
 
     cityLayout.forEach((item) => {
       const data = buildingDatabase[item.id];
-      const boxGeo = new THREE.BoxGeometry(item.w, item.h, item.d);
-      boxGeo.translate(0, item.h / 2, 0);
+      
+      // Building Main Body (Stylized Box with Rounded Bevel)
+      const bodyGeo = new THREE.BoxGeometry(item.w, item.h, item.d);
+      bodyGeo.translate(0, item.h / 2, 0);
 
-      const boxMat = new THREE.MeshPhongMaterial({
+      const bodyMat = new THREE.MeshPhongMaterial({
         color: item.color,
         flatShading: true,
-        transparent: true,
-        opacity: 0.9,
-        shininess: 50,
+        shininess: 60,
       });
 
-      const mesh = new THREE.Mesh(boxGeo, boxMat);
+      const mesh = new THREE.Mesh(bodyGeo, bodyMat);
       mesh.position.set(item.x, 0, item.z);
       mesh.castShadow = true;
       mesh.receiveShadow = true;
       mesh.userData = { id: item.id, data };
 
-      const edgesGeo = new THREE.EdgesGeometry(boxGeo);
-      const edgesMat = new THREE.LineBasicMaterial({
-        color: 0xffffff,
-        transparent: true,
-        opacity: 0.45,
-      });
-      const edges = new THREE.LineSegments(edgesGeo, edgesMat);
-      mesh.add(edges);
+      // Rooftop Decorative Cap
+      const capGeo = new THREE.BoxGeometry(item.w * 0.7, 1.5, item.d * 0.7);
+      const capMat = new THREE.MeshLambertMaterial({ color: item.roofColor, flatShading: true });
+      const cap = new THREE.Mesh(capGeo, capMat);
+      cap.position.set(0, item.h + 0.75, 0);
+      mesh.add(cap);
+
+      // Lit Windows Grid
+      const windowMat = new THREE.MeshLambertMaterial({ color: 0xfff3bf, emissive: 0xffe066, emissiveIntensity: 0.5 });
+      const windowRows = Math.floor(item.h / 3);
+      for (let r = 1; r <= windowRows; r++) {
+        const winGeo = new THREE.BoxGeometry(item.w * 0.85, 0.8, item.d * 1.02);
+        const winMesh = new THREE.Mesh(winGeo, windowMat);
+        winMesh.position.set(0, r * 2.8, 0);
+        mesh.add(winMesh);
+      }
 
       cityGroup.add(mesh);
       interactiveMeshList.push(mesh);
     });
 
-    // 9. Animated Traffic Beams
-    const trafficCount = 50;
-    const trafficGeo = new THREE.BufferGeometry();
-    const trafficPos = new Float32Array(trafficCount * 3);
+    // 12. Cartoon Cars Driving on Streets
+    const carGroup = new THREE.Group();
+    scene.add(carGroup);
 
-    for (let i = 0; i < trafficCount; i++) {
-      trafficPos[i * 3] = (Math.random() - 0.5) * 60;
-      trafficPos[i * 3 + 1] = 0.2;
-      trafficPos[i * 3 + 2] = (Math.random() - 0.5) * 60;
+    const carColors = [0xe74c3c, 0xf1c40f, 0x9b59b6, 0x1abc9c];
+    const cars: THREE.Mesh[] = [];
+
+    for (let i = 0; i < 10; i++) {
+      const carGeo = new THREE.BoxGeometry(1.2, 0.6, 2.2);
+      const carMat = new THREE.MeshLambertMaterial({ color: carColors[i % carColors.length], flatShading: true });
+      const car = new THREE.Mesh(carGeo, carMat);
+      car.position.set((Math.random() - 0.5) * 50, 0.4, (Math.random() - 0.5) * 50);
+      carGroup.add(car);
+      cars.push(car);
     }
 
-    trafficGeo.setAttribute('position', new THREE.BufferAttribute(trafficPos, 3));
-    const trafficMat = new THREE.PointsMaterial({
-      size: 0.45,
-      color: 0xf97316,
-      transparent: true,
-      opacity: 0.9,
-    });
-    const trafficMesh = new THREE.Points(trafficGeo, trafficMat);
-    scene.add(trafficMesh);
-
-    // 10. Raycasting & Mouse Hover / Click Events
+    // 13. Raycasting & Mouse Hover / Click
     const raycaster = new THREE.Raycaster();
     const mouseVector = new THREE.Vector2();
     let hoveredMesh: THREE.Mesh | null = null;
@@ -342,10 +438,10 @@ export const Background3D: React.FC<Background3DProps> = ({
         const hit = intersects[0].object as THREE.Mesh;
         if (hoveredMesh !== hit) {
           if (hoveredMesh) {
-            (hoveredMesh.material as THREE.MeshPhongMaterial).emissive.setHex(0x000000);
+            hoveredMesh.scale.set(1, 1, 1);
           }
           hoveredMesh = hit;
-          (hoveredMesh.material as THREE.MeshPhongMaterial).emissive.setHex(0x38bdf8);
+          hoveredMesh.scale.set(1.05, 1.05, 1.05);
           
           if (onHoverBuilding && hit.userData.data) {
             onHoverBuilding(hit.userData.data);
@@ -353,7 +449,7 @@ export const Background3D: React.FC<Background3DProps> = ({
         }
       } else {
         if (hoveredMesh) {
-          (hoveredMesh.material as THREE.MeshPhongMaterial).emissive.setHex(0x000000);
+          hoveredMesh.scale.set(1, 1, 1);
           hoveredMesh = null;
           if (onHoverBuilding) onHoverBuilding(null);
         }
@@ -387,7 +483,7 @@ export const Background3D: React.FC<Background3DProps> = ({
 
     window.addEventListener('resize', onResize);
 
-    // 11. Animation Loop
+    // 14. Animation Loop
     const clock = new THREE.Clock();
 
     const animate = () => {
@@ -396,17 +492,24 @@ export const Background3D: React.FC<Background3DProps> = ({
 
       controls.update();
 
-      // Animate Traffic Streams
-      const tArray = trafficGeo.attributes.position.array as Float32Array;
-      for (let i = 0; i < trafficCount; i++) {
-        const i3 = i * 3;
-        tArray[i3] += 0.18;
-        if (tArray[i3] > 30) tArray[i3] = -30;
-      }
-      trafficGeo.attributes.position.needsUpdate = true;
+      // Smooth Camera Lerp to target district
+      camera.position.x += (targetCamPos.current.x - camera.position.x) * 0.05;
+      camera.position.y += (targetCamPos.current.y - camera.position.y) * 0.05;
+      camera.position.z += (targetCamPos.current.z - camera.position.z) * 0.05;
 
-      // Animate Central HQ Pulsing Light
-      centralLight.intensity = 2.5 + Math.sin(elapsedTime * 2) * 1.0;
+      targetLookAt.current.x += (targetLookAt.current.x - targetLookAt.current.x) * 0.05;
+
+      // Animate Moving Cars
+      cars.forEach((car, idx) => {
+        car.position.z += (0.1 + (idx % 3) * 0.05);
+        if (car.position.z > 50) car.position.z = -50;
+      });
+
+      // Animate Floating Clouds
+      cloudGroup.children.forEach((cloud, idx) => {
+        cloud.position.x += 0.02 + (idx % 2) * 0.01;
+        if (cloud.position.x > 60) cloud.position.x = -60;
+      });
 
       renderer.render(scene, camera);
     };
@@ -429,7 +532,7 @@ export const Background3D: React.FC<Background3DProps> = ({
     <div 
       ref={mountRef} 
       id="canvas-container" 
-      className="fixed inset-0 z-0 opacity-90 pointer-events-auto cursor-grab active:cursor-grabbing" 
+      className="fixed inset-0 z-0 opacity-100 pointer-events-auto cursor-grab active:cursor-grabbing" 
     />
   );
 };
