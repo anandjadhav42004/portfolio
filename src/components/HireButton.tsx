@@ -17,7 +17,7 @@ const HireButton = () => {
   const [declineMsg, setDeclineMsg] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  const playQuestChime = () => {
+  const playChime = () => {
     try {
       const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
       if (!AudioContextClass) return;
@@ -28,11 +28,11 @@ const HireButton = () => {
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         
-        osc.type = 'square'; // square sound is very retro / brutalist!
+        osc.type = 'sine'; // Smooth corporate audio chime
         osc.frequency.setValueAtTime(freq, startTime);
         
         gain.gain.setValueAtTime(0, startTime);
-        gain.gain.linearRampToValueAtTime(0.15, startTime + 0.03);
+        gain.gain.linearRampToValueAtTime(0.1, startTime + 0.03);
         gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
         
         osc.connect(gain);
@@ -43,17 +43,15 @@ const HireButton = () => {
       };
 
       const now = audioCtx.currentTime;
-      // Retro major arpeggio
-      playNote(261.63, now, 0.35); // C4
-      playNote(329.63, now + 0.08, 0.35); // E4
-      playNote(392.00, now + 0.16, 0.35); // G4
-      playNote(523.25, now + 0.24, 0.7); // C5
+      playNote(440, now, 0.3); // A4
+      playNote(554.37, now + 0.08, 0.3); // C#5
+      playNote(659.25, now + 0.16, 0.5); // E5
     } catch (e) {
       console.warn('Web Audio not supported:', e);
     }
   };
 
-  const triggerGoldExplosion = () => {
+  const triggerExplosion = () => {
     if (!canvasRef.current) return;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
@@ -62,22 +60,22 @@ const HireButton = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const goldParticles: Particle[] = [];
+    const particles: Particle[] = [];
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
 
-    for (let i = 0; i < 80; i++) {
+    for (let i = 0; i < 60; i++) {
       const angle = Math.random() * Math.PI * 2;
-      const speed = 2 + Math.random() * 6;
-      goldParticles.push({
+      const speed = 1.5 + Math.random() * 4;
+      particles.push({
         x: centerX,
         y: centerY,
         vx: Math.cos(angle) * speed,
         vy: Math.sin(angle) * speed,
-        color: Math.random() > 0.5 ? '#FFE500' : '#FF3B00', // Yellow and red brutalist bursts!
-        radius: 2 + Math.random() * 4,
+        color: Math.random() > 0.5 ? '#818CF8' : '#38BDF8',
+        radius: 1.5 + Math.random() * 2.5,
         alpha: 1.0,
-        decay: 0.02 + Math.random() * 0.02
+        decay: 0.015 + Math.random() * 0.015
       });
     }
 
@@ -87,23 +85,20 @@ const HireButton = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       let alive = false;
 
-      goldParticles.forEach((p) => {
+      particles.forEach((p) => {
         if (p.alpha > 0) {
           p.x += p.vx;
           p.y += p.vy;
-          p.vy += 0.08; // gravity
+          p.vy += 0.04;
           p.alpha -= p.decay;
           alive = true;
 
           ctx.save();
           ctx.globalAlpha = p.alpha;
           ctx.beginPath();
-          ctx.rect(p.x, p.y, p.radius * 2, p.radius * 2); // Square particles for brutalist style!
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
           ctx.fillStyle = p.color;
-          ctx.strokeStyle = '#000000';
-          ctx.lineWidth = 1;
           ctx.fill();
-          ctx.stroke();
           ctx.restore();
         }
       });
@@ -117,13 +112,13 @@ const HireButton = () => {
   };
 
   const handleAccept = () => {
-    playQuestChime();
-    triggerGoldExplosion();
+    playChime();
+    triggerExplosion();
     
     setTimeout(() => {
-      window.open('mailto:anandjadhav42004@gmail.com?subject=Quest Accepted: Hiring Anand Jadhav', '_self');
+      window.open('mailto:anandjadhav42004@gmail.com?subject=Recruitment Request: Anand Jadhav', '_self');
       setIsOpen(false);
-    }, 1000);
+    }, 800);
   };
 
   const handleDecline = () => {
@@ -131,70 +126,69 @@ const HireButton = () => {
     setTimeout(() => {
       setDeclineMsg(false);
       setIsOpen(false);
-    }, 2000);
+    }, 1800);
   };
 
   return (
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="px-8 py-3.5 bg-brutalist-red border-3 border-black font-extrabold text-xs sm:text-sm uppercase tracking-wider text-white brutalist-shadow-black hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_#000000] transition-all cursor-pointer font-mono"
+        className="px-7 py-3.5 rounded-xl bg-void-2 hover:bg-void-3 border border-white/10 text-white font-semibold text-sm tracking-wide transition-all cursor-pointer flex items-center gap-2"
       >
-        ⚔️ HIRE ME
+        <span>Get in Touch</span>
+        <span className="w-2 h-2 rounded-full bg-emerald-400" />
       </button>
 
       <AnimatePresence>
         {isOpen && (
-          <div className="fixed inset-0 z-[230] flex items-center justify-center p-4 bg-black/60 backdrop-blur-none">
+          <div className="fixed inset-0 z-[230] flex items-center justify-center p-4 bg-void/80 backdrop-blur-md">
             
-            {/* particles canvas */}
             <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none z-10" />
 
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
+              initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="relative w-full max-w-md border-4 border-black bg-white p-6 brutalist-shadow-black-lg font-mono text-left z-20 rounded-none"
-              style={{ boxShadow: '8px 8px 0px #000' }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="relative w-full max-w-md bg-void-2 border border-white/10 p-6 shadow-2xl z-20 rounded-2xl backdrop-blur-xl text-left"
             >
               {!declineMsg ? (
                 <>
-                  {/* Quest Tag */}
-                  <div className="text-center py-2 bg-brutalist-yellow border-3 border-black text-black font-black text-xs uppercase tracking-widest mb-6">
-                    📜 NEW QUEST UNLOCKED
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold mb-4">
+                    <span>💼 Direct Recruiter Access</span>
                   </div>
 
-                  <h3 className="text-sm sm:text-base font-black text-black mb-4 leading-relaxed uppercase border-b-2 border-black pb-2">
-                    Hire Anand Jadhav as a Developer?
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    Initiate Discussion with Anand?
                   </h3>
 
-                  <p className="text-xs text-zinc-700 leading-relaxed mb-6 font-semibold">
-                    Objective: Recruit an expert SAP Certified Cloud Developer & Full-Stack iOS Engineer.
+                  <p className="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
+                    Available for enterprise SAP Cloud / BTP integrations, Full-Stack software engineering, and mobile app development roles.
                   </p>
 
-                  <div className="text-xs text-brutalist-red mb-6 font-extrabold uppercase bg-red-100 p-2.5 border-2 border-black">
-                    REWARD: +99 System Reliability, Flawless Codebases.
+                  <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 text-xs text-slate-300 mb-6 flex items-center gap-3">
+                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 flex-shrink-0" />
+                    <span>Instant response via direct email integration</span>
                   </div>
 
                   {/* Accept/Decline Options */}
-                  <div className="flex gap-4">
+                  <div className="flex gap-3">
                     <button
                       onClick={handleAccept}
-                      className="flex-1 py-3 bg-brutalist-yellow hover:bg-yellow-400 border-3 border-black text-black font-black text-xs uppercase transition-colors cursor-pointer"
+                      className="flex-1 py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs tracking-wide transition-all cursor-pointer shadow-glow"
                     >
-                      ACCEPT QUEST ✅
+                      Send Email Inquiry
                     </button>
                     <button
                       onClick={handleDecline}
-                      className="px-6 py-3 bg-white hover:bg-zinc-100 border-3 border-black text-black font-black text-xs uppercase transition-colors cursor-pointer"
+                      className="px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 font-semibold text-xs transition-all cursor-pointer"
                     >
-                      DECLINE ❌
+                      Dismiss
                     </button>
                   </div>
                 </>
               ) : (
-                <div className="text-center py-8 text-brutalist-red font-black text-sm tracking-wide uppercase bg-red-100 border-3 border-black">
-                  ⚠️ "You'll regret this..."
+                <div className="text-center py-6 text-slate-300 font-medium text-sm bg-white/5 rounded-xl border border-white/10">
+                  Window closed. Feel free to connect via LinkedIn!
                 </div>
               )}
             </motion.div>

@@ -7,14 +7,13 @@ const CustomCursor = () => {
   const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
-    // Only show custom cursor on non-touch devices
     if (window.matchMedia('(pointer: coarse)').matches) return;
 
     const onMouseMove = (e: MouseEvent) => {
       gsap.to(cursorRef.current, {
         x: e.clientX,
         y: e.clientY,
-        duration: 0.15,
+        duration: 0.12,
         ease: 'power2.out',
       });
       gsap.to(dotRef.current, {
@@ -30,8 +29,7 @@ const CustomCursor = () => {
         target.tagName.toLowerCase() === 'a' ||
         target.tagName.toLowerCase() === 'button' ||
         target.closest('a') ||
-        target.closest('button') ||
-        target.classList.contains('hover-target')
+        target.closest('button')
       ) {
         setIsHovering(true);
       } else {
@@ -52,13 +50,13 @@ const CustomCursor = () => {
     <>
       <div
         ref={cursorRef}
-        className={`fixed top-0 left-0 w-10 h-10 -ml-5 -mt-5 rounded-full border border-electric pointer-events-none z-[9999] transition-transform duration-300 hidden lg:block mix-blend-difference ${
-          isHovering ? 'scale-150 bg-electric/20' : 'scale-100'
+        className={`fixed top-0 left-0 w-8 h-8 -ml-4 -mt-4 rounded-full border border-indigo-400/40 pointer-events-none z-[9999] transition-transform duration-200 hidden lg:block ${
+          isHovering ? 'scale-150 border-indigo-400 bg-indigo-500/10' : 'scale-100'
         }`}
       />
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 w-2 h-2 -ml-1 -mt-1 bg-electric rounded-full pointer-events-none z-[9999] hidden lg:block mix-blend-difference"
+        className="fixed top-0 left-0 w-1.5 h-1.5 -ml-0.75 -mt-0.75 bg-indigo-400 rounded-full pointer-events-none z-[9999] hidden lg:block"
       />
     </>
   );

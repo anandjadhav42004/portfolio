@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiSend, FiX, FiSettings, FiCheck, FiCpu, FiUser, FiInfo } from 'react-icons/fi';
-import { portfolioData, skills, projects, experience } from '../data/portfolio';
 
 interface Message {
   sender: 'user' | 'bot';
@@ -20,7 +19,7 @@ export const AIChatbot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       sender: 'bot',
-      text: "Yo! ⚡ I'm Anand's AI Assistant. Ask me anything about his technical stack, B.Tech qualifications, projects, certifications, or availability! (Click ⚙️ to configure live Anthropic Claude responses; otherwise, I query my local knowledge base!)",
+      text: "Hello! I am Anand's AI Assistant. Ask me anything about his technical stack (SAP BTP, Full Stack Web, SwiftUI), B.Tech degree at Parul University, project deployments, or recruitment availability!",
       timestamp: new Date(),
     },
   ]);
@@ -28,7 +27,6 @@ export const AIChatbot = () => {
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll to bottom of messages
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isTyping]);
@@ -50,84 +48,55 @@ export const AIChatbot = () => {
     setShowSettings(false);
   };
 
-  // Pre-programmed smart knowledge base for mock answers
   const generateLocalResponse = (query: string): string => {
     const q = query.toLowerCase();
     
-    // Skills
     if (q.includes('skill') || q.includes('stack') || q.includes('technology') || q.includes('languages') || q.includes('expert')) {
-      return `Anand Jadhav's technical expertise spans across:
-• **SAP System Stack:** ABAP Cloud, SAP BTP, SAPUI5 / Fiori, OData Services.
-• **Full Stack Web:** React, Next.js, Angular, Node.js, Express, Tailwind CSS, TypeScript.
-• **Mobile & AI:** Swift, SwiftUI, iOS SDK, TensorFlow, Python, Flask APIs.
-• **Databases:** SQL, MongoDB, PostgreSQL, Firebase.
-• **DevOps / Cloud:** Git, Docker, Vercel, SAP Business Application Studio (BAS).`;
+      return `Anand Jadhav's core engineering proficiencies:
+• SAP Ecosystem: ABAP Cloud, SAP BTP, SAPUI5 / Fiori Elements, OData Services (V2/V4).
+• Full Stack Web: React, Next.js, Angular, Node.js, Express, TypeScript, Tailwind CSS.
+• Native iOS & AI: Swift, SwiftUI, Combine, TensorFlow, Python, Flask APIs.
+• Databases: PostgreSQL, MongoDB, SAP HANA Cloud, SQL.
+• DevOps & Cloud: Git, Docker, Vercel, Netlify.`;
     }
     
-    // SAP Specific
     if (q.includes('sap') || q.includes('abap') || q.includes('btp') || q.includes('fiori')) {
-      return `Anand is a certified SAP Developer! Details:
-• **SAP Certified Associate – ABAP Cloud** (2024).
-• Deployed **Inventory Pro** — a responsive warehousing app using SAPUI5 on SAP BTP using custom ABAP backend service endpoints.
-• Experienced in writing OData services, CDS views, and building custom Business application suites.`;
+      return `SAP Technical Profile:
+• Certified: SAP Certified Associate - Back-End Developer (ABAP Cloud).
+• Experienced in building OData service endpoints, CDS views, and SAP Business Technology Platform (BTP) integrations.
+• Developed SAPUI5 enterprise applications consuming live backend data.`;
     }
 
-    // Availability / Hiring / Salary / Job / Contact
     if (q.includes('hire') || q.includes('job') || q.includes('available') || q.includes('work') || q.includes('contact') || q.includes('email')) {
-      return `Anand is actively looking for Full Stack, SAP cloud dev, or iOS Developer roles! 🟢
-• **Email:** [anandjadhav42004@gmail.com](mailto:anandjadhav42004@gmail.com)
-• **Phone:** +91 8308008154
-• **Timezone:** IST (UTC+5:30) Mumbai
-• **Location:** Mumbai / Vadodara, India
-He is available to start immediately and ready to join high-performance agile engineering teams.`;
+      return `Recruitment Availability:
+• Status: Available for Full Stack, SAP Developer, or iOS Software Engineering roles.
+• Email: anandjadhav42004@gmail.com
+• Phone: +91 8308008154
+• Timezone: IST (UTC+5:30), Mumbai / Vadodara, India.`;
     }
 
-    // Projects
-    if (q.includes('project') || q.includes('built') || q.includes('proflow') || q.includes('deepfake')) {
-      return `Anand's core projects include:
-1. **ProFlow AI (MEAN Stack):** Workflow automation tool utilizing Google Gemini AI to auto-route enterprise tasks.
-2. **Inventory Pro (SAP BTP):** Warehouse & inventory manager in SAPUI5 consuming OData.
-3. **Deepfake Detection AI:** Flask service powered by deep CNN TensorFlow models to detect facial manipulation.
-4. **iOS Weather & Tasks:** Swift/SwiftUI native application streaming REST weather API updates with offline CoreData caches.`;
+    if (q.includes('project') || q.includes('built') || q.includes('elvora') || q.includes('ks')) {
+      return `Featured Production Deployments:
+1. Elvora Media: Digital agency platform built with React, TypeScript & Netlify.
+2. KS Beauty: Web app with custom quote calculators built with React & Vercel.
+3. Event Management (Utsav26): Campus management app with MongoDB & Express.
+4. FunFlix: Media streaming discovery hub built with REST APIs.
+5. ProFlow AI: Enterprise workflow automation with SAP BTP & Gemini AI.`;
     }
 
-    // Education
-    if (q.includes('education') || q.includes('university') || q.includes('gpa') || q.includes('cgpa') || q.includes('college')) {
-      return `Anand Jadav is currently completing his:
-• **B.Tech in Computer Science & Engineering (SAP IEP Track)**
-• **Parul University / Parul Institute of Technology**, Vadodara, India
-• **Graduating class of 2023 - 2027**
-His training includes deep foundations in algorithms, enterprise architecture, and object-oriented systems design.`;
+    if (q.includes('education') || q.includes('university') || q.includes('college')) {
+      return `Education Details:
+• Degree: B.Tech in Computer Science & Engineering (SAP IEP Track).
+• University: Parul Institute of Technology / Parul University, Vadodara, India.
+• Expected Graduation: 2027.`;
     }
 
-    // Experience / History / Background
-    if (q.includes('experience') || q.includes('work') || q.includes('intern') || q.includes('freelance')) {
-      return `Anand's professional history:
-• **Enterprise Software Intern (2024):** Developed business logic UI panels in SAP Fiori & SAPUI5. Worked on OData connectors in the SAP BTP environment.
-• **Freelance Full-Stack Developer (2022 - Present):** Deployed 4+ React and Angular web utilities, and Swift native app prototypes.`;
+    if (q.includes('hello') || q.includes('hi') || q.includes('hey')) {
+      return `Hello! How can I assist your evaluation of Anand Jadhav's background? Feel free to ask about his SAP credentials, web projects, or availability.`;
     }
 
-    // General Greeting
-    if (q.includes('hello') || q.includes('hi') || q.includes('hey') || q.includes('yo')) {
-      return `Greetings recruiter! I am Anand's virtual representative. Ask me anything, like:
-• *Where did Anand study?*
-• *Does he know ABAP Cloud?*
-• *What projects did he build?*
-• *Is he available for immediate hiring?*`;
-    }
-
-    // Certifications
-    if (q.includes('certif') || q.includes('credential') || q.includes('license') || q.includes('oracle')) {
-      return `Anand holds these professional credentials:
-1. **SAP Certified Associate – ABAP Cloud** (2024)
-2. **Oracle Cloud Infrastructure AI Foundations Associate** (2024)
-3. **HackerRank React & SQL Certificates**
-4. **EA (Electronic Arts) Software Engineering Job Simulation**`;
-    }
-
-    return `Anand Jadhav is a B.Tech CSE student at Parul University. Specializing in SAP BTP, MEAN stack web, and SwiftUI iOS apps.
-    
-To consult Claude Sonnet directly for this question ("${query}"), please input an Anthropic API Key via the settings gear icon ⚙️. Or query about his skills, experience, projects, or certifications!`;
+    return `Anand Jadhav is a B.Tech CSE student specializing in SAP BTP Cloud, Full-Stack Web, and iOS SwiftUI development.
+Email: anandjadhav42004@gmail.com for direct recruiting inquiries.`;
   };
 
   const handleSendMessage = async (e?: React.FormEvent) => {
@@ -143,22 +112,13 @@ To consult Claude Sonnet directly for this question ("${query}"), please input a
     if (apiKey) {
       try {
         const systemPrompt = `
-You are the personal AI Recruiter Assistant for Anand Jadhav, a B.Tech Computer Science student at Parul University (Vadodara) specializing in SAP ABAP, Full Stack (MEAN/MERN), and iOS Development.
-Anand's real details:
-- B.Tech CSE (SAP IEP Track) at Parul Institute of Technology (2023 - 2027)
+You are the personal AI Assistant for Anand Jadhav, a B.Tech Computer Science student at Parul University specializing in SAP ABAP Cloud, Full-Stack Web (MEAN/MERN), and iOS Development.
+Details:
 - Email: anandjadhav42004@gmail.com
-- Phone: +91 8308008154
-- Timezone: IST (UTC+5:30), Mumbai.
-- Stack: SAP ABAP Cloud, SAP BTP, SAPUI5 / Fiori, OData Services, React, Next.js, Angular, Node.js, Express, TypeScript, Swift, SwiftUI, Python, Flask, TensorFlow, SQL, MongoDB, Git.
-- Certifications: SAP Certified Associate - ABAP Cloud (2024), Oracle Cloud AI Foundations Associate (2024), HackerRank React & SQL, EA Job Simulation.
-- Projects: ProFlow (MEAN + Gemini AI), Inventory Pro (SAP BTP + SAPUI5), Deepfake Detection AI (Python + TensorFlow), iOS Weather & Tasks (SwiftUI).
-- Experience: Enterprise Software Intern (SAPUI5/BTP, 2024), Freelance Web & iOS Developer (2022 - Present).
-
-Rules:
-- Speak as Anand's representative assistant.
-- Be extremely bold, clear, and professional. 
-- Keep answers concise and readable with bullet points.
-- Provide email: anandjadhav42004@gmail.com when asked about contact/hiring.
+- Location: Mumbai / Vadodara, India
+- Certifications: SAP Certified Associate - ABAP Cloud, Oracle Cloud AI Associate.
+- Web Projects: Elvora Media, KS Beauty, Event Management, FunFlix, ProFlow SAP AI.
+Rules: Concise, polite, bullet points, professional corporate tone.
 `;
 
         const res = await fetch('https://api.anthropic.com/v1/messages', {
@@ -173,9 +133,7 @@ Rules:
             model: 'claude-3-5-sonnet-20241022',
             max_tokens: 800,
             system: systemPrompt,
-            messages: [
-              { role: 'user', content: userQuery }
-            ],
+            messages: [{ role: 'user', content: userQuery }],
           }),
         });
 
@@ -184,14 +142,11 @@ Rules:
           const reply = json.content?.[0]?.text || "No response received.";
           setMessages(prev => [...prev, { sender: 'bot', text: reply, timestamp: new Date() }]);
         } else {
-          const errData = await res.json().catch(() => ({}));
-          throw new Error(errData?.error?.message || 'API rejected request');
+          throw new Error('API request failed');
         }
       } catch (err: any) {
-        console.warn('Claude query failed. Fallback to local response:', err.message);
         const fallback = generateLocalResponse(userQuery);
-        const warningSuffix = `\n\n*(Claude API failed: [${err.message}]. Displaying local cache).*`;
-        setMessages(prev => [...prev, { sender: 'bot', text: fallback + warningSuffix, timestamp: new Date() }]);
+        setMessages(prev => [...prev, { sender: 'bot', text: fallback, timestamp: new Date() }]);
       } finally {
         setIsTyping(false);
       }
@@ -200,7 +155,7 @@ Rules:
         const reply = generateLocalResponse(userQuery);
         setMessages(prev => [...prev, { sender: 'bot', text: reply, timestamp: new Date() }]);
         setIsTyping(false);
-      }, 700);
+      }, 500);
     }
   };
 
@@ -209,74 +164,76 @@ Rules:
   };
 
   return (
-    <div className="fixed z-[200] bottom-6 right-6 font-mono select-none">
-      {/* Floating Chat Bubble - Black Square */}
+    <div className="fixed z-[200] bottom-6 right-6 font-sans select-none">
+      {/* Floating Launcher Button */}
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="w-14 h-14 bg-black border-4 border-black hover:bg-zinc-950 text-white flex items-center justify-center cursor-pointer shadow-[4px_4px_0px_#FFE500]"
-        aria-label="Open AI Recruiter Chat"
+        className="w-13 h-13 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white flex items-center justify-center cursor-pointer shadow-glow transition-all"
+        aria-label="Open AI Assistant"
       >
-        <span className="font-sans font-black text-lg tracking-wider">AI</span>
-        <span className="absolute top-0 right-0 w-3 h-3 rounded-none bg-brutalist-yellow border-2 border-black" />
+        <FiCpu className="text-xl" />
+        <span className="absolute top-0 right-0 w-3 h-3 rounded-full bg-emerald-400 border-2 border-void" />
       </motion.button>
 
-      {/* Brutalist Chat Window */}
+      {/* Corporate Chat Window */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 30 }}
-            className="absolute bottom-18 right-0 w-[90vw] sm:w-[420px] h-[550px] border-4 border-black bg-white shadow-[8px_8px_0px_#000000] overflow-hidden flex flex-col z-[201]"
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            className="absolute bottom-16 right-0 w-[90vw] sm:w-[400px] h-[520px] bg-void-2 border border-white/10 rounded-2xl shadow-glass overflow-hidden flex flex-col z-[201] backdrop-blur-xl"
           >
             {/* Header bar */}
-            <div className="px-4 py-3 border-b-4 border-black flex items-center justify-between bg-brutalist-yellow text-black">
-              <div className="flex items-center gap-2.5">
-                <FiCpu className="text-black text-lg" />
+            <div className="px-5 py-4 border-b border-white/10 flex items-center justify-between bg-void-3 text-white">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+                  <FiCpu />
+                </div>
                 <div>
-                  <h3 className="text-xs font-black tracking-wider uppercase">CLAUDE RECRUITER</h3>
-                  <span className="text-[9px] font-bold uppercase flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 bg-black" />
+                  <h3 className="text-sm font-bold tracking-tight">AI Assistant</h3>
+                  <span className="text-[10px] text-slate-400 flex items-center gap-1.5 font-mono">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                     Online & Ready
                   </span>
                 </div>
               </div>
 
               {/* Controls */}
-              <div className="flex items-center gap-3 text-black">
+              <div className="flex items-center gap-2 text-slate-400">
                 <button 
                   onClick={() => setShowSettings(!showSettings)}
-                  className={`hover:bg-black/10 transition-colors p-1 border border-transparent hover:border-black cursor-pointer ${showSettings ? 'bg-black/20 border-black' : ''}`}
+                  className={`hover:text-white transition-colors p-1.5 rounded-lg hover:bg-white/5 cursor-pointer ${showSettings ? 'text-indigo-400 bg-white/5' : ''}`}
                   title="Configure API Key"
                 >
-                  <FiSettings className="text-sm font-bold" />
+                  <FiSettings className="text-sm" />
                 </button>
                 <button 
                   onClick={() => setIsOpen(false)}
-                  className="hover:bg-black/10 transition-colors p-1 border border-transparent hover:border-black cursor-pointer"
+                  className="hover:text-white transition-colors p-1.5 rounded-lg hover:bg-white/5 cursor-pointer"
                 >
-                  <FiX className="text-sm font-bold" />
+                  <FiX className="text-sm" />
                 </button>
               </div>
             </div>
 
             {/* Main pane body */}
-            <div className="flex-1 overflow-hidden relative flex flex-col bg-white">
+            <div className="flex-1 overflow-hidden relative flex flex-col bg-void/50">
               
-              {/* API Configuration Drawer overlay */}
+              {/* Settings Drawer */}
               <AnimatePresence>
                 {showSettings && (
                   <motion.div 
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    className="absolute top-0 left-0 w-full bg-white border-b-4 border-black p-4 z-20 overflow-hidden text-[10px] text-black font-semibold"
+                    className="absolute top-0 left-0 w-full bg-void-3 border-b border-white/10 p-4 z-20 overflow-hidden text-xs text-slate-300"
                   >
-                    <div className="flex items-start gap-2 text-black mb-3 bg-brutalist-bg p-2.5 border-2 border-black">
-                      <FiInfo className="mt-0.5 flex-shrink-0 text-brutalist-blue" />
-                      <span>Note: Input your Anthropic API Key to activate live Claude responses. Stored in client local storage. If left empty, chatbot runs offline simulation mode.</span>
+                    <div className="flex items-start gap-2 text-slate-300 mb-3 bg-white/5 p-2.5 rounded-lg border border-white/5 text-[11px]">
+                      <FiInfo className="mt-0.5 flex-shrink-0 text-indigo-400" />
+                      <span>Input an Anthropic API key to enable live Claude model inference. Stored locally in your browser.</span>
                     </div>
 
                     <div className="flex gap-2 mb-3">
@@ -285,24 +242,24 @@ Rules:
                         placeholder="sk-ant-..."
                         value={inputKey}
                         onChange={(e) => setInputKey(e.target.value)}
-                        className="flex-1 px-3 py-2 border-2 border-black bg-white text-black outline-none focus:bg-brutalist-bg text-xs font-mono"
+                        className="flex-1 px-3 py-2 rounded-lg bg-void border border-white/10 text-white text-xs font-mono outline-none focus:border-indigo-500"
                       />
                       <button 
                         onClick={saveApiKey}
-                        className="px-3 py-2 bg-brutalist-yellow hover:bg-yellow-400 border-2 border-black text-black font-black flex items-center gap-1 transition-all cursor-pointer"
+                        className="px-3 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-xs flex items-center gap-1 transition-colors cursor-pointer"
                       >
                         <FiCheck /> Save
                       </button>
                     </div>
 
                     {apiKey && (
-                      <div className="flex justify-between items-center bg-green-100 border-2 border-black p-2 mb-1">
-                        <span className="text-emerald-800 font-extrabold uppercase text-[9px]">✓ API Key Active</span>
+                      <div className="flex justify-between items-center bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-lg">
+                        <span className="text-emerald-400 font-medium text-[11px]">✓ API Key Configured</span>
                         <button 
                           onClick={clearApiKey}
-                          className="text-[9px] text-black font-bold hover:underline cursor-pointer"
+                          className="text-[11px] text-slate-400 hover:text-white cursor-pointer"
                         >
-                          Delete Key
+                          Clear Key
                         </button>
                       </div>
                     )}
@@ -310,49 +267,33 @@ Rules:
                 )}
               </AnimatePresence>
 
-              {/* Chat Log Feed */}
-              <div className="flex-1 overflow-y-auto p-4 space-y-4 text-xs bg-brutalist-bg">
+              {/* Chat Messages */}
+              <div className="flex-1 overflow-y-auto p-4 space-y-4 text-xs">
                 {messages.map((msg, index) => (
                   <div 
                     key={index}
                     className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                   >
                     <div className="max-w-[85%] flex items-start gap-2">
-                      {msg.sender === 'bot' && (
-                        <div className="w-6 h-6 border-2 border-black bg-brutalist-yellow flex items-center justify-center flex-shrink-0 text-black text-[10px]">
-                          🤖
-                        </div>
-                      )}
                       <div 
-                        className={`border-2 border-black p-2.5 shadow-[2px_2px_0px_#000] leading-relaxed whitespace-pre-wrap ${
+                        className={`p-3 rounded-xl leading-relaxed whitespace-pre-wrap ${
                           msg.sender === 'user'
-                            ? 'bg-brutalist-blue text-white rounded-none'
-                            : 'bg-white text-black rounded-none'
+                            ? 'bg-indigo-600 text-white rounded-br-none'
+                            : 'bg-void-2 text-slate-200 border border-white/10 rounded-bl-none shadow-sm'
                         }`}
                       >
                         {msg.text}
                       </div>
-                      {msg.sender === 'user' && (
-                        <div className="w-6 h-6 border-2 border-black bg-black text-white flex items-center justify-center flex-shrink-0 text-[10px]">
-                          👤
-                        </div>
-                      )}
                     </div>
                   </div>
                 ))}
                 
-                {/* Typing status */}
                 {isTyping && (
                   <div className="flex justify-start">
-                    <div className="flex items-start gap-2 max-w-[80%]">
-                      <div className="w-6 h-6 border-2 border-black bg-brutalist-yellow flex items-center justify-center flex-shrink-0 text-black text-[10px]">
-                        🤖
-                      </div>
-                      <div className="bg-white border-2 border-black px-3 py-2 flex items-center gap-1 shadow-[2px_2px_0px_#000]">
-                        <span className="w-1.5 h-1.5 bg-black animate-bounce" style={{ animationDelay: '0ms' }} />
-                        <span className="w-1.5 h-1.5 bg-black animate-bounce" style={{ animationDelay: '150ms' }} />
-                        <span className="w-1.5 h-1.5 bg-black animate-bounce" style={{ animationDelay: '300ms' }} />
-                      </div>
+                    <div className="bg-void-2 border border-white/10 px-3 py-2 rounded-xl flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-bounce" style={{ animationDelay: '0ms' }} />
+                      <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-bounce" style={{ animationDelay: '150ms' }} />
+                      <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-bounce" style={{ animationDelay: '300ms' }} />
                     </div>
                   </div>
                 )}
@@ -361,17 +302,17 @@ Rules:
               </div>
 
               {/* Quick Helper Questions */}
-              <div className="px-3 py-2 border-t-2 border-black flex gap-2 overflow-x-auto whitespace-nowrap select-none bg-white">
+              <div className="px-3 py-2 border-t border-white/5 flex gap-2 overflow-x-auto whitespace-nowrap select-none bg-void-3/50">
                 {[
-                  "Where did Anand study?",
-                  "Show his SAP certifications",
-                  "List his AI/Fullstack projects",
-                  "Is he available for hire?"
+                  "SAP Certifications?",
+                  "Web Projects?",
+                  "Availability for hire?",
+                  "Education details?"
                 ].map((q, idx) => (
                   <button 
                     key={idx}
                     onClick={() => selectQuickQuestion(q)}
-                    className="text-[9px] text-black font-extrabold hover:bg-brutalist-yellow bg-white border-2 border-black rounded-none px-2.5 py-1 cursor-pointer transition-colors"
+                    className="text-[11px] text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg px-2.5 py-1 cursor-pointer transition-colors"
                   >
                     {q}
                   </button>
@@ -379,21 +320,21 @@ Rules:
               </div>
             </div>
 
-            {/* Bottom Message Input Form */}
-            <form onSubmit={handleSendMessage} className="p-3 border-t-4 border-black bg-white flex gap-2">
+            {/* Input Form */}
+            <form onSubmit={handleSendMessage} className="p-3 border-t border-white/10 bg-void-3 flex gap-2">
               <input 
                 type="text"
-                placeholder="Ask about Anand..."
+                placeholder="Ask a question..."
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className="flex-1 px-3 py-2 border-2 border-black bg-white text-black outline-none focus:bg-brutalist-bg text-xs font-mono font-bold"
+                className="flex-1 px-3 py-2 rounded-xl bg-void border border-white/10 text-white outline-none focus:border-indigo-500 text-xs font-sans"
               />
               <button 
                 type="submit"
                 disabled={!message.trim()}
-                className="w-10 h-10 bg-brutalist-yellow hover:bg-yellow-400 border-2 border-black text-black flex items-center justify-center transition-colors cursor-pointer disabled:opacity-50 disabled:pointer-events-none shadow-[2px_2px_0px_#000] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[1px_1px_0px_#000]"
+                className="w-9 h-9 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white flex items-center justify-center transition-colors cursor-pointer disabled:opacity-50 disabled:pointer-events-none shrink-0"
               >
-                <FiSend className="font-bold text-sm" />
+                <FiSend className="text-xs" />
               </button>
             </form>
           </motion.div>

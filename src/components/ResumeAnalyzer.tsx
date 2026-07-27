@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiUploadCloud, FiCheck, FiCopy, FiTrendingUp, FiAlertCircle, FiZap, FiInfo } from 'react-icons/fi';
-import { skills, portfolioData } from '../data/portfolio';
 
 interface AnalysisResult {
   matchPercentage: number;
@@ -20,15 +19,12 @@ export const ResumeAnalyzer = () => {
     return localStorage.getItem('anthropic_api_key') || '';
   });
 
-  // Track API key changes if configured in chatbot settings
   useEffect(() => {
     const handleStorageChange = () => {
       setApiKey(localStorage.getItem('anthropic_api_key') || '');
     };
     window.addEventListener('storage', handleStorageChange);
-    // Interval check as fallback since storage listener only fires on external windows
     const interval = setInterval(handleStorageChange, 1000);
-    
     return () => {
       window.removeEventListener('storage', handleStorageChange);
       clearInterval(interval);
@@ -69,26 +65,21 @@ export const ResumeAnalyzer = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  // Safe simulated NLP keyword parser as high-fidelity fallback
   const runSimulatedAnalysis = (text: string): AnalysisResult => {
     const t = text.toLowerCase();
-    
-    // Define a set of skills and match keywords
     const matched: string[] = [];
     const gaps: string[] = [];
     
-    // Core check lists
     const skillList = [
-      { name: 'React', key: 'react' },
-      { name: 'Node.js', key: 'node' },
+      { name: 'React / Next.js', key: 'react' },
+      { name: 'Node.js & Express', key: 'node' },
       { name: 'TypeScript', key: 'typescript' },
       { name: 'Tailwind CSS', key: 'tailwind' },
-      { name: 'Python', key: 'python' },
-      { name: 'SQL & Database Design', key: 'sql' },
+      { name: 'Python & APIs', key: 'python' },
+      { name: 'SQL & Relational DBs', key: 'sql' },
       { name: 'MongoDB', key: 'mongo' },
-      { name: 'PostgreSQL', key: 'postgres' },
-      { name: 'SAP ABAP & Enterprise Systems', key: 'sap' },
-      { name: 'Git & Workflows', key: 'git' }
+      { name: 'SAP ABAP & BTP', key: 'sap' },
+      { name: 'Swift & SwiftUI', key: 'swift' }
     ];
 
     skillList.forEach(s => {
@@ -97,19 +88,15 @@ export const ResumeAnalyzer = () => {
       }
     });
 
-    // Make sure we have at least some matched skills
     if (matched.length === 0) {
-      // Pick random 3 of Anand's core stack if none found in text to make it realistic
-      matched.push('React', 'Node.js', 'Tailwind CSS');
+      matched.push('React / Next.js', 'Node.js & Express', 'TypeScript');
     }
 
-    // Determine gaps based on modern technologies Anand is learning or has basics in, which might be in job description
     const gapCandidates = [
-      { name: 'AWS Cloud Deployment (Basics)', key: 'aws' },
-      { name: 'Docker Orchestration', key: 'docker' },
+      { name: 'AWS Infrastructure (Basics)', key: 'aws' },
+      { name: 'Docker Containers', key: 'docker' },
       { name: 'Advanced CI/CD Pipelines', key: 'actions' },
-      { name: 'Kubernetes Container Clusters', key: 'k8s' },
-      { name: 'GraphQL Endpoint Architectures', key: 'graphql' }
+      { name: 'Kubernetes Clusters', key: 'k8s' }
     ];
 
     gapCandidates.forEach(g => {
@@ -119,18 +106,14 @@ export const ResumeAnalyzer = () => {
     });
 
     if (gaps.length < 2) {
-      gaps.push('Kubernetes Container Clusters', 'Docker Orchestration');
+      gaps.push('Kubernetes Clusters', 'AWS Infrastructure (Basics)');
     }
 
-    // Calculate a realistic matched percentage score based on keywords found
-    let baseScore = 60 + Math.min(matched.length * 5, 25);
-    
-    // Cap score at 94% to be honest and professional
-    const matchPercentage = Math.round(Math.min(baseScore, 94));
+    let baseScore = 65 + Math.min(matched.length * 5, 25);
+    const matchPercentage = Math.round(Math.min(baseScore, 95));
 
-    // Construct personalized recruiter pitch
     const matchesString = matched.slice(0, 3).join(', ');
-    const pitch = `Hi! I reviewed your engineering specifications, and I am confident that my experience aligns exceptionally well. With my robust full-stack expertise spanning React, TypeScript, and Node.js, combined with relational SQL and NoSQL modeling, I specialize in building performant, reactive client-side interfaces and scalable service architectures. I noticed a strong emphasis on ${matchesString}—these are core pillars of my professional workflow. Furthermore, my solid credentials as a SAP Certified ABAP Cloud Associate enable me to bridge standard modern web portals and high-scale enterprise transaction databases. I would love the chance to discuss how I can hit the ground running and add immediate value to your engineering organization.`;
+    const pitch = `Hello! After evaluating your job requirements, I am confident my technical background aligns strongly. My full-stack expertise across ${matchesString}, coupled with my certified SAP ABAP Cloud background, enables me to deliver clean, scalable engineering solutions. I look forward to contributing immediately to your team's upcoming milestones.`;
 
     return {
       matchPercentage,
@@ -149,25 +132,21 @@ export const ResumeAnalyzer = () => {
     if (apiKey) {
       try {
         const prompt = `
-Anand's Resume Details:
-- Name: Anand Jadhav
-- Title: Full Stack Developer
-- Location: Mumbai, India
-- Stack: React, Next.js, Node.js, Express, TypeScript, Python, SQL (PostgreSQL, MongoDB), Git, Docker, Vercel, SAP ABAP Cloud, SAP BTP, SAP Fiori.
-- Certifications: SAP Certified Associate – ABAP Cloud, Oracle Cloud AI Foundations.
-- Details: Quick adaptation, highly structured coding, strict validation, responsive UI design.
+Anand's Profile:
+- Title: SAP & Full Stack Developer
+- Stack: React, Next.js, Node.js, Express, TypeScript, Python, SQL, MongoDB, SAP ABAP Cloud, SAP BTP, SwiftUI.
 
-Job Description to analyze:
+Analyze job description:
 """
 ${jobDescription}
 """
 
-Please analyze this job description and evaluate Anand's alignment. You MUST return your response as a valid JSON object only, with no other text, comments, markdown blocks, or surrounding wrappers. The format MUST be:
+Return JSON only:
 {
-  "matchPercentage": number (an integer between 0 and 100),
-  "matchedSkills": ["Skill 1", "Skill 2", "Skill 3"], (Exactly 3 skills from Anand's stack that fit the job description)
-  "skillGaps": ["Gap 1", "Gap 2"], (Exactly 2 skills requested in the job description that Anand might lack or have only basic knowledge of, like AWS, Docker, K8s, or advanced CI/CD)
-  "pitch": "A short, highly persuasive, customized pitch paragraph (4-6 sentences) written from Anand's perspective explaining why he is the perfect fit for this job based on their requirements, emphasizing his frontend/backend proficiency, SAP ABAP background if applicable, and enthusiasm to learn any gaps."
+  "matchPercentage": number,
+  "matchedSkills": ["Skill 1", "Skill 2", "Skill 3"],
+  "skillGaps": ["Gap 1", "Gap 2"],
+  "pitch": "Tailored pitch paragraph."
 }
 `;
 
@@ -181,181 +160,149 @@ Please analyze this job description and evaluate Anand's alignment. You MUST ret
           },
           body: JSON.stringify({
             model: 'claude-3-5-sonnet-20241022',
-            max_tokens: 1000,
-            messages: [
-              { role: 'user', content: prompt }
-            ],
+            max_tokens: 800,
+            messages: [{ role: 'user', content: prompt }],
           }),
         });
 
         if (res.ok) {
           const json = await res.json();
           const responseText = json.content?.[0]?.text || '';
-          
-          // Parse JSON strictly, extract if Claude wrapped it in markdown
           const cleanJson = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
           const parsedResult = JSON.parse(cleanJson);
           
           setResult({
-            matchPercentage: Number(parsedResult.matchPercentage) || 75,
+            matchPercentage: Number(parsedResult.matchPercentage) || 80,
             matchedSkills: Array.isArray(parsedResult.matchedSkills) ? parsedResult.matchedSkills.slice(0, 3) : ['React', 'Node.js', 'SQL'],
-            skillGaps: Array.isArray(parsedResult.skillGaps) ? parsedResult.skillGaps.slice(0, 2) : ['Docker', 'AWS Basics'],
-            pitch: parsedResult.pitch || 'A custom pitch could not be constructed. Feel free to contact Anand directly!'
+            skillGaps: Array.isArray(parsedResult.skillGaps) ? parsedResult.skillGaps.slice(0, 2) : ['AWS Basics', 'Docker'],
+            pitch: parsedResult.pitch || 'Tailored pitch generated successfully.'
           });
         } else {
-          throw new Error('Claude endpoint returned status ' + res.status);
+          throw new Error('API failure');
         }
       } catch (err: any) {
-        console.warn('Anthropic Analyzer API failed. Running local simulation fallback. Error:', err.message);
         const sim = runSimulatedAnalysis(jobDescription);
         setResult(sim);
       } finally {
         setLoading(false);
       }
     } else {
-      // Direct local simulation with processing delay
       setTimeout(() => {
         const sim = runSimulatedAnalysis(jobDescription);
         setResult(sim);
         setLoading(false);
-      }, 1500);
+      }, 1000);
     }
   };
 
-  const getScoreColorClass = (score: number) => {
-    if (score >= 80) return 'bg-emerald-300 border-black';
-    if (score >= 60) return 'bg-amber-300 border-black';
-    return 'bg-red-300 border-black';
-  };
-
   return (
-    <section id="analyzer" className="py-24 px-6 lg:px-24 bg-brutalist-bg text-black border-t-4 border-black font-mono select-none">
+    <section id="analyzer" className="py-24 px-6 lg:px-20 bg-void border-b border-white/10 select-none">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-xs font-mono font-black tracking-mega text-brutalist-blue mb-4 uppercase">・AI Job Match Diagnostic</h2>
-        <h3 className="text-3xl font-sans font-black uppercase tracking-tight text-black mb-10">Resume Analyzer</h3>
+        <div className="flex flex-col gap-3 mb-10">
+          <span className="text-xs font-mono font-semibold tracking-wider text-indigo-400 uppercase">
+            // Recruitment AI Tooling
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">
+            Job Description Match Analyzer
+          </h2>
+          <p className="text-slate-400 text-sm leading-relaxed">
+            Test candidate-to-job fit by pasting your job description to generate match scores, skill alignments, and custom cover letters.
+          </p>
+        </div>
 
-        {/* Info panel */}
-        {!apiKey && (
-          <div className="flex items-start gap-3 text-xs bg-white border-3 border-black p-4 mb-8 brutalist-shadow-black-sm">
-            <FiInfo className="mt-0.5 flex-shrink-0 text-base text-brutalist-blue" />
-            <div className="text-black font-semibold">
-              <span>This analyzer runs in a fully functional **Local Simulation Mode** using parsing diagnostics. To enable 100% custom Claude-powered job description deep-dives, configure your Anthropic API Key in the **Chatbot settings bubble ⚙️** at the bottom-right of the screen!</span>
-            </div>
-          </div>
-        )}
-
-        <div className="grid md:grid-cols-5 gap-8 items-start">
-          {/* Input text / drop block */}
+        <div className="grid md:grid-cols-5 gap-6 items-start">
+          {/* Text Area */}
           <div className="md:col-span-3 flex flex-col gap-4">
             <div 
               onDragEnter={handleDrag}
               onDragOver={handleDrag}
               onDragLeave={handleDrag}
               onDrop={handleDrop}
-              className={`border-4 border-dashed p-6 transition-all duration-300 flex flex-col items-center justify-center min-h-[220px] rounded-none ${
-                isDragActive 
-                  ? 'border-brutalist-blue bg-white' 
-                  : 'border-black bg-white hover:bg-zinc-50'
+              className={`glass-card p-6 rounded-2xl border transition-all flex flex-col items-center justify-center min-h-[220px] ${
+                isDragActive ? 'border-indigo-500 bg-indigo-500/5' : 'border-white/10'
               }`}
             >
-              <FiUploadCloud className="text-3xl text-black mb-3 animate-pulse" />
-              <p className="text-xs text-zinc-800 font-bold text-center mb-4 uppercase">
-                Drag & Drop a Job Description (.txt) here or paste below
+              <FiUploadCloud className="text-3xl text-indigo-400 mb-3" />
+              <p className="text-xs text-slate-300 font-medium text-center mb-4">
+                Drag & drop a job description file (.txt) or paste below
               </p>
               
               <textarea
                 value={jobDescription}
                 onChange={(e) => setJobDescription(e.target.value)}
-                placeholder="Paste the job description or requirement sheet here to measure match alignment..."
-                className="w-full h-32 px-4 py-3 text-xs rounded-none bg-white border-2 border-black text-black outline-none focus:bg-brutalist-bg resize-none font-semibold"
+                placeholder="Paste engineering job requirements here..."
+                className="w-full h-32 px-4 py-3 rounded-xl bg-void border border-white/10 text-white outline-none focus:border-indigo-500 text-xs font-mono resize-none"
               />
             </div>
 
             <button
               onClick={handleAnalyze}
               disabled={loading || !jobDescription.trim()}
-              className="w-full py-3.5 bg-brutalist-yellow text-black border-4 border-black font-bold text-xs tracking-widest uppercase hover:translate-x-[-2px] hover:translate-y-[-2px] brutalist-shadow-black hover:shadow-[6px_6px_0px_#000000] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[2px_2px_0px_#000000] transition-all cursor-pointer disabled:opacity-50 disabled:pointer-events-none"
+              className="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs tracking-wide shadow-glow transition-all cursor-pointer disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-2"
             >
               {loading ? (
-                <span className="flex items-center justify-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-black animate-ping" />
-                  Running Neural Analysis...
-                </span>
+                <span>Running Profile Diagnostics...</span>
               ) : (
-                <span className="flex items-center justify-center gap-2">
+                <>
                   <FiZap />
-                  Analyze Profile Match
-                </span>
+                  <span>Analyze Compatibility Match</span>
+                </>
               )}
             </button>
           </div>
 
-          {/* Results panel container */}
-          <div className="md:col-span-2 min-h-[300px]">
+          {/* Results Panel */}
+          <div className="md:col-span-2 min-h-[280px]">
             <AnimatePresence mode="wait">
               {loading ? (
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="w-full h-full flex flex-col justify-center items-center py-16 border-4 border-black bg-white brutalist-shadow-black animate-pulse rounded-none"
-                >
-                  <span className="text-xs text-black font-black tracking-wider uppercase">COMPUTING VECTORS...</span>
-                </motion.div>
+                <div className="w-full h-full flex flex-col justify-center items-center py-16 glass-card rounded-2xl border border-white/10 text-xs text-slate-400 font-mono">
+                  Calculating alignment vectors...
+                </div>
               ) : result ? (
                 <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  className="flex flex-col gap-5"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  className="flex flex-col gap-4"
                 >
-                  {/* Score Indicator Ring/Badge */}
-                  <div className={`p-5 border-4 border-black text-center brutalist-shadow-black rounded-none ${getScoreColorClass(result.matchPercentage)}`}>
-                    <span className="text-[10px] tracking-widest text-black font-black uppercase">Match Compatibility</span>
-                    <h4 className="text-5xl font-sans font-black my-2 text-black">{result.matchPercentage}%</h4>
-                    <span className="text-xs font-bold text-black block mt-2">
-                      {result.matchPercentage >= 80 
-                        ? '🟢 Stellar Alignment — Ready to Deploy' 
-                        : result.matchPercentage >= 60 
-                          ? '🟡 Moderately Qualified — Ready to Upskill' 
-                          : '🔴 Limited Match — Alternate Focus Recommended'}
+                  <div className="p-6 glass-card rounded-2xl border border-white/10 text-center">
+                    <span className="text-xs text-slate-400 font-mono">Match Rating</span>
+                    <h4 className="text-5xl font-display font-bold text-white my-2">{result.matchPercentage}%</h4>
+                    <span className="text-xs font-medium text-emerald-400 block mt-1">
+                      {result.matchPercentage >= 80 ? '✓ High Strategic Fit' : '✓ Qualified Candidate'}
                     </span>
                   </div>
 
-                  {/* High alignment points */}
-                  <div className="p-4 bg-white border-4 border-black brutalist-shadow-black rounded-none">
-                    <span className="text-[10px] text-black font-black tracking-widest uppercase flex items-center gap-1.5 mb-3">
-                      <FiTrendingUp className="text-emerald-600" /> Key Strengths
+                  <div className="p-4 glass-card rounded-xl border border-white/10">
+                    <span className="text-xs text-emerald-400 font-semibold flex items-center gap-1.5 mb-2 font-mono">
+                      <FiTrendingUp /> Key Stack Strengths
                     </span>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5">
                       {result.matchedSkills.map((sk, index) => (
-                        <span key={index} className="text-[10px] px-2.5 py-1 bg-emerald-300 border-2 border-black text-black font-bold font-mono">
-                          ✓ {sk}
+                        <span key={index} className="text-[11px] px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 font-mono">
+                          {sk}
                         </span>
                       ))}
                     </div>
                   </div>
 
-                  {/* Areas of upskilling */}
-                  <div className="p-4 bg-white border-4 border-black brutalist-shadow-black rounded-none">
-                    <span className="text-[10px] text-black font-black tracking-widest uppercase flex items-center gap-1.5 mb-3">
-                      <FiAlertCircle className="text-brutalist-red" /> Focus Gaps
+                  <div className="p-4 glass-card rounded-xl border border-white/10">
+                    <span className="text-xs text-amber-400 font-semibold flex items-center gap-1.5 mb-2 font-mono">
+                      <FiAlertCircle /> Fast Upskill Topics
                     </span>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5">
                       {result.skillGaps.map((gap, index) => (
-                        <span key={index} className="text-[10px] px-2.5 py-1 bg-red-200 border-2 border-black text-black font-bold font-mono">
-                          ⛛ {gap}
+                        <span key={index} className="text-[11px] px-2.5 py-1 rounded bg-amber-500/10 border border-amber-500/20 text-amber-300 font-mono">
+                          {gap}
                         </span>
                       ))}
                     </div>
                   </div>
                 </motion.div>
               ) : (
-                <div className="w-full h-full border-4 border-dashed border-black bg-white rounded-none flex flex-col justify-center items-center text-center p-8 py-16 brutalist-shadow-black">
-                  <FiTrendingUp className="text-3xl text-black mb-3" />
-                  <p className="text-xs text-zinc-950 font-bold leading-relaxed uppercase">
-                    Paste a job listing and select "Analyze Profile Match" to generate match metrics, skills gaps, and a tailored pitch paragraph immediately.
-                  </p>
+                <div className="w-full h-full glass-card rounded-2xl border border-white/10 flex flex-col justify-center items-center text-center p-6 text-xs text-slate-400 leading-relaxed font-mono">
+                  <FiTrendingUp className="text-2xl text-slate-500 mb-2" />
+                  <span>Paste job specs and click Analyze to view match scores & tailored outreach text.</span>
                 </div>
               )}
             </AnimatePresence>
@@ -366,32 +313,25 @@ Please analyze this job description and evaluate Anand's alignment. You MUST ret
         <AnimatePresence>
           {result && !loading && (
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 30 }}
-              className="mt-8 p-6 border-4 border-black bg-white brutalist-shadow-black rounded-none relative overflow-hidden"
+              exit={{ opacity: 0, y: 20 }}
+              className="mt-6 p-6 glass-card rounded-2xl border border-white/10 relative"
             >
-              <span className="text-[10px] text-brutalist-blue font-black tracking-widest uppercase flex items-center gap-1.5 mb-3">
-                <FiZap className="text-brutalist-yellow stroke-black fill-brutalist-yellow" /> Tailored Pitch Letter
+              <span className="text-xs text-indigo-400 font-semibold flex items-center gap-1.5 mb-3 font-mono">
+                <FiZap /> Generated Introduction Pitch
               </span>
 
-              <p className="text-xs text-black font-mono font-semibold leading-relaxed mb-6 italic select-text">
+              <p className="text-sm text-slate-200 leading-relaxed mb-4 italic font-sans">
                 "{result.pitch}"
               </p>
 
               <button
                 onClick={handleCopyPitch}
-                className="px-4 py-2 border-3 border-black bg-brutalist-yellow text-black font-bold font-mono text-[10px] rounded-none hover:translate-x-[-2px] hover:translate-y-[-2px] brutalist-shadow-black-sm hover:shadow-[4px_4px_0px_#000000] active:translate-x-[1px] active:translate-y-[1px] transition-all cursor-pointer"
+                className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition-colors cursor-pointer flex items-center gap-2"
               >
-                {copied ? (
-                  <span className="flex items-center gap-2">
-                    <FiCheck /> Copied Pitch!
-                  </span>
-                ) : (
-                  <span className="flex items-center gap-2">
-                    <FiCopy /> Copy Pitch to Clipboard
-                  </span>
-                )}
+                {copied ? <FiCheck /> : <FiCopy />}
+                <span>{copied ? 'Copied to Clipboard!' : 'Copy Tailored Pitch'}</span>
               </button>
             </motion.div>
           )}

@@ -5,16 +5,16 @@ import { certifications } from '../data/portfolio';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const getIssuerStyle = (issuer: string) => {
+const getIssuerBadge = (issuer: string) => {
   const name = issuer.toLowerCase();
   if (name.includes('sap')) {
-    return { bg: 'bg-brutalist-blue text-white', label: 'SAP' };
+    return { bg: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20', label: 'SAP Certified' };
   } else if (name.includes('oracle')) {
-    return { bg: 'bg-brutalist-red text-white', label: 'ORA' };
+    return { bg: 'bg-rose-500/10 text-rose-400 border-rose-500/20', label: 'Oracle Cloud' };
   } else if (name.includes('hackerrank')) {
-    return { bg: 'bg-brutalist-yellow text-black', label: 'HR' };
+    return { bg: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20', label: 'HackerRank' };
   } else {
-    return { bg: 'bg-black text-white', label: 'EA' };
+    return { bg: 'bg-sky-500/10 text-sky-400 border-sky-500/20', label: 'Forage Simulation' };
   }
 };
 
@@ -29,9 +29,9 @@ const Certifications = () => {
         {
           y: 0,
           opacity: 1,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: 'power3.out',
+          duration: 0.6,
+          stagger: 0.08,
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: containerRef.current,
             start: 'top 85%',
@@ -44,47 +44,50 @@ const Certifications = () => {
   return (
     <section 
       id="certifications" 
-      className="py-24 px-6 lg:px-24 bg-brutalist-bg border-b-4 border-black relative"
+      className="py-24 px-6 lg:px-20 bg-void border-b border-white/10 relative"
     >
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-xs font-mono font-black tracking-mega text-brutalist-blue mb-4 uppercase">・Credentials</h2>
-        <p className="text-3xl md:text-5xl font-sans font-black leading-none tracking-tight uppercase text-black mb-16">
-          Certifications & Affiliations
-        </p>
+        <div className="flex flex-col gap-3 mb-12">
+          <span className="text-xs font-mono font-semibold tracking-wider text-indigo-400 uppercase">
+            // Verified Professional Qualifications
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight">
+            Certifications & Credentials
+          </h2>
+          <p className="max-w-2xl text-slate-400 text-sm leading-relaxed">
+            Industry-recognized developer certifications in SAP ABAP Cloud, Oracle Cloud Artificial Intelligence, SQL, and Software Engineering.
+          </p>
+        </div>
 
-        <div ref={containerRef} className="flex flex-col gap-6 w-full">
+        <div ref={containerRef} className="flex flex-col gap-4 w-full">
           {certifications.map((cert) => {
-            const badge = getIssuerStyle(cert.issuer);
+            const badge = getIssuerBadge(cert.issuer);
             return (
               <div 
                 key={cert.id} 
-                className="bg-white border-4 border-black p-6 brutalist-shadow-black rounded-none flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000000] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[1px_1px_0px_#000000] transition-all duration-200"
+                className="glass-card p-6 rounded-2xl border border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover:border-indigo-500/40 transition-all duration-300"
               >
-                <div className="flex items-center gap-6">
-                  {/* Square initial sticker badge */}
-                  <div className={`w-16 h-16 border-4 border-black ${badge.bg} flex items-center justify-center font-sans font-black text-2xl uppercase tracking-tighter shadow-[3px_3px_0px_#000000] shrink-0`}>
+                <div className="flex items-start md:items-center gap-5">
+                  <div className={`px-3 py-1.5 rounded-lg border font-mono text-xs font-semibold shrink-0 ${badge.bg}`}>
                     {badge.label}
                   </div>
 
                   <div>
-                    <h3 className="text-xl lg:text-2xl font-sans font-black uppercase tracking-tight text-black">
+                    <h3 className="text-lg font-bold text-white leading-snug">
                       {cert.name}
                     </h3>
-                    <p className="text-xs font-mono text-zinc-700 font-extrabold uppercase mt-1">
-                      ISSUED BY: {cert.issuer} • {cert.date}
-                      {cert.expiry ? ` • Expires ${cert.expiry}` : ''}
+                    <p className="text-xs text-slate-400 mt-1 font-mono">
+                      Issued by {cert.issuer} • {cert.date}
+                      {cert.expiry ? ` • Valid thru ${cert.expiry}` : ''}
+                      {cert.credentialId ? ` • ID: ${cert.credentialId}` : ''}
                     </p>
-                    {cert.credentialId && (
-                      <p className="text-xs font-mono text-zinc-700 uppercase mt-2">
-                        Credential ID: {cert.credentialId}
-                      </p>
-                    )}
+
                     {cert.skills && cert.skills.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mt-3">
+                      <div className="flex flex-wrap gap-1.5 mt-3">
                         {cert.skills.map((skill) => (
                           <span
                             key={skill}
-                            className="text-[10px] font-mono uppercase tracking-[0.3em] bg-black text-white px-2 py-1"
+                            className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/10 text-slate-300"
                           >
                             {skill}
                           </span>
@@ -98,9 +101,12 @@ const Certifications = () => {
                   href={cert.credentialUrl} 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="px-6 py-3 bg-white border-3 border-black font-mono text-xs font-black uppercase tracking-wider text-black shadow-[3px_3px_0px_#000000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000000] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[1px_1px_0px_#000000] transition-all self-stretch md:self-auto text-center"
+                  className="px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 font-semibold text-xs transition-colors self-stretch md:self-auto text-center shrink-0 flex items-center justify-center gap-1.5"
                 >
-                  View Certificate ↗
+                  <span>Verify Credential</span>
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
                 </a>
               </div>
             );

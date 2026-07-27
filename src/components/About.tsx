@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Terminal from './Terminal';
@@ -13,12 +12,12 @@ const About = () => {
     const el = textRef.current;
     if (el) {
       gsap.fromTo(el, 
-        { y: 50, opacity: 0 },
+        { y: 30, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.8,
-          ease: 'power3.out',
+          duration: 0.6,
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: el,
             start: 'top 85%',
@@ -31,73 +30,78 @@ const About = () => {
   return (
     <section 
       id="about" 
-      className="relative w-full min-h-screen bg-brutalist-bg text-black px-6 lg:px-24 py-24 border-b-4 border-black"
+      className="relative w-full min-h-screen bg-void text-white px-6 lg:px-20 py-24 border-b border-white/10"
     >
       <div className="max-w-7xl mx-auto w-full flex flex-col gap-16">
         
-        <div className="flex flex-col lg:flex-row items-stretch gap-12 z-20">
-          {/* Draggable Business Card */}
-          <div className="flex-1 flex flex-col justify-center items-center relative">
-            <motion.div 
-              drag 
-              dragConstraints={{ left: -150, right: 150, top: -150, bottom: 150 }}
-              whileDrag={{ scale: 1.05, rotate: 3 }}
-              className="w-full max-w-sm bg-white border-4 border-black p-6 flex flex-col justify-between cursor-grab active:cursor-grabbing brutalist-shadow-black relative rounded-none select-none hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000000] transition-all duration-200"
-            >
-              {/* Retro Header Stamp */}
-              <div className="absolute top-4 right-4 px-2 py-1 bg-brutalist-yellow border-2 border-black font-mono text-[9px] font-black uppercase tracking-wider">
-                CARD ID: AJ-99
-              </div>
+        {/* Section Title */}
+        <div ref={textRef} className="flex flex-col gap-3">
+          <span className="text-xs font-mono font-semibold tracking-wider text-indigo-400 uppercase">
+            // Engineering Profile & Background
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight max-w-3xl">
+            Architecting enterprise cloud services & full-stack systems
+          </h2>
+          <p className="text-slate-400 text-base max-w-2xl leading-relaxed mt-2">
+            B.Tech Computer Science student (SAP IEP Track) at Parul Institute of Technology. Building enterprise solutions across SAP BTP Cloud, modern web architectures, and native mobile environments.
+          </p>
+        </div>
 
-              <div>
-                <h3 className="text-3xl font-sans font-black uppercase tracking-tighter text-black leading-none">Anand Jadhav</h3>
-                <p className="text-xs font-mono text-brutalist-blue font-bold mt-1 uppercase">SAP & Full Stack & iOS</p>
-              </div>
-              
-              <div className="flex flex-col gap-1 text-[11px] font-mono text-zinc-950 font-semibold tracking-wider uppercase mt-12 border-t-2 border-black pt-4">
-                <p>📞 +91 8308008154</p>
-                <p>✉️ anandjadhav42004@gmail.com</p>
-                <p>🌐 anandjadhav.vercel.app</p>
-              </div>
-            </motion.div>
-            
-            <div className="text-[10px] font-mono font-bold text-zinc-700 tracking-wider uppercase mt-4">
-              ✨ Click & drag my business card
-            </div>
-          </div>
-
-          {/* Bio Text & Stats Card */}
-          <div className="flex-1 flex flex-col justify-between" ref={textRef}>
+        {/* 3 Core Focus Cards */}
+        <div className="grid md:grid-cols-3 gap-6">
+          
+          {/* Card 1: SAP Enterprise */}
+          <div className="glass-card p-7 rounded-2xl flex flex-col justify-between group">
             <div>
-              <h2 className="text-xs font-mono font-black tracking-mega text-brutalist-blue mb-4 uppercase">・Biography</h2>
-              <p className="text-3xl md:text-4xl font-sans font-black leading-none tracking-tight uppercase text-black">
-                B.Tech Computer Science student (SAP IEP Track) at Parul University. Specializing in cloud enterprise apps, modern web stacks, and Swift iOS applications.
-              </p>
-              <p className="font-mono text-zinc-800 text-sm font-semibold mt-4 leading-relaxed max-w-2xl">
-                My educational journey at Parul Institute of Technology is focused on applying computational paradigms directly to real-world deployment channels. I work daily with MongoDB, Express, Angular/React, Node.js (MEAN/MERN), Swift, and SAP OData service modules.
+              <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center font-mono font-bold text-lg mb-6 group-hover:scale-105 transition-transform">
+                01
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">SAP BTP & ABAP Cloud</h3>
+              <p className="text-sm text-slate-300 leading-relaxed font-normal">
+                Certified in SAP ABAP Cloud. Specialized in OData V2/V4 services, Fiori Elements, SAP Business Technology Platform (BTP), and HANA database integration.
               </p>
             </div>
-
-            {/* Stats Row */}
-            <div className="mt-10 grid grid-cols-2 md:grid-cols-3 gap-4">
-              <div className="bg-white border-3 border-black p-4 brutalist-shadow-black-sm hover:translate-y-[-2px] transition-all">
-                <h4 className="text-3xl font-sans font-black text-brutalist-red uppercase">4</h4>
-                <p className="text-[10px] font-mono font-bold text-zinc-700 mt-1 uppercase tracking-wider">Projects Built</p>
-              </div>
-              <div className="bg-white border-3 border-black p-4 brutalist-shadow-black-sm hover:translate-y-[-2px] transition-all">
-                <h4 className="text-3xl font-sans font-black text-brutalist-blue uppercase">5</h4>
-                <p className="text-[10px] font-mono font-bold text-zinc-700 mt-1 uppercase tracking-wider">Credentials</p>
-              </div>
-              <div className="bg-white border-3 border-black p-4 brutalist-shadow-black-sm hover:translate-y-[-2px] transition-all">
-                <h4 className="text-3xl font-sans font-black text-black uppercase">2027</h4>
-                <p className="text-[10px] font-mono font-bold text-zinc-700 mt-1 uppercase tracking-wider">Graduation</p>
-              </div>
+            <div className="mt-6 pt-4 border-t border-white/5 flex flex-wrap gap-2 text-xs font-mono text-indigo-300">
+              <span>#ABAPCloud</span> <span>#SAPBTP</span> <span>#OData</span>
             </div>
           </div>
+
+          {/* Card 2: Full-Stack Web */}
+          <div className="glass-card p-7 rounded-2xl flex flex-col justify-between group">
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center font-mono font-bold text-lg mb-6 group-hover:scale-105 transition-transform">
+                02
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Full-Stack Web (MEAN/MERN)</h3>
+              <p className="text-sm text-slate-300 leading-relaxed font-normal">
+                Engineering reactive web applications using TypeScript, React, Next.js, Node.js, Express, and PostgreSQL/MongoDB with scalable microservice APIs.
+              </p>
+            </div>
+            <div className="mt-6 pt-4 border-t border-white/5 flex flex-wrap gap-2 text-xs font-mono text-sky-300">
+              <span>#TypeScript</span> <span>#React</span> <span>#NodeJS</span>
+            </div>
+          </div>
+
+          {/* Card 3: Native iOS & AI */}
+          <div className="glass-card p-7 rounded-2xl flex flex-col justify-between group">
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center font-mono font-bold text-lg mb-6 group-hover:scale-105 transition-transform">
+                03
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Native iOS & AI Workflows</h3>
+              <p className="text-sm text-slate-300 leading-relaxed font-normal">
+                Building intuitive iOS applications in Swift & SwiftUI. Integrating TensorFlow machine learning endpoints and Google Gemini AI automated workflows.
+              </p>
+            </div>
+            <div className="mt-6 pt-4 border-t border-white/5 flex flex-wrap gap-2 text-xs font-mono text-emerald-300">
+              <span>#SwiftUI</span> <span>#GeminiAI</span> <span>#Python</span>
+            </div>
+          </div>
+
         </div>
 
         {/* Interactive Linux Shell Terminal */}
-        <div className="w-full mt-8">
+        <div className="w-full mt-4">
           <Terminal />
         </div>
 

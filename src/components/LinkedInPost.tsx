@@ -1,44 +1,49 @@
-import React from 'react'
-import { FaLinkedinIn } from 'react-icons/fa'
-import { linkedinPost } from '../data/portfolio'
+import React from 'react';
+import { FaLinkedinIn } from 'react-icons/fa';
+import { linkedinPost } from '../data/portfolio';
 
 const LinkedInPost = () => {
   return (
-    <section id="linkedin-post" className="py-24 px-6 lg:px-24 bg-white border-t-4 border-black">
+    <section id="linkedin-post" className="py-24 px-6 lg:px-20 bg-void border-b border-white/10">
       <div className="max-w-5xl mx-auto">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8">
           <div>
-            <p className="text-xs font-mono tracking-mega text-brutalist-blue uppercase mb-4">・LinkedIn Update</p>
-            <h2 className="text-3xl md:text-4xl font-sans font-black uppercase tracking-tight text-black">
-              Latest post from LinkedIn
+            <span className="text-xs font-mono font-semibold tracking-wider text-indigo-400 uppercase">
+              // Thought Leadership & Write-ups
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight mt-1">
+              Latest LinkedIn Publication
             </h2>
           </div>
           <a
             href={linkedinPost.url}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-3 border-3 border-black bg-black text-white uppercase text-xs font-bold tracking-widest hover:bg-zinc-900 transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs tracking-wide transition-all shadow-glow"
           >
-            <FaLinkedinIn /> View post
+            <FaLinkedinIn />
+            <span>Follow on LinkedIn</span>
           </a>
         </div>
 
-        <div className="border-4 border-black bg-brutalist-yellow p-8">
-          <div className="flex items-center justify-between gap-4 mb-5">
-            <span className="text-xs font-mono uppercase tracking-[0.35em] text-zinc-700">{linkedinPost.date}</span>
-            <span className="text-xs font-mono uppercase tracking-[0.35em] text-zinc-700">LinkedIn</span>
+        <div className="glass-card p-8 rounded-2xl border border-white/10 relative overflow-hidden">
+          <div className="flex items-center justify-between gap-4 mb-4 text-xs font-mono text-slate-400">
+            <span>{linkedinPost.date}</span>
+            <span className="px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
+              Technical Article
+            </span>
           </div>
 
-          <h3 className="text-2xl md:text-3xl font-sans font-black text-black tracking-tight mb-4">
+          <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-3">
             {linkedinPost.title}
           </h3>
-          <p className="text-sm md:text-base leading-relaxed text-zinc-900 max-w-3xl">
+          <p className="text-sm leading-relaxed text-slate-300 max-w-3xl">
             {linkedinPost.excerpt}
           </p>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default LinkedInPost
+export default LinkedInPost;

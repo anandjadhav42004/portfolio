@@ -6,31 +6,11 @@ import { skills } from '../data/portfolio';
 gsap.registerPlugin(ScrollTrigger);
 
 const skillCategories = [
-  {
-    key: 'sap',
-    name: 'SAP Enterprise',
-    accent: 'bg-brutalist-blue text-white',
-  },
-  {
-    key: 'web',
-    name: 'Full Stack Web',
-    accent: 'bg-brutalist-yellow text-black',
-  },
-  {
-    key: 'ios_ai',
-    name: 'iOS & AI Deep Learning',
-    accent: 'bg-brutalist-red text-white',
-  },
-  {
-    key: 'database',
-    name: 'Databases',
-    accent: 'bg-white text-black',
-  },
-  {
-    key: 'tools',
-    name: 'Tools & Cloud DevOps',
-    accent: 'bg-black text-white',
-  }
+  { key: 'sap', name: 'SAP Enterprise & BTP', color: 'from-indigo-500 to-indigo-600' },
+  { key: 'web', name: 'Full-Stack Web (MEAN/MERN)', color: 'from-sky-500 to-blue-600' },
+  { key: 'ios_ai', name: 'Native iOS & AI Engineering', color: 'from-emerald-500 to-teal-600' },
+  { key: 'database', name: 'Databases & Data Stores', color: 'from-purple-500 to-indigo-600' },
+  { key: 'tools', name: 'Tools, DevOps & Deployments', color: 'from-cyan-500 to-sky-600' },
 ];
 
 const Skills = () => {
@@ -40,16 +20,16 @@ const Skills = () => {
     if (containerRef.current) {
       const cards = containerRef.current.children;
       gsap.fromTo(cards,
-        { y: 50, opacity: 0 },
+        { y: 30, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.8,
+          duration: 0.6,
           stagger: 0.1,
-          ease: 'power3.out',
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: containerRef.current,
-            start: 'top 85%',
+            start: 'top 80%',
           }
         }
       );
@@ -59,42 +39,47 @@ const Skills = () => {
   return (
     <section 
       id="skills" 
-      className="py-24 px-6 lg:px-24 bg-brutalist-bg border-b-4 border-black relative"
+      className="py-24 px-6 lg:px-20 bg-void border-b border-white/10 relative"
     >
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-xs font-mono font-black tracking-mega text-brutalist-blue mb-4 uppercase">・Technical Skills</h2>
-        <p className="text-3xl md:text-5xl font-sans font-black leading-none tracking-tight uppercase text-black mb-16">
-          Core Proficiencies & Tech Stack
-        </p>
+        <div className="flex flex-col gap-3 mb-12">
+          <span className="text-xs font-mono font-semibold tracking-wider text-indigo-400 uppercase">
+            // Technical Competencies
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight">
+            Core Proficiencies & Stack
+          </h2>
+          <p className="max-w-2xl text-slate-400 text-sm leading-relaxed">
+            Quantified proficiency levels across enterprise software architectures, frontend frameworks, backend runtimes, and cloud platforms.
+          </p>
+        </div>
         
-        <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {skillCategories.map((category) => {
             const list = skills[category.key as keyof typeof skills] || [];
             return (
               <div 
                 key={category.key} 
-                className="bg-white border-4 border-black p-6 brutalist-shadow-black rounded-none flex flex-col justify-between hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000000] transition-all duration-200"
+                className="glass-card p-6 rounded-2xl border border-white/10 flex flex-col justify-between"
               >
-                <div className={`px-4 py-2 border-3 border-black ${category.accent} font-sans font-black text-sm uppercase tracking-wider mb-6 text-center shadow-[2px_2px_0px_#000000]`}>
-                  {category.name}
-                </div>
+                <h3 className="text-lg font-bold text-white mb-6 pb-3 border-b border-white/5 flex items-center justify-between">
+                  <span>{category.name}</span>
+                  <span className="w-2 h-2 rounded-full bg-indigo-400" />
+                </h3>
                 
                 <div className="flex flex-col gap-5">
                   {list.map((skill, index) => (
                     <div key={index} className="flex flex-col gap-1.5">
-                      <div className="flex justify-between items-center font-mono text-xs font-bold uppercase tracking-wider text-black">
-                        <span>{skill.name}</span>
-                        <span>{skill.level}%</span>
+                      <div className="flex justify-between items-center text-xs font-medium text-slate-300">
+                        <span className="font-semibold text-slate-200">{skill.name}</span>
+                        <span className="font-mono text-slate-400">{skill.level}%</span>
                       </div>
                       
-                      {/* Double Border brutalist progress bar */}
-                      <div className="w-full border-3 border-black bg-white p-0.5 rounded-none">
-                        <div className="border-2 border-black bg-white h-4 rounded-none overflow-hidden">
-                          <div 
-                            className="bg-brutalist-yellow border-r-2 border-black h-full transition-all duration-1000 ease-out"
-                            style={{ width: `${skill.level}%` }}
-                          />
-                        </div>
+                      <div className="w-full bg-white/5 h-2 rounded-full overflow-hidden p-0.5 border border-white/5">
+                        <div 
+                          className={`bg-gradient-to-r ${category.color} h-full rounded-full transition-all duration-1000 ease-out`}
+                          style={{ width: `${skill.level}%` }}
+                        />
                       </div>
                     </div>
                   ))}
@@ -109,4 +94,3 @@ const Skills = () => {
 };
 
 export default Skills;
-
