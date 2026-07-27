@@ -13,8 +13,8 @@ interface Background3DProps {
 export const buildingDatabase: Record<string, BuildingDetails> = {
   'anand-hq': {
     id: 'anand-hq',
-    title: 'Anand Jadhav One Vanderbilt Tower',
-    category: 'Manhattan Central HQ Skyscraper',
+    title: 'Anand Jadhav Central HQ',
+    category: 'Manhattan Central Skyscraper',
     description: 'Supertall 35-story central skyscraper (One Vanderbilt / Freedom Tower style) representing Anand Jadhav — B.Tech Computer Science student at Parul University. Specializing in SAP ABAP Cloud & BTP architectures, Full-Stack Web (MEAN/MERN), and native iOS development (SwiftUI).',
     tags: ['SAP ABAP Cloud', 'SAP BTP', 'React / Next.js', 'SwiftUI', 'Node.js', 'TypeScript'],
     commits: 620,
@@ -23,7 +23,7 @@ export const buildingDatabase: Record<string, BuildingDetails> = {
   },
   'proflow-sap': {
     id: 'proflow-sap',
-    title: 'ProFlow SAP Hudson Yards Tower',
+    title: 'ProFlow SAP Hudson Yards AI Tower',
     category: 'Hudson Yards Angular Glass Skyscraper',
     description: 'Hudson Yards style 28-story angular glass skyscraper. Enterprise workflow automation system combining MEAN stack with Google Gemini AI to process, summarize, and route SAP system requests.',
     tags: ['SAP BTP', 'ABAP Cloud', 'Angular', 'Node.js', 'Gemini AI'],
@@ -34,7 +34,7 @@ export const buildingDatabase: Record<string, BuildingDetails> = {
   },
   'elvora-media': {
     id: 'elvora-media',
-    title: 'Elvora Media Times Square Center',
+    title: 'Elvora Media Production Building',
     category: 'Times Square LED Skyscraper',
     description: 'Times Square / 30 Rock style media tower with glowing LED screen billboards. High-performance digital production agency web platform engineered for dynamic content delivery & responsive layouts.',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Netlify'],
@@ -56,7 +56,7 @@ export const buildingDatabase: Record<string, BuildingDetails> = {
   },
   'funflix': {
     id: 'funflix',
-    title: 'FunFlix Chrysler Spire Tower',
+    title: 'FunFlix Chrysler Cinema Tower',
     category: 'Art-Deco Chrysler Spire Tower',
     description: 'Chrysler Building style Art-Deco skyscraper with an illuminated metallic spire. Streaming & entertainment discovery application with real-time media search & category filtering.',
     tags: ['React', 'REST API', 'CSS Glassmorphism', 'Netlify'],
@@ -67,7 +67,7 @@ export const buildingDatabase: Record<string, BuildingDetails> = {
   },
   'anashi-store': {
     id: 'anashi-store',
-    title: 'Anashi Fashion Plaza',
+    title: 'Anashi Thrift Shopping Mall',
     category: 'SoHo Commercial Retail Building',
     description: 'SoHo style commercial storefront & high-rise featuring vintage fashion catalogs, smooth cart management, product filtering, and mobile-first design.',
     tags: ['React', 'Tailwind CSS', 'State Management', 'Netlify'],
@@ -116,7 +116,7 @@ export const buildingDatabase: Record<string, BuildingDetails> = {
   },
   'sap-cert-tower': {
     id: 'sap-cert-tower',
-    title: 'SAP Credential Exchange Building',
+    title: 'SAP Credential Museum',
     category: 'Historic Granite & Glass Building',
     description: 'Historic Wall Street style granite & glass Exchange building. SAP Certified Associate - Back-End Developer - ABAP Cloud (Jul 2025 - Jul 2026). Credential ID: 99fc1274-a818-4ca7-8f0c-a1160e29a2d9.',
     tags: ['SAP Certified', 'ABAP Cloud', 'BTP', 'HANA Cloud'],
@@ -126,7 +126,7 @@ export const buildingDatabase: Record<string, BuildingDetails> = {
   },
   'oracle-ai-tower': {
     id: 'oracle-ai-tower',
-    title: 'Oracle Cloud AI Tower',
+    title: 'Oracle Cloud AI Museum',
     category: 'Corporate Glass & Steel Building',
     description: 'Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate (Sep 2025). Certified in OCI Cloud AI & Machine Learning.',
     tags: ['Oracle Cloud', 'AI Foundations', 'Machine Learning', 'OCI'],
@@ -154,13 +154,13 @@ export const Background3D: React.FC<Background3DProps> = ({
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
   const controlsRef = useRef<OrbitControls | null>(null);
   
-  const targetCamPos = useRef<{ x: number; y: number; z: number }>({ x: 50, y: 45, z: 50 });
+  const targetCamPos = useRef<{ x: number; y: number; z: number }>({ x: 48, y: 40, z: 48 });
   const targetLookAt = useRef<{ x: number; y: number; z: number }>({ x: 0, y: 6, z: 0 });
 
   useEffect(() => {
     switch (activeDistrict) {
       case 'hero':
-        targetCamPos.current = { x: 50, y: 45, z: 50 };
+        targetCamPos.current = { x: 48, y: 40, z: 48 };
         targetLookAt.current = { x: 0, y: 6, z: 0 };
         break;
       case 'projects':
@@ -180,7 +180,7 @@ export const Background3D: React.FC<Background3DProps> = ({
         targetLookAt.current = { x: 16, y: 8, z: 16 };
         break;
       default:
-        targetCamPos.current = { x: 50, y: 45, z: 50 };
+        targetCamPos.current = { x: 48, y: 40, z: 48 };
         targetLookAt.current = { x: 0, y: 6, z: 0 };
     }
   }, [activeDistrict]);
@@ -188,58 +188,54 @@ export const Background3D: React.FC<Background3DProps> = ({
   useEffect(() => {
     if (!mountRef.current) return;
 
-    // 1. Scene & Atmospheric Fog Setup
+    // 1. Scene & Bright Sunny Sky Background
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x0e1117);
-    scene.fog = new THREE.FogExp2(0x0e1117, 0.004);
+    scene.background = new THREE.Color(0x38bdf8); // Sky blue
+    scene.fog = new THREE.FogExp2(0x38bdf8, 0.0025);
 
-    // 2. Perspective Camera (Google Earth Fly-In View)
+    // 2. Camera Setup
     const aspect = window.innerWidth / window.innerHeight;
     const camera = new THREE.PerspectiveCamera(45, aspect, 1, 1000);
-    camera.position.set(70, 70, 70); // Starts high up, flies in
+    camera.position.set(65, 65, 65);
     camera.lookAt(0, 6, 0);
     cameraRef.current = camera;
 
-    // 3. WebGL PBR Renderer Setup
+    // 3. Renderer Setup
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.1;
+    renderer.toneMappingExposure = 1.25;
     mountRef.current.appendChild(renderer.domElement);
 
-    // 4. OrbitControls
+    // 4. Flawless OrbitControls
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
     controls.maxPolarAngle = Math.PI / 2.05;
     controls.minDistance = 12;
-    controls.maxDistance = 150;
+    controls.maxDistance = 140;
     controlsRef.current = controls;
 
-    // 5. PBR Lighting - Dusk Sunset Sky & City Lights
-    const ambientLight = new THREE.AmbientLight(0x38bdf8, 0.5);
-    scene.add(ambientLight);
+    // 5. Bright Daylight Global Illumination (HemisphereLight + Sunlight)
+    const hemiLight = new THREE.HemisphereLight(0x38bdf8, 0xfef08a, 0.9);
+    scene.add(hemiLight);
 
-    const sunLight = new THREE.DirectionalLight(0xf97316, 1.4);
-    sunLight.position.set(70, 80, -60);
+    const sunLight = new THREE.DirectionalLight(0xfbbf24, 1.6);
+    sunLight.position.set(70, 80, -50);
     sunLight.castShadow = true;
     sunLight.shadow.mapSize.width = 2048;
     sunLight.shadow.mapSize.height = 2048;
     scene.add(sunLight);
 
-    const cityLight = new THREE.PointLight(0x6366f1, 3, 120);
-    cityLight.position.set(0, 30, 0);
-    scene.add(cityLight);
-
-    // 6. Hudson River Water Body
+    // 6. Hudson River Water Surface
     const riverGeo = new THREE.PlaneGeometry(180, 40);
     const riverMat = new THREE.MeshStandardMaterial({
-      color: 0x0b132b,
-      metalness: 0.9,
-      roughness: 0.1,
+      color: 0x0284c7,
+      metalness: 0.8,
+      roughness: 0.2,
       transparent: true,
       opacity: 0.9,
     });
@@ -248,14 +244,13 @@ export const Background3D: React.FC<Background3DProps> = ({
     riverMesh.position.set(0, -0.2, 45);
     scene.add(riverMesh);
 
-    // 7. Manhattan Road Grid & Pavements (12x10 City Block System)
+    // 7. Bright Sidewalk & Street Layout
     const cityBaseGroup = new THREE.Group();
     scene.add(cityBaseGroup);
 
-    const roadMat = new THREE.MeshStandardMaterial({ color: 0x161a23, roughness: 0.8, metalness: 0.2 });
-    const sidewalkMat = new THREE.MeshStandardMaterial({ color: 0x2a2f3d, roughness: 0.7, metalness: 0.3 });
+    const roadMat = new THREE.MeshStandardMaterial({ color: 0x334155, roughness: 0.6 });
+    const sidewalkMat = new THREE.MeshStandardMaterial({ color: 0x94a3b8, roughness: 0.5 });
 
-    // Base Pavement Ground
     const groundGeo = new THREE.PlaneGeometry(160, 160);
     const groundMesh = new THREE.Mesh(groundGeo, sidewalkMat);
     groundMesh.rotation.x = -Math.PI / 2;
@@ -263,7 +258,6 @@ export const Background3D: React.FC<Background3DProps> = ({
     groundMesh.receiveShadow = true;
     cityBaseGroup.add(groundMesh);
 
-    // Avenue Streets Grid
     const avenueWidth = 4.5;
     for (let pos = -50; pos <= 50; pos += 16) {
       const roadXGeo = new THREE.PlaneGeometry(avenueWidth, 160);
@@ -281,37 +275,28 @@ export const Background3D: React.FC<Background3DProps> = ({
       cityBaseGroup.add(roadZ);
     }
 
-    // 8. Procedural Manhattan Skyscrapers (100+ Detailed Buildings)
+    // 8. Bright PBR Skyscrapers (100+ Detailed Buildings)
     const cityGroup = new THREE.Group();
     scene.add(cityGroup);
 
     const interactiveMeshList: THREE.Mesh[] = [];
 
-    const glassMatTemplate = new THREE.MeshStandardMaterial({
-      color: 0x1e293b,
-      metalness: 0.85,
-      roughness: 0.15,
-      transparent: true,
-      opacity: 0.9,
-    });
-
     const landmarkConfig: Record<string, { w: number; d: number; h: number; color: number; spire?: boolean; billboard?: boolean }> = {
-      'anand-hq': { w: 5.5, d: 5.5, h: 28, color: 0x39d353, spire: true },
-      'proflow-sap': { w: 4.8, d: 4.8, h: 24, color: 0x6366f1, spire: true },
+      'anand-hq': { w: 5.5, d: 5.5, h: 28, color: 0x10b981, spire: true },
+      'proflow-sap': { w: 4.8, d: 4.8, h: 24, color: 0x3b82f6, spire: true },
       'elvora-media': { w: 4.5, d: 4.5, h: 20, color: 0x38bdf8, billboard: true },
-      'ks-beauty': { w: 4.2, d: 4.2, h: 18, color: 0xfd79a8 },
-      'funflix': { w: 4.0, d: 4.0, h: 17, color: 0xf59e0b, spire: true },
+      'ks-beauty': { w: 4.2, d: 4.2, h: 18, color: 0xf472b6 },
+      'funflix': { w: 4.0, d: 4.0, h: 17, color: 0xfbbf24, spire: true },
       'anashi-store': { w: 3.8, d: 3.8, h: 15, color: 0xec4899 },
       'event-management': { w: 4.0, d: 4.0, h: 16, color: 0x818cf8 },
       'abap-cloud': { w: 4.5, d: 4.5, h: 22, color: 0x6366f1 },
       'react-stack': { w: 4.5, d: 4.5, h: 23, color: 0x38bdf8 },
       'swiftui-stack': { w: 4.0, d: 4.0, h: 17, color: 0x10b981 },
-      'sap-cert-tower': { w: 4.4, d: 4.4, h: 18, color: 0x6366f1 },
+      'sap-cert-tower': { w: 4.4, d: 4.4, h: 18, color: 0xa855f7 },
       'oracle-ai-tower': { w: 4.4, d: 4.4, h: 17, color: 0xf43f5e },
-      'ai-hub-node': { w: 5.0, d: 5.0, h: 21, color: 0xa855f7 },
+      'ai-hub-node': { w: 5.0, d: 5.0, h: 21, color: 0x22c55e },
     };
 
-    // Landmark positions matrix
     const landmarkPositions: Record<string, { x: number; z: number }> = {
       'anand-hq': { x: 0, z: 0 },
       'proflow-sap': { x: -8, z: -6 },
@@ -328,7 +313,6 @@ export const Background3D: React.FC<Background3DProps> = ({
       'ai-hub-node': { x: 22, z: 22 },
     };
 
-    // 100+ Buildings Grid Generator
     const gridCols = 10;
     const gridRows = 10;
     const blockSpacing = 11;
@@ -339,7 +323,6 @@ export const Background3D: React.FC<Background3DProps> = ({
         const bx = c * blockSpacing - gridOffset;
         const bz = r * blockSpacing - gridOffset;
 
-        // Check if landmark sits here
         let landmarkId: string | null = null;
         Object.entries(landmarkPositions).forEach(([id, pos]) => {
           if (Math.abs(pos.x - bx) < 5 && Math.abs(pos.z - bz) < 5) {
@@ -354,25 +337,25 @@ export const Background3D: React.FC<Background3DProps> = ({
         const width = conf?.w || 3.2 + Math.random() * 2.2;
         const depth = conf?.d || 3.2 + Math.random() * 2.2;
         const height = conf?.h || (landmarkId ? 18 : 6 + Math.random() * 16);
-        const mainColor = conf?.color || (Math.random() > 0.5 ? 0x1e293b : 0x334155);
+        const mainColor = conf?.color || (Math.random() > 0.5 ? 0x38bdf8 : 0x818cf8);
 
-        // Skyscraper Base & Lobby (Double-height dark granite base)
+        // Skyscraper Base
         const baseGeo = new THREE.BoxGeometry(width * 1.1, 2.5, depth * 1.1);
         baseGeo.translate(0, 1.25, 0);
-        const baseMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, metalness: 0.9, roughness: 0.2 });
+        const baseMat = new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.5, roughness: 0.3 });
         const baseMesh = new THREE.Mesh(baseGeo, baseMat);
         baseMesh.position.set(bx, 0, bz);
         cityGroup.add(baseMesh);
 
-        // Tower Body Geometry
+        // Tower Body
         const bodyGeo = new THREE.BoxGeometry(width, height, depth);
         bodyGeo.translate(0, height / 2, 0);
         const bodyMat = new THREE.MeshStandardMaterial({
           color: mainColor,
-          metalness: 0.85,
-          roughness: 0.15,
+          metalness: 0.7,
+          roughness: 0.2,
           transparent: true,
-          opacity: 0.92,
+          opacity: 0.95,
         });
 
         const mesh = new THREE.Mesh(bodyGeo, bodyMat);
@@ -385,57 +368,35 @@ export const Background3D: React.FC<Background3DProps> = ({
           interactiveMeshList.push(mesh);
         }
 
-        // Window Frame Grid Mullions
+        // Window Frame Grid Lines
         const edgesGeo = new THREE.EdgesGeometry(bodyGeo);
         const edgesMat = new THREE.LineBasicMaterial({
-          color: landmarkId ? 0x38bdf8 : 0x64748b,
+          color: 0xffffff,
           transparent: true,
-          opacity: landmarkId ? 0.6 : 0.25,
+          opacity: landmarkId ? 0.7 : 0.3,
         });
         const edges = new THREE.LineSegments(edgesGeo, edgesMat);
         mesh.add(edges);
 
-        // Roof Equipment (HVAC Plant, Water Tanks, Antennas)
-        const roofHVACGeo = new THREE.BoxGeometry(width * 0.5, 1.2, depth * 0.5);
-        const roofHVACMat = new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.7, roughness: 0.3 });
-        const roofHVAC = new THREE.Mesh(roofHVACGeo, roofHVACMat);
-        roofHVAC.position.set(0, height + 0.6, 0);
-        mesh.add(roofHVAC);
-
-        // Spire / Antenna for Supertall Landmark Towers
+        // Roof Equipment & Spires
         if (conf?.spire || height > 22) {
           const spireGeo = new THREE.CylinderGeometry(0.08, 0.4, 6, 8);
-          const spireMat = new THREE.MeshStandardMaterial({ color: 0xf8fafc, metalness: 0.9, roughness: 0.1 });
+          const spireMat = new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 0.9 });
           const spire = new THREE.Mesh(spireGeo, spireMat);
           spire.position.set(0, height + 4.2, 0);
           mesh.add(spire);
-
-          // Glowing Aviation Beacon Red Light
-          const beaconMat = new THREE.MeshBasicMaterial({ color: 0xef4444 });
-          const beacon = new THREE.Mesh(new THREE.SphereGeometry(0.3, 8, 8), beaconMat);
-          beacon.position.set(0, height + 7.2, 0);
-          mesh.add(beacon);
-        }
-
-        // Billboard for Elvora Media / Times Square Tower
-        if (conf?.billboard) {
-          const boardGeo = new THREE.PlaneGeometry(width * 0.9, 4);
-          const boardMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
-          const board = new THREE.Mesh(boardGeo, boardMat);
-          board.position.set(0, height * 0.6, depth / 2 + 0.05);
-          mesh.add(board);
         }
 
         cityGroup.add(mesh);
       }
     }
 
-    // 9. NYC Yellow Taxis & Vehicle Streams
+    // 9. NYC Yellow Taxis
     const carGroup = new THREE.Group();
     scene.add(carGroup);
 
-    const taxiMat = new THREE.MeshStandardMaterial({ color: 0xf1c40f, roughness: 0.3 });
-    const carMat = new THREE.MeshStandardMaterial({ color: 0x334155, roughness: 0.3 });
+    const taxiMat = new THREE.MeshStandardMaterial({ color: 0xfbbf24, roughness: 0.3 });
+    const carMat = new THREE.MeshStandardMaterial({ color: 0x0284c7, roughness: 0.3 });
     const cars: THREE.Mesh[] = [];
 
     for (let i = 0; i < 24; i++) {
@@ -446,7 +407,7 @@ export const Background3D: React.FC<Background3DProps> = ({
       cars.push(car);
     }
 
-    // 10. Raycasting & Mouse Hover / Click Events
+    // 10. Raycasting & Events
     const raycaster = new THREE.Raycaster();
     const mouseVector = new THREE.Vector2();
     let hoveredMesh: THREE.Mesh | null = null;
@@ -496,8 +457,23 @@ export const Background3D: React.FC<Background3DProps> = ({
       }
     };
 
+    const onDoubleClick = () => {
+      // Double click resets camera to overview
+      targetCamPos.current = { x: 48, y: 40, z: 48 };
+      targetLookAt.current = { x: 0, y: 6, z: 0 };
+    };
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        targetCamPos.current = { x: 48, y: 40, z: 48 };
+        targetLookAt.current = { x: 0, y: 6, z: 0 };
+      }
+    };
+
     window.addEventListener('pointermove', onPointerMove);
     window.addEventListener('click', onClick);
+    window.addEventListener('dblclick', onDoubleClick);
+    window.addEventListener('keydown', onKeyDown);
 
     const onResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
@@ -507,23 +483,21 @@ export const Background3D: React.FC<Background3DProps> = ({
 
     window.addEventListener('resize', onResize);
 
-    // 11. Animation Loop & Camera Interpolation
+    // 11. Animation Loop
     const clock = new THREE.Clock();
 
     const animate = () => {
       requestAnimationFrame(animate);
-      const elapsedTime = clock.getElapsedTime();
-
       controls.update();
 
-      // Camera Lerp to Active District
+      // Camera Lerp
       camera.position.x += (targetCamPos.current.x - camera.position.x) * 0.05;
       camera.position.y += (targetCamPos.current.y - camera.position.y) * 0.05;
       camera.position.z += (targetCamPos.current.z - camera.position.z) * 0.05;
 
-      // Animate NYC Yellow Taxis
+      // Animate Cars
       cars.forEach((car, idx) => {
-        car.position.z += 0.2 + (idx % 3) * 0.08;
+        car.position.z += 0.25 + (idx % 3) * 0.1;
         if (car.position.z > 50) car.position.z = -50;
       });
 
@@ -536,6 +510,8 @@ export const Background3D: React.FC<Background3DProps> = ({
       window.removeEventListener('resize', onResize);
       window.removeEventListener('pointermove', onPointerMove);
       window.removeEventListener('click', onClick);
+      window.removeEventListener('dblclick', onDoubleClick);
+      window.removeEventListener('keydown', onKeyDown);
       if (mountRef.current) {
         mountRef.current.removeChild(renderer.domElement);
       }
