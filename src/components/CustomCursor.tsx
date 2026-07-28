@@ -9,22 +9,22 @@ const CustomCursor = () => {
   useEffect(() => {
     if (window.matchMedia('(pointer: coarse)').matches) return;
 
+    // Use gsap.quickTo for high-performance mouse tracking
+    const xTo = gsap.quickTo(cursorRef.current, 'x', { duration: 0.12, ease: 'power2.out' });
+    const yTo = gsap.quickTo(cursorRef.current, 'y', { duration: 0.12, ease: 'power2.out' });
+    const dotXTo = gsap.quickTo(dotRef.current, 'x', { duration: 0 });
+    const dotYTo = gsap.quickTo(dotRef.current, 'y', { duration: 0 });
+
     const onMouseMove = (e: MouseEvent) => {
-      gsap.to(cursorRef.current, {
-        x: e.clientX,
-        y: e.clientY,
-        duration: 0.12,
-        ease: 'power2.out',
-      });
-      gsap.to(dotRef.current, {
-        x: e.clientX,
-        y: e.clientY,
-        duration: 0,
-      });
+      xTo(e.clientX);
+      yTo(e.clientY);
+      dotXTo(e.clientX);
+      dotYTo(e.clientY);
     };
 
     const onMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
+      if (!target) return;
       if (
         target.tagName.toLowerCase() === 'a' ||
         target.tagName.toLowerCase() === 'button' ||
@@ -37,8 +37,8 @@ const CustomCursor = () => {
       }
     };
 
-    window.addEventListener('mousemove', onMouseMove);
-    window.addEventListener('mouseover', onMouseOver);
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
+    window.addEventListener('mouseover', onMouseOver, { passive: true });
 
     return () => {
       window.removeEventListener('mousemove', onMouseMove);
@@ -63,3 +63,4 @@ const CustomCursor = () => {
 };
 
 export default CustomCursor;
+

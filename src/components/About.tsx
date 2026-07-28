@@ -9,9 +9,10 @@ const About = () => {
   const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = textRef.current;
-    if (el) {
-      gsap.fromTo(el, 
+    if (!textRef.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(textRef.current, 
         { y: 30, opacity: 0 },
         {
           y: 0,
@@ -19,12 +20,14 @@ const About = () => {
           duration: 0.6,
           ease: 'power2.out',
           scrollTrigger: {
-            trigger: el,
+            trigger: textRef.current,
             start: 'top 85%',
           }
         }
       );
-    }
+    }, textRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (

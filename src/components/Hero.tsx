@@ -21,15 +21,19 @@ const Hero = () => {
         ease: 'power2.out',
       });
       
-      gsap.fromTo(subtitleRef.current,
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, delay: 0.2, ease: 'power2.out' }
-      );
+      if (subtitleRef.current) {
+        gsap.fromTo(subtitleRef.current,
+          { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.7, delay: 0.2, ease: 'power2.out' }
+        );
+      }
 
-      gsap.fromTo(editorRef.current,
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, delay: 0.35, ease: 'power2.out' }
-      );
+      if (editorRef.current) {
+        gsap.fromTo(editorRef.current,
+          { y: 40, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8, delay: 0.35, ease: 'power2.out' }
+        );
+      }
     }, 400);
 
     // Typewriter subtitle cycle
@@ -38,6 +42,7 @@ const Hero = () => {
     let charIdx = 0;
     let isDeleting = false;
     let typingSpeed = 80;
+    let currentStepTimer: ReturnType<typeof setTimeout> | null = null;
 
     const runTypewriter = () => {
       if (!active) return;
@@ -64,15 +69,18 @@ const Hero = () => {
         }
       }
 
-      setTimeout(runTypewriter, typingSpeed);
+      if (active) {
+        currentStepTimer = setTimeout(runTypewriter, typingSpeed);
+      }
     };
 
     const typewriterTimer = setTimeout(runTypewriter, 1000);
 
     return () => {
+      active = false;
       clearTimeout(animTimer);
       clearTimeout(typewriterTimer);
-      active = false;
+      if (currentStepTimer) clearTimeout(currentStepTimer);
     };
   }, []);
 
