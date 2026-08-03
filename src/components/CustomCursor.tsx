@@ -4,23 +4,23 @@ const CustomCursor = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
   const dotRef = useRef<HTMLDivElement>(null);
   const [isHovering, setIsHovering] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     if (window.matchMedia('(pointer: coarse)').matches) return;
 
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-
-    let cursorX = mouseX;
-    let cursorY = mouseY;
-    let dotX = mouseX;
-    let dotY = mouseY;
-
+    let mouseX = -100;
+    let mouseY = -100;
+    let cursorX = -100;
+    let cursorY = -100;
+    let dotX = -100;
+    let dotY = -100;
     let animId: number;
 
     const onMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
+      if (!isVisible) setIsVisible(true);
     };
 
     const onMouseOver = (e: MouseEvent) => {
@@ -40,19 +40,17 @@ const CustomCursor = () => {
     };
 
     const render = () => {
-      // Smooth linear interpolation (lerp)
-      cursorX += (mouseX - cursorX) * 0.15;
-      cursorY += (mouseY - cursorY) * 0.15;
-
-      dotX += (mouseX - dotX) * 0.45;
-      dotY += (mouseY - dotY) * 0.45;
+      cursorX += (mouseX - cursorX) * 0.18;
+      cursorY += (mouseY - cursorY) * 0.18;
+      dotX += (mouseX - dotX) * 0.55;
+      dotY += (mouseY - dotY) * 0.55;
 
       if (cursorRef.current) {
-        cursorRef.current.style.transform = `translate3d(${cursorX - 18}px, ${cursorY - 18}px, 0px)`;
+        cursorRef.current.style.transform = `translate3d(${cursorX - 20}px, ${cursorY - 20}px, 0px)`;
       }
 
       if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${dotX - 4}px, ${dotY - 4}px, 0px)`;
+        dotRef.current.style.transform = `translate3d(${dotX - 5}px, ${dotY - 5}px, 0px)`;
       }
 
       animId = requestAnimationFrame(render);
@@ -67,27 +65,29 @@ const CustomCursor = () => {
       window.removeEventListener('mouseover', onMouseOver);
       cancelAnimationFrame(animId);
     };
-  }, []);
+  }, [isVisible]);
 
   return (
-    <>
-      {/* Outer Glowing Ring */}
+    <div className={isVisible ? 'block' : 'opacity-0'}>
+      {/* Outer Studio Ghibli Magical Starlight Aura */}
       <div
         ref={cursorRef}
-        className={`fixed top-0 left-0 w-9 h-9 rounded-full border border-cyan/60 pointer-events-none z-[9999] hidden lg:block transition-all duration-200 ease-out shadow-lg shadow-cyan/20 ${
+        className={`fixed top-0 left-0 w-10 h-10 rounded-full border-2 pointer-events-none z-[999999] transition-transform duration-150 ease-out shadow-2xl ${
           isHovering
-            ? 'scale-150 border-cyan bg-cyan/20 backdrop-blur-[1px]'
-            : 'scale-100 bg-cyan/5'
+            ? 'scale-175 border-amber-300 bg-amber-400/20 shadow-amber-400/50 backdrop-blur-[2px]'
+            : 'scale-100 border-cyan-400 bg-cyan-400/15 shadow-cyan-400/40'
         }`}
       />
-      {/* Core Glowing Dot */}
+      {/* Inner Glowing Spirit Core */}
       <div
         ref={dotRef}
-        className={`fixed top-0 left-0 w-2 h-2 rounded-full bg-cyan pointer-events-none z-[9999] hidden lg:block transition-all duration-150 shadow-md shadow-cyan ${
-          isHovering ? 'scale-150 bg-white' : 'scale-100'
+        className={`fixed top-0 left-0 w-2.5 h-2.5 rounded-full pointer-events-none z-[999999] transition-all duration-100 ${
+          isHovering
+            ? 'scale-150 bg-amber-200 shadow-[0_0_12px_#FBBF24]'
+            : 'scale-100 bg-cyan-300 shadow-[0_0_10px_#38BDF8]'
         }`}
       />
-    </>
+    </div>
   );
 };
 
