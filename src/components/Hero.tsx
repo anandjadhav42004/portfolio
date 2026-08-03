@@ -87,20 +87,20 @@ const Hero = () => {
             ref={subtitleRef}
             className="flex flex-col gap-6 items-start opacity-0"
           >
-            <p className="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed font-normal">
-              B.Tech Computer Science Engineer specializing in enterprise <strong className="text-white font-semibold">SAP ABAP Cloud & BTP</strong> architectures, modern <strong className="text-white font-semibold">Full-Stack Web (MEAN/MERN)</strong>, and <strong className="text-white font-semibold">Native iOS (SwiftUI)</strong> apps.
+            <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed font-normal">
+              B.Tech Computer Science Engineer specializing in enterprise <strong className="text-slate-900 dark:text-white font-semibold">SAP ABAP Cloud & BTP</strong> architectures, modern <strong className="text-slate-900 dark:text-white font-semibold">Full-Stack Web (MEAN/MERN)</strong>, and <strong className="text-slate-900 dark:text-white font-semibold">Native iOS (SwiftUI)</strong> apps.
             </p>
 
             {/* Specialty Pill Badges */}
-            <div className="flex flex-wrap gap-2 text-xs font-medium font-mono text-slate-300">
-              <span className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" /> SAP BTP & ABAP
+            <div className="flex flex-wrap gap-2 text-xs font-medium font-mono text-slate-700 dark:text-slate-300">
+              <span className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 dark:bg-indigo-400" /> SAP BTP & ABAP
               </span>
-              <span className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-sky-400" /> React & Node.js
+              <span className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-sky-500 dark:bg-sky-400" /> React & Node.js
               </span>
-              <span className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /> SwiftUI Native
+              <span className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400" /> SwiftUI Native
               </span>
             </div>
 

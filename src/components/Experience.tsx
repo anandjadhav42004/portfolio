@@ -1,127 +1,79 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { experience } from '../data/portfolio'
-import { containerVariants, itemVariants } from '../utils/animations'
+import React from 'react';
+import { motion } from 'framer-motion';
+import { experience } from '../data/portfolio';
 
 const ExperienceItem = ({ exp, index }: any) => {
   const getIcon = (type: string) => {
     switch (type) {
       case 'internship':
-        return '🎓'
+        return '🎓';
       case 'hackathon':
-        return '🏆'
+        return '🏆';
       case 'freelance':
-        return '💼'
+        return '💼';
       default:
-        return '⭐'
+        return '⭐';
     }
-  }
+  };
 
   return (
-    <motion.div
-      className="relative"
-      variants={itemVariants}
-    >
+    <motion.div className="relative">
       <div className="flex gap-6">
         {/* Timeline */}
         <div className="flex flex-col items-center">
-          <motion.div
-            className="w-12 h-12 bg-gradient-to-br from-neon-blue to-neon-purple rounded-full flex items-center justify-center text-2xl border-2 border-cyber-bg"
-            whileHover={{ scale: 1.2, boxShadow: '0 0 20px rgba(0, 212, 255, 0.5)' }}
-          >
+          <div className="w-12 h-12 bg-gradient-to-br from-cyan to-indigo-500 rounded-full flex items-center justify-center text-xl shadow-md">
             {getIcon(exp.type)}
-          </motion.div>
+          </div>
           {index !== experience.length - 1 && (
-            <div className="w-1 h-24 bg-gradient-to-b from-neon-blue to-transparent mt-2" />
+            <div className="w-0.5 h-24 bg-gradient-to-b from-cyan to-transparent mt-2 opacity-50" />
           )}
         </div>
 
         {/* Content */}
-        <motion.div
-          className="pb-8 flex-1"
-          whileHover={{ x: 10 }}
-        >
-          <div className="p-6 bg-cyber-card border border-neon-blue/20 rounded-lg hover:border-neon-blue/50 transition-all">
+        <div className="pb-8 flex-1">
+          <div className="p-6 bg-white/90 dark:bg-card-bg border border-slate-200 dark:border-white/10 rounded-2xl shadow-lg dark:shadow-xl transition-all">
             <div className="flex justify-between items-start mb-3">
               <div>
-                <h3 className="text-lg font-space-grotesk font-bold text-neon-blue">
+                <h3 className="text-lg font-display font-bold text-slate-900 dark:text-white">
                   {exp.title}
                 </h3>
-                <p className="text-gray-400 text-sm">{exp.company}</p>
+                <p className="text-slate-600 dark:text-slate-400 text-sm font-medium">{exp.company}</p>
               </div>
-              <span className="text-sm text-neon-cyan font-mono">{exp.duration}</span>
+              <span className="text-xs text-cyan font-mono font-semibold px-2.5 py-1 rounded-full bg-cyan/10 border border-cyan/20">
+                {exp.duration}
+              </span>
             </div>
-            <p className="text-gray-300 text-sm leading-relaxed">{exp.description}</p>
+            <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">{exp.description}</p>
           </div>
-        </motion.div>
+        </div>
       </div>
     </motion.div>
-  )
-}
+  );
+};
 
 const Experience = () => {
   return (
-    <section id="experience" className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
-      <motion.div
-        className="max-w-4xl mx-auto"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
+    <section id="experience" className="py-24 px-6 lg:px-20 bg-void border-b border-slate-200 dark:border-white/10">
+      <div className="max-w-4xl mx-auto">
         {/* Section Label */}
-        <motion.div
-          className="flex items-center gap-3 mb-12"
-          variants={itemVariants}
-        >
-          <div className="w-10 h-10 rounded-full bg-gradient-to-r from-neon-blue to-neon-purple flex items-center justify-center text-white font-bold">
+        <div className="flex items-center gap-3 mb-12">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-r from-cyan to-indigo-500 flex items-center justify-center text-white font-bold text-sm">
             05
           </div>
-          <h2 className="text-3xl sm:text-4xl font-space-grotesk font-bold">
-            My <span className="text-neon-blue">Journey</span>
+          <h2 className="text-3xl sm:text-4xl font-display font-bold text-slate-900 dark:text-white">
+            My <span className="text-cyan">Journey</span>
           </h2>
-        </motion.div>
+        </div>
 
         {/* Timeline */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+        <div>
           {experience.map((exp, index) => (
             <ExperienceItem key={exp.id} exp={exp} index={index} />
           ))}
-        </motion.div>
-
-        {/* Stats */}
-        <motion.div
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {[
-            { label: 'Internships', value: '3+' },
-            { label: 'Hackathons', value: '8' },
-            { label: 'Projects', value: '15+' },
-            { label: 'Contributions', value: '1.5k+' },
-          ].map((stat, index) => (
-            <motion.div
-              key={index}
-              className="p-4 bg-cyber-card border border-neon-blue/20 rounded-lg text-center hover:border-neon-blue/50 transition-all"
-              variants={itemVariants}
-              whileHover={{ y: -5, borderColor: 'rgb(0, 212, 255)' }}
-            >
-              <div className="text-2xl font-bold text-neon-blue mb-1">{stat.value}</div>
-              <div className="text-sm text-gray-400">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
-  )
-}
+  );
+};
 
-export default Experience
+export default Experience;

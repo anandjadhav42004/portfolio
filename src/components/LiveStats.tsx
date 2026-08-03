@@ -146,58 +146,58 @@ const LiveStats = () => {
         <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl mx-auto">
           
           {/* GitHub Card */}
-          <div className="glass-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
+          <div className="glass-card p-8 rounded-2xl bg-white/90 dark:bg-card-bg border border-slate-200 dark:border-white/10 flex flex-col justify-between">
             <div className="flex justify-between items-center mb-6">
               <div>
-                <h3 className="text-2xl font-bold text-white">GitHub</h3>
-                <p className="text-xs font-mono text-indigo-300 mt-1">@{GITHUB_USERNAME}</p>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">GitHub</h3>
+                <p className="text-xs font-mono text-cyan dark:text-indigo-300 mt-1">@{GITHUB_USERNAME}</p>
               </div>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 text-[11px] font-mono font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[11px] font-mono font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
                 Live Sync
               </span>
             </div>
 
             {githubLoading ? (
-              <div className="py-8 text-center text-xs font-mono text-slate-400">Loading GitHub stats...</div>
+              <div className="py-8 text-center text-xs font-mono text-slate-500 dark:text-slate-400">Loading GitHub stats...</div>
             ) : (
-              <div className="grid grid-cols-3 gap-4 pt-4 border-t border-white/5">
+              <div className="grid grid-cols-3 gap-4 pt-4 border-t border-slate-200 dark:border-white/5">
                 <div>
-                  <p className="text-xs font-mono text-slate-400 mb-1">Repositories</p>
-                  <p className="text-3xl font-display font-bold text-white">{github?.public_repos ?? 14}</p>
+                  <p className="text-xs font-mono text-slate-600 dark:text-slate-400 mb-1">Repositories</p>
+                  <p className="text-3xl font-display font-bold text-slate-900 dark:text-white">{github?.public_repos ?? 14}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-mono text-slate-400 mb-1">Followers</p>
-                  <p className="text-3xl font-display font-bold text-white">{github?.followers ?? 8}</p>
+                  <p className="text-xs font-mono text-slate-600 dark:text-slate-400 mb-1">Followers</p>
+                  <p className="text-3xl font-display font-bold text-slate-900 dark:text-white">{github?.followers ?? 8}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-mono text-slate-400 mb-1">Stars</p>
-                  <p className="text-3xl font-display font-bold text-white">{github?.stars ?? 12}</p>
+                  <p className="text-xs font-mono text-slate-600 dark:text-slate-400 mb-1">Stars</p>
+                  <p className="text-3xl font-display font-bold text-slate-900 dark:text-white">{github?.stars ?? 12}</p>
                 </div>
               </div>
             )}
           </div>
 
           {/* LeetCode Card */}
-          <div className="glass-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
+          <div className="glass-card p-8 rounded-2xl bg-white/90 dark:bg-card-bg border border-slate-200 dark:border-white/10 flex flex-col justify-between">
             <div className="flex justify-between items-center mb-6">
               <div>
-                <h3 className="text-2xl font-bold text-white">LeetCode</h3>
-                <p className="text-xs font-mono text-amber-300 mt-1">@{LEETCODE_USERNAME}</p>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">LeetCode</h3>
+                <p className="text-xs font-mono text-amber-600 dark:text-amber-300 mt-1">@{LEETCODE_USERNAME}</p>
               </div>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 text-[11px] font-mono font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[11px] font-mono font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
                 Live Sync
               </span>
             </div>
 
             {leetcodeLoading ? (
-              <div className="py-8 text-center text-xs font-mono text-slate-400">Loading LeetCode stats...</div>
+              <div className="py-8 text-center text-xs font-mono text-slate-500 dark:text-slate-400">Loading LeetCode stats...</div>
             ) : (
-              <div className="grid grid-cols-3 gap-4 pt-4 border-t border-white/5">
+              <div className="grid grid-cols-3 gap-4 pt-4 border-t border-slate-200 dark:border-white/5">
                 <div>
-                  <p className="text-xs font-mono text-slate-400 mb-1">Total Solved</p>
-                  <p className="text-3xl font-display font-bold text-white">{leetcode?.totalSolved ?? 150}</p>
+                  <p className="text-xs font-mono text-slate-600 dark:text-slate-400 mb-1">Total Solved</p>
+                  <p className="text-3xl font-display font-bold text-slate-900 dark:text-white">{leetcode?.totalSolved ?? 150}</p>
                 </div>
                 <div>
                   <p className="text-xs font-mono text-slate-400 mb-1">Easy</p>

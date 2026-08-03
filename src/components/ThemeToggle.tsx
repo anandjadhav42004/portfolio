@@ -39,13 +39,13 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="fixed top-6 right-20 lg:top-8 lg:right-24 z-[210] w-12 h-12 flex items-center justify-center rounded-xl bg-void-2/90 border border-white/10 text-white backdrop-blur-md shadow-card hover:bg-void-3 transition-colors cursor-pointer"
+      className="fixed top-6 right-20 lg:top-8 lg:right-24 z-[210] w-12 h-12 flex items-center justify-center rounded-xl bg-white/90 dark:bg-void-2/90 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white backdrop-blur-md shadow-lg hover:bg-slate-100 dark:hover:bg-void-3 transition-all cursor-pointer"
       aria-label="Toggle Theme"
     >
       {isDark ? (
         <FiSun className="text-amber-400 text-lg" />
       ) : (
-        <FiMoon className="text-indigo-400 text-lg" />
+        <FiMoon className="text-indigo-600 text-lg" />
       )}
     </button>
   );

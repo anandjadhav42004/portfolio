@@ -133,7 +133,7 @@ const HireButton = () => {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="px-7 py-3.5 rounded-xl bg-void-2 hover:bg-void-3 border border-white/10 text-white font-semibold text-sm tracking-wide transition-all cursor-pointer flex items-center gap-2"
+        className="px-7 py-3.5 rounded-xl bg-white/90 dark:bg-void-2 hover:bg-slate-100 dark:hover:bg-void-3 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-semibold text-sm tracking-wide transition-all cursor-pointer flex items-center gap-2"
       >
         <span>Get in Touch</span>
         <span className="w-2 h-2 rounded-full bg-emerald-400" />
@@ -141,7 +141,7 @@ const HireButton = () => {
 
       <AnimatePresence>
         {isOpen && (
-          <div className="fixed inset-0 z-[230] flex items-center justify-center p-4 bg-void/80 backdrop-blur-md">
+          <div className="fixed inset-0 z-[230] flex items-center justify-center p-4 bg-slate-900/60 dark:bg-void/80 backdrop-blur-md">
             
             <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none z-10" />
 
@@ -149,23 +149,23 @@ const HireButton = () => {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="relative w-full max-w-md bg-void-2 border border-white/10 p-6 shadow-2xl z-20 rounded-2xl backdrop-blur-xl text-left"
+              className="relative w-full max-w-md bg-white dark:bg-void-2 border border-slate-200 dark:border-white/10 p-6 shadow-2xl z-20 rounded-2xl backdrop-blur-xl text-left text-slate-900 dark:text-white"
             >
               {!declineMsg ? (
                 <>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold mb-4">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-semibold mb-4">
                     <span>💼 Direct Recruiter Access</span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-2">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
                     Initiate Discussion with Anand?
                   </h3>
 
-                  <p className="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
+                  <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6 font-normal">
                     Available for enterprise SAP Cloud / BTP integrations, Full-Stack software engineering, and mobile app development roles.
                   </p>
 
-                  <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 text-xs text-slate-300 mb-6 flex items-center gap-3">
+                  <div className="p-3.5 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs text-slate-700 dark:text-slate-300 mb-6 flex items-center gap-3">
                     <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 flex-shrink-0" />
                     <span>Instant response via direct email integration</span>
                   </div>

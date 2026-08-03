@@ -184,10 +184,10 @@ Rules: Concise, polite, bullet points, professional corporate tone.
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="absolute bottom-16 right-0 w-[90vw] sm:w-[400px] h-[520px] bg-void-2 border border-white/10 rounded-2xl shadow-glass overflow-hidden flex flex-col z-[201] backdrop-blur-xl"
+            className="absolute bottom-16 right-0 w-[90vw] sm:w-[400px] h-[520px] bg-white dark:bg-void-2 border border-slate-200 dark:border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col z-[201] backdrop-blur-xl text-slate-900 dark:text-white"
           >
             {/* Header bar */}
-            <div className="px-5 py-4 border-b border-white/10 flex items-center justify-between bg-void-3 text-white">
+            <div className="px-5 py-4 border-b border-slate-200 dark:border-white/10 flex items-center justify-between bg-slate-100 dark:bg-void-3 text-slate-900 dark:text-white">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-lg bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
                   <FiCpu />
