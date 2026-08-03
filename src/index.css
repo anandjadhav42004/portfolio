@@ -3,14 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --color-void: #0B0C10;
-  --color-void-2: #12141C;
-  --color-void-3: #181B26;
+  --color-void: #0A0A0F;
+  --color-void-2: #0A0A0F;
+  --color-void-3: #0A0A0F;
   --color-off-white: #F3F4F6;
   --color-dim: #9CA3AF;
-  --color-accent: #6366F1;
+  --color-accent-start: #22D3EE;
+  --color-accent-end: #818CF8;
   --color-accent-hover: #4F46E5;
-  --color-cyan: #38BDF8;
+  --color-cyan: #22D3EE;
   --color-border-subtle: rgba(255, 255, 255, 0.08);
   --color-card-bg: rgba(18, 20, 28, 0.7);
 }
@@ -43,7 +44,7 @@
 
 body {
   transition: background-color 300ms ease, color 300ms ease;
-  background-color: var(--color-void);
+  background: radial-gradient(circle at 30% 30%, rgba(34,211,238,0.1), transparent), var(--color-void);
   color: var(--color-off-white);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }

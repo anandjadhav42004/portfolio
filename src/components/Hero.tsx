@@ -1,16 +1,15 @@
-import React, { useEffect, useState, useRef } from 'react';
-import gsap from 'gsap';
+import React, { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { TypeAnimation } from 'react-type-animation';
 import HeroCodeEditor from './HeroCodeEditor';
 import LiveClock from './LiveClock';
 import HireButton from './HireButton';
+import gsap from 'gsap';
 
 const Hero = () => {
   const subtitleRef = useRef<HTMLDivElement>(null);
   const editorRef = useRef<HTMLDivElement>(null);
-  const [typedRole, setTypedRole] = useState('');
   
-  const roles = ["SAP Enterprise Developer", "Full Stack Software Engineer", "Native iOS Developer"];
-
   useEffect(() => {
     // Smooth, controlled GSAP entrance sequence
     const animTimer = setTimeout(() => {
@@ -36,58 +35,18 @@ const Hero = () => {
       }
     }, 400);
 
-    // Typewriter subtitle cycle
-    let active = true;
-    let roleIdx = 0;
-    let charIdx = 0;
-    let isDeleting = false;
-    let typingSpeed = 80;
-    let currentStepTimer: ReturnType<typeof setTimeout> | null = null;
-
-    const runTypewriter = () => {
-      if (!active) return;
-      const fullText = roles[roleIdx];
-
-      if (!isDeleting) {
-        setTypedRole(fullText.slice(0, charIdx + 1));
-        charIdx++;
-        typingSpeed = 70;
-
-        if (charIdx === fullText.length) {
-          isDeleting = true;
-          typingSpeed = 2200; // Pause at end of text
-        }
-      } else {
-        setTypedRole(fullText.slice(0, charIdx - 1));
-        charIdx--;
-        typingSpeed = 35;
-
-        if (charIdx === 0) {
-          isDeleting = false;
-          roleIdx = (roleIdx + 1) % roles.length;
-          typingSpeed = 400; // Pause before typing next title
-        }
-      }
-
-      if (active) {
-        currentStepTimer = setTimeout(runTypewriter, typingSpeed);
-      }
-    };
-
-    const typewriterTimer = setTimeout(runTypewriter, 1000);
-
     return () => {
-      active = false;
       clearTimeout(animTimer);
-      clearTimeout(typewriterTimer);
-      if (currentStepTimer) clearTimeout(currentStepTimer);
     };
   }, []);
 
   return (
-    <section 
+    <motion.section 
       id="hero" 
       className="relative min-h-screen w-full flex items-center px-6 lg:px-20 py-32 lg:py-24 overflow-hidden bg-void border-b border-white/10"
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
     >
       {/* Background Subtle Radial Glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-600/15 rounded-full blur-[140px] pointer-events-none" />
@@ -98,20 +57,29 @@ const Hero = () => {
         {/* Left Column: Name, Subtitle & Corporate CTAs */}
         <div className="lg:col-span-7 flex flex-col justify-center">
           
-          {/* Status Badge */}
+          {/* Status Badge with typewriter */}
           <div className="hero-title-element opacity-0 translate-y-4 mb-6 flex items-center gap-3 flex-wrap">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-semibold text-indigo-400">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>{typedRole || "SAP / Full Stack / iOS"}</span>
-              <span className="w-1 h-3 bg-indigo-400 animate-blink" />
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <TypeAnimation
+                sequence={[
+                  'SAP Enterprise Developer', 2000,
+                  'Full Stack Software Engineer', 2000,
+                  'Native iOS Developer', 2000,
+                ]}
+                wrapper="span"
+                cursor={true}
+                repeat={Infinity}
+                style={{ display: 'inline-block' }}
+              />
             </div>
             
             <LiveClock />
           </div>
 
-          {/* Heading */}
-          <h1 className="hero-title-element opacity-0 translate-y-4 text-5xl sm:text-7xl lg:text-8xl font-display font-bold tracking-tight text-white leading-[1.05] mb-6">
-            Anand <span className="text-accent-gradient">Jadhav</span>
+          {/* Heading with gradient text */}
+          <h1 className="hero-title-element opacity-0 translate-y-4 text-5xl sm:text-7xl lg:text-8xl font-display font-bold tracking-tight bg-gradient-to-r from-accent-start to-accent-end bg-clip-text text-transparent leading-[1.05] mb-6">
+            Anand <span className="bg-gradient-to-r from-accent-start to-accent-end bg-clip-text text-transparent">Jadhav</span>
           </h1>
 
           {/* Subtitle & Tagline */}
