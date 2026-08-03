@@ -155,7 +155,7 @@ const Hero = () => {
           <span className="mx-4 font-semibold text-slate-300">MEAN STACK</span> • 
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

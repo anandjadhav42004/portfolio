@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import LoadingScreen from './components/LoadingScreen';
 import CustomCursor from './components/CustomCursor';
 import Background3D from './components/Background3D';
-import Hero from './components/Hero';
+import HeroRevamp from './components/HeroRevamp';
+import ParticleBackground from './components/ParticleBackground';
 import HamburgerMenu from './components/HamburgerMenu';
 import About from './components/About';
 import Projects from './components/Projects';
@@ -39,7 +40,7 @@ function App() {
       {!loading && (
         <div className="relative w-full min-h-screen bg-void text-off-white overflow-hidden transition-colors duration-300">
           {/* Interactive 3D Background */}
-          <Background3D />
+            <ParticleBackground />
           
           {/* Global Sticky Navigation & Custom Themes */}
           <HamburgerMenu />
@@ -48,7 +49,7 @@ function App() {
           {/* Main Content Sections */}
           <main className="relative z-10 w-full">
             {/* Hero Banner with Code Typewriter & IST Clock */}
-            <Hero />
+            <HeroRevamp />
             
             {/* About Profile & Business Card */}
             <About />

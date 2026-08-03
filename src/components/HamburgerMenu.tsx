@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { ArrowUpRight } from 'lucide-react';
 
 const navLinks = [
   { name: 'About', href: '#about' },
@@ -18,7 +19,7 @@ const featuredProjects = [
   { name: 'Anashi Thrift Store', url: 'https://anashistore.netlify.app' },
 ];
 
-const HamburgerMenu = () => {
+export default function HamburgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
   const linksRef = useRef<(HTMLAnchorElement | null)[]>([]);
@@ -47,16 +48,64 @@ const HamburgerMenu = () => {
 
   return (
     <>
-      <button 
-        onClick={toggleMenu}
-        className="fixed top-6 right-6 lg:top-8 lg:right-10 z-[200] w-12 h-12 rounded-xl bg-void-2/90 border border-white/10 backdrop-blur-md flex flex-col items-center justify-center gap-1.5 shadow-card cursor-pointer group"
-        aria-label="Toggle navigation menu"
-      >
-        <div className={`w-5 h-0.5 bg-white transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-1' : ''}`} />
-        <div className={`w-5 h-0.5 bg-white transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`} />
-        <div className={`w-5 h-0.5 bg-white transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-1' : ''}`} />
-      </button>
+      {/* Dribbble Style Top Floating Glass Pill Navbar */}
+      <header className="fixed top-5 left-1/2 -translate-x-1/2 z-[180] w-[92%] max-w-6xl mx-auto">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-2.5 rounded-full bg-void-2/80 backdrop-blur-xl border border-white/10 shadow-xl shadow-black/30">
+          
+          {/* Brand Logo & Live Availability Dot */}
+          <a href="#" className="flex items-center gap-3 group">
+            <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-accent-start to-accent-end p-0.5 shadow-md shadow-cyan/20">
+              <div className="w-full h-full rounded-full bg-void flex items-center justify-center font-display font-bold text-xs text-cyan group-hover:bg-cyan group-hover:text-void transition-colors">
+                AJ
+              </div>
+            </div>
+            <div className="flex flex-col text-left">
+              <span className="font-display font-bold text-sm text-white tracking-tight leading-none">Anand Jadhav</span>
+              <span className="text-[10px] font-mono text-emerald-400 flex items-center gap-1 mt-0.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                Available for hire
+              </span>
+            </div>
+          </a>
 
+          {/* Desktop Center Navigation Links */}
+          <nav className="hidden md:flex items-center gap-1 lg:gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/5">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-all duration-200"
+              >
+                {link.name}
+              </a>
+            ))}
+          </nav>
+
+          {/* Right CTA Button & Hamburger Drawer Toggle */}
+          <div className="flex items-center gap-2.5">
+            <a
+              href="#contact"
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-accent-start to-accent-end text-void font-bold text-xs shadow-md shadow-cyan/20 hover:scale-105 transition-all"
+            >
+              <span>Get in Touch</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+
+            {/* Hamburger Button for Full Drawer */}
+            <button 
+              onClick={toggleMenu}
+              className="w-9 h-9 rounded-full bg-white/10 border border-white/10 backdrop-blur-md flex flex-col items-center justify-center gap-1 shadow-card cursor-pointer hover:bg-white/20 transition-all"
+              aria-label="Toggle navigation menu"
+            >
+              <div className={`w-4 h-0.5 bg-white transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-1' : ''}`} />
+              <div className={`w-4 h-0.5 bg-white transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`} />
+              <div className={`w-4 h-0.5 bg-white transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-1' : ''}`} />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Full Drawer Overlay */}
       <div 
         ref={overlayRef}
         className="fixed inset-0 z-[190] bg-void-2 flex flex-col lg:flex-row backdrop-blur-2xl"
@@ -71,7 +120,7 @@ const HamburgerMenu = () => {
                 href={link.href}
                 onClick={toggleMenu}
                 ref={el => linksRef.current[i] = el}
-                className="text-3xl lg:text-6xl font-display font-bold text-white hover:text-indigo-400 transition-colors tracking-tight"
+                className="text-3xl lg:text-6xl font-display font-bold text-white hover:text-cyan transition-colors tracking-tight"
               >
                 {link.name}
               </a>
@@ -88,10 +137,10 @@ const HamburgerMenu = () => {
                 href={p.url} 
                 target="_blank" 
                 rel="noreferrer"
-                className="group flex items-center justify-between py-3 border-b border-white/5 hover:border-indigo-500/30 transition-colors"
+                className="group flex items-center justify-between py-3 border-b border-white/5 hover:border-cyan/30 transition-colors"
               >
-                <span className="text-lg font-bold text-slate-200 group-hover:text-indigo-400 transition-colors">{p.name}</span>
-                <span className="text-slate-400 font-mono text-xs group-hover:text-indigo-400 transition-colors">Visit ↗</span>
+                <span className="text-lg font-bold text-slate-200 group-hover:text-cyan transition-colors">{p.name}</span>
+                <span className="text-slate-400 font-mono text-xs group-hover:text-cyan transition-colors">Visit ↗</span>
               </a>
             ))}
           </div>
@@ -99,6 +148,4 @@ const HamburgerMenu = () => {
       </div>
     </>
   );
-};
-
-export default HamburgerMenu;
+}
