@@ -137,7 +137,7 @@ export default function HamburgerMenu() {
                 href={p.url} 
                 target="_blank" 
                 rel="noreferrer"
-                className="group flex items-center justify-between py-3 border-b border-white/5 hover:border-cyan/30 transition-colors"
+                className="group flex items-center justify-between py-3 border-b border-white/5 hover:border-cyan-400/30 transition-colors"
               >
                 <span className="font-display text-lg text-slate-300 group-hover:text-cyan transition-colors font-medium">{p.name}</span>
                 <ArrowUpRight className="w-4 h-4 text-slate-500 group-hover:text-cyan transition-colors" />

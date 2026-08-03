@@ -72,7 +72,7 @@ export default function TravelHeroDock({ onSelectCategory }: TravelHeroDockProps
 
           <button
             onClick={scrollToProjects}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-slate-900 dark:bg-white text-white dark:text-void font-semibold text-sm hover:bg-indigo-600 dark:hover:bg-cyan dark:hover:text-void transition-all duration-300 group shadow-lg hover:shadow-cyan/30"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-slate-900 dark:bg-white text-white dark:text-void font-semibold text-sm hover:bg-indigo-600 dark:hover:bg-cyan dark:hover:text-void transition-all duration-300 group shadow-lg hover:shadow-cyan-400/30"
           >
             <span>Explore Work</span>
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
