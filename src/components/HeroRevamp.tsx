@@ -92,10 +92,12 @@ export default function HeroRevamp() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="relative w-full max-w-5xl mt-8 sm:mt-10 rounded-3xl sm:rounded-[2.5rem] border border-emerald-500/25 bg-gradient-to-b from-void-2/95 to-void-3/95 backdrop-blur-2xl p-4 sm:p-10 shadow-[0_0_40px_rgba(0,0,0,0.6)] group overflow-hidden"
+          className="relative w-full max-w-5xl mt-8 sm:mt-10 rounded-3xl sm:rounded-[2.5rem] border border-emerald-500/25 bg-gradient-to-b from-void-2/95 to-void-3/95 backdrop-blur-2xl p-4 sm:p-10 shadow-[0_0_40px_rgba(0,0,0,0.6)] group"
         >
           {/* Ambient Grid Background */}
-          <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#34d399_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+          <div className="absolute inset-0 rounded-3xl sm:rounded-[2.5rem] overflow-hidden pointer-events-none">
+            <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#34d399_1px,transparent_1px)] [background-size:24px_24px]" />
+          </div>
 
           {/* Central Content Grid */}
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center text-left">
@@ -113,7 +115,7 @@ export default function HeroRevamp() {
                 B.Tech Computer Science student (SAP IEP Track) at Parul Institute of Technology. Crafting elegant enterprise architectures, native iOS applications, and high-performance WebGL platforms inspired by Japanese minimalism and Wa (和) harmony.
               </p>
               
-              <div className="flex flex-wrap gap-2 pt-2">
+              <div className="flex flex-wrap gap-3 pt-2">
                 {['SAP ABAP Cloud', 'SAP BTP', 'SwiftUI', 'OData V4', 'React.js', 'Node.js', 'PostgreSQL'].map((tech) => (
                   <span
                     key={tech}
@@ -122,6 +124,12 @@ export default function HeroRevamp() {
                     {tech}
                   </span>
                 ))}
+              </div>
+
+              {/* Japan Creative Standard Badge */}
+              <div className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-void-2/90 border border-emerald-500/30 backdrop-blur-xl shadow-xl text-xs text-white mt-6 sm:mt-8">
+                <Globe className="w-4 h-4 text-emerald-400 animate-spin" style={{ animationDuration: '10s' }} />
+                <span className="font-semibold text-emerald-300">Japan Creative Standard</span>
               </div>
             </div>
 
@@ -154,16 +162,10 @@ export default function HeroRevamp() {
           </div>
 
           {/* Floating Glass Badge 1: Top Right */}
-          <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-void-2/90 border border-emerald-500/30 backdrop-blur-xl shadow-xl text-xs text-white">
+          <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-void-2/90 border border-emerald-500/30 backdrop-blur-xl shadow-xl text-xs text-white z-20">
             <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
             <span className="font-bold text-amber-300">9.85 / 10</span>
             <span className="text-slate-400">| Awwwards Jury</span>
-          </div>
-
-          {/* Floating Glass Badge 2: Bottom Left */}
-          <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 hidden sm:flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-void-2/90 border border-emerald-500/30 backdrop-blur-xl shadow-xl text-xs text-white">
-            <Globe className="w-4 h-4 text-emerald-400 animate-spin" style={{ animationDuration: '10s' }} />
-            <span className="font-semibold text-emerald-300">Japan Creative Standard</span>
           </div>
 
         </motion.div>

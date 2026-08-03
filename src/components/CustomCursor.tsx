@@ -73,9 +73,11 @@ export default function CustomCursor() {
     window.addEventListener('mouseover', handleMouseOver, { passive: true });
 
     let animId: number;
+    let hue = 0;
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);
+      hue = (hue + 1) % 360;
 
       // Smooth lerp for outer ring and inner dot
       ringPos.x += (mouse.x - ringPos.x) * 0.16;
@@ -85,10 +87,26 @@ export default function CustomCursor() {
 
       if (ringRef.current) {
         ringRef.current.style.transform = `translate3d(${ringPos.x - 24}px, ${ringPos.y - 24}px, 0px)`;
+        if (!isHovering) {
+          ringRef.current.style.borderColor = `hsla(${hue}, 100%, 60%, 0.6)`;
+          ringRef.current.style.backgroundColor = `hsla(${hue}, 100%, 60%, 0.1)`;
+          ringRef.current.style.boxShadow = `0 0 30px hsla(${hue}, 100%, 60%, 0.5)`;
+        } else {
+          ringRef.current.style.borderColor = '';
+          ringRef.current.style.backgroundColor = '';
+          ringRef.current.style.boxShadow = '';
+        }
       }
 
       if (dotRef.current) {
         dotRef.current.style.transform = `translate3d(${dotPos.x - 5}px, ${dotPos.y - 5}px, 0px)`;
+        if (!isHovering) {
+          dotRef.current.style.backgroundColor = `hsla(${hue}, 100%, 60%, 1)`;
+          dotRef.current.style.boxShadow = `0 0 15px hsla(${hue}, 100%, 60%, 1), 0 0 30px hsla(${hue}, 100%, 60%, 1)`;
+        } else {
+          dotRef.current.style.backgroundColor = '';
+          dotRef.current.style.boxShadow = '';
+        }
       }
 
       // Spring physics ribbon calculation
@@ -130,9 +148,9 @@ export default function CustomCursor() {
           gradient.addColorStop(0, 'rgba(251, 191, 36, 0.8)'); // Warm Gold
           gradient.addColorStop(1, 'rgba(217, 119, 6, 0.2)');  // Amber fade
         } else {
-          gradient.addColorStop(0, 'rgba(56, 189, 248, 0.8)');   // Cyan
-          gradient.addColorStop(0.5, 'rgba(168, 85, 247, 0.6)'); // Purple
-          gradient.addColorStop(1, 'rgba(236, 72, 153, 0.1)');   // Pink fade
+          gradient.addColorStop(0, `hsla(${hue}, 100%, 60%, 0.8)`);
+          gradient.addColorStop(0.5, `hsla(${(hue + 40) % 360}, 100%, 60%, 0.6)`);
+          gradient.addColorStop(1, `hsla(${(hue + 80) % 360}, 100%, 60%, 0.1)`);
         }
 
         ctx.strokeStyle = gradient;
@@ -144,7 +162,7 @@ export default function CustomCursor() {
         
         // 3. ENHANCED SHADOW/GLOW (Canvas)
         ctx.shadowBlur = isHovering ? 25 : 20;
-        ctx.shadowColor = isHovering ? 'rgba(251, 191, 36, 0.8)' : 'rgba(168, 85, 247, 0.7)';
+        ctx.shadowColor = isHovering ? 'rgba(251, 191, 36, 0.8)' : `hsla(${hue}, 100%, 60%, 0.7)`;
         ctx.stroke();
         ctx.shadowBlur = 0;
       }
@@ -177,7 +195,7 @@ export default function CustomCursor() {
         ref={ringRef}
         className={`fixed top-0 left-0 w-12 h-12 rounded-full border pointer-events-none z-[999999] flex items-center justify-center transition-all duration-200 ease-out ${isHovering
           ? 'scale-150 border-amber-300 bg-amber-400/20 backdrop-blur-[2px] shadow-[0_0_40px_rgba(251,191,36,0.8)]'
-          : 'scale-100 border-cyan-400/60 bg-purple-400/10 shadow-[0_0_30px_rgba(168,85,247,0.5)]'
+          : 'scale-100'
           }`}
       >
         {hoverText && (
@@ -192,7 +210,7 @@ export default function CustomCursor() {
         ref={dotRef}
         className={`fixed top-0 left-0 w-2.5 h-2.5 rounded-full pointer-events-none z-[999999] transition-transform duration-100 ${isHovering
           ? 'scale-150 bg-amber-300 shadow-[0_0_20px_#FBBF24,0_0_40px_#FBBF24]'
-          : 'scale-100 bg-cyan-300 shadow-[0_0_15px_#38BDF8,0_0_30px_#A855F7]'
+          : 'scale-100'
           }`}
       />
     </div>
