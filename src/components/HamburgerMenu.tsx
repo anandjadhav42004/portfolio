@@ -48,33 +48,33 @@ export default function HamburgerMenu() {
 
   return (
     <>
-      {/* Dribbble Style Top Floating Glass Pill Navbar */}
+      {/* Top Floating Glass Pill Navbar */}
       <header className="fixed top-5 left-1/2 -translate-x-1/2 z-[180] w-[92%] max-w-6xl mx-auto">
-        <div className="flex items-center justify-between px-4 sm:px-6 py-2.5 rounded-full bg-white/90 dark:bg-void-2/80 backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-xl">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-2.5 rounded-full bg-void-2/85 backdrop-blur-xl border border-white/10 shadow-2xl">
           
           {/* Brand Logo & Live Availability Dot */}
           <a href="#" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-accent-start to-accent-end p-0.5 shadow-md shadow-cyan/20">
-              <div className="w-full h-full rounded-full bg-slate-900 dark:bg-void flex items-center justify-center font-display font-bold text-xs text-cyan group-hover:bg-cyan group-hover:text-void transition-colors">
+            <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-cyan to-indigo-500 p-0.5 shadow-md shadow-cyan/20">
+              <div className="w-full h-full rounded-full bg-void flex items-center justify-center font-display font-bold text-xs text-cyan group-hover:bg-cyan group-hover:text-void transition-colors">
                 AJ
               </div>
             </div>
             <div className="flex flex-col text-left">
-              <span className="font-display font-bold text-sm text-slate-900 dark:text-white tracking-tight leading-none">Anand Jadhav</span>
-              <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1 mt-0.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-ping" />
+              <span className="font-display font-bold text-sm text-white tracking-tight leading-none">Anand Jadhav</span>
+              <span className="text-[10px] font-mono text-emerald-400 font-semibold flex items-center gap-1 mt-0.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
                 Available for hire
               </span>
             </div>
           </a>
 
           {/* Desktop Center Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/5">
+          <nav className="hidden md:flex items-center gap-1 lg:gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-white/10 transition-all duration-200"
+                className="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-all duration-200"
               >
                 {link.name}
               </a>
@@ -85,7 +85,7 @@ export default function HamburgerMenu() {
           <div className="flex items-center gap-2.5">
             <a
               href="#contact"
-              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-cyan to-indigo-500 dark:from-accent-start dark:to-accent-end text-white dark:text-void font-bold text-xs shadow-md shadow-cyan/20 hover:scale-105 transition-all"
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-cyan to-indigo-500 text-void font-bold text-xs shadow-md shadow-cyan/20 hover:scale-105 transition-all"
             >
               <span>Get in Touch</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -94,12 +94,12 @@ export default function HamburgerMenu() {
             {/* Hamburger Button for Full Drawer */}
             <button 
               onClick={toggleMenu}
-              className="w-9 h-9 rounded-full bg-slate-100 dark:bg-white/10 border border-slate-200 dark:border-white/10 backdrop-blur-md flex flex-col items-center justify-center gap-1 shadow-card cursor-pointer hover:bg-slate-200 dark:hover:bg-white/20 transition-all"
+              className="w-9 h-9 rounded-full bg-white/10 border border-white/10 backdrop-blur-md flex flex-col items-center justify-center gap-1 shadow-card cursor-pointer hover:bg-white/20 transition-all"
               aria-label="Toggle navigation menu"
             >
-              <div className={`w-4 h-0.5 bg-slate-800 dark:bg-white transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-1' : ''}`} />
-              <div className={`w-4 h-0.5 bg-slate-800 dark:bg-white transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`} />
-              <div className={`w-4 h-0.5 bg-slate-800 dark:bg-white transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-1' : ''}`} />
+              <div className={`w-4 h-0.5 bg-white transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-1' : ''}`} />
+              <div className={`w-4 h-0.5 bg-white transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`} />
+              <div className={`w-4 h-0.5 bg-white transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-1' : ''}`} />
             </button>
           </div>
         </div>
@@ -139,12 +139,19 @@ export default function HamburgerMenu() {
                 rel="noreferrer"
                 className="group flex items-center justify-between py-3 border-b border-white/5 hover:border-cyan/30 transition-colors"
               >
-                <span className="text-lg font-bold text-slate-200 group-hover:text-cyan transition-colors">{p.name}</span>
-                <span className="text-slate-400 font-mono text-xs group-hover:text-cyan transition-colors">Visit ↗</span>
+                <span className="font-display text-lg text-slate-300 group-hover:text-cyan transition-colors font-medium">{p.name}</span>
+                <ArrowUpRight className="w-4 h-4 text-slate-500 group-hover:text-cyan transition-colors" />
               </a>
             ))}
           </div>
         </div>
+
+        <button 
+          onClick={toggleMenu}
+          className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-white/10 border border-white/10 text-white flex items-center justify-center font-bold text-sm cursor-pointer hover:bg-white/20 transition-all"
+        >
+          ✕
+        </button>
       </div>
     </>
   );

@@ -26,6 +26,11 @@ import AIChatbot from './components/AIChatbot';
 function App() {
   const [loading, setLoading] = useState(true);
 
+  React.useEffect(() => {
+    document.documentElement.classList.add('dark');
+    document.documentElement.classList.remove('light');
+  }, []);
+
   return (
     <>
       {/* Scroll indicator gradient bar at the absolute top of the viewport */}
@@ -39,12 +44,11 @@ function App() {
       
       {!loading && (
         <div className="relative w-full min-h-screen bg-void text-off-white overflow-hidden transition-colors duration-300">
-          {/* Interactive 3D Background */}
-            <ParticleBackground />
+          {/* Interactive Background */}
+          <ParticleBackground />
           
-          {/* Global Sticky Navigation & Custom Themes */}
+          {/* Global Sticky Navigation */}
           <HamburgerMenu />
-          <ThemeToggle />
           
           {/* Main Content Sections */}
           <main className="relative z-10 w-full">

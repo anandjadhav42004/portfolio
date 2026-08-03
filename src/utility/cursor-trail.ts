@@ -6,7 +6,7 @@ export type CursorTrail = {
 };
 
 export function cursorTrail(props: CursorTrail) {
-  const { ref, color } = props;
+  const { ref } = props;
   const canvas = ref.current;
   if (!canvas) {
     return { cleanUp: () => {}, renderTrailCursor: () => {} };
@@ -16,17 +16,16 @@ export function cursorTrail(props: CursorTrail) {
     return { cleanUp: () => {}, renderTrailCursor: () => {} };
   }
 
-  const colorRaw = getComputedStyle(document.documentElement).getPropertyValue('--accent');
-  const accentColor = `hsla(${colorRaw ? colorRaw.trim().split(' ').join(',') : '210, 100%, 50%'}, 0.35)`;
+  const strokeColor = 'rgba(56, 189, 248, 0.35)'; // Cyan neon stroke
   const AnimationFeature = {
-    friction: 0.5,
-    trails: 20,
-    size: 40,
-    dampening: 0.2,
+    friction: 0.55,
+    trails: 12,
+    size: 28,
+    dampening: 0.18,
     tension: 0.98,
   };
 
-  let cursorPosition = { x: 0, y: 0 };
+  let cursorPosition = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
   let running = true;
 
   class NewNode {
@@ -38,8 +37,6 @@ export function cursorTrail(props: CursorTrail) {
 
   type LineProps = {
     spring: number;
-    friction?: number;
-    size?: number;
     cursorPosition?: { x: number; y: number };
   };
 
@@ -48,9 +45,9 @@ export function cursorTrail(props: CursorTrail) {
     friction: number;
     nodes: NewNode[] = [];
     constructor(e: LineProps) {
-      this.spring = e.spring + 0.1 * Math.random() - 0.05;
+      this.spring = e.spring + 0.05 * Math.random() - 0.025;
       this.friction = AnimationFeature.friction + 0.01 * Math.random() - 0.005;
-      const cp = e.cursorPosition ?? { x: 0, y: 0 };
+      const cp = e.cursorPosition ?? { x: window.innerWidth / 2, y: window.innerHeight / 2 };
       for (let i = 0; i < AnimationFeature.size; i++) {
         const n = new NewNode();
         n.x = cp.x;
@@ -82,32 +79,32 @@ export function cursorTrail(props: CursorTrail) {
     draw() {
       let n = this.nodes[0].x;
       let i = this.nodes[0].y;
-      ctx.beginPath();
-      ctx.moveTo(n, i);
+      ctx!.beginPath();
+      ctx!.moveTo(n, i);
       for (let a = 1, o = this.nodes.length - 2; a < o; a++) {
         const e = this.nodes[a];
         const t = this.nodes[a + 1];
         n = 0.5 * (e.x + t.x);
         i = 0.5 * (e.y + t.y);
-        ctx.quadraticCurveTo(e.x, e.y, n, i);
+        ctx!.quadraticCurveTo(e.x, e.y, n, i);
       }
       const e = this.nodes[this.nodes.length - 2];
       const t = this.nodes[this.nodes.length - 1];
-      ctx.quadraticCurveTo(e.x, e.y, t.x, t.y);
-      ctx.stroke();
-      ctx.closePath();
+      ctx!.quadraticCurveTo(e.x, e.y, t.x, t.y);
+      ctx!.stroke();
+      ctx!.closePath();
     }
   }
 
   let newLines: Line[] = [];
 
   function renderAnimation() {
-    if (running) {
+    if (running && ctx && canvas) {
       ctx.globalCompositeOperation = 'source-over';
-      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.globalCompositeOperation = 'lighter';
-      ctx.strokeStyle = color || accentColor;
-      ctx.lineWidth = 1;
+      ctx.strokeStyle = strokeColor;
+      ctx.lineWidth = 1.5;
       for (let t = 0; t < AnimationFeature.trails; t++) {
         const x = newLines[t];
         if (x) {
@@ -123,17 +120,9 @@ export function cursorTrail(props: CursorTrail) {
     if (event instanceof MouseEvent) {
       cursorPosition.x = event.clientX;
       cursorPosition.y = event.clientY;
-    } else {
-      cursorPosition.x = event.touches[0].pageX;
-      cursorPosition.y = event.touches[0].pageY;
-    }
-    event.preventDefault();
-  }
-
-  function createLine(event: TouchEvent) {
-    if (event.touches.length === 1) {
-      cursorPosition.x = event.touches[0].pageX;
-      cursorPosition.y = event.touches[0].pageY;
+    } else if (event.touches && event.touches[0]) {
+      cursorPosition.x = event.touches[0].clientX;
+      cursorPosition.y = event.touches[0].clientY;
     }
   }
 
@@ -146,17 +135,17 @@ export function cursorTrail(props: CursorTrail) {
     }
     document.removeEventListener('mousemove', onMouseMove);
     document.removeEventListener('touchstart', onMouseMove);
-    document.addEventListener('mousemove', move);
-    document.addEventListener('touchmove', createLine);
-    document.addEventListener('touchstart', createLine);
+    document.addEventListener('mousemove', move, { passive: true });
     move(e);
     populateLines();
     renderAnimation();
   }
 
   function resizeCanvas() {
-    ctx.canvas.width = window.innerWidth - 20;
-    ctx.canvas.height = window.innerHeight;
+    if (canvas) {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
   }
 
   function stopAnimation() {
@@ -171,9 +160,8 @@ export function cursorTrail(props: CursorTrail) {
   }
 
   function renderTrailCursor() {
-    document.addEventListener('mousemove', onMouseMove);
-    document.addEventListener('touchstart', onMouseMove);
-    window.addEventListener('orientationchange', resizeCanvas);
+    document.addEventListener('mousemove', onMouseMove, { passive: true });
+    document.addEventListener('touchstart', onMouseMove, { passive: true });
     window.addEventListener('resize', resizeCanvas);
     window.addEventListener('focus', startAnimation);
     window.addEventListener('blur', stopAnimation);
@@ -182,10 +170,11 @@ export function cursorTrail(props: CursorTrail) {
 
   function cleanUp() {
     document.removeEventListener('mousemove', move);
-    document.removeEventListener('touchmove', createLine);
-    document.removeEventListener('touchstart', createLine);
     document.removeEventListener('mousemove', onMouseMove);
     document.removeEventListener('touchstart', onMouseMove);
+    window.removeEventListener('resize', resizeCanvas);
+    window.removeEventListener('focus', startAnimation);
+    window.removeEventListener('blur', stopAnimation);
   }
 
   return { cleanUp, renderTrailCursor };
