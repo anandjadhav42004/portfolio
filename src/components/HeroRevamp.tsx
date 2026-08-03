@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
-import { Star, MapPin, Award, ShieldCheck, Terminal, Cpu, ArrowUpRight } from 'lucide-react';
+import { Star, MapPin, ShieldCheck, Terminal, ArrowUpRight } from 'lucide-react';
 import TravelHeroDock from './TravelHeroDock';
 
 const fadeUp = {
@@ -43,7 +43,7 @@ export default function HeroRevamp() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-xs font-mono tracking-wider text-cyan uppercase mb-6"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 backdrop-blur-md text-xs font-mono tracking-wider text-cyan dark:text-cyan uppercase mb-6"
         >
           <SparklesIcon className="w-3.5 h-3.5 text-cyan animate-pulse" />
           <span>Discover Extraordinary Engineering</span>
@@ -55,10 +55,10 @@ export default function HeroRevamp() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="text-4xl sm:text-6xl lg:text-7xl font-bold font-display tracking-tight text-white leading-[1.1] max-w-5xl"
+          className="text-4xl sm:text-6xl lg:text-7xl font-bold font-display tracking-tight text-slate-900 dark:text-white leading-[1.1] max-w-5xl"
         >
           Architecting High-Performance{' '}
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent-start via-cyan to-accent-end">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan via-indigo-500 to-indigo-600 dark:from-accent-start dark:via-cyan dark:to-accent-end">
             SAP Enterprise
           </span>{' '}
           & Native iOS Solutions
@@ -70,7 +70,7 @@ export default function HeroRevamp() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="mt-5 text-lg sm:text-2xl text-slate-300 font-light tracking-wide max-w-2xl h-12 flex items-center justify-center"
+          className="mt-5 text-lg sm:text-2xl text-slate-700 dark:text-slate-300 font-light tracking-wide max-w-2xl h-12 flex items-center justify-center"
         >
           <TypeAnimation
             sequence={[
@@ -81,7 +81,7 @@ export default function HeroRevamp() {
             wrapper="span"
             cursor={true}
             repeat={Infinity}
-            className="text-cyan font-mono"
+            className="text-indigo-600 dark:text-cyan font-mono font-medium"
           />
         </motion.div>
 
@@ -91,24 +91,24 @@ export default function HeroRevamp() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="relative w-full max-w-5xl mt-10 rounded-[2rem] sm:rounded-[2.5rem] border border-white/15 bg-gradient-to-b from-void-2/90 to-void-3/90 backdrop-blur-2xl p-6 sm:p-10 shadow-2xl shadow-indigo-950/50 group overflow-hidden"
+          className="relative w-full max-w-5xl mt-10 rounded-[2rem] sm:rounded-[2.5rem] border border-slate-200 dark:border-white/15 bg-white/90 dark:bg-gradient-to-b dark:from-void-2/90 dark:to-void-3/90 backdrop-blur-2xl p-6 sm:p-10 shadow-xl dark:shadow-2xl dark:shadow-indigo-950/50 group overflow-hidden"
         >
           {/* Subtle Ambient Grid Background */}
-          <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+          <div className="absolute inset-0 opacity-10 dark:opacity-15 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
           {/* Central Visual Container */}
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center text-left">
             
             {/* Left Content Column */}
             <div className="lg:col-span-7 space-y-5">
-              <div className="flex items-center gap-2 text-xs font-mono text-emerald-400">
+              <div className="flex items-center gap-2 text-xs font-mono text-emerald-600 dark:text-emerald-400 font-semibold">
                 <Terminal className="w-4 h-4" />
                 <span>anand.jadhav@enterprise-app ~ % status</span>
               </div>
-              <h2 className="text-2xl sm:text-4xl font-bold font-display text-white">
+              <h2 className="text-2xl sm:text-4xl font-bold font-display text-slate-900 dark:text-white">
                 Anand Jadhav
               </h2>
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+              <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
                 Senior SAP Enterprise Consultant & Mobile Solutions Architect with 5+ years of experience delivering mission-critical ERP integrations, native Swift iOS applications, and modern web platforms.
               </p>
               
@@ -116,7 +116,7 @@ export default function HeroRevamp() {
                 {['SAP S/4HANA', 'ABAP RAP', 'SwiftUI', 'iOS Native', 'React.js', 'Node.js', 'Clean Architecture'].map((tech) => (
                   <span
                     key={tech}
-                    className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-slate-300 font-mono hover:border-cyan/50 hover:text-cyan transition-colors"
+                    className="px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs text-slate-700 dark:text-slate-300 font-mono hover:border-cyan/50 hover:text-cyan transition-colors"
                   >
                     {tech}
                   </span>
@@ -124,9 +124,9 @@ export default function HeroRevamp() {
               </div>
             </div>
 
-            {/* Right Card / Interactive Preview */}
+            {/* Right Card / Interactive Preview (Dark Terminal Look for High Contrast in both modes) */}
             <div className="lg:col-span-5 relative flex items-center justify-center">
-              <div className="w-full aspect-[4/3] rounded-2xl bg-gradient-to-br from-indigo-900/40 to-cyan-900/40 border border-white/10 p-6 flex flex-col justify-between shadow-inner relative overflow-hidden group-hover:border-cyan/40 transition-colors">
+              <div className="w-full aspect-[4/3] rounded-2xl bg-slate-950 dark:bg-gradient-to-br dark:from-indigo-900/40 dark:to-cyan-900/40 border border-slate-800 dark:border-white/10 p-6 flex flex-col justify-between shadow-inner relative overflow-hidden group-hover:border-cyan/40 transition-colors text-white">
                 
                 {/* Decorative Code Graphic */}
                 <div className="space-y-2 font-mono text-xs text-cyan/90">
@@ -153,23 +153,23 @@ export default function HeroRevamp() {
           </div>
 
           {/* Floating Glass Badge 1: Top Right */}
-          <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-void/80 border border-white/15 backdrop-blur-xl shadow-xl shadow-black/40 text-xs text-white">
-            <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
+          <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-white/90 dark:bg-void/80 border border-slate-200 dark:border-white/15 backdrop-blur-xl shadow-lg dark:shadow-xl text-xs text-slate-900 dark:text-white">
+            <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
             <span className="font-semibold">5.0</span>
-            <span className="text-slate-400">| 20+ Enterprise Projects</span>
+            <span className="text-slate-500 dark:text-slate-400">| 20+ Enterprise Projects</span>
           </div>
 
           {/* Floating Glass Badge 2: Bottom Left */}
-          <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 hidden sm:flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-void/80 border border-white/15 backdrop-blur-xl shadow-xl shadow-black/40 text-xs text-white">
-            <ShieldCheck className="w-4.5 h-4.5 text-emerald-400" />
+          <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 hidden sm:flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-white/90 dark:bg-void/80 border border-slate-200 dark:border-white/15 backdrop-blur-xl shadow-lg dark:shadow-xl text-xs text-slate-900 dark:text-white">
+            <ShieldCheck className="w-4.5 h-4.5 text-emerald-500 dark:text-emerald-400" />
             <div>
-              <div className="font-semibold text-emerald-400">Enterprise Certified</div>
-              <div className="text-[10px] text-slate-400">SAP & iOS Specialist</div>
+              <div className="font-semibold text-emerald-600 dark:text-emerald-400">Enterprise Certified</div>
+              <div className="text-[10px] text-slate-500 dark:text-slate-400">SAP & iOS Specialist</div>
             </div>
           </div>
 
           {/* Floating Glass Badge 3: Bottom Right Location */}
-          <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-void/80 border border-white/15 backdrop-blur-xl shadow-xl shadow-black/40 text-xs text-slate-300">
+          <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-white/90 dark:bg-void/80 border border-slate-200 dark:border-white/15 backdrop-blur-xl shadow-lg dark:shadow-xl text-xs text-slate-700 dark:text-slate-300">
             <MapPin className="w-3.5 h-3.5 text-cyan" />
             <span>Bengaluru, IN</span>
           </div>
