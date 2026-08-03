@@ -26,7 +26,7 @@ body {
 
 @layer base {
   body {
-    @apply bg-void font-sans antialiased selection:bg-cyan/30 selection:text-cyan overflow-x-hidden;
+    @apply bg-void font-sans antialiased selection:bg-sky-500/30 selection:text-sky-300 overflow-x-hidden;
     color: var(--color-off-white);
     margin: 0;
     padding: 0;
