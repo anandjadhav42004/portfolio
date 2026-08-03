@@ -69,13 +69,13 @@ const Certifications = () => {
     >
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col gap-3 mb-12">
-          <span className="text-xs font-mono font-semibold tracking-wider text-indigo-400 uppercase">
+          <span className="text-xs font-mono font-semibold tracking-wider text-cyan dark:text-indigo-400 uppercase">
             // Verified Professional Qualifications
           </span>
-          <h2 className="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-display font-bold text-slate-900 dark:text-white tracking-tight">
             Certifications & Credentials
           </h2>
-          <p className="max-w-2xl text-slate-400 text-sm leading-relaxed">
+          <p className="max-w-2xl text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
             Industry-recognized developer certifications in SAP ABAP Cloud, Oracle Cloud Artificial Intelligence, SQL, and Software Engineering.
           </p>
         </div>
@@ -88,10 +88,10 @@ const Certifications = () => {
             return (
               <div 
                 key={cert.id} 
-                className={`glass-card p-6 rounded-2xl border transition-all duration-300 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 ${
+                className={`glass-card p-6 rounded-2xl border transition-all duration-300 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 bg-white/90 dark:bg-card-bg ${
                   isFeatured
                     ? 'border-indigo-500/40 bg-indigo-500/5 shadow-lg shadow-indigo-500/5 hover:border-indigo-400'
-                    : 'border-white/10 hover:border-indigo-500/40'
+                    : 'border-slate-200 dark:border-white/10 hover:border-indigo-500/40'
                 }`}
               >
                 <div className="flex items-start md:items-center gap-5 flex-1">
@@ -101,16 +101,16 @@ const Certifications = () => {
 
                   <div className="flex-1">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <h3 className="text-lg font-bold text-white leading-snug">
+                      <h3 className="text-lg font-bold text-slate-900 dark:text-white leading-snug">
                         {cert.name}
                       </h3>
                       {isFeatured && (
-                        <span className="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-amber-500/10 text-amber-600 dark:text-amber-300 border border-amber-500/20">
                           Featured
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-slate-400 mt-1 font-mono">
+                    <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 font-mono">
                       Issued by {cert.issuer} • {cert.date}
                       {cert.expiry ? ` • Valid thru ${cert.expiry}` : ''}
                       {cert.credentialId ? ` • ID: ${cert.credentialId}` : ''}

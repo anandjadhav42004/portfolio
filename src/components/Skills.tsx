@@ -49,13 +49,13 @@ const Skills = () => {
     >
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col gap-3 mb-12">
-          <span className="text-xs font-mono font-semibold tracking-wider text-indigo-400 uppercase">
+          <span className="text-xs font-mono font-semibold tracking-wider text-cyan dark:text-indigo-400 uppercase">
             // Technical Competencies
           </span>
-          <h2 className="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-display font-bold text-slate-900 dark:text-white tracking-tight">
             Core Proficiencies & Stack
           </h2>
-          <p className="max-w-2xl text-slate-400 text-sm leading-relaxed">
+          <p className="max-w-2xl text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
             Quantified proficiency levels across enterprise software architectures, frontend frameworks, backend runtimes, and cloud platforms.
           </p>
         </div>
@@ -66,22 +66,22 @@ const Skills = () => {
             return (
               <div 
                 key={category.key} 
-                className="glass-card p-6 rounded-2xl border border-white/10 flex flex-col justify-between"
+                className="glass-card p-6 rounded-2xl bg-white/90 dark:bg-card-bg border border-slate-200 dark:border-white/10 flex flex-col justify-between"
               >
-                <h3 className="text-lg font-bold text-white mb-6 pb-3 border-b border-white/5 flex items-center justify-between">
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-6 pb-3 border-b border-slate-200 dark:border-white/5 flex items-center justify-between">
                   <span>{category.name}</span>
-                  <span className="w-2 h-2 rounded-full bg-indigo-400" />
+                  <span className="w-2 h-2 rounded-full bg-cyan dark:bg-indigo-400" />
                 </h3>
                 
                 <div className="flex flex-col gap-5">
                   {list.map((skill, index) => (
                     <div key={index} className="flex flex-col gap-1.5">
-                      <div className="flex justify-between items-center text-xs font-medium text-slate-300">
-                        <span className="font-semibold text-slate-200">{skill.name}</span>
-                        <span className="font-mono text-slate-400">{skill.level}%</span>
+                      <div className="flex justify-between items-center text-xs font-medium text-slate-700 dark:text-slate-300">
+                        <span className="font-semibold text-slate-900 dark:text-slate-200">{skill.name}</span>
+                        <span className="font-mono text-slate-500 dark:text-slate-400">{skill.level}%</span>
                       </div>
                       
-                      <div className="w-full bg-white/5 h-2 rounded-full overflow-hidden p-0.5 border border-white/5">
+                      <div className="w-full bg-slate-200 dark:bg-white/5 h-2 rounded-full overflow-hidden p-0.5 border border-slate-200 dark:border-white/5">
                         <div 
                           className={`bg-gradient-to-r ${category.color} h-full rounded-full transition-all duration-1000 ease-out`}
                           style={{ width: `${skill.level}%` }}

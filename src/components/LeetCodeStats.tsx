@@ -95,21 +95,21 @@ const LeetCodeStats = () => {
   const pctHard = Math.min(data.hardSolved / maxHard, 1.0);
 
   return (
-    <section id="leetcode" className="py-24 px-6 lg:px-20 bg-void border-b border-white/10 relative">
+    <section id="leetcode" className="py-24 px-6 lg:px-20 bg-void border-b border-slate-200 dark:border-white/10 relative">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col gap-3 mb-12">
-          <span className="text-xs font-mono font-semibold tracking-wider text-indigo-400 uppercase">
+          <span className="text-xs font-mono font-semibold tracking-wider text-cyan dark:text-indigo-400 uppercase">
             // Problem Solving & Algorithms
           </span>
-          <h2 className="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-display font-bold text-slate-900 dark:text-white tracking-tight">
             LeetCode Analytics
           </h2>
-          <p className="max-w-2xl text-slate-400 text-sm leading-relaxed">
+          <p className="max-w-2xl text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
             Data structures and algorithmic problem-solving stats streamed directly from LeetCode.
           </p>
         </div>
 
-        <div className="w-full max-w-4xl mx-auto grid md:grid-cols-12 gap-8 p-8 glass-card rounded-2xl border border-white/10">
+        <div className="w-full max-w-4xl mx-auto grid md:grid-cols-12 gap-8 p-8 glass-card bg-white/90 dark:bg-card-bg rounded-2xl border border-slate-200 dark:border-white/10">
           
           {/* Concentric visualizer */}
           <div className="md:col-span-7 flex flex-col sm:flex-row items-center justify-center gap-8 border-b md:border-b-0 md:border-r border-white/10 pb-8 md:pb-0 md:pr-8">

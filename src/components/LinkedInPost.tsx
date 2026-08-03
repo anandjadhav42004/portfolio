@@ -4,14 +4,14 @@ import { linkedinPost } from '../data/portfolio';
 
 const LinkedInPost = () => {
   return (
-    <section id="linkedin-post" className="py-24 px-6 lg:px-20 bg-void border-b border-white/10">
+    <section id="linkedin-post" className="py-24 px-6 lg:px-20 bg-void border-b border-slate-200 dark:border-white/10">
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8">
           <div>
-            <span className="text-xs font-mono font-semibold tracking-wider text-indigo-400 uppercase">
+            <span className="text-xs font-mono font-semibold tracking-wider text-cyan dark:text-indigo-400 uppercase">
               // Thought Leadership & Write-ups
             </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight mt-1">
+            <h2 className="text-3xl sm:text-4xl font-display font-bold text-slate-900 dark:text-white tracking-tight mt-1">
               Latest LinkedIn Publication
             </h2>
           </div>
@@ -26,18 +26,18 @@ const LinkedInPost = () => {
           </a>
         </div>
 
-        <div className="glass-card p-8 rounded-2xl border border-white/10 relative overflow-hidden">
-          <div className="flex items-center justify-between gap-4 mb-4 text-xs font-mono text-slate-400">
+        <div className="glass-card p-8 rounded-2xl bg-white/90 dark:bg-card-bg border border-slate-200 dark:border-white/10 relative overflow-hidden">
+          <div className="flex items-center justify-between gap-4 mb-4 text-xs font-mono text-slate-500 dark:text-slate-400">
             <span>{linkedinPost.date}</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
+            <span className="px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 border border-indigo-500/20">
               Technical Article
             </span>
           </div>
 
-          <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-3">
+          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-3">
             {linkedinPost.title}
           </h3>
-          <p className="text-sm leading-relaxed text-slate-300 max-w-3xl">
+          <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300 max-w-3xl">
             {linkedinPost.excerpt}
           </p>
         </div>

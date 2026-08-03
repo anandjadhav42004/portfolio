@@ -27,17 +27,17 @@ const Contact = () => {
   }, []);
 
   return (
-    <section id="contact" className="py-28 px-6 lg:px-20 bg-void border-b border-white/10">
+    <section id="contact" className="py-28 px-6 lg:px-20 bg-void border-b border-slate-200 dark:border-white/10">
       <div ref={containerRef} className="max-w-7xl mx-auto flex flex-col items-center text-center">
-        <span className="text-xs font-mono font-semibold tracking-wider text-indigo-400 uppercase mb-4">
+        <span className="text-xs font-mono font-semibold tracking-wider text-cyan dark:text-indigo-400 uppercase mb-4">
           // Let's Connect
         </span>
 
-        <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white tracking-tight mb-6 max-w-4xl">
+        <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-slate-900 dark:text-white tracking-tight mb-6 max-w-4xl">
           Interested in working together?
         </h2>
 
-        <p className="text-slate-400 text-base max-w-xl mb-10 leading-relaxed">
+        <p className="text-slate-600 dark:text-slate-300 text-base max-w-xl mb-10 leading-relaxed">
           Open for enterprise SAP software engineering, full-stack web development, and mobile app roles. Reach out via email or LinkedIn.
         </p>
         
@@ -55,7 +55,7 @@ const Contact = () => {
             href="https://www.linkedin.com/in/anand-jadhav-b599801b5"
             target="_blank"
             rel="noreferrer"
-            className="px-8 py-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold text-sm transition-all"
+            className="px-8 py-4 rounded-xl bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-semibold text-sm transition-all"
           >
             LinkedIn Profile ↗
           </a>

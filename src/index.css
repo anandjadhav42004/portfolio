@@ -104,13 +104,13 @@ body {
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, #FFFFFF 0%, #94A3B8 100%);
+    background: linear-gradient(135deg, var(--color-off-white) 0%, var(--color-dim) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .text-accent-gradient {
-    background: linear-gradient(135deg, #818CF8 0%, #38BDF8 100%);
+    background: linear-gradient(135deg, var(--color-cyan) 0%, var(--color-accent-hover) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }

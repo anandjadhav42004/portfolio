@@ -199,13 +199,13 @@ Return JSON only:
     <section id="analyzer" className="py-24 px-6 lg:px-20 bg-void border-b border-white/10 select-none">
       <div className="max-w-4xl mx-auto">
         <div className="flex flex-col gap-3 mb-10">
-          <span className="text-xs font-mono font-semibold tracking-wider text-indigo-400 uppercase">
+          <span className="text-xs font-mono font-semibold tracking-wider text-cyan dark:text-indigo-400 uppercase">
             // Recruitment AI Tooling
           </span>
-          <h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-display font-bold text-slate-900 dark:text-white tracking-tight">
             Job Description Match Analyzer
           </h2>
-          <p className="text-slate-400 text-sm leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
             Test candidate-to-job fit by pasting your job description to generate match scores, skill alignments, and custom cover letters.
           </p>
         </div>

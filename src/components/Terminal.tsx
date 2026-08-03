@@ -119,15 +119,15 @@ const Terminal = () => {
   return (
     <div className="w-full">
       <div className="flex flex-col gap-2 mb-6">
-        <span className="text-xs font-mono font-semibold tracking-wider text-indigo-400 uppercase">
+        <span className="text-xs font-mono font-semibold tracking-wider text-cyan dark:text-indigo-400 uppercase">
           // Interactive CLI Diagnostics
         </span>
-        <h3 className="text-xl font-bold text-white tracking-tight">Developer Terminal</h3>
+        <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">Developer Terminal</h3>
       </div>
 
       <div 
         onClick={handleTerminalClick}
-        className="w-full bg-void-2 border border-white/10 rounded-2xl cursor-text text-left font-mono shadow-card overflow-hidden"
+        className="w-full bg-slate-950 dark:bg-void-2 border border-slate-800 dark:border-white/10 rounded-2xl cursor-text text-left font-mono shadow-xl overflow-hidden"
       >
         <div className="flex items-center justify-between px-4 py-3 bg-void-3 border-b border-white/10 select-none">
           <div className="flex gap-2">
