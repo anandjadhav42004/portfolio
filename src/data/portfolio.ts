@@ -54,7 +54,8 @@ export const projects = [
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Netlify'],
     github: 'https://github.com/anandjadhav42004/Elvora-Media-Premium-Digital-Media-Production-Agency',
     live: 'https://elvora-media.netlify.app',
-    category: 'Full Stack Web'
+    category: 'Full Stack Web',
+    status: 'In Progress'
   },
   {
     id: 2,
@@ -64,7 +65,8 @@ export const projects = [
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Vercel'],
     github: 'https://github.com/anandjadhav42004/ks-beauty-website',
     live: 'https://ks-beauty-website.vercel.app',
-    category: 'Full Stack Web'
+    category: 'Full Stack Web',
+    status: 'In Progress'
   },
   {
     id: 3,

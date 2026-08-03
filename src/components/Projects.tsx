@@ -75,6 +75,14 @@ const Projects = () => {
                     <span>4.9</span>
                   </div>
 
+                  {/* Status Badge if In Progress */}
+                  {project.status === 'In Progress' && (
+                    <div className="absolute bottom-3 left-3 bg-amber-500/20 backdrop-blur-md border border-amber-500/40 text-amber-300 font-mono text-[10px] font-bold px-3 py-1 rounded-full z-10 flex items-center gap-1.5 shadow-lg shadow-amber-500/10">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />
+                      <span>IN PROGRESS</span>
+                    </div>
+                  )}
+
                   <img 
                     src={project.image} 
                     alt={project.title} 
