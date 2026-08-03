@@ -80,11 +80,11 @@ export const projects = [
   },
   {
     id: 4,
-    title: 'FunFlix Entertainment Hub',
-    description: 'Streaming & entertainment discovery application with real-time media search, category filtering, user watchlists, and interactive media previews.',
+    title: 'FunFlix — Netflix-Inspired Streaming Platform',
+    description: 'A full-featured streaming platform UI built from scratch, replicating a real streaming service. Cinematic intro animation, dynamic genre-based content rows, real-time TMDB search, trailer modals, persistent "My List", fully responsive.',
     image: 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&h=450&fit=crop',
-    tags: ['React', 'REST API', 'CSS Glassmorphism', 'Netlify'],
-    github: 'https://github.com/anandjadhav42004/FunFlix',
+    tags: ['React', 'Vite', 'React Router', 'Axios', 'TMDB API', 'Lucide Icons'],
+    github: '[YOUR_REPO_LINK]',
     live: 'https://funflix03.netlify.app',
     category: 'Web App'
   },
@@ -117,6 +117,26 @@ export const projects = [
     github: 'https://github.com/anandjadhav42004/portfolio',
     live: 'https://portfolio-three-swart-hx117dkm4.vercel.app',
     category: 'SAP & AI'
+  },
+  {
+    id: 8,
+    title: 'Inventory Pro Management Suite',
+    description: 'Enterprise-grade SAPUI5 warehouse management system (MVC architecture). Admin console with live KPI dashboards, stock microcharts, batch CRUD, Excel export. Staff portal with glassmorphism UI, high-speed search, role-based access.',
+    image: 'https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&h=450&fit=crop',
+    tags: ['SAPUI5', 'JSON Models', 'LocalStorage API', 'SAP BAS'],
+    github: '[YOUR_REPO_LINK]',
+    live: '[YOUR_LIVE_LINK]',
+    category: 'Enterprise App'
+  },
+  {
+    id: 9,
+    title: 'Anti-Gravity — AI Authenticity Verification System',
+    description: 'AI-powered deepfake and misinformation detection tool using NLP and neural networks, analyzing text/image/video in real time. Flask backend, cyberpunk-themed responsive frontend.',
+    image: 'https://images.unsplash.com/photo-1620825937374-87fc7d62828e?w=800&h=450&fit=crop',
+    tags: ['Python', 'Flask', 'Scikit-learn', 'NLP', 'HTML5', 'CSS3', 'JavaScript'],
+    github: '[YOUR_REPO_LINK]',
+    live: '[YOUR_LIVE_LINK]',
+    category: 'AI / Machine Learning'
   }
 ];
 
@@ -151,12 +171,21 @@ export const certifications = [
   },
   {
     id: 4,
-    name: 'SQL (Intermediate & Basic)',
+    name: 'SQL (Intermediate)',
     issuer: 'HackerRank',
     date: 'Jan 2026',
     credentialId: '5BE0C46B5690',
     credentialUrl: 'https://www.hackerrank.com/certificates/5BE0C46B5690',
     skills: ['Relational Databases', 'Complex SQL Queries', 'Indexing & Performance'],
+  },
+  {
+    id: 7,
+    name: 'SQL (Basic)',
+    issuer: 'HackerRank',
+    date: 'Jan 2026',
+    credentialId: '5BE0C46B5690',
+    credentialUrl: 'https://www.hackerrank.com/certificates/5BE0C46B5690',
+    skills: ['SQL Fundamentals', 'Joins', 'Basic Aggregations'],
   },
   {
     id: 5,
