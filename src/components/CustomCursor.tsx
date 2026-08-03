@@ -9,11 +9,11 @@ const CustomCursor = () => {
   useEffect(() => {
     if (window.matchMedia('(pointer: coarse)').matches) return;
 
-    // Use gsap.quickTo for high-performance mouse tracking
-    const xTo = gsap.quickTo(cursorRef.current, 'x', { duration: 0.12, ease: 'power2.out' });
-    const yTo = gsap.quickTo(cursorRef.current, 'y', { duration: 0.12, ease: 'power2.out' });
-    const dotXTo = gsap.quickTo(dotRef.current, 'x', { duration: 0 });
-    const dotYTo = gsap.quickTo(dotRef.current, 'y', { duration: 0 });
+    // Smooth GSAP spring tracking
+    const xTo = gsap.quickTo(cursorRef.current, 'x', { duration: 0.25, ease: 'power3.out' });
+    const yTo = gsap.quickTo(cursorRef.current, 'y', { duration: 0.25, ease: 'power3.out' });
+    const dotXTo = gsap.quickTo(dotRef.current, 'x', { duration: 0.05, ease: 'power1.out' });
+    const dotYTo = gsap.quickTo(dotRef.current, 'y', { duration: 0.05, ease: 'power1.out' });
 
     const onMouseMove = (e: MouseEvent) => {
       xTo(e.clientX);
@@ -29,7 +29,8 @@ const CustomCursor = () => {
         target.tagName.toLowerCase() === 'a' ||
         target.tagName.toLowerCase() === 'button' ||
         target.closest('a') ||
-        target.closest('button')
+        target.closest('button') ||
+        target.classList.contains('interactive')
       ) {
         setIsHovering(true);
       } else {
@@ -50,13 +51,17 @@ const CustomCursor = () => {
     <>
       <div
         ref={cursorRef}
-        className={`fixed top-0 left-0 w-8 h-8 -ml-4 -mt-4 rounded-full border border-indigo-400/40 pointer-events-none z-[9999] transition-transform duration-200 hidden lg:block ${
-          isHovering ? 'scale-150 border-indigo-400 bg-indigo-500/10' : 'scale-100'
+        className={`fixed top-0 left-0 w-9 h-9 -ml-4.5 -mt-4.5 rounded-full border border-cyan/50 pointer-events-none z-[9999] transition-transform duration-300 ease-out hidden lg:block shadow-lg shadow-cyan/20 ${
+          isHovering
+            ? 'scale-175 border-cyan bg-cyan/15 backdrop-blur-[1px]'
+            : 'scale-100 bg-cyan/5'
         }`}
       />
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 w-1.5 h-1.5 -ml-0.75 -mt-0.75 bg-indigo-400 rounded-full pointer-events-none z-[9999] hidden lg:block"
+        className={`fixed top-0 left-0 w-2 h-2 -ml-1 -mt-1 bg-cyan rounded-full pointer-events-none z-[9999] hidden lg:block transition-all duration-200 shadow-md shadow-cyan ${
+          isHovering ? 'scale-150 bg-white' : 'scale-100'
+        }`}
       />
     </>
   );
