@@ -94,7 +94,7 @@ export default function HamburgerMenu() {
             {/* Hamburger Button for Full Drawer */}
             <button 
               onClick={toggleMenu}
-              className="w-9 h-9 rounded-full bg-white/10 border border-white/10 backdrop-blur-md flex flex-col items-center justify-center gap-1 shadow-card cursor-pointer hover:bg-white/20 transition-all"
+              className="w-11 h-11 rounded-full bg-white/10 border border-white/10 backdrop-blur-md flex flex-col items-center justify-center gap-1 shadow-card cursor-pointer hover:bg-white/20 transition-all"
               aria-label="Toggle navigation menu"
             >
               <div className={`w-4 h-0.5 bg-white transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-1' : ''}`} />

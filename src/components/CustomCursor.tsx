@@ -7,9 +7,12 @@ export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
   const [hoverText, setHoverText] = useState('');
   const [isVisible, setIsVisible] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
-    if (window.matchMedia('(pointer: coarse)').matches) return;
+    const checkTouch = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    setIsTouchDevice(checkTouch);
+    if (checkTouch) return;
 
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -158,6 +161,8 @@ export default function CustomCursor() {
       cancelAnimationFrame(animId);
     };
   }, [isVisible, isHovering]);
+
+  if (isTouchDevice) return null;
 
   return (
     <div className={`pointer-events-none z-[999999] transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>

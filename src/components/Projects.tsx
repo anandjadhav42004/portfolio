@@ -61,7 +61,7 @@ const Projects = () => {
             <div 
               key={project.id} 
               data-cursor="VIEW"
-              className="group relative rounded-[2rem] bg-gradient-to-b from-void-2/95 to-void-3/95 border border-emerald-500/20 p-5 backdrop-blur-xl transition-all duration-500 hover:border-emerald-400/60 hover:shadow-[0_15px_40px_rgba(0,0,0,0.6),0_0_25px_rgba(52,211,153,0.2)] hover:-translate-y-2 flex flex-col justify-between interactive"
+              className="group relative rounded-[2rem] bg-gradient-to-b from-void-2/95 to-void-3/95 border border-emerald-500/20 p-5 backdrop-blur-xl transition-all duration-500 hover:border-emerald-400/60 hover:shadow-[0_15px_40px_rgba(0,0,0,0.6),0_0_25px_rgba(52,211,153,0.2)] hover:-translate-y-2 active:-translate-y-1 active:border-emerald-400/40 active:shadow-[0_15px_40px_rgba(0,0,0,0.6),0_0_25px_rgba(52,211,153,0.2)] flex flex-col justify-between interactive"
             >
               <div>
                 {/* Image Showcase */}

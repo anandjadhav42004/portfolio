@@ -11,8 +11,13 @@ interface BuildingData {
 
 const Background3D = () => {
   const mountRef = useRef<HTMLDivElement>(null);
+  const [isTouchDevice, setIsTouchDevice] = React.useState(false);
 
   useEffect(() => {
+    const checkTouch = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    setIsTouchDevice(checkTouch);
+    if (checkTouch) return;
+
     if (!mountRef.current) return;
 
     // 1. Scene Setup
@@ -220,6 +225,14 @@ const Background3D = () => {
       renderer.dispose();
     };
   }, []);
+
+  if (isTouchDevice) {
+    return (
+      <div className="fixed inset-0 z-0 bg-void opacity-40 pointer-events-none">
+        <div className="absolute inset-0 bg-radial from-emerald-500/10 via-cyan-500/5 to-transparent blur-[80px]" />
+      </div>
+    );
+  }
 
   return (
     <div 

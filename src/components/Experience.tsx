@@ -32,7 +32,7 @@ const ExperienceItem = ({ exp, index }: any) => {
         {/* Content */}
         <div className="pb-8 flex-1">
           <div className="p-6 bg-white/90 dark:bg-card-bg border border-slate-200 dark:border-white/10 rounded-2xl shadow-lg dark:shadow-xl transition-all">
-            <div className="flex justify-between items-start mb-3">
+            <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-2 sm:gap-0 mb-3">
               <div>
                 <h3 className="text-lg font-display font-bold text-slate-900 dark:text-white">
                   {exp.title}

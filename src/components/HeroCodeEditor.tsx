@@ -93,7 +93,7 @@ const HeroCodeEditor = () => {
         </div>
 
         {/* Tab Switcher */}
-        <div className="flex items-center bg-void/80 p-1 rounded-lg border border-white/5">
+        <div className="flex items-center bg-void/80 p-1 rounded-lg border border-white/5 overflow-x-auto snap-x max-w-[60%] sm:max-w-none">
           {snippets.map((snip) => (
             <button
               key={snip.id}
@@ -122,14 +122,14 @@ const HeroCodeEditor = () => {
       {/* Editor Body */}
       <div className="p-5 flex gap-4 bg-void-2 leading-relaxed overflow-x-auto min-h-[260px]">
         {/* Line Numbers */}
-        <div className="flex flex-col text-slate-600 select-none text-right font-mono text-xs pr-2 border-r border-white/5">
+        <div className="flex flex-col text-slate-600 select-none text-right font-mono text-[10px] sm:text-xs pr-2 border-r border-white/5">
           {currentSnippet.code.map((item) => (
             <span key={item.line} className="px-1">{item.line}</span>
           ))}
         </div>
 
         {/* Code Lines */}
-        <pre className="flex-1 whitespace-pre-wrap font-mono text-xs text-slate-200">
+        <pre className="flex-1 whitespace-pre-wrap font-mono text-[10px] sm:text-xs text-slate-200 break-words">
           <code>
             {currentSnippet.code.map((item) => (
               <div key={item.line} className="hover:bg-white/5 px-1 py-0.5 rounded transition-colors">

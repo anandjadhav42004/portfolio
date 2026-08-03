@@ -57,7 +57,7 @@ export default function HeroRevamp() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="text-4xl sm:text-6xl lg:text-7xl font-bold font-display tracking-tight text-white leading-[1.1] max-w-5xl"
+          className="text-3xl sm:text-5xl lg:text-7xl font-bold font-display tracking-tight text-white leading-[1.1] max-w-5xl px-2"
         >
           Designing Digital Harmony &{' '}
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-300 via-cyan-300 to-amber-200">
@@ -71,7 +71,7 @@ export default function HeroRevamp() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="mt-5 text-lg sm:text-2xl text-slate-300 font-light tracking-wide max-w-2xl h-12 flex items-center justify-center"
+          className="mt-4 sm:mt-5 text-base sm:text-2xl text-slate-300 font-light tracking-wide max-w-2xl h-12 flex items-center justify-center px-4"
         >
           <TypeAnimation
             sequence={[
@@ -92,13 +92,13 @@ export default function HeroRevamp() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="relative w-full max-w-5xl mt-10 rounded-[2rem] sm:rounded-[2.5rem] border border-emerald-500/25 bg-gradient-to-b from-void-2/95 to-void-3/95 backdrop-blur-2xl p-6 sm:p-10 shadow-[0_0_40px_rgba(0,0,0,0.6)] group overflow-hidden"
+          className="relative w-full max-w-5xl mt-8 sm:mt-10 rounded-3xl sm:rounded-[2.5rem] border border-emerald-500/25 bg-gradient-to-b from-void-2/95 to-void-3/95 backdrop-blur-2xl p-4 sm:p-10 shadow-[0_0_40px_rgba(0,0,0,0.6)] group overflow-hidden"
         >
           {/* Ambient Grid Background */}
           <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#34d399_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
           {/* Central Content Grid */}
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center text-left">
+          <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center text-left">
             
             {/* Left Column */}
             <div className="lg:col-span-7 space-y-5">
