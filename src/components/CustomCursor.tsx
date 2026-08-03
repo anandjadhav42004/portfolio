@@ -118,15 +118,30 @@ export default function CustomCursor() {
           ctx.quadraticCurveTo(nodes[i].x, nodes[i].y, xc, yc);
         }
 
-        ctx.strokeStyle = isHovering
-          ? 'rgba(251, 191, 36, 0.45)' // Warm Gold
-          : 'rgba(52, 211, 153, 0.35)'; // Emerald Cyan
+        // 1. MULTIPLE COLORS (gradient trail)
+        const startNode = nodes[0];
+        const endNode = nodes[nodes.length - 1];
+        const gradient = ctx.createLinearGradient(startNode.x, startNode.y, endNode.x, endNode.y);
 
-        ctx.lineWidth = isHovering ? 3 : 2;
+        if (isHovering) {
+          gradient.addColorStop(0, 'rgba(251, 191, 36, 0.8)'); // Warm Gold
+          gradient.addColorStop(1, 'rgba(217, 119, 6, 0.2)');  // Amber fade
+        } else {
+          gradient.addColorStop(0, 'rgba(56, 189, 248, 0.8)');   // Cyan
+          gradient.addColorStop(0.5, 'rgba(168, 85, 247, 0.6)'); // Purple
+          gradient.addColorStop(1, 'rgba(236, 72, 153, 0.1)');   // Pink fade
+        }
+
+        ctx.strokeStyle = gradient;
+
+        // 2. WIDER TRAIL LINE
+        ctx.lineWidth = isHovering ? 7 : 5;
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = isHovering ? 'rgba(251, 191, 36, 0.6)' : 'rgba(52, 211, 153, 0.5)';
+        
+        // 3. ENHANCED SHADOW/GLOW (Canvas)
+        ctx.shadowBlur = isHovering ? 25 : 20;
+        ctx.shadowColor = isHovering ? 'rgba(251, 191, 36, 0.8)' : 'rgba(168, 85, 247, 0.7)';
         ctx.stroke();
         ctx.shadowBlur = 0;
       }
@@ -156,8 +171,8 @@ export default function CustomCursor() {
       <div
         ref={ringRef}
         className={`fixed top-0 left-0 w-12 h-12 rounded-full border pointer-events-none z-[999999] flex items-center justify-center transition-all duration-200 ease-out ${isHovering
-          ? 'scale-150 border-amber-300 bg-amber-400/20 backdrop-blur-[2px] shadow-[0_0_25px_rgba(251,191,36,0.6)]'
-          : 'scale-100 border-emerald-400/60 bg-emerald-400/10 shadow-[0_0_15px_rgba(52,211,153,0.3)]'
+          ? 'scale-150 border-amber-300 bg-amber-400/20 backdrop-blur-[2px] shadow-[0_0_40px_rgba(251,191,36,0.8)]'
+          : 'scale-100 border-cyan-400/60 bg-purple-400/10 shadow-[0_0_30px_rgba(168,85,247,0.5)]'
           }`}
       >
         {hoverText && (
@@ -171,8 +186,8 @@ export default function CustomCursor() {
       <div
         ref={dotRef}
         className={`fixed top-0 left-0 w-2.5 h-2.5 rounded-full pointer-events-none z-[999999] transition-transform duration-100 ${isHovering
-          ? 'scale-150 bg-amber-300 shadow-[0_0_12px_#FBBF24]'
-          : 'scale-100 bg-emerald-300 shadow-[0_0_10px_#34D399]'
+          ? 'scale-150 bg-amber-300 shadow-[0_0_20px_#FBBF24,0_0_40px_#FBBF24]'
+          : 'scale-100 bg-cyan-300 shadow-[0_0_15px_#38BDF8,0_0_30px_#A855F7]'
           }`}
       />
     </div>
