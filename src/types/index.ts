@@ -32,6 +32,10 @@ export interface Experience {
   duration: string
   description: string
   type: 'internship' | 'hackathon' | 'freelance'
+  location?: string
+  function?: string
+  skills?: string[]
+  logo?: string
 }
 
 export interface PortfolioData {

@@ -21,11 +21,17 @@ const ExperienceItem = ({ exp, index }: any) => {
       <div className="flex gap-6">
         {/* Timeline */}
         <div className="flex flex-col items-center">
-          <div className="w-12 h-12 bg-gradient-to-br from-cyan to-indigo-500 rounded-full flex items-center justify-center text-xl shadow-md">
-            {getIcon(exp.type)}
+          <div className="w-12 h-12 bg-gradient-to-br from-cyan to-indigo-500 rounded-full flex items-center justify-center text-xl shadow-md overflow-hidden relative">
+            {exp.logo ? (
+              <div className="absolute inset-0.5 bg-white rounded-full flex items-center justify-center p-1.5">
+                <img src={exp.logo} alt={`${exp.company} logo`} className="w-full h-full object-contain" />
+              </div>
+            ) : (
+              getIcon(exp.type)
+            )}
           </div>
           {index !== experience.length - 1 && (
-            <div className="w-0.5 h-24 bg-gradient-to-b from-cyan to-transparent mt-2 opacity-50" />
+            <div className="w-0.5 flex-1 min-h-[6rem] bg-gradient-to-b from-cyan to-transparent mt-2 opacity-50" />
           )}
         </div>
 
@@ -37,13 +43,30 @@ const ExperienceItem = ({ exp, index }: any) => {
                 <h3 className="text-lg font-display font-bold text-slate-900 dark:text-white">
                   {exp.title}
                 </h3>
-                <p className="text-slate-600 dark:text-slate-400 text-sm font-medium">{exp.company}</p>
+                <p className="text-slate-600 dark:text-slate-400 text-sm font-medium">
+                  {exp.company}
+                  {exp.location && <span className="ml-2 font-normal text-xs opacity-75">| {exp.location}</span>}
+                </p>
+                {exp.function && (
+                  <p className="text-cyan dark:text-cyan/90 text-xs font-semibold mt-1">
+                    {exp.function}
+                  </p>
+                )}
               </div>
               <span className="text-xs text-cyan font-mono font-semibold px-2.5 py-1 rounded-full bg-cyan/10 border border-cyan/20">
                 {exp.duration}
               </span>
             </div>
             <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">{exp.description}</p>
+            {exp.skills && (
+              <div className="flex flex-wrap gap-2 mt-4">
+                {exp.skills.map((skill: string, i: number) => (
+                  <span key={i} className="px-2.5 py-1 text-[10px] sm:text-xs font-medium rounded-full bg-cyan/5 dark:bg-cyan/10 text-cyan-600 dark:text-cyan-400 border border-cyan/10 dark:border-cyan/20">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -216,6 +216,18 @@ export const linkedinPost = {
 
 export const experience = [
   {
+    id: 3,
+    title: 'SAP & IT Support Intern',
+    company: 'Hilti Manufacturing India Pvt. Ltd.',
+    duration: 'July 2026 – Present',
+    description: 'Working on SAP-driven business processes, production planning, and IT systems that support day-to-day manufacturing operations. Gaining hands-on exposure to SAP S/4HANA within a real manufacturing environment, and developing a broader understanding of how technology, process, and business requirements integrate in an enterprise setting.',
+    type: 'internship',
+    location: 'Vadodara, Gujarat, India (On-site)',
+    function: 'Production Planning & Control (PPC)',
+    skills: ['SAP S/4HANA', 'Production Planning', 'Enterprise IT', 'Manufacturing Operations', 'Data Analysis'],
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/1/14/Hilti_Logo.svg'
+  },
+  {
     id: 1,
     title: 'Enterprise Software Intern',
     company: 'SAP UI5 / Cloud Development',
