@@ -45,10 +45,10 @@ export default function HeroRevamp() {
           animate="visible"
           className="inline-flex items-center gap-3 px-4.5 py-2 rounded-full bg-white/5 border border-emerald-500/30 backdrop-blur-md text-xs font-mono tracking-wider text-emerald-300 uppercase mb-6 shadow-[0_0_20px_rgba(52,211,153,0.15)]"
         >
-          <Award className="w-4 h-4 text-amber-400 animate-bounce" />
-          <span className="font-bold text-amber-300">SOTD</span>
+          <Award className="w-4 h-4 text-emerald-400" />
+          <span className="font-bold text-emerald-300">PORTFOLIO 2026</span>
           <span className="text-white/40">•</span>
-          <span>JAPAN CREATIVE PORTFOLIO 2026 // HARMONY & CODE</span>
+          <span>ENTERPRISE & FULL-STACK DEVELOPMENT</span>
         </motion.div>
 
         {/* Big Awwwards SOTD Display Heading */}
@@ -86,7 +86,7 @@ export default function HeroRevamp() {
           />
         </motion.div>
 
-        {/* Studio Ghibli Awwwards SOTD Interactive Hero Media Card */}
+        {/* Interactive Hero Media Card */}
         <motion.div
           custom={3}
           variants={fadeUp}
@@ -112,7 +112,7 @@ export default function HeroRevamp() {
                 Anand Jadhav
               </h2>
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-normal">
-                B.Tech Computer Science student (SAP IEP Track) at Parul Institute of Technology. Crafting elegant enterprise architectures, native iOS applications, and high-performance WebGL platforms inspired by Japanese minimalism and Wa (和) harmony.
+                B.Tech Computer Science student (SAP IEP Track) at Parul Institute of Technology. Crafting elegant enterprise architectures, native iOS applications, and high-performance web platforms focusing on scalable performance and modern UI/UX.
               </p>
               
               <div className="flex flex-wrap gap-3 pt-2">
@@ -126,11 +126,6 @@ export default function HeroRevamp() {
                 ))}
               </div>
 
-              {/* Japan Creative Standard Badge */}
-              <div className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-void-2/90 border border-emerald-500/30 backdrop-blur-xl shadow-xl text-xs text-white mt-6 sm:mt-8">
-                <Globe className="w-4 h-4 text-emerald-400 animate-spin" style={{ animationDuration: '10s' }} />
-                <span className="font-semibold text-emerald-300">Japan Creative Standard</span>
-              </div>
             </div>
 
             {/* Right Column: Code Window */}
@@ -139,16 +134,16 @@ export default function HeroRevamp() {
                 
                 {/* Decorative Graphic Code */}
                 <div className="space-y-2 font-mono text-xs text-emerald-300">
-                  <div className="text-purple-400">class GhibliArchitect &#123;</div>
-                  <div className="pl-4 text-slate-300">var aesthetic: String = "Wa (和) Harmony"</div>
+                  <div className="text-purple-400">class EnterpriseArchitect &#123;</div>
+                  <div className="pl-4 text-slate-300">var focus: String = "Scalable Cloud & AI"</div>
                   <div className="pl-4 text-cyan">func renderSystem() -&gt; Status &#123;</div>
-                  <div className="pl-8 text-amber-300">return .awwwardsSOTDReady</div>
+                  <div className="pl-8 text-emerald-400">return .productionReady</div>
                   <div className="pl-4 text-cyan">&#125;</div>
                   <div className="text-purple-400">&#125;</div>
                 </div>
 
                 <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                  <span className="text-xs text-slate-400 font-mono">Evaluation: 9.85 / 10</span>
+                  <span className="text-xs text-slate-400 font-mono">Status: Online</span>
                   <a
                     href="#contact"
                     className="inline-flex items-center gap-1.5 text-xs text-cyan hover:text-white font-semibold group/link"
@@ -161,12 +156,6 @@ export default function HeroRevamp() {
             </div>
           </div>
 
-          {/* Floating Glass Badge 1: Top Right */}
-          <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-void-2/90 border border-emerald-500/30 backdrop-blur-xl shadow-xl text-xs text-white z-20">
-            <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
-            <span className="font-bold text-amber-300">9.85 / 10</span>
-            <span className="text-slate-400">| Awwwards Jury</span>
-          </div>
 
         </motion.div>
 
