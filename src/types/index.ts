@@ -12,6 +12,9 @@ export interface Project {
   tags: string[]
   github: string
   live: string
+  category?: string
+  status?: string
+  isRoboticsCaseStudy?: boolean
 }
 
 export interface Certification {

@@ -6,6 +6,7 @@ import { skills } from '../data/portfolio';
 gsap.registerPlugin(ScrollTrigger);
 
 const skillCategories = [
+  { key: 'robotics', name: 'Robotics & Simulation (ROS 2 / Gazebo)', color: 'from-emerald-400 to-cyan-500' },
   { key: 'sap', name: 'SAP Enterprise & BTP', color: 'from-indigo-500 to-indigo-600' },
   { key: 'web', name: 'Full-Stack Web (MEAN/MERN)', color: 'from-sky-500 to-blue-600' },
   { key: 'ios_ai', name: 'Native iOS & AI Engineering', color: 'from-emerald-500 to-teal-600' },

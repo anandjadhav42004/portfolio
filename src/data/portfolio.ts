@@ -42,10 +42,29 @@ export const skills = {
     { name: 'Docker & Containers', level: 82 },
     { name: 'SAP BAS & ADT', level: 88 },
     { name: 'Vercel / Netlify Deployment', level: 90 },
+  ],
+  robotics: [
+    { name: 'ROS 2 Jazzy & Node Graph', level: 85 },
+    { name: 'URDF Kinematics & Xacro', level: 86 },
+    { name: 'Gazebo Sim Physics & Worlds', level: 84 },
+    { name: 'TF2 Coordinate Frames & Transforms', level: 82 },
+    { name: 'RViz2 Robot State Visualization', level: 80 },
   ]
 };
 
 export const projects = [
+  {
+    id: 10,
+    title: 'R2_PROTO — ROS 2 Mobile Robot Simulation & Navigation',
+    description: 'Autonomous Mobile Robot (AMR) simulation pipeline built with ROS 2 Jazzy, Gazebo Sim, and URDF kinematics. Features custom arena world spawning, rigid link/joint coordinate frame calibration, and an end-to-end architecture preparing for 2D LiDAR SLAM and Nav2 autonomous path planning.',
+    image: '/r2_proto_sim.jpg',
+    tags: ['ROS 2 Jazzy', 'Gazebo Sim', 'URDF', 'RViz2', 'Ubuntu Linux', 'Nav2 (Planned)', 'LiDAR (Planned)'],
+    github: 'https://github.com/anandjadhav42004',
+    live: '#r2-proto-case-study',
+    category: 'Robotics & Simulation',
+    status: 'In Progress',
+    isRoboticsCaseStudy: true
+  },
   {
     id: 1,
     title: 'Elvora Media Platform',
@@ -120,13 +139,14 @@ export const projects = [
   },
   {
     id: 8,
-    title: 'Inventory Pro Management Suite',
-    description: 'Enterprise-grade SAPUI5 warehouse management system (MVC architecture). Admin console with live KPI dashboards, stock microcharts, batch CRUD, Excel export. Staff portal with glassmorphism UI, high-speed search, role-based access.',
-    image: 'https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&h=450&fit=crop',
-    tags: ['SAPUI5', 'JSON Models', 'LocalStorage API', 'SAP BAS'],
-    github: '[YOUR_REPO_LINK]',
-    live: '[YOUR_LIVE_LINK]',
-    category: 'Enterprise App'
+    title: 'SAP Prognos — Enterprise AI Demand Forecasting Platform',
+    description: 'Enterprise-grade SAPUI5 application integrated with an XGBoost machine learning pipeline for supply chain demand forecasting. Features Horizon Dark theme, Chart.js multi-horizon predictive curves, real-time KPI metrics, and Vercel cloud deployment.',
+    image: '/sap_prognos_dashboard.jpg',
+    tags: ['SAPUI5', 'XGBoost ML', 'Chart.js', 'SAP Horizon Dark', 'Vercel', 'Python'],
+    github: 'https://github.com/anandjadhav42004/sap_Forecast',
+    live: 'https://sap-forecast.vercel.app',
+    category: 'Enterprise App',
+    status: 'Production'
   },
   {
     id: 9,
