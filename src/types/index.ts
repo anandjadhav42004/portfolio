@@ -52,6 +52,8 @@ export interface PortfolioData {
   github: string
   linkedin: string
   twitter: string
+  leetcode?: string
+  leetcodeUrl?: string
 }
 
 export interface SkillCategory {

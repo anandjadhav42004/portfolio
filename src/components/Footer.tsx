@@ -13,6 +13,7 @@ const Footer = () => {
         <div className="flex items-center gap-6 text-slate-700 dark:text-slate-300 font-medium">
           <a href="https://github.com/anandjadhav42004" target="_blank" rel="noreferrer" className="hover:text-cyan dark:hover:text-indigo-400 transition-colors">GitHub</a>
           <a href="https://www.linkedin.com/in/anand-jadhav-b599801b5" target="_blank" rel="noreferrer" className="hover:text-cyan dark:hover:text-indigo-400 transition-colors">LinkedIn</a>
+          <a href="https://leetcode.com/u/Anand_42004/" target="_blank" rel="noreferrer" className="hover:text-cyan dark:hover:text-indigo-400 transition-colors">LeetCode</a>
           <a href="mailto:anandjadhav42004@gmail.com" className="hover:text-cyan dark:hover:text-indigo-400 transition-colors">Email</a>
         </div>
 

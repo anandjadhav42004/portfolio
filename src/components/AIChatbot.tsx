@@ -75,13 +75,13 @@ export const AIChatbot = () => {
 • Timezone: IST (UTC+5:30), Mumbai / Vadodara, India.`;
     }
 
-    if (q.includes('project') || q.includes('built') || q.includes('elvora') || q.includes('ks')) {
+    if (q.includes('project') || q.includes('built') || q.includes('elvora') || q.includes('ks') || q.includes('antigravity') || q.includes('anti-gravity')) {
       return `Featured Production Deployments:
-1. Elvora Media: Digital agency platform built with React, TypeScript & Netlify.
-2. KS Beauty: Web app with custom quote calculators built with React & Vercel.
-3. Event Management (Utsav26): Campus management app with MongoDB & Express.
-4. FunFlix: Media streaming discovery hub built with REST APIs.
-5. ProFlow AI: Enterprise workflow automation with SAP BTP & Gemini AI.`;
+1. Anti-Gravity: AI Authenticity & Deepfake Verification System.
+2. Elvora Media: Digital agency platform (Live at https://www.elvoramedia.org).
+3. KS Beauty: Web app with custom quote calculators built with React & Vercel.
+4. Event Management (Utsav26): Campus management app with MongoDB & Express.
+5. FunFlix: Media streaming discovery hub built with REST APIs.`;
     }
 
     if (q.includes('education') || q.includes('university') || q.includes('college')) {
@@ -89,6 +89,14 @@ export const AIChatbot = () => {
 • Degree: B.Tech in Computer Science & Engineering (SAP IEP Track).
 • University: Parul Institute of Technology / Parul University, Vadodara, India.
 • Expected Graduation: 2027.`;
+    }
+
+    if (q.includes('leetcode') || q.includes('dsa') || q.includes('algorithm') || q.includes('problem')) {
+      return `LeetCode & Algorithmic Diagnostics:
+• Username: @Anand_42004 (https://leetcode.com/u/Anand_42004/)
+• Total Solved: 123 Problems (43 Easy, 58 Medium, 22 Hard)
+• Acceptance Rate: 97.3%
+• Global Ranking: #1,439,418`;
     }
 
     if (q.includes('hello') || q.includes('hi') || q.includes('hey')) {

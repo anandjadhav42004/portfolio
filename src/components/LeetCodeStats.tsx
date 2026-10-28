@@ -13,7 +13,7 @@ interface LeetData {
   isLive?: boolean;
 }
 
-const LEETCODE_USERNAME = 'anandjadhav42004';
+const LEETCODE_USERNAME = 'Anand_42004';
 
 const LeetCodeStats = () => {
   const [data, setData] = useState<LeetData | null>(null);
@@ -21,48 +21,86 @@ const LeetCodeStats = () => {
 
   const fallbackData: LeetData = {
     username: LEETCODE_USERNAME,
-    totalSolved: 150,
-    easySolved: 80,
-    mediumSolved: 55,
-    hardSolved: 15,
-    ranking: 'Top 15%',
-    acceptanceRate: 56.4,
+    totalSolved: 123,
+    easySolved: 43,
+    mediumSolved: 58,
+    hardSolved: 22,
+    ranking: '#1,439,418',
+    acceptanceRate: 97.3,
     isLive: false,
   };
 
   useEffect(() => {
     const fetchLeetCodeData = async () => {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 3500);
-
+      // 1. Try Vercel fast proxy
       try {
-        const res = await fetch(`https://alfa-leetcode-api.onrender.com/userProfile/${LEETCODE_USERNAME}`, {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 3500);
+        const res = await fetch(`https://leetcode-api-faisalshohag.vercel.app/${LEETCODE_USERNAME}`, {
           signal: controller.signal,
         });
         clearTimeout(timeoutId);
 
         if (res.ok) {
           const json = await res.json();
-          if (json && (json.totalSolved !== undefined || json.matchedUser)) {
+          if (json && typeof json.totalSolved === 'number') {
+            const totalSub = json.totalSubmissions?.find((s: any) => s.difficulty === 'All');
+            const acSub = json.matchedUserStats?.acSubmissionNum?.find((s: any) => s.difficulty === 'All');
+            let rate = 97.3;
+            if (acSub && totalSub && totalSub.submissions > 0) {
+              rate = Number(((acSub.submissions / totalSub.submissions) * 100).toFixed(1));
+            }
+
             setData({
               username: LEETCODE_USERNAME,
-              totalSolved: json.totalSolved ?? json.totalSolvedCount ?? 150,
-              easySolved: json.easySolved ?? json.easySolvedCount ?? 80,
-              mediumSolved: json.mediumSolved ?? json.mediumSolvedCount ?? 55,
-              hardSolved: json.hardSolved ?? json.hardSolvedCount ?? 15,
-              ranking: json.ranking ? `Top ${(json.ranking / 10000).toFixed(1)}%` : 'Top 15%',
-              acceptanceRate: json.acceptanceRate ?? 56.4,
+              totalSolved: json.totalSolved,
+              easySolved: json.easySolved ?? 43,
+              mediumSolved: json.mediumSolved ?? 58,
+              hardSolved: json.hardSolved ?? 22,
+              ranking: json.ranking ? `#${json.ranking.toLocaleString()}` : '#1,439,418',
+              acceptanceRate: rate,
               isLive: true,
             });
             setLoading(false);
             return;
           }
         }
-        throw new Error('Fallback required');
       } catch {
-        setData(fallbackData);
-        setLoading(false);
+        // Fallback to secondary endpoint
       }
+
+      // 2. Try Render endpoint
+      try {
+        const controller2 = new AbortController();
+        const timeoutId2 = setTimeout(() => controller2.abort(), 3500);
+        const res2 = await fetch(`https://alfa-leetcode-api.onrender.com/userProfile/${LEETCODE_USERNAME}`, {
+          signal: controller2.signal,
+        });
+        clearTimeout(timeoutId2);
+
+        if (res2.ok) {
+          const json2 = await res2.json();
+          if (json2 && (json2.totalSolved !== undefined || json2.matchedUser)) {
+            setData({
+              username: LEETCODE_USERNAME,
+              totalSolved: json2.totalSolved ?? 123,
+              easySolved: json2.easySolved ?? 43,
+              mediumSolved: json2.mediumSolved ?? 58,
+              hardSolved: json2.hardSolved ?? 22,
+              ranking: json2.ranking ? `#${json2.ranking.toLocaleString()}` : '#1,439,418',
+              acceptanceRate: json2.acceptanceRate ?? 97.3,
+              isLive: true,
+            });
+            setLoading(false);
+            return;
+          }
+        }
+      } catch {
+        // Use verified fallback
+      }
+
+      setData(fallbackData);
+      setLoading(false);
     };
 
     fetchLeetCodeData();
@@ -180,7 +218,7 @@ const LeetCodeStats = () => {
             <div className="flex justify-between items-center pb-3 border-b border-white/5">
               <span className="text-slate-400">LeetCode User</span>
               <a 
-                href={`https://leetcode.com/${data.username}`} 
+                href={`https://leetcode.com/u/${data.username}/`} 
                 target="_blank" 
                 rel="noreferrer"
                 className="px-2.5 py-1 rounded-md bg-white/5 hover:bg-white/10 text-indigo-300 font-semibold border border-white/10 transition-colors"

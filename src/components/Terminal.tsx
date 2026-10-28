@@ -51,6 +51,7 @@ const Terminal = () => {
           "  anand --skills      -> Output technical skills & competency percentages.",
           "  anand --experience  -> Print career timeline & enterprise internships.",
           "  anand --projects    -> Print featured project deployments & URLs.",
+          "  anand --leetcode    -> Print live algorithmic problem solving stats.",
           "  anand --contact     -> Output contact details & social channels.",
           "  clear               -> Reset terminal history."
         ];
@@ -102,7 +103,20 @@ const Terminal = () => {
           `  Phone:    ${portfolioData.phone}`,
           `  Location: ${portfolioData.location}`,
           `  GitHub:   https://github.com/${portfolioData.github}`,
-          `  LinkedIn: https://www.linkedin.com/in/${portfolioData.linkedin}`
+          `  LinkedIn: https://www.linkedin.com/in/${portfolioData.linkedin}`,
+          `  LeetCode: https://leetcode.com/u/Anand_42004/`
+        ];
+        break;
+      case 'anand --leetcode':
+        output = [
+          "LEETCODE ANALYTICS (@Anand_42004):",
+          "====================================",
+          "  Profile:     https://leetcode.com/u/Anand_42004/",
+          "  Total Solved: 123 Problems (97.3% Acceptance)",
+          "  Easy:        43",
+          "  Medium:      58",
+          "  Hard:        22",
+          "  Global Rank: #1,439,418"
         ];
         break;
       default:

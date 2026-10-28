@@ -5,7 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const GITHUB_USERNAME = 'anandjadhav42004';
-const LEETCODE_USERNAME = 'anandjadhav42004';
+const LEETCODE_USERNAME = 'Anand_42004';
 
 interface GitHubData {
   public_repos: number;
@@ -68,16 +68,16 @@ const LiveStats = () => {
       }
 
       try {
-        const res = await fetch(`https://leetcode-stats-api.herokuapp.com/${LEETCODE_USERNAME}`);
+        const res = await fetch(`https://leetcode-api-faisalshohag.vercel.app/${LEETCODE_USERNAME}`);
         if (res.ok) {
           const data = await res.json();
-          if (data.status === 'success') {
+          if (data && typeof data.totalSolved === 'number') {
             setLeetcode({
               totalSolved: data.totalSolved,
-              easySolved: data.easySolved,
-              mediumSolved: data.mediumSolved,
-              hardSolved: data.hardSolved,
-              ranking: data.ranking || 'Top 15%',
+              easySolved: data.easySolved ?? 43,
+              mediumSolved: data.mediumSolved ?? 58,
+              hardSolved: data.hardSolved ?? 22,
+              ranking: data.ranking ? `#${data.ranking.toLocaleString()}` : '#1,439,418',
               isFallback: false,
             });
           } else {
@@ -88,11 +88,11 @@ const LiveStats = () => {
         }
       } catch {
         setLeetcode({
-          totalSolved: 150,
-          easySolved: 80,
-          mediumSolved: 55,
-          hardSolved: 15,
-          ranking: 'Top 15%',
+          totalSolved: 123,
+          easySolved: 43,
+          mediumSolved: 58,
+          hardSolved: 22,
+          ranking: '#1,439,418',
           isFallback: true,
         });
       } finally {
@@ -179,11 +179,19 @@ const LiveStats = () => {
           </div>
 
           {/* LeetCode Card */}
-          <div className="glass-card p-8 rounded-2xl bg-white/90 dark:bg-card-bg border border-slate-200 dark:border-white/10 flex flex-col justify-between">
+          <div className="glass-card p-8 rounded-2xl bg-white/90 dark:bg-card-bg border border-slate-200 dark:border-white/10 flex flex-col justify-between group">
             <div className="flex justify-between items-center mb-6">
               <div>
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white">LeetCode</h3>
-                <p className="text-xs font-mono text-amber-600 dark:text-amber-300 mt-1">@{LEETCODE_USERNAME}</p>
+                <a 
+                  href={`https://leetcode.com/u/${LEETCODE_USERNAME}/`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs font-mono text-amber-600 dark:text-amber-300 mt-1 hover:underline inline-flex items-center gap-1"
+                >
+                  <span>@{LEETCODE_USERNAME}</span>
+                  <span className="text-[10px]">↗</span>
+                </a>
               </div>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[11px] font-mono font-medium">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
@@ -194,18 +202,22 @@ const LiveStats = () => {
             {leetcodeLoading ? (
               <div className="py-8 text-center text-xs font-mono text-slate-500 dark:text-slate-400">Loading LeetCode stats...</div>
             ) : (
-              <div className="grid grid-cols-3 gap-4 pt-4 border-t border-slate-200 dark:border-white/5">
+              <div className="grid grid-cols-4 gap-2 pt-4 border-t border-slate-200 dark:border-white/5">
                 <div>
-                  <p className="text-xs font-mono text-slate-600 dark:text-slate-400 mb-1">Total Solved</p>
-                  <p className="text-3xl font-display font-bold text-slate-900 dark:text-white">{leetcode?.totalSolved ?? 150}</p>
+                  <p className="text-[11px] font-mono text-slate-600 dark:text-slate-400 mb-1">Total</p>
+                  <p className="text-2xl sm:text-3xl font-display font-bold text-slate-900 dark:text-white">{leetcode?.totalSolved ?? 123}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-mono text-slate-400 mb-1">Easy</p>
-                  <p className="text-3xl font-display font-bold text-emerald-400">{leetcode?.easySolved ?? 80}</p>
+                  <p className="text-[11px] font-mono text-slate-400 mb-1">Easy</p>
+                  <p className="text-2xl sm:text-3xl font-display font-bold text-emerald-400">{leetcode?.easySolved ?? 43}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-mono text-slate-400 mb-1">Medium</p>
-                  <p className="text-3xl font-display font-bold text-amber-400">{leetcode?.mediumSolved ?? 55}</p>
+                  <p className="text-[11px] font-mono text-slate-400 mb-1">Med</p>
+                  <p className="text-2xl sm:text-3xl font-display font-bold text-amber-400">{leetcode?.mediumSolved ?? 58}</p>
+                </div>
+                <div>
+                  <p className="text-[11px] font-mono text-slate-400 mb-1">Hard</p>
+                  <p className="text-2xl sm:text-3xl font-display font-bold text-rose-400">{leetcode?.hardSolved ?? 22}</p>
                 </div>
               </div>
             )}

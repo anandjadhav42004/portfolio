@@ -12,7 +12,8 @@ const navLinks = [
 ];
 
 const featuredProjects = [
-  { name: 'Elvora Media Platform', url: 'https://elvora-media.netlify.app' },
+  { name: 'Anti-Gravity AI Verification', url: '#projects' },
+  { name: 'Elvora Media Platform', url: 'https://www.elvoramedia.org' },
   { name: 'KS Beauty Web App', url: 'https://ks-beauty-website.vercel.app' },
   { name: 'Event Management (Utsav26)', url: 'https://utsav26.netlify.app' },
   { name: 'FunFlix Streaming', url: 'https://funflix03.netlify.app' },

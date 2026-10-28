@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { Star, MapPin, ShieldCheck, Terminal, ArrowUpRight, Sparkles, Award, Globe } from 'lucide-react';
 import TravelHeroDock from './TravelHeroDock';
+import Interactive3DModel from './Interactive3DModel';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -128,31 +129,9 @@ export default function HeroRevamp() {
 
             </div>
 
-            {/* Right Column: Code Window */}
-            <div className="lg:col-span-5 relative flex items-center justify-center">
-              <div className="w-full aspect-[4/3] rounded-2xl bg-void border border-emerald-500/30 p-6 flex flex-col justify-between shadow-2xl relative overflow-hidden group-hover:border-cyan/50 transition-colors text-white">
-                
-                {/* Decorative Graphic Code */}
-                <div className="space-y-2 font-mono text-xs text-emerald-300">
-                  <div className="text-purple-400">class EnterpriseArchitect &#123;</div>
-                  <div className="pl-4 text-slate-300">var focus: String = "Scalable Cloud & AI"</div>
-                  <div className="pl-4 text-cyan">func renderSystem() -&gt; Status &#123;</div>
-                  <div className="pl-8 text-emerald-400">return .productionReady</div>
-                  <div className="pl-4 text-cyan">&#125;</div>
-                  <div className="text-purple-400">&#125;</div>
-                </div>
-
-                <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                  <span className="text-xs text-slate-400 font-mono">Status: Online</span>
-                  <a
-                    href="#contact"
-                    className="inline-flex items-center gap-1.5 text-xs text-cyan hover:text-white font-semibold group/link"
-                  >
-                    <span>Explore Work</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
-                  </a>
-                </div>
-              </div>
+            {/* Right Column: Interactive 3D Cyber Model */}
+            <div className="lg:col-span-5 relative w-full flex items-center justify-center">
+              <Interactive3DModel />
             </div>
           </div>
 

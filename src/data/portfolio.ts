@@ -9,6 +9,8 @@ export const portfolioData = {
   github: 'anandjadhav42004',
   linkedin: 'anand-jadhav-b599801b5',
   twitter: 'anandjadhav',
+  leetcode: 'Anand_42004',
+  leetcodeUrl: 'https://leetcode.com/u/Anand_42004/',
 };
 
 export const skills = {
@@ -55,26 +57,26 @@ export const skills = {
 export const projects = [
   {
     id: 10,
-    title: 'R2_PROTO — ROS 2 Mobile Robot Simulation & Navigation',
-    description: 'Autonomous Mobile Robot (AMR) simulation pipeline built with ROS 2 Jazzy, Gazebo Sim, and URDF kinematics. Features custom arena world spawning, rigid link/joint coordinate frame calibration, and an end-to-end architecture preparing for 2D LiDAR SLAM and Nav2 autonomous path planning.',
-    image: '/r2_proto_sim.jpg',
-    tags: ['ROS 2 Jazzy', 'Gazebo Sim', 'URDF', 'RViz2', 'Ubuntu Linux', 'Nav2 (Planned)', 'LiDAR (Planned)'],
+    title: 'Anti-Gravity — AI Authenticity Verification System',
+    description: 'Enterprise AI authenticity and digital provenance platform engineered for multimodal deepfake detection, forensic spectral anomaly analysis, and cryptographic authenticity verification. Analyzes facial landmark tensor meshes and GAN artifacts to certify media integrity with 99.4% precision.',
+    image: '/antigravity_verification.jpg',
+    tags: ['Deepfake Detection', 'PyTorch', 'TensorFlow', 'Spectral Analysis', 'Cryptographic Proof', 'React', 'FastAPI'],
     github: 'https://github.com/anandjadhav42004',
-    live: '#r2-proto-case-study',
-    category: 'Robotics & Simulation',
-    status: 'In Progress',
-    isRoboticsCaseStudy: true
+    live: 'https://www.elvoramedia.org',
+    category: 'AI / Machine Learning',
+    status: 'Live Platform',
+    isFeaturedCaseStudy: true
   },
   {
     id: 1,
     title: 'Elvora Media Platform',
     description: 'High-performance digital production agency web platform engineered for dynamic content delivery, smooth responsive layouts, and modern cinematic visual storytelling.',
     image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&h=450&fit=crop',
-    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Netlify'],
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Production Agency'],
     github: 'https://github.com/anandjadhav42004/Elvora-Media-Premium-Digital-Media-Production-Agency',
-    live: 'https://elvora-media.netlify.app',
+    live: 'https://www.elvoramedia.org',
     category: 'Full Stack Web',
-    status: 'In Progress'
+    status: 'Live Platform'
   },
   {
     id: 2,
