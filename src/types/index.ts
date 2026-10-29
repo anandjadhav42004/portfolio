@@ -14,7 +14,7 @@ export interface Project {
   live: string
   category?: string
   status?: string
-  isRoboticsCaseStudy?: boolean
+  isFeaturedCaseStudy?: boolean
 }
 
 export interface Certification {
