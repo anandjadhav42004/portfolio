@@ -6,17 +6,59 @@ import MidRow from './components/MidRow';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
+function IntroCurtain() {
+  const [percent, setPercent] = useState(0);
+  const [isDone, setIsDone] = useState(false);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setPercent((prev) => {
+        if (prev >= 100) {
+          clearInterval(timer);
+          setTimeout(() => setIsDone(true), 300);
+          return 100;
+        }
+        return prev + Math.floor(Math.random() * 8) + 4;
+      });
+    }, 32);
+    return () => clearInterval(timer);
+  }, []);
+
+  if (isDone) return null;
+
+  return (
+    <div
+      className={`fixed inset-0 z-50 bg-[#070707] flex flex-col items-center justify-center gap-6 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        percent >= 100 ? '-translate-y-full opacity-0 pointer-events-none' : 'opacity-100'
+      }`}
+    >
+      <div className="font-anton text-5xl sm:text-7xl uppercase text-white tracking-wider overflow-hidden">
+        <span className="inline-block animate-slideUp">Anand Jadhav</span>
+      </div>
+      <div className="w-56 sm:w-80 h-0.5 bg-[#222] relative overflow-hidden rounded-full">
+        <div
+          className="absolute inset-0 bg-[#d3121f] transition-all duration-150 ease-out"
+          style={{ width: `${percent}%` }}
+        />
+      </div>
+      <div className="font-mono text-xs text-[#6b6b6b] tracking-[0.3em]">
+        {percent}%
+      </div>
+    </div>
+  );
+}
+
 function MarqueeTicker() {
   const tickerItems = [
     'ANAND JADHAV',
     'COMPUTER SCIENCE ENGINEER',
     'HILTI MANUFACTURING INTERN (SAP S/4HANA CLOUD)',
     'EX-UPTOSKILLS BACKEND INTERN',
-    'PARUL UNIVERSITY (B.TECH CSE)',
-    'SAP CERTIFIED ABAP CLOUD',
+    'PARUL UNIVERSITY (B.TECH CSE 2023–2027)',
     'FASTAPI & PYTHON AI',
     'FULL-STACK REACT & NODE.JS',
-    'AVAILABLE FOR IMPACTFUL ROLES',
+    'SAP BTP & ABAP CLOUD',
+    'AVAILABLE FOR FULL-STACK & SAP ROLES',
   ];
 
   return (
@@ -46,6 +88,9 @@ function App() {
 
   return (
     <div className="relative min-h-screen w-full bg-[#0a0a0a] text-white selection:bg-[#d3121f] selection:text-white font-sans overflow-x-hidden">
+      {/* ── Cinematic Preloader Curtain ── */}
+      <IntroCurtain />
+
       {/* ── Ambient Radial Cursor Glow (Smooth Tactical Lighting) ── */}
       <div
         className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 hidden md:block"

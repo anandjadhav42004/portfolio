@@ -1,2089 +1,692 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Anand Jadhav — Full-Stack Software Engineer &amp; SAP Developer</title>
-  <meta name="description" content="Resume &amp; Portfolio of Anand Jadhav — Computer Science Engineer, Full-Stack Developer &amp; SAP Certified Associate." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Anand Jadhav — Computer Science Engineer &amp; Full-Stack Developer</title>
+<meta name="description" content="Portfolio of Anand Jadhav — Full-Stack Developer, SAP S/4HANA Cloud Intern at Hilti, and B.Tech CSE student at Parul University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Allura&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== DESIGN TOKENS & RESET ===== */
+:root{
+  --bg:#0a0a0a; --line:#1f1f1f; --red:#d3121f; --red-d:#8b0a12; --red-x:#2a0508;
+  --text:#fff; --body:#a0a0a0; --faint:#6b6b6b;
+  --display:'Anton','Bebas Neue','Arial Narrow',Impact,sans-serif; --script:'Allura',cursive; --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
+body{background:var(--bg);color:var(--text);font:400 14px/1.6 var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:inherit;text-decoration:none}
+button{background:none;border:none;color:inherit;font:inherit;cursor:pointer}
+svg.i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.wrap{max-width:1380px;margin:0 auto}
+.sm{font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.red{color:var(--red)}
+.circ{width:44px;height:44px;border-radius:50%;border:1px solid #3a3a3a;display:grid;place-items:center;font-size:18px;color:var(--body);transition:.25s;flex:none}
+.circ.r{border-color:rgba(211,18,31,.5);color:var(--red)}
+a:hover>.circ,.circ:hover{border-color:var(--red);color:var(--red);box-shadow:0 0 16px rgba(211,18,31,.5)}
+h2.t{font:400 clamp(24px,2.6vw,34px)/1 var(--display);letter-spacing:.04em;text-transform:uppercase}
 
-  <!-- ═══════════════════════════════════════════════════════════
-       GOOGLE FONTS: Anton (Display/Numbers), Allura (Script), Inter (Body)
-  ═══════════════════════════════════════════════════════════ -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Anton&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+/* ===== INTRO CURTAIN PRELOADER ===== */
+#intro{position:fixed;inset:0;z-index:100;background:#070707;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;transition:clip-path 1.1s var(--ease) .1s;clip-path:inset(0 0 0 0)}
+#intro.out{clip-path:inset(0 0 100% 0);pointer-events:none}
+#intro .nm{font:400 clamp(38px,8vw,88px)/1 var(--display);letter-spacing:.06em;text-transform:uppercase;overflow:hidden;color:#fff}
+#intro .nm span{display:inline-block;animation:nmin 1s var(--ease) both}
+@keyframes nmin{from{transform:translateY(110%)}to{transform:none}}
+#intro .bar{width:min(320px,65vw);height:2px;background:#222;position:relative;overflow:hidden;border-radius:2px}
+#intro .bar i{position:absolute;inset:0;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .2s linear}
+#intro .pc{font:500 13px var(--sans);letter-spacing:.3em;color:var(--faint);font-family:monospace}
+body:not(.go){overflow:hidden}
+body:not(.go) .hero *,body:not(.go) .hero{animation-play-state:paused}
 
-  <style>
-    /* ═══════════════════════════════════════════════════════════
-       DESIGN TOKENS (CSS Variables on :root)
-    ═══════════════════════════════════════════════════════════ */
-    :root {
-      --bg:     #0a0a0a;
-      --line:   #1f1f1f;
-      --red:    #d3121f;
-      --red-d:  #8b0a12;
-      --red-x:  #2a0508;
-      --text:   #ffffff;
-      --body:   #a0a0a0;
-      --faint:  #6b6b6b;
+/* ===== TOP BAR ===== */
+.top{display:flex;justify-content:space-between;align-items:center;padding:18px 48px;border-bottom:1px solid var(--line);background:rgba(10,10,10,0.8);backdrop-blur:8px;position:relative;z-index:10}
+.top b{display:block;color:var(--red);font-weight:600;letter-spacing:.18em}
+.top span{color:var(--faint);font-size:10.5px;letter-spacing:.14em}
+.top .av{display:flex;gap:10px;align-items:center;color:var(--body);font-size:11px;font-weight:600}
+.top .av svg{color:var(--red);animation:pulse 2.2s infinite}
 
-      --font-display: 'Anton', Impact, sans-serif;
-      --font-script:  'Allura', cursive;
-      --font-body:    'Inter', system-ui, -apple-system, sans-serif;
-    }
+/* ===== HERO (SMOOTH MOTION v2) ===== */
+.hero{position:relative;height:min(92vw,840px);min-height:640px;overflow:hidden;border-bottom:1px solid var(--line);display:flex;flex-direction:column;justify-content:flex-end}
+.big{position:absolute;top:2%;left:0;right:0;text-align:center;font:400 25.5vw/0.82 var(--display);letter-spacing:-.01em;white-space:nowrap;
+  background:linear-gradient(180deg,#d3121f 0%,#a30e17 45%,#2a0508 90%,#0a0a0a 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;z-index:1;user-select:none;pointer-events:none;
+  translate:var(--bx,0) var(--by,0);will-change:translate}
+@media(min-width:1440px){.big{font-size:360px}}
+.big b{display:inline-block;font-weight:400;background:inherit;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:rise 1.5s var(--ease) var(--d) both}
+@keyframes rise{from{opacity:0;transform:translateY(75%) rotate(4deg);filter:blur(14px)}to{opacity:1;transform:none;filter:blur(0)}}
 
-    /* ─── BASE RESET ────────────────────────────────────────── */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    html {
-      scroll-behavior: smooth;
-      background-color: var(--bg);
-    }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      font-size: 15px;
-      line-height: 1.6;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    img {
-      display: block;
-      max-width: 100%;
-    }
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-    button {
-      background: none;
-      border: none;
-      font: inherit;
-      color: inherit;
-      cursor: pointer;
-    }
+/* Hero Background Breathing Glow */
+.hero:before{content:"";position:absolute;left:50%;bottom:-10%;width:62vw;height:82%;transform:translateX(-48%);background:radial-gradient(closest-side,rgba(211,18,31,.45),rgba(139,10,18,.2) 55%,transparent);z-index:1;pointer-events:none;animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:.7;transform:translateX(-48%) scale(1)}50%{opacity:1;transform:translateX(-48%) scale(1.08)}}
+.hero:after{content:"";position:absolute;inset:auto 0 0 0;height:24%;background:linear-gradient(transparent,var(--bg));z-index:2;pointer-events:none}
 
-    /* ─── ACCESSIBILITY / FOCUS ─────────────────────────────── */
-    :focus-visible {
-      outline: 2px solid var(--red);
-      outline-offset: 3px;
-    }
+/* Anand's Portrait Cutout */
+.photo{position:absolute;z-index:2;left:50%;bottom:0;height:86%;transform-origin:50% 100%;pointer-events:none;
+  -webkit-mask-image:linear-gradient(to top,transparent 0%,#000 20%,#000 80%,transparent 100%);mask-image:linear-gradient(to top,transparent 0%,#000 20%,#000 80%,transparent 100%);
+  animation:photoin 1.8s var(--ease) .45s both;translate:var(--tx,0) var(--ty,0);scale:var(--ps,1);will-change:translate,scale;
+  filter:drop-shadow(0 15px 35px rgba(211,18,31,0.35))}
+@keyframes photoin{from{opacity:0;transform:translateX(-12%) translateY(7%) scale(1.12);filter:blur(10px)}to{opacity:1;transform:translateX(-12%);filter:blur(0)}}
 
-    /* ─── ICON SPRITE HELPER ────────────────────────────────── */
-    .icon {
-      width: 18px;
-      height: 18px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 1.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      display: inline-block;
-      vertical-align: middle;
-      flex-shrink: 0;
-    }
+/* Hero Foreground UI (z-index 3) */
+.hero-grid{position:relative;z-index:3;display:grid;grid-template-columns:1.2fr 0.8fr 1fr;align-items:end;padding:0 48px 48px;width:100%;max-width:1440px;margin:0 auto}
+.left{max-width:400px}
+.left .hi{font:400 48px/1 var(--script);color:#fff;animation:up 1.2s var(--ease) .75s both}
+.left h1{font:400 clamp(58px,7.8vw,104px)/.88 var(--display);text-transform:uppercase;margin:4px 0 16px;color:#fff}
+.left h1 span{display:inline-block;animation:nameIn 1.3s var(--ease) .9s both}
+.left h1 span+br+span{animation-delay:1.05s}
+@keyframes nameIn{from{opacity:0;transform:translateY(55%);clip-path:inset(0 0 100% 0)}to{opacity:1;transform:none;clip-path:inset(-5% -5% -5% -5%)}}
+.left .role{color:var(--red);font-weight:700;line-height:1.4;margin-bottom:12px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;animation:up 1.2s var(--ease) 1.2s both}
+.left p{color:var(--body);max-width:320px;margin-bottom:20px;font-size:13.5px;line-height:1.6;animation:up 1.2s var(--ease) 1.3s both}
+.left .ww{display:flex;gap:10px;align-items:center;color:var(--body);font-size:11px;font-weight:600;letter-spacing:.14em;animation:up 1.2s var(--ease) 1.4s both}
+.left .ww svg{color:var(--red);font-size:16px}
 
-    /* ─── SHARED BUTTONS & BADGES ───────────────────────────── */
-    .icon-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 1px solid var(--line);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--body);
-      transition: border-color 0.25s, color 0.25s, box-shadow 0.25s, transform 0.2s;
-      flex-shrink: 0;
-      background: transparent;
-    }
-    .icon-btn:hover {
-      border-color: var(--red);
-      color: var(--red);
-      box-shadow: 0 0 14px rgba(211, 18, 31, 0.45);
-      transform: scale(1.05);
-    }
-    .icon-btn.large {
-      width: 58px;
-      height: 58px;
-    }
+.tag{display:flex;gap:14px;align-items:center;max-width:240px;color:var(--body);font-size:12.5px;line-height:1.4;padding-bottom:12px;animation:up 1.2s var(--ease) 1.5s both}
+.tag .circ{animation:pulse 2.4s infinite}
 
-    .sparkle-red {
-      color: var(--red);
-      font-style: normal;
-      font-size: 14px;
-      display: inline-block;
-      line-height: 1;
-      animation: sparkleRotate 8s linear infinite;
-    }
+.stats{display:flex;flex-direction:column;width:290px;margin-left:auto}
+.stat{display:flex;gap:20px;align-items:center;padding:16px 0;border-top:1px solid var(--line);animation:up 1.2s var(--ease) both}
+.stat:first-child{border-top:0}
+.stat:nth-child(1){animation-delay:1.5s}.stat:nth-child(2){animation-delay:1.65s}.stat:nth-child(3){animation-delay:1.8s}
+.stat .n{font:400 52px/1 var(--display);color:var(--red);min-width:105px;text-shadow:0 0 30px rgba(211,18,31,.45);white-space:nowrap}
+.stat .l{color:var(--faint);line-height:1.4;font-size:11px;letter-spacing:.16em;font-weight:600;text-transform:uppercase}
+@keyframes up{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(211,18,31,.5)}50%{box-shadow:0 0 0 12px rgba(211,18,31,0)}}
 
-    @keyframes sparkleRotate {
-      0%   { transform: rotate(0deg) scale(1); }
-      50%  { transform: rotate(180deg) scale(1.15); }
-      100% { transform: rotate(360deg) scale(1); }
-    }
+/* ===== RUNNING MARQUEE TICKER ===== */
+.mq{overflow:hidden;border-bottom:1px solid var(--line);border-top:1px solid var(--line);padding:14px 0;background:#0d0506;user-select:none}
+.mq div{display:flex;width:max-content;animation:mq 32s linear infinite;font:400 13px/1 monospace,var(--display);letter-spacing:.22em;color:#a0a0a0;text-transform:uppercase;white-space:pre}
+.mq:hover div{animation-play-state:paused}
+.mq span{padding:0 24px;transition:color .2s}
+.mq span:hover{color:#fff}
+.mq i{color:var(--red);font-style:normal;animation:sparkle 4s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+@keyframes sparkle{0%{transform:rotate(0deg) scale(1)}50%{transform:rotate(180deg) scale(1.2)}100%{transform:rotate(360deg) scale(1)}}
 
-    @keyframes floatPortrait {
-      0%, 100% { transform: translateY(0px); }
-      50%      { transform: translateY(-8px); }
-    }
+/* ===== SELECTED PROJECTS GRID ===== */
+.proj{padding:56px 48px 64px;border-bottom:1px solid var(--line)}
+.row{display:flex;align-items:center;gap:24px;margin-bottom:34px}
+.row i{flex:1;height:1px;background:var(--line);transform-origin:left;transform:scaleX(0);transition:transform 1.6s var(--ease) .3s}
+.row.on i{transform:scaleX(1)}
+.row a{color:var(--body);display:flex;gap:10px;align-items:center;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:.2s}
+.row a:hover{color:var(--red)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.card{display:flex;flex-direction:column}
+.card .shot{aspect-ratio:16/10;background:#121212;border:1px solid #282828;border-radius:4px;overflow:hidden;position:relative;transition:border-color .4s,transform .6s var(--ease),box-shadow .5s;transform-style:preserve-3d}
+.card .shot img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 1.1s var(--ease)}
+.card:hover .shot{border-color:var(--red);box-shadow:0 24px 60px -20px rgba(211,18,31,.5);transform:translateY(-6px)}
+.card:hover .shot img{transform:scale(1.08)}
+.card .shot:after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.14) 50%,transparent 60%);transform:translateX(-120%);transition:transform .8s}
+.card:hover .shot:after{transform:translateX(120%)}
+.card .tag-badge{position:absolute;top:10px;right:10px;padding:3px 8px;border-radius:3px;background:rgba(0,0,0,0.85);border:1px solid #333;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);font-weight:700;backdrop-blur:4px}
+.meta{display:flex;align-items:center;gap:16px;margin-top:16px}
+.meta .no{font:400 36px/1 var(--display);color:var(--red);font-weight:300}
+.meta h3{font:600 13px/1.3 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:#fff}
+.meta small{display:block;color:var(--faint);font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-top:3px}
+.meta .go{margin-left:auto;color:var(--body);font-size:24px;transition:color .3s,transform .6s var(--ease)}
+.card:hover .go{color:var(--red);transform:translateX(6px)}
 
-    @keyframes marqueeScroll {
-      0%   { transform: translateX(0%); }
-      100% { transform: translateX(-50%); }
-    }
+/* ===== SCROLL REVEAL (BLUR + RISE + UNBLUR) ===== */
+.rv{opacity:0;transform:translateY(46px);filter:blur(8px);transition:opacity 1.1s var(--ease),transform 1.2s var(--ease),filter 1.1s var(--ease)}
+.rv.on{opacity:1;transform:none;filter:blur(0)}
 
-    /* Ambient Spotlight Cursor */
-    .cursor-spotlight {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 650px;
-      height: 650px;
-      border-radius: 50%;
-      pointer-events: none;
-      background: radial-gradient(circle, rgba(211, 18, 31, 0.08) 0%, transparent 65%);
-      z-index: 9999;
-      transform: translate(-1000px, -1000px);
-      transition: transform 0.06s ease-out;
-    }
+/* ===== MIDDLE 3-COLUMN ROW ===== */
+.mid{display:grid;grid-template-columns:32% 1fr 28%;border-bottom:1px solid var(--line)}
+.col{padding:48px 44px;border-right:1px solid var(--line)}
+.col h2.t{margin-bottom:26px}
+.lab{color:var(--red);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px}
+.job{padding:14px 16px;background:rgba(211,18,31,0.04);border:1px solid #222;border-radius:4px;margin-bottom:14px;transition:border-color .3s}
+.job:hover{border-color:var(--red)}
+.job .badge{display:inline-block;padding:2px 7px;font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:rgba(211,18,31,0.18);color:var(--red);border-radius:3px;margin-bottom:6px}
+.job b{display:block;color:#fff;font-size:13.5px;font-weight:600}
+.job span{color:var(--body);font-size:12px;display:block;margin-top:2px}
+.job em{font-style:normal;color:var(--red);font-size:11px;letter-spacing:.1em;display:block;margin-top:4px}
+.edu{display:flex;justify-content:space-between;gap:12px;margin-bottom:14px}
+.edu b{font-weight:500;display:block;color:#fff;font-size:13px}
+.edu span{color:var(--faint);font-size:11.5px}
+.edu em{font-style:normal;color:var(--red);font-size:11.5px;white-space:nowrap}
+hr{border:0;border-top:1px solid var(--line);margin:24px 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{border:1px solid #2e2e2e;border-radius:4px;padding:7px 11px;font-size:10px;font-weight:600;letter-spacing:.12em;color:var(--body);text-transform:uppercase;transition:border-color .3s,color .3s,transform .4s var(--ease),background .3s}
+.chips span:hover{transform:translateY(-3px);border-color:var(--red);color:var(--red);background:rgba(211,18,31,.08)}
 
-    /* Editorial Running Marquee Strip */
-    .marquee-strip {
-      width: 100%;
-      background: #0d0506;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      overflow: hidden;
-      padding: 12px 0;
-      user-select: none;
-    }
-    .marquee-track {
-      display: flex;
-      gap: 32px;
-      width: max-content;
-      animation: marqueeScroll 32s linear infinite;
-      white-space: nowrap;
-    }
-    .marquee-track:hover {
-      animation-play-state: paused;
-    }
-    .marquee-track span {
-      font-size: 11px;
-      font-family: monospace, var(--font-body);
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--body);
-      transition: color 0.2s;
-    }
-    .marquee-track span:hover {
-      color: #fff;
-    }
+/* Process Timeline (Col 2) */
+.step{display:flex;gap:16px;align-items:flex-start;position:relative;padding-bottom:24px}
+.step:not(:last-child):after{content:"";position:absolute;left:51px;top:46px;bottom:2px;width:1px;background:#333;transform-origin:top;transform:scaleY(0);transition:transform .8s .3s}
+.step.on:not(:last-child):after{transform:scaleY(1)}
+.step .no{font:400 24px/44px var(--display);color:var(--red);width:26px;opacity:.9}
+.step .circ{background:var(--bg);z-index:1;transition:border-color .3s,box-shadow .3s,transform .5s var(--ease)}
+.step:hover .circ{transform:scale(1.12);border-color:var(--red);box-shadow:0 0 16px rgba(211,18,31,.5)}
+.step h4{font:600 12px/1 var(--sans);letter-spacing:.16em;color:var(--red);margin:4px 0 6px;text-transform:uppercase}
+.step p{color:var(--body);font-size:12.5px;line-height:1.55;max-width:260px}
 
-    /* ─── ANIMATION (FADE-UP ON LOAD) ───────────────────────── */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+/* Quote Panel (Col 3) */
+.quote{border-right:0;background:radial-gradient(120% 80% at 20% 0,#b50f1a,var(--red-d) 40%,var(--red-x));position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:48px 38px}
+.quote:before{content:"";position:absolute;inset:0;opacity:.28;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.quote>*{position:relative}
+.quote .q{font:400 96px/.8 var(--display);color:#ff5a63}
+.quote p{font-size:22px;line-height:1.35;margin:14px 0 24px;max-width:240px;color:#fff}
+.quote .sig{font:400 46px/1 var(--script);color:#fff}
+.quote .cta{display:flex;justify-content:space-between;align-items:end;color:#ffd5d8;max-width:220px;line-height:1.7;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
 
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-      .fade-up {
-        opacity: 1 !important;
-        transform: none !important;
-      }
-    }
+/* ===== CONTACT SECTION ===== */
+.contact{display:grid;grid-template-columns:1fr 1fr 1.15fr;border-bottom:1px solid var(--line);overflow:hidden}
+.contact>div{padding:48px 44px}
+.contact h2{font:400 clamp(36px,4.2vw,52px)/1.05 var(--display);text-transform:uppercase;margin-bottom:16px;color:#fff}
+.contact p{color:var(--body);max-width:320px;margin-bottom:28px;font-size:13.5px;line-height:1.6}
+.cta2{display:flex;align-items:center;gap:14px;color:var(--red);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.cta2 .circ{border-color:var(--red);color:var(--red)}
+.info a{display:flex;gap:16px;align-items:center;padding:15px 0;border-bottom:1px solid rgba(211,18,31,.35);color:var(--body);transition:color .2s}
+.info a:hover{color:#fff}
+.info a:first-child{padding-top:0}
+.info .txt b{display:block;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+.info .txt span{font-size:13px;font-weight:500;color:#fff}
 
-    /* ═══════════════════════════════════════════════════════════
-       1. TOP BAR
-    ═══════════════════════════════════════════════════════════ */
-    #topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 56px;
-      border-bottom: 1px solid var(--line);
-      position: relative;
-      z-index: 20;
-      background: var(--bg);
-    }
-    .topbar-brand .role {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--red);
-    }
-    .topbar-brand .sub {
-      font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--faint);
-      margin-top: 2px;
-    }
-    .topbar-avail {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--body);
-    }
-    .avail-pulse {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--red);
-      box-shadow: 0 0 0 0 rgba(211, 18, 31, 0.7);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(211, 18, 31, 0.7); }
-      50%      { box-shadow: 0 0 0 7px rgba(211, 18, 31, 0); }
-    }
+/* Laptop Mockup & Coffee Mug */
+.laptop{position:relative;min-height:260px;display:flex;align-items:flex-end;justify-content:flex-end}
+.lap{position:absolute;right:-50px;bottom:-20px;width:440px;transform:perspective(900px) rotateY(-14deg);transform-origin:right;transition:transform .5s ease}
+.lap:hover{transform:perspective(900px) rotateY(-8deg) translateY(-5px)}
+.lap .scr{aspect-ratio:16/10;background:#050505;border:5px solid #1a1a1a;border-radius:8px 8px 0 0;padding:16px;font:400 24px/1.1 var(--display);position:relative;overflow:hidden;color:#fff}
+.lap .scr:after{content:"";position:absolute;right:0;top:0;width:45%;height:100%;background:linear-gradient(120deg,transparent 20%,var(--red) 21%,var(--red-d) 60%,transparent 61%);opacity:.85}
+.lap .base{height:12px;background:linear-gradient(#2a2a2a,#111);border-radius:0 0 12px 12px;margin:0 -16px}
+.mug{position:absolute;left:4%;bottom:6px;width:72px;height:64px;background:#141414;border:1px solid #2a2a2a;border-radius:4px 4px 10px 10px;display:grid;place-items:center;font:400 24px var(--display);color:#666}
 
-    /* ═══════════════════════════════════════════════════════════
-       2. HERO
-    ═══════════════════════════════════════════════════════════ */
-    #hero {
-      position: relative;
-      height: min(92vw, 840px);
-      min-height: 700px;
-      overflow: hidden;
-      border-bottom: 1px solid var(--line);
-      padding: 0 56px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
+/* Footer */
+.foot{padding:18px 48px;display:flex;justify-content:space-between;color:var(--faint);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.foot span{color:#fff}
 
-    /* Giant "PORTFOLIO" word centered at top */
-    .hero-bg-word {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: var(--font-display);
-      font-size: clamp(140px, 25vw, 360px);
-      line-height: 0.82;
-      letter-spacing: -0.02em;
-      white-space: nowrap;
-      text-align: center;
-      width: 100%;
-      user-select: none;
-      pointer-events: none;
-      z-index: 1;
-      background: linear-gradient(180deg, var(--red) 0%, #a30e17 40%, var(--red-x) 85%, transparent 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+/* Radial Cursor Glow */
+#glow{position:fixed;width:440px;height:440px;border-radius:50%;pointer-events:none;z-index:0;left:0;top:0;background:radial-gradient(circle,rgba(211,18,31,.14),transparent 65%);transform:translate(-50%,-50%);transition:none}
 
-    /* Real photo of Anand Jadhav overlapping in front of text */
-    .hero-photo-wrap {
-      position: absolute;
-      bottom: 0;
-      left: 52%;
-      transform: translateX(-34%);
-      height: 88%;
-      max-height: 740px;
-      z-index: 2;
-      pointer-events: none;
-      display: flex;
-      align-items: flex-end;
-      -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%, black 100%);
-      mask-image: linear-gradient(to top, transparent 0%, black 15%, black 100%);
-    }
-    .hero-photo-img {
-      height: 100%;
-      width: auto;
-      object-fit: cover;
-      object-position: top center;
-      border-radius: 20px 20px 0 0;
-      filter: drop-shadow(0 20px 45px rgba(0,0,0,0.95)) contrast(1.05);
-      border-top: 1px solid rgba(255,255,255,0.08);
-      border-left: 1px solid rgba(255,255,255,0.08);
-      border-right: 1px solid rgba(255,255,255,0.08);
-      animation: floatPortrait 6s ease-in-out infinite;
-    }
-
-    /* Hero UI Elements (z-index 3) */
-    .hero-content {
-      position: relative;
-      z-index: 3;
-      width: 100%;
-      display: grid;
-      grid-template-columns: 1.15fr 0.95fr 1fr;
-      align-items: flex-end;
-      padding-bottom: 48px;
-    }
-
-    /* Bottom-left block */
-    .hero-left {
-      max-width: 400px;
-    }
-    .hero-script {
-      font-family: var(--font-script);
-      font-size: 46px;
-      color: var(--text);
-      line-height: 1;
-      margin-bottom: 2px;
-    }
-    .hero-name {
-      font-family: var(--font-display);
-      font-size: clamp(64px, 7.5vw, 108px);
-      line-height: 0.9;
-      color: var(--text);
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-      margin-bottom: 12px;
-    }
-    .hero-subtitle {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 18px;
-    }
-    .hero-bio {
-      font-size: 13.5px;
-      color: var(--body);
-      line-height: 1.75;
-      max-width: 330px;
-      margin-bottom: 24px;
-    }
-    .hero-worldwide {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 10.5px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--body);
-    }
-    .hero-worldwide .icon {
-      color: var(--red);
-      width: 16px;
-      height: 16px;
-    }
-
-    /* Middle-right tagline */
-    .hero-mid {
-      display: flex;
-      justify-content: center;
-      padding-bottom: 28px;
-    }
-    .hero-tagline-box {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      max-width: 245px;
-      background: rgba(10, 10, 10, 0.6);
-      backdrop-filter: blur(8px);
-      padding: 10px 16px;
-      border-radius: 40px;
-      border: 1px solid rgba(255, 255, 255, 0.07);
-    }
-    .hero-tagline-box .icon-btn {
-      width: 38px;
-      height: 38px;
-      border-color: rgba(211, 18, 31, 0.45);
-      color: var(--red);
-    }
-    .hero-tagline-text {
-      font-size: 12.5px;
-      color: var(--body);
-      line-height: 1.45;
-    }
-
-    /* Bottom-right stats rows */
-    .hero-stats {
-      display: flex;
-      flex-direction: column;
-      align-self: flex-end;
-      margin-left: auto;
-      width: 100%;
-      max-width: 290px;
-    }
-    .stat-row {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      padding: 18px 0;
-      border-bottom: 1px solid var(--line);
-    }
-    .stat-row:first-child {
-      border-top: 1px solid var(--line);
-    }
-    .stat-num {
-      font-family: var(--font-display);
-      font-size: clamp(48px, 4.8vw, 68px);
-      color: var(--red);
-      line-height: 1;
-      min-width: 85px;
-      letter-spacing: 0.01em;
-    }
-    .stat-label {
-      font-size: 10.5px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--faint);
-      line-height: 1.45;
-    }
-
-    /* ═══════════════════════════════════════════════════════════
-       3. SELECTED PROJECTS
-    ═══════════════════════════════════════════════════════════ */
-    #projects {
-      padding: 96px 56px;
-      border-bottom: 1px solid var(--line);
-    }
-    .projects-header {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      margin-bottom: 48px;
-    }
-    .projects-title {
-      font-family: var(--font-display);
-      font-size: clamp(28px, 3.2vw, 44px);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      white-space: nowrap;
-    }
-    .projects-divider {
-      flex: 1;
-      height: 1px;
-      background: var(--line);
-    }
-    .projects-view-all {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--faint);
-      white-space: nowrap;
-      transition: color 0.2s, transform 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .projects-view-all:hover {
-      color: var(--red);
-      transform: translateX(4px);
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-    }
-    .project-card {
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      display: flex;
-      flex-direction: column;
-    }
-    .project-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .project-thumb {
-      aspect-ratio: 16 / 9.4;
-      border: 1px solid #282828;
-      border-radius: 4px;
-      overflow: hidden;
-      margin-bottom: 18px;
-      background: #111111;
-      transition: border-color 0.3s, box-shadow 0.3s;
-      position: relative;
-    }
-    .project-card:hover .project-thumb {
-      border-color: var(--red);
-      box-shadow: 0 10px 28px rgba(211, 18, 31, 0.25);
-    }
-    .project-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    .project-card:hover .project-thumb img {
-      transform: scale(1.05);
-    }
-
-    /* Meta row: red number LEFT, title & category MIDDLE, arrow RIGHT */
-    .project-meta {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 2px 0;
-    }
-    .project-num {
-      font-family: var(--font-display);
-      font-size: 32px;
-      color: var(--red);
-      line-height: 1;
-      flex-shrink: 0;
-    }
-    .project-info {
-      flex: 1;
-      min-width: 0;
-    }
-    .project-name {
-      font-size: 13.5px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text);
-      line-height: 1.25;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .project-cat {
-      font-size: 11px;
-      color: var(--faint);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-top: 3px;
-    }
-    .project-arrow {
-      color: var(--faint);
-      transition: color 0.25s, transform 0.25s;
-      flex-shrink: 0;
-    }
-    .project-card:hover .project-arrow {
-      color: var(--red);
-      transform: translateX(6px);
-    }
-
-    /* ═══════════════════════════════════════════════════════════
-       INTERNSHIPS SECTION
-    ═══════════════════════════════════════════════════════════ */
-    #internships {
-      border-bottom: 1px solid var(--line);
-      background: #0a0a0a;
-    }
-    .internship-topbar {
-      border-bottom: 1px solid var(--line);
-      background: #0d0d0d;
-      padding: 18px 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .internship-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-    .internship-card {
-      padding: 48px;
-      border-right: 1px solid var(--line);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .internship-card:last-child {
-      border-right: none;
-    }
-    .internship-badge-current {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: 4px;
-      background: rgba(211, 18, 31, 0.15);
-      border: 1px solid var(--red);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      color: #ff3848;
-      text-transform: uppercase;
-    }
-    .internship-badge-completed {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: 4px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid #333;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      color: var(--body);
-      text-transform: uppercase;
-    }
-    .internship-comp {
-      font-family: var(--font-display);
-      font-size: 26px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: #fff;
-      margin-top: 14px;
-      margin-bottom: 4px;
-    }
-    .internship-role {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      color: var(--red);
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-    .internship-bullets {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-    .internship-bullets li {
-      font-size: 13px;
-      color: #c4c4c4;
-      line-height: 1.55;
-      display: flex;
-      gap: 8px;
-    }
-    .internship-bullets li span.bullet-star {
-      color: var(--red);
-      flex-shrink: 0;
-    }
-
-    /* ═══════════════════════════════════════════════════════════
-       4. THREE-COLUMN ROW (32% / FLEXIBLE / 30%)
-    ═══════════════════════════════════════════════════════════ */
-    #mid-row {
-      display: grid;
-      grid-template-columns: 32% 1fr 30%;
-      border-bottom: 1px solid var(--line);
-    }
-    .mid-col {
-      padding: 72px 48px;
-      border-right: 1px solid var(--line);
-    }
-    .mid-col:last-child {
-      border-right: none;
-    }
-
-    /* ── A) EDUCATION & SKILLS ── */
-    .section-label-red {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 16px;
-    }
-    .edu-item {
-      margin-bottom: 18px;
-      padding-bottom: 18px;
-      border-bottom: 1px solid var(--line);
-    }
-    .edu-item:last-of-type {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-    .edu-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 12px;
-    }
-    .edu-degree {
-      font-size: 13.5px;
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1.35;
-    }
-    .edu-inst {
-      font-size: 12px;
-      color: var(--faint);
-      margin-top: 3px;
-    }
-    .edu-year {
-      font-family: var(--font-display);
-      font-size: 15px;
-      color: var(--red);
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .skills-divider {
-      height: 1px;
-      background: var(--line);
-      margin: 28px 0 24px;
-    }
-    .skills-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-top: 12px;
-    }
-    .chip {
-      font-size: 9.5px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--body);
-      border: 1px solid #2d2d2d;
-      border-radius: 4px;
-      padding: 5px 10px;
-      transition: border-color 0.2s, color 0.2s, background-color 0.2s;
-      cursor: default;
-    }
-    .chip:hover {
-      border-color: var(--red);
-      color: var(--red);
-      background: rgba(211, 18, 31, 0.05);
-    }
-
-    /* ── B) WORK PROCESS ── */
-    .process-title {
-      font-family: var(--font-display);
-      font-size: 26px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 32px;
-    }
-    .process-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    .process-step {
-      display: flex;
-      align-items: flex-start;
-      gap: 18px;
-      padding-bottom: 30px;
-      position: relative;
-    }
-    .step-left-combo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-shrink: 0;
-      position: relative;
-    }
-    .step-num {
-      font-family: var(--font-display);
-      font-size: 18px;
-      letter-spacing: 0.05em;
-      color: var(--red);
-      width: 22px;
-      text-align: right;
-    }
-    .step-icon-wrap {
-      position: relative;
-    }
-    /* Vertical connecting line */
-    .process-step:not(:last-child) .step-icon-wrap::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 44px;
-      bottom: -30px;
-      width: 1px;
-      background: var(--line);
-      transform: translateX(-50%);
-    }
-    .step-body {
-      padding-top: 5px;
-    }
-    .step-title {
-      font-family: var(--font-display);
-      font-size: 18px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 3px;
-    }
-    .step-desc {
-      font-size: 13px;
-      color: var(--body);
-      line-height: 1.55;
-      max-width: 320px;
-    }
-
-    /* ── C) QUOTE & RESUME PANEL ── */
-    .quote-panel {
-      background: radial-gradient(circle at 35% 20%, #b50f1a 0%, var(--red-d) 48%, var(--red-x) 100%);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 64px 38px;
-    }
-    /* Subtle SVG noise grain */
-    .quote-grain {
-      position: absolute;
-      inset: 0;
-      opacity: 0.15;
-      pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    }
-    .quote-inner {
-      position: relative;
-      z-index: 2;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .quote-mark {
-      font-family: var(--font-display), Georgia, serif;
-      font-size: 110px;
-      line-height: 0.65;
-      color: var(--red);
-      margin-bottom: 20px;
-      user-select: none;
-    }
-    .quote-text {
-      font-size: 21px;
-      font-weight: 400;
-      line-height: 1.45;
-      color: var(--text);
-      font-style: normal;
-      margin-bottom: 24px;
-    }
-    .quote-signature {
-      font-family: var(--font-script);
-      font-size: 38px;
-      color: rgba(255, 255, 255, 0.95);
-      margin-bottom: 20px;
-    }
-
-    /* Experience mini badge inside quote panel */
-    .quote-exp-badge {
-      background: rgba(0,0,0,0.35);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 6px;
-      padding: 12px 14px;
-      margin-bottom: 20px;
-    }
-    .quote-exp-title {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #ffb4b9;
-    }
-    .quote-exp-comp {
-      font-size: 12.5px;
-      font-weight: 600;
-      color: var(--text);
-      margin-top: 2px;
-    }
-    .quote-exp-role {
-      font-size: 11px;
-      color: rgba(255,255,255,0.7);
-    }
-
-    .quote-bottom-cta {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.85);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border-top: 1px solid rgba(255, 255, 255, 0.16);
-      padding-top: 18px;
-    }
-
-    /* ═══════════════════════════════════════════════════════════
-       5. CONTACT & FOOTER
-    ═══════════════════════════════════════════════════════════ */
-    #contact {
-      display: grid;
-      grid-template-columns: 1fr 340px 380px;
-      border-bottom: 1px solid var(--line);
-      overflow: hidden;
-    }
-    .contact-col {
-      padding: 72px 56px;
-      border-right: 1px solid var(--line);
-    }
-    .contact-col:last-child {
-      border-right: none;
-      padding: 0;
-    }
-
-    .contact-heading {
-      font-family: var(--font-display);
-      font-size: clamp(34px, 4.2vw, 56px);
-      text-transform: uppercase;
-      line-height: 0.98;
-      margin-bottom: 22px;
-      letter-spacing: 0.02em;
-    }
-    .contact-para {
-      font-size: 14px;
-      color: var(--body);
-      line-height: 1.8;
-      max-width: 320px;
-      margin-bottom: 34px;
-    }
-    .contact-cta-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--body);
-      transition: color 0.2s;
-    }
-    .contact-cta-btn:hover {
-      color: var(--red);
-    }
-    .contact-cta-btn .icon-btn {
-      border-color: rgba(211, 18, 31, 0.4);
-      color: var(--red);
-    }
-
-    /* Middle info rows separated by thin red lines */
-    .contact-info-row {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(211, 18, 31, 0.35);
-    }
-    .contact-info-row:first-child {
-      border-top: 1px solid rgba(211, 18, 31, 0.35);
-    }
-    .contact-info-row .icon-btn {
-      color: var(--red);
-      border-color: rgba(211, 18, 31, 0.45);
-      background: rgba(211, 18, 31, 0.04);
-    }
-    .contact-info-text {
-      font-size: 13.5px;
-      color: var(--body);
-      letter-spacing: 0.02em;
-    }
-
-    /* Right column: laptop mockup + coffee mug */
-    .contact-mockup-wrap {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      min-height: 380px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: flex-end;
-      overflow: hidden;
-      background: radial-gradient(circle at 80% 80%, rgba(211, 18, 31, 0.08), transparent 60%);
-    }
-
-    /* CSS Laptop Graphic */
-    .laptop-frame {
-      width: 112%;
-      max-width: 440px;
-      margin-right: -20px;
-      margin-bottom: -10px;
-      transform: perspective(900px) rotateY(-8deg) rotateX(4deg);
-      border-radius: 8px 8px 0 0;
-      background: #141414;
-      padding: 12px 12px 0 12px;
-      border: 1px solid #2a2a2a;
-      box-shadow: -20px -20px 60px rgba(0,0,0,0.85);
-    }
-    .laptop-screen {
-      background: #0d0d0d;
-      border-radius: 4px 4px 0 0;
-      border: 1px solid #1f1f1f;
-      height: 240px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 24px;
-      position: relative;
-      overflow: hidden;
-    }
-    .laptop-screen::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle, rgba(211,18,31,0.18) 0%, transparent 70%);
-    }
-    .laptop-screen-tag {
-      font-size: 9px;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      color: var(--red);
-      font-weight: 700;
-      position: relative;
-      z-index: 2;
-    }
-    .laptop-screen-headline {
-      font-family: var(--font-display);
-      font-size: 24px;
-      text-transform: uppercase;
-      line-height: 1.1;
-      letter-spacing: 0.04em;
-      color: var(--text);
-      margin-top: 8px;
-      position: relative;
-      z-index: 2;
-    }
-    .laptop-screen-headline span {
-      color: var(--red);
-    }
-
-    /* Coffee mug */
-    .coffee-mug-graphic {
-      position: absolute;
-      bottom: 24px;
-      left: 36px;
-      width: 78px;
-      height: 78px;
-      border-radius: 50%;
-      background: #151515;
-      border: 3px solid #222222;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--faint);
-      font-family: var(--font-display);
-      font-size: 22px;
-      letter-spacing: 0.05em;
-    }
-    .coffee-mug-graphic::after {
-      content: '';
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      background: #0f0a0a;
-      border: 1px solid rgba(211,18,31,0.3);
-      position: absolute;
-    }
-    .coffee-mug-graphic span {
-      position: relative;
-      z-index: 2;
-      color: var(--red);
-    }
-
-    /* ─── SLIM FOOTER ─── */
-    #footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 56px;
-      border-top: 1px solid var(--line);
-      background: var(--bg);
-    }
-    .footer-copy {
-      font-size: 11px;
-      color: var(--faint);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-    .footer-copy span {
-      color: var(--red);
-    }
-    .footer-nav {
-      display: flex;
-      gap: 24px;
-    }
-    .footer-nav a {
-      font-size: 11px;
-      color: var(--faint);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    .footer-nav a:hover {
-      color: var(--red);
-    }
-
-    /* ═══════════════════════════════════════════════════════════
-       RESPONSIVE RULES
-    ═══════════════════════════════════════════════════════════ */
-    @media (max-width: 1000px) {
-      #topbar, #projects, .contact-col, .mid-col, #footer {
-        padding-left: 32px;
-        padding-right: 32px;
-      }
-      #hero {
-        padding: 0 32px;
-        height: auto;
-        min-height: 720px;
-      }
-      #mid-row {
-        grid-template-columns: 1fr 1fr;
-      }
-      .mid-col:nth-child(2) {
-        border-right: none;
-      }
-      .mid-col:last-child {
-        grid-column: span 2;
-        border-top: 1px solid var(--line);
-      }
-      #contact {
-        grid-template-columns: 1fr 1fr;
-      }
-      .contact-col:nth-child(2) {
-        border-right: none;
-      }
-      .contact-col:last-child {
-        grid-column: span 2;
-        border-top: 1px solid var(--line);
-      }
-      .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .hero-content {
-        grid-template-columns: 1fr 1fr;
-        gap: 32px;
-      }
-      .hero-mid {
-        justify-content: flex-start;
-      }
-      .hero-stats {
-        grid-column: span 2;
-        max-width: 100%;
-        margin-left: 0;
-        flex-direction: row;
-        justify-content: space-between;
-      }
-      .stat-row {
-        border-right: 1px solid var(--line);
-        border-bottom: none;
-        padding: 16px 20px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-      }
-      .stat-row:first-child {
-        border-top: none;
-      }
-      .stat-row:last-child {
-        border-right: none;
-      }
-    }
-
-    @media (max-width: 720px) {
-      #topbar {
-        flex-direction: column;
-        gap: 12px;
-        padding: 16px 20px;
-        text-align: center;
-      }
-      #hero {
-        padding: 24px 20px 36px;
-        min-height: unset;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-      }
-      .hero-bg-word {
-        font-size: 30vw;
-        top: 10px;
-      }
-      .hero-photo-wrap {
-        position: relative;
-        left: unset;
-        transform: none;
-        height: 380px;
-        margin: 20px auto 0;
-        z-index: 2;
-      }
-      .hero-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding-bottom: 0;
-        gap: 28px;
-        margin-top: 10px;
-      }
-      .hero-left {
-        max-width: 100%;
-      }
-      .hero-bio {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .hero-worldwide {
-        justify-content: center;
-      }
-      .hero-mid {
-        padding-bottom: 0;
-      }
-      .hero-tagline-box {
-        margin: 0 auto;
-      }
-      .hero-stats {
-        flex-direction: row;
-        width: 100%;
-        justify-content: space-around;
-        border-top: 1px solid var(--line);
-        border-bottom: 1px solid var(--line);
-        padding: 8px 0;
-      }
-      .stat-row {
-        border: none;
-        padding: 10px 8px;
-        align-items: center;
-        text-align: center;
-      }
-      .stat-num {
-        min-width: unset;
-        font-size: 38px;
-      }
-      .stat-label {
-        font-size: 9.5px;
-      }
-
-      #projects {
-        padding: 64px 20px;
-      }
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-
-      #mid-row {
-        grid-template-columns: 1fr;
-      }
-      .mid-col {
-        padding: 48px 20px;
-        border-right: none;
-        border-bottom: 1px solid var(--line);
-      }
-      .mid-col:last-child {
-        grid-column: span 1;
-      }
-
-      #contact {
-        grid-template-columns: 1fr;
-      }
-      .contact-col {
-        padding: 48px 20px;
-        border-right: none;
-        border-bottom: 1px solid var(--line);
-      }
-      .contact-col:last-child {
-        grid-column: span 1;
-      }
-      .laptop-frame {
-        width: 100%;
-        margin-right: 0;
-      }
-
-      #footer {
-        flex-direction: column;
-        gap: 14px;
-        padding: 24px 20px;
-        text-align: center;
-      }
-    }
-  </style>
+/* ===== RESPONSIVE ===== */
+@media(max-width:1050px){
+  .hero-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .tag{display:none}
+  .mid{grid-template-columns:1fr 1fr}.quote{grid-column:1/3}
+  .contact{grid-template-columns:1fr 1fr}.laptop{grid-column:1/3}
+}
+@media(max-width:760px){
+  .top,.proj,.col,.contact>div,.foot{padding-left:22px;padding-right:22px}
+  .hero{height:auto;min-height:0;padding-bottom:0}
+  .big{font-size:27vw;top:8px}
+  .photo{position:relative;left:auto;transform:none;height:auto;width:82%;margin:20vw auto 0;z-index:2;translate:none;scale:1}
+  .hero-grid{display:flex;flex-direction:column;padding:0 22px 24px}
+  .left{margin-top:-20px;max-width:none}
+  .left>*:not(h1):not(.hi){animation-delay:1s}
+  .stats{width:100%;margin:20px 0 0;flex-direction:row;border-top:1px solid var(--line)}
+  .stat{flex:1;flex-direction:column;align-items:flex-start;gap:4px;padding:16px 8px;border:0}
+  .stat .n{font-size:38px;min-width:0}
+  .grid{grid-template-columns:1fr}
+  .mid,.contact{grid-template-columns:1fr}.quote,.laptop{grid-column:auto}
+  .col{border-right:0;border-bottom:1px solid var(--line)}
+  .foot{flex-direction:column;gap:8px}
+  #glow{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  #intro{display:none}body:not(.go){overflow:auto}.rv{opacity:1;transform:none;filter:none}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       INLINE SVG SPRITE (Clean stroke-width 1.5, No emojis)
-  ═══════════════════════════════════════════════════════════ -->
-  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-    <!-- Globe -->
-    <symbol id="icon-globe" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="10"/>
-      <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
-      <path d="M2 12h20"/>
-    </symbol>
-    <!-- Search / Architecture -->
-    <symbol id="icon-search" viewBox="0 0 24 24">
-      <circle cx="11" cy="11" r="8"/>
-      <path d="m21 21-4.35-4.35"/>
-    </symbol>
-    <!-- Lightbulb / Ideate -->
-    <symbol id="icon-lightbulb" viewBox="0 0 24 24">
-      <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-1 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
-      <path d="M9 18h6"/>
-      <path d="M10 22h4"/>
-    </symbol>
-    <!-- Pen / Design -->
-    <symbol id="icon-pen" viewBox="0 0 24 24">
-      <path d="m18 2 4 4-12 12H6v-4L18 2z"/>
-      <path d="m14 6 4 4"/>
-    </symbol>
-    <!-- Code </> / Development -->
-    <symbol id="icon-code" viewBox="0 0 24 24">
-      <polyline points="16 18 22 12 16 6"/>
-      <polyline points="8 6 2 12 8 18"/>
-    </symbol>
-    <!-- Paper Plane / Deployment -->
-    <symbol id="icon-plane" viewBox="0 0 24 24">
-      <path d="m22 2-7 20-4-9-9-4Z"/>
-      <path d="M22 2 11 13"/>
-    </symbol>
-    <!-- Mail -->
-    <symbol id="icon-mail" viewBox="0 0 24 24">
-      <rect width="20" height="16" x="2" y="4" rx="2"/>
-      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-    </symbol>
-    <!-- Phone -->
-    <symbol id="icon-phone" viewBox="0 0 24 24">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-    </symbol>
-    <!-- Map Pin -->
-    <symbol id="icon-pin" viewBox="0 0 24 24">
-      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-      <circle cx="12" cy="10" r="3"/>
-    </symbol>
-    <!-- Arrow Right -->
-    <symbol id="icon-arrow" viewBox="0 0 24 24">
-      <path d="M5 12h14"/>
-      <path d="m12 5 7 7-7 7"/>
-    </symbol>
-    <!-- Arrow Diagonal -->
-    <symbol id="icon-arrow-diag" viewBox="0 0 24 24">
-      <path d="M7 17L17 7"/>
-      <path d="M7 7h10v10"/>
-    </symbol>
-  </svg>
+<!-- ===== INTRO CURTAIN PRELOADER ===== -->
+<div id="intro" aria-hidden="true">
+  <div class="nm"><span>Anand</span>&nbsp;<span style="animation-delay:.12s">Jadhav</span></div>
+  <div class="bar"><i id="bar-i"></i></div>
+  <div class="pc" id="pc">0%</div>
+</div>
 
+<!-- Ambient Dynamic Red Spotlight Glow -->
+<div id="glow" aria-hidden="true"></div>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       1. TOP BAR
-  ═══════════════════════════════════════════════════════════ -->
-  <header id="topbar">
-    <div class="topbar-brand">
-      <div class="role">FULL-STACK SOFTWARE ENGINEER</div>
-      <div class="sub">SAP CERTIFIED ASSOCIATE &amp; CLOUD ARCHITECT</div>
-    </div>
-    <div class="topbar-avail">
-      <span class="avail-pulse" aria-hidden="true"></span>
-      OPEN FOR SOFTWARE &amp; SAP ROLES
-      <em class="sparkle-red">✦</em>
-    </div>
-  </header>
+<!-- SVG Icon Sprite -->
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="star" viewBox="0 0 24 24"><path d="M12 2c.6 5.6 4.4 9.4 10 10-5.6.6-9.4 4.4-10 10-.6-5.6-4.4-9.4-10-10 5.6-.6 9.4-4.4 10-10z" fill="currentColor" stroke="none"/></symbol>
+<symbol id="globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></symbol>
+<symbol id="search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></symbol>
+<symbol id="bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></symbol>
+<symbol id="pen" viewBox="0 0 24 24"><path d="M4 20l1-5L16 4l4 4L9 19zM14 6l4 4"/></symbol>
+<symbol id="code" viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 5l-4 14"/></symbol>
+<symbol id="send" viewBox="0 0 24 24"><path d="M21 3L10 14M21 3l-7 18-4-7-7-4z"/></symbol>
+<symbol id="mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+<symbol id="phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+<symbol id="pin" viewBox="0 0 24 24"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+</defs></svg>
 
+<!-- 1. TOP BAR -->
+<header class="top sm">
+  <div class="sm">
+    <b>COMPUTER SCIENCE ENGINEER</b>
+    <span>SAP S/4HANA CLOUD &bull; FULL-STACK DEVELOPER</span>
+  </div>
+  <div class="av">
+    <span>AVAILABLE WORLDWIDE</span>
+    <svg class="i red" viewBox="0 0 24 24" style="fill:var(--red)"><use href="#star"/></svg>
+  </div>
+</header>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       2. HERO
-  ═══════════════════════════════════════════════════════════ -->
-  <section id="hero">
+<!-- 2. HERO -->
+<section class="hero" id="hero">
+  <!-- Giant PORTFOLIO Word with Blur-to-Sharp Rising Letters -->
+  <div class="big" id="big" aria-hidden="true">
+    <b style="--d:0.00s">P</b><b style="--d:0.07s">O</b><b style="--d:0.14s">R</b><b style="--d:0.21s">T</b><b style="--d:0.28s">F</b><b style="--d:0.35s">O</b><b style="--d:0.42s">L</b><b style="--d:0.49s">I</b><b style="--d:0.56s">O</b>
+  </div>
 
-    <!-- Giant "PORTFOLIO" Backdrop Word (~25vw, Centered Top) -->
-    <div class="hero-bg-word" aria-hidden="true">PORTFOLIO</div>
+  <!-- Anand's Portrait Cutout -->
+  <img class="photo" id="photo" alt="Portrait of Anand Jadhav" src="anand_profile.jpg" onerror="this.src='/anand_profile.jpg'">
 
-    <!-- Anand Jadhav's Real Photo (Centered/Right, Overlaps Letters, Fade at Bottom) -->
-    <div class="hero-photo-wrap">
-      <img
-        class="hero-photo-img"
-        src="anand_profile.jpg"
-        onerror="this.src='/anand_profile.jpg'"
-        alt="Anand Jadhav — Full Stack Engineer"
-      />
-    </div>
-
-    <!-- Hero Content (z-index 3) -->
-    <div class="hero-content">
-
-      <!-- Bottom-Left Block -->
-      <div class="hero-left fade-up">
-        <div class="hero-script">Hello, I'm</div>
-        <h1 class="hero-name">ANAND<br>JADHAV</h1>
-        <div class="hero-subtitle">COMPUTER SCIENCE ENGINEER &amp; FULL-STACK DEVELOPER</div>
-        <p class="hero-bio">
-          B.Tech Computer Science student (SAP IEP Track) at Parul University. Specializing in
-          high-performance web platforms (React, TypeScript, Node.js), enterprise SAP BTP architectures,
-          and production AI pipelines.
-        </p>
-        <div class="hero-worldwide">
-          <svg class="icon"><use href="#icon-globe"/></svg>
-          MUMBAI / VADODARA, INDIA &bull; OPEN WORLDWIDE
-        </div>
+  <!-- Foreground Content Grid -->
+  <div class="hero-grid">
+    <!-- Left Column: Name & Role -->
+    <div class="left">
+      <div class="hi">Hello, I'm</div>
+      <h1><span>ANAND</span><br><span>JADHAV</span></h1>
+      <div class="role">Computer Science Engineer &bull; Full-Stack &amp; SAP Developer</div>
+      <p>B.Tech CSE student at Parul University &amp; IT Intern at Hilti. Designing scalable web applications, robust cloud pipelines, and AI systems.</p>
+      <div class="ww">
+        <svg class="i"><use href="#globe"/></svg>
+        <span>MUMBAI / VADODARA, INDIA &bull; OPEN WORLDWIDE</span>
       </div>
-
-      <!-- Middle-Right Tagline -->
-      <div class="hero-mid fade-up">
-        <div class="hero-tagline-box">
-          <button class="icon-btn" aria-label="Sparkle Badge">
-            <span class="sparkle-red">✦</span>
-          </button>
-          <p class="hero-tagline-text">Engineering reliable systems that solve real-world problems.</p>
-        </div>
-      </div>
-
-      <!-- Bottom-Right Stats Rows with Count-Up Animation -->
-      <div class="hero-stats fade-up">
-        <div class="stat-row">
-          <div class="stat-num" data-target="7">0</div>
-          <div class="stat-label">PRODUCTION<br>PROJECTS</div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-num" data-target="6">0</div>
-          <div class="stat-label">CERTIFICATIONS<br>EARNED</div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-num" data-target="620">0</div>
-          <div class="stat-label">GITHUB<br>CONTRIBUTIONS</div>
-        </div>
-      </div>
-
     </div>
 
-  </section>
+    <!-- Middle Column: Interactive Star Tagline -->
+    <div class="tag">
+      <div class="circ r"><svg class="i" viewBox="0 0 24 24" style="fill:currentColor"><use href="#star"/></svg></div>
+      <p>Engineering reliable software architectures that solve real-world problems.</p>
+    </div>
 
+    <!-- Right Column: 3 Live Count-Up Stats -->
+    <div class="stats" id="stats">
+      <div class="stat">
+        <div class="n" data-target="7">0+</div>
+        <div class="l">Production<br>Projects</div>
+      </div>
+      <div class="stat">
+        <div class="n" data-target="6">0+</div>
+        <div class="l">Verified<br>Credentials</div>
+      </div>
+      <div class="stat">
+        <div class="n" data-target="150">0+</div>
+        <div class="l">Algorithms &amp;<br>LeetCode Solved</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       2.5 RUNNING EDITORIAL MARQUEE TICKER
-  ═══════════════════════════════════════════════════════════ -->
-  <div class="marquee-strip">
-    <div class="marquee-track">
-      <span>ANAND JADHAV</span><i class="sparkle-red">✦</i>
-      <span>COMPUTER SCIENCE ENGINEER</span><i class="sparkle-red">✦</i>
-      <span>HILTI MANUFACTURING INTERN (SAP S/4HANA CLOUD)</span><i class="sparkle-red">✦</i>
-      <span>EX-UPTOSKILLS BACKEND INTERN</span><i class="sparkle-red">✦</i>
-      <span>FASTAPI &amp; PYTHON AI</span><i class="sparkle-red">✦</i>
-      <span>FULL-STACK REACT &amp; NODE.JS</span><i class="sparkle-red">✦</i>
-      <span>SAP BTP &amp; ABAP CLOUD</span><i class="sparkle-red">✦</i>
-      <span>PARUL UNIVERSITY (B.TECH CSE)</span><i class="sparkle-red">✦</i>
-      <span>ANAND JADHAV</span><i class="sparkle-red">✦</i>
-      <span>COMPUTER SCIENCE ENGINEER</span><i class="sparkle-red">✦</i>
-      <span>HILTI MANUFACTURING INTERN (SAP S/4HANA CLOUD)</span><i class="sparkle-red">✦</i>
-      <span>EX-UPTOSKILLS BACKEND INTERN</span><i class="sparkle-red">✦</i>
-      <span>FASTAPI &amp; PYTHON AI</span><i class="sparkle-red">✦</i>
-      <span>FULL-STACK REACT &amp; NODE.JS</span><i class="sparkle-red">✦</i>
-      <span>SAP BTP &amp; ABAP CLOUD</span><i class="sparkle-red">✦</i>
-      <span>PARUL UNIVERSITY (B.TECH CSE)</span><i class="sparkle-red">✦</i>
+<!-- 2.5 RUNNING MARQUEE TICKER -->
+<div class="mq">
+  <div>
+    <span>ANAND JADHAV</span><i>✦</i>
+    <span>HILTI MANUFACTURING INTERN (SAP S/4HANA CLOUD)</span><i>✦</i>
+    <span>EX-UPTOSKILLS BACKEND INTERN</span><i>✦</i>
+    <span>FASTAPI &amp; PYTHON AI</span><i>✦</i>
+    <span>FULL-STACK REACT &amp; NODE.JS</span><i>✦</i>
+    <span>SAP BTP &amp; ABAP CLOUD</span><i>✦</i>
+    <span>PARUL UNIVERSITY (B.TECH CSE 2023–2027)</span><i>✦</i>
+    <span>ANAND JADHAV</span><i>✦</i>
+    <span>HILTI MANUFACTURING INTERN (SAP S/4HANA CLOUD)</span><i>✦</i>
+    <span>EX-UPTOSKILLS BACKEND INTERN</span><i>✦</i>
+    <span>FASTAPI &amp; PYTHON AI</span><i>✦</i>
+    <span>FULL-STACK REACT &amp; NODE.JS</span><i>✦</i>
+    <span>SAP BTP &amp; ABAP CLOUD</span><i>✦</i>
+    <span>PARUL UNIVERSITY (B.TECH CSE 2023–2027)</span><i>✦</i>
+  </div>
+</div>
+
+<!-- 3. SELECTED PROJECTS GRID -->
+<section class="proj" id="projects">
+  <div class="row rv">
+    <h2 class="t">SELECTED ENGINEERING PROJECTS</h2>
+    <i></i>
+    <a href="https://github.com/anandjadhav42004" target="_blank" rel="noreferrer">
+      <span>VIEW ALL ON GITHUB</span>
+      <svg class="i"><use href="#arrow"/></svg>
+    </a>
+  </div>
+
+  <div class="grid">
+    <!-- Project 1: SAP Prognos -->
+    <article class="card rv">
+      <a href="https://github.com/anandjadhav42004" target="_blank" rel="noreferrer">
+        <div class="shot">
+          <img src="/sap_prognos_dashboard.jpg" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&fit=crop'" alt="SAP Prognos AI Dashboard">
+          <div class="tag-badge">AI &bull; SAP S/4HANA</div>
+        </div>
+        <div class="meta">
+          <div class="no">01</div>
+          <div>
+            <h3>SAP PROGNOS — AI DEMAND FORECASTING</h3>
+            <small>FastAPI &bull; XGBoost &bull; Prophet &bull; SAPUI5 &bull; OData</small>
+          </div>
+          <div class="go">→</div>
+        </div>
+      </a>
+    </article>
+
+    <!-- Project 2: Inventory Pro -->
+    <article class="card rv">
+      <a href="https://github.com/anandjadhav42004" target="_blank" rel="noreferrer">
+        <div class="shot">
+          <img src="/inventory_pro_warehouse.jpg" onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&fit=crop'" alt="Inventory Pro Warehouse Management">
+          <div class="tag-badge">SAP BTP &bull; FIORI</div>
+        </div>
+        <div class="meta">
+          <div class="no">02</div>
+          <div>
+            <h3>INVENTORY PRO — WAREHOUSE MANAGEMENT</h3>
+            <small>SAPUI5 &bull; OData V2 &bull; Node.js &bull; Mockoon</small>
+          </div>
+          <div class="go">→</div>
+        </div>
+      </a>
+    </article>
+
+    <!-- Project 3: ProFlow SaaS -->
+    <article class="card rv">
+      <a href="https://github.com/anandjadhav42004" target="_blank" rel="noreferrer">
+        <div class="shot">
+          <img src="/proflow_analytics.jpg" onerror="this.src='https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&fit=crop'" alt="ProFlow SaaS Platform">
+          <div class="tag-badge">FULL-STACK &bull; GEMINI AI</div>
+        </div>
+        <div class="meta">
+          <div class="no">03</div>
+          <div>
+            <h3>PROFLOW — AI SAAS COLLABORATION</h3>
+            <small>Angular &bull; Node.js &bull; Express &bull; MongoDB &bull; Gemini API</small>
+          </div>
+          <div class="go">→</div>
+        </div>
+      </a>
+    </article>
+  </div>
+</section>
+
+<!-- 4. THREE-COLUMN ROW (EXPERIENCE, WORK PROCESS, PHILOSOPHY) -->
+<section class="mid" id="experience">
+  <!-- Col 1: Industry Experience, Education & Tech Stack -->
+  <div class="col rv">
+    <h2 class="t">EXPERIENCE &amp; EDUCATION</h2>
+
+    <div class="lab">INDUSTRY INTERNSHIPS</div>
+    <!-- Hilti -->
+    <div class="job">
+      <div class="badge">CURRENT INTERNSHIP (ON-SITE)</div>
+      <b>Hilti Manufacturing India Pvt. Ltd.</b>
+      <span>SAP and Information Technology Intern &bull; PPC Team</span>
+      <em>July 2026 – Present &bull; Vadodara, Gujarat</em>
+    </div>
+    <!-- UptoSkills -->
+    <div class="job">
+      <div class="badge">COMPLETED INTERNSHIP (REMOTE)</div>
+      <b>UptoSkills</b>
+      <span>Backend Developer Intern &bull; Node.js &amp; MongoDB</span>
+      <em>May 2026 – August 2026 &bull; Remote</em>
+    </div>
+
+    <hr>
+
+    <div class="lab">ACADEMIC BACKGROUND</div>
+    <div class="edu">
+      <div>
+        <b>B.Tech in Computer Science &amp; Eng.</b>
+        <span>Parul University &bull; SAP IEP Track (CGPA 6.67/10)</span>
+      </div>
+      <em>2023–2027</em>
+    </div>
+    <div class="edu">
+      <div>
+        <b>Higher Secondary Certificate (HSC)</b>
+        <span>Dayanand Science College Latur (94.67%)</span>
+      </div>
+      <em>2021</em>
+    </div>
+
+    <hr>
+
+    <div class="lab">CORE TECHNICAL SKILLS</div>
+    <div class="chips">
+      <span>REACT.JS</span>
+      <span>TYPESCRIPT</span>
+      <span>SAPUI5 &amp; FIORI</span>
+      <span>NODE.JS</span>
+      <span>FASTAPI / PYTHON</span>
+      <span>SAP BTP &amp; ABAP</span>
+      <span>MONGODB</span>
+      <span>POSTGRESQL</span>
+      <span>DOCKER</span>
+      <span>GIT &amp; GITHUB</span>
+      <span>GEMINI LLM</span>
     </div>
   </div>
 
+  <!-- Col 2: Engineering Work Process Timeline -->
+  <div class="col rv">
+    <h2 class="t">ENGINEERING WORKFLOW</h2>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       3. SELECTED PROJECTS
-  ═══════════════════════════════════════════════════════════ -->
-  <section id="projects">
-
-    <div class="projects-header fade-up">
-      <h2 class="projects-title">SELECTED ENGINEERING PROJECTS</h2>
-      <div class="projects-divider"></div>
-      <a class="projects-view-all" href="https://github.com/anandjadhav42004" target="_blank" rel="noreferrer">
-        VIEW ALL ON GITHUB
-        <svg class="icon" style="width: 14px; height: 14px;"><use href="#icon-arrow"/></svg>
-      </a>
-    </div>
-
-    <div class="projects-grid">
-
-      <!-- Project 01: SAP Prognos -->
-      <article class="project-card fade-up">
-        <a href="https://sap-forecast.vercel.app" target="_blank" rel="noreferrer">
-          <div class="project-thumb">
-            <img
-              src="sap_prognos_dashboard.jpg"
-              onerror="this.src='/sap_prognos_dashboard.jpg'"
-              alt="SAP Prognos — Enterprise Demand Forecasting"
-              loading="lazy"
-            />
-          </div>
-          <div class="project-meta">
-            <div class="project-num">01</div>
-            <div class="project-info">
-              <div class="project-name">SAP PROGNOS FORECASTING</div>
-              <div class="project-cat">SAPUI5 &bull; FastAPI &bull; Python &bull; XGBoost &bull; Prophet</div>
-            </div>
-            <div class="project-arrow">
-              <svg class="icon" style="width: 20px; height: 20px;"><use href="#icon-arrow"/></svg>
-            </div>
-          </div>
-        </a>
-      </article>
-
-      <!-- Project 02: Inventory Pro -->
-      <article class="project-card fade-up">
-        <a href="https://github.com/anandjadhav42004" target="_blank" rel="noreferrer">
-          <div class="project-thumb">
-            <img
-              src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&fit=crop"
-              alt="Inventory Pro Warehouse Management System"
-              loading="lazy"
-            />
-          </div>
-          <div class="project-meta">
-            <div class="project-num">02</div>
-            <div class="project-info">
-              <div class="project-name">INVENTORY PRO WAREHOUSE</div>
-              <div class="project-cat">SAPUI5 &bull; SAP Fiori &bull; OData &bull; SAP BTP &bull; KPI Dashboards</div>
-            </div>
-            <div class="project-arrow">
-              <svg class="icon" style="width: 20px; height: 20px;"><use href="#icon-arrow"/></svg>
-            </div>
-          </div>
-        </a>
-      </article>
-
-      <!-- Project 03: ProFlow SaaS -->
-      <article class="project-card fade-up">
-        <a href="https://github.com/anandjadhav42004" target="_blank" rel="noreferrer">
-          <div class="project-thumb">
-            <img
-              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&fit=crop"
-              alt="ProFlow SaaS Project Management Platform"
-              loading="lazy"
-            />
-          </div>
-          <div class="project-meta">
-            <div class="project-num">03</div>
-            <div class="project-info">
-              <div class="project-name">PROFLOW SAAS PLATFORM</div>
-              <div class="project-cat">Angular &bull; Node.js &bull; MongoDB &bull; Gemini AI &bull; JWT Auth</div>
-            </div>
-            <div class="project-arrow">
-              <svg class="icon" style="width: 20px; height: 20px;"><use href="#icon-arrow"/></svg>
-            </div>
-          </div>
-        </a>
-      </article>
-
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════════════════
-       3.5 WORK EXPERIENCE & INTERNSHIPS (HILTI & UPTOSKILLS)
-  ═══════════════════════════════════════════════════════════ -->
-  <section id="internships">
-    <div class="internship-topbar">
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <svg class="icon" style="stroke: var(--red);"><use href="#icon-briefcase"/></svg>
-        <span style="font-family: var(--font-display); font-size: 19px; letter-spacing: 0.12em; text-transform: uppercase;">
-          INDUSTRY WORK EXPERIENCE &amp; INTERNSHIPS
-        </span>
-      </div>
-      <span style="font-family: monospace; font-size: 11px; letter-spacing: 0.16em; color: var(--red); text-transform: uppercase;">
-        // 2 VERIFIED INDUSTRY ROLES
-      </span>
-    </div>
-
-    <div class="internship-grid">
-
-      <!-- 1. HILTI (CURRENT) -->
-      <div class="internship-card" style="background: linear-gradient(135deg, #160406 0%, #0a0a0a 70%);">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-            <span class="internship-badge-current">
-              <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--red);"></span>
-              CURRENT INTERNSHIP (ON-SITE PLANT)
-            </span>
-            <span style="font-family: var(--font-display); font-size: 15px; color: var(--red);">July 2026 – Present</span>
-          </div>
-
-          <h3 class="internship-comp">Hilti Manufacturing India Pvt. Ltd.</h3>
-          <div class="internship-role">SAP and Information Technology Intern</div>
-
-          <div style="display: flex; gap: 20px; font-size: 12px; color: var(--body); margin-bottom: 20px;">
-            <span>📍 Vadodara, Gujarat, India (Plant)</span>
-            <span>🏢 Production Planning and Control (PPC)</span>
-          </div>
-
-          <ul class="internship-bullets">
-            <li>
-              <span class="bullet-star">✦</span>
-              <span>Work in the <strong>Production Planning and Control (PPC)</strong> team on <strong>SAP S/4HANA Cloud</strong> at the Vadodara plant.</span>
-            </li>
-            <li>
-              <span class="bullet-star">✦</span>
-              <span>Supporting <strong>SAP Production Planning (PP)</strong> processes and collaborating actively with cross-functional business users.</span>
-            </li>
-            <li>
-              <span class="bullet-star">✦</span>
-              <span>Developing hands-on understanding of how enterprise technology, manufacturing operations, and business logic integrate at plant scale.</span>
-            </li>
-          </ul>
-        </div>
-
-        <div style="display: flex; flex-wrap: wrap; gap: 6px; padding-top: 16px; border-top: 1px solid var(--line);">
-          <span class="chip">SAP S/4HANA CLOUD</span>
-          <span class="chip">PRODUCTION PLANNING (PP)</span>
-          <span class="chip">PPC OPERATIONS</span>
-          <span class="chip">ENTERPRISE IT</span>
-        </div>
-      </div>
-
-      <!-- 2. UPTOSKILLS (COMPLETED) -->
-      <div class="internship-card">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-            <span class="internship-badge-completed">
-              COMPLETED INTERNSHIP (REMOTE)
-            </span>
-            <span style="font-family: var(--font-display); font-size: 15px; color: var(--body);">May 2026 – August 2026</span>
-          </div>
-
-          <h3 class="internship-comp">UptoSkills</h3>
-          <div class="internship-role">Backend Developer Intern</div>
-
-          <div style="display: flex; gap: 20px; font-size: 12px; color: var(--body); margin-bottom: 20px;">
-            <span>🌐 Remote Engineering Team</span>
-            <span>⚡ Node.js &amp; Express Microservices</span>
-          </div>
-
-          <ul class="internship-bullets">
-            <li>
-              <span class="bullet-star">✦</span>
-              <span>Developed and maintained backend features in a production codebase using <strong>Node.js</strong>, <strong>Express.js</strong>, and <strong>MongoDB</strong>.</span>
-            </li>
-            <li>
-              <span class="bullet-star">✦</span>
-              <span>Took ownership of assigned backend modules, resolved functional defects, and applied code review feedback to maintain code quality.</span>
-            </li>
-            <li>
-              <span class="bullet-star">✦</span>
-              <span>Optimized REST API endpoint latency and implemented automated validation pipelines.</span>
-            </li>
-          </ul>
-        </div>
-
-        <div style="display: flex; flex-wrap: wrap; gap: 6px; padding-top: 16px; border-top: 1px solid var(--line);">
-          <span class="chip">NODE.JS</span>
-          <span class="chip">EXPRESS.JS</span>
-          <span class="chip">MONGODB</span>
-          <span class="chip">REST APIS</span>
-          <span class="chip">CODE REVIEWS</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════════════════
-       4. THREE-COLUMN ROW (32% / FLEXIBLE / 30%)
-  ═══════════════════════════════════════════════════════════ -->
-  <div id="mid-row">
-
-    <!-- ── A) EDUCATION & CERTIFICATIONS (32%) ── -->
-    <div class="mid-col">
-      <div class="section-label-red fade-up">ACADEMIC BACKGROUND</div>
-
-      <div class="edu-item fade-up">
-        <div class="edu-top">
-          <div>
-            <div class="edu-degree">B.Tech. in Computer Science &amp; Engineering</div>
-            <div class="edu-inst">Parul Institute of Technology (SAP IEP Track) &bull; <strong style="color: #ff3344;">CGPA: 6.67 / 10</strong></div>
-          </div>
-          <div class="edu-year">2023–2027</div>
-        </div>
-      </div>
-
-      <div class="edu-item fade-up">
-        <div class="edu-top">
-          <div>
-            <div class="edu-degree">HSC (Science)</div>
-            <div class="edu-inst">Dayanand Science College, Latur &bull; <strong style="color: #ff3344;">94.67%</strong></div>
-          </div>
-          <div class="edu-year">2021</div>
-        </div>
-      </div>
-
-      <div class="edu-item fade-up">
-        <div class="edu-top">
-          <div>
-            <div class="edu-degree">SSC (CBSE)</div>
-            <div class="edu-inst">Yashwant International School, Kodoli &bull; <strong style="color: #ff3344;">75.40%</strong></div>
-          </div>
-          <div class="edu-year">2019</div>
-        </div>
-      </div>
-
-      <div class="skills-divider"></div>
-
-      <div class="section-label-red fade-up">VERIFIED CREDENTIALS</div>
-
-      <div class="edu-item fade-up">
-        <div class="edu-top">
-          <div>
-            <div class="edu-degree">SAP Certified Associate: Back-End Developer</div>
-            <div class="edu-inst">ABAP Cloud &bull; SAP BTP &bull; RAP &bull; OData V4</div>
-          </div>
-          <div class="edu-year">July 2025</div>
-        </div>
-      </div>
-
-      <div class="edu-item fade-up">
-        <div class="edu-top">
-          <div>
-            <div class="edu-degree">Oracle Cloud Infrastructure 2025 AI Foundations</div>
-            <div class="edu-inst">OCI Machine Learning &amp; AI Architectures</div>
-          </div>
-          <div class="edu-year">Sept 2025</div>
-        </div>
-      </div>
-
-      <div class="edu-item fade-up">
-        <div class="edu-top">
-          <div>
-            <div class="edu-degree">HackerRank Certified: React, SQL &amp; Java</div>
-            <div class="edu-inst">Frontend Developer (React), SQL Intermediate, Java</div>
-          </div>
-          <div class="edu-year">2025–26</div>
-        </div>
-      </div>
-
-      <div class="skills-divider"></div>
-
-      <div class="section-label-red fade-up">CORE ENGINEERING STACK</div>
-      <div class="skills-chips fade-up">
-        <span class="chip">REACT.JS</span>
-        <span class="chip">NEXT.JS</span>
-        <span class="chip">TYPESCRIPT</span>
-        <span class="chip">NODE.JS</span>
-        <span class="chip">EXPRESS</span>
-        <span class="chip">POSTGRESQL</span>
-        <span class="chip">PRISMA ORM</span>
-        <span class="chip">MONGODB</span>
-        <span class="chip">PYTHON</span>
-        <span class="chip">SAP BTP</span>
-        <span class="chip">ABAP CLOUD</span>
-        <span class="chip">SAPUI5 / FIORI</span>
-        <span class="chip">SWIFTUI (IOS)</span>
-        <span class="chip">DOCKER</span>
-        <span class="chip">GIT &amp; CI/CD</span>
-        <span class="chip">DATA STRUCTURES</span>
+    <div class="step">
+      <div class="no">01</div>
+      <div class="circ r"><svg class="i"><use href="#search"/></svg></div>
+      <div>
+        <h4>DISCOVER</h4>
+        <p>Analyzing problem statements, technical bottlenecks, and architectural requirements.</p>
       </div>
     </div>
 
-    <!-- ── B) WORK PROCESS (MIDDLE FLEXIBLE) ── -->
-    <div class="mid-col">
-      <h2 class="process-title fade-up">ENGINEERING WORKFLOW</h2>
-
-      <div class="process-list">
-
-        <!-- 01 ARCHITECTURE -->
-        <div class="process-step fade-up">
-          <div class="step-left-combo">
-            <span class="step-num">01</span>
-            <div class="step-icon-wrap">
-              <div class="icon-btn" aria-hidden="true">
-                <svg class="icon"><use href="#icon-search"/></svg>
-              </div>
-            </div>
-          </div>
-          <div class="step-body">
-            <div class="step-title">SYSTEM DESIGN</div>
-            <p class="step-desc">Analyzing business requirements, relational schemas, entity relationships, and API contract specifications.</p>
-          </div>
-        </div>
-
-        <!-- 02 FULL-STACK BUILD -->
-        <div class="process-step fade-up">
-          <div class="step-left-combo">
-            <span class="step-num">02</span>
-            <div class="step-icon-wrap">
-              <div class="icon-btn" aria-hidden="true">
-                <svg class="icon"><use href="#icon-code"/></svg>
-              </div>
-            </div>
-          </div>
-          <div class="step-body">
-            <div class="step-title">FULL-STACK IMPLEMENTATION</div>
-            <p class="step-desc">Building modular React/TypeScript UI systems backed by high-throughput Node.js &amp; Express controllers.</p>
-          </div>
-        </div>
-
-        <!-- 03 DATA & ENTERPRISE -->
-        <div class="process-step fade-up">
-          <div class="step-left-combo">
-            <span class="step-num">03</span>
-            <div class="step-icon-wrap">
-              <div class="icon-btn" aria-hidden="true">
-                <svg class="icon"><use href="#icon-pen"/></svg>
-              </div>
-            </div>
-          </div>
-          <div class="step-body">
-            <div class="step-title">ENTERPRISE INTEGRATION</div>
-            <p class="step-desc">Orchestrating SAP BTP OData V4 services, HANA cloud bindings, and ML model inference pipelines.</p>
-          </div>
-        </div>
-
-        <!-- 04 TESTING & BENCHMARKING -->
-        <div class="process-step fade-up">
-          <div class="step-left-combo">
-            <span class="step-num">04</span>
-            <div class="step-icon-wrap">
-              <div class="icon-btn" aria-hidden="true">
-                <svg class="icon"><use href="#icon-lightbulb"/></svg>
-              </div>
-            </div>
-          </div>
-          <div class="step-body">
-            <div class="step-title">TESTING &amp; OPTIMIZATION</div>
-            <p class="step-desc">Database query index profiling, TypeScript static safety, and Lighthouse Web Vitals audits.</p>
-          </div>
-        </div>
-
-        <!-- 05 DEPLOYMENT & CI/CD -->
-        <div class="process-step fade-up">
-          <div class="step-left-combo">
-            <span class="step-num">05</span>
-            <div class="step-icon-wrap">
-              <div class="icon-btn" aria-hidden="true">
-                <svg class="icon"><use href="#icon-plane"/></svg>
-              </div>
-            </div>
-          </div>
-          <div class="step-body">
-            <div class="step-title">CLOUD DEPLOYMENT</div>
-            <p class="step-desc">Automated CI/CD shipping to Vercel and enterprise cloud endpoints with high availability and edge caching.</p>
-          </div>
-        </div>
-
+    <div class="step">
+      <div class="no">02</div>
+      <div class="circ r"><svg class="i"><use href="#bulb"/></svg></div>
+      <div>
+        <h4>ARCHITECT</h4>
+        <p>Designing modular databases, REST/OData API contracts, and high-performance schemas.</p>
       </div>
     </div>
 
-    <!-- ── C) PHILOSOPHY & WORK EXPERIENCE (30%) ── -->
-    <div class="mid-col quote-panel">
-      <div class="quote-grain" aria-hidden="true"></div>
-      <div class="quote-inner">
-        <div>
-          <div class="quote-mark" aria-hidden="true">&ldquo;</div>
-          <p class="quote-text fade-up">
-            Engineering is not just writing code, it is designing reliable systems that solve real-world problems.
-          </p>
-          <div class="quote-signature fade-up">Anand Jadhav</div>
-        </div>
-
-        <!-- Live Internship Highlight -->
-        <div class="quote-exp-badge fade-up">
-          <div class="quote-exp-title">// INDUSTRY EXPERIENCE</div>
-          <div class="quote-exp-comp">Hilti Manufacturing India Pvt. Ltd.</div>
-          <div class="quote-exp-role">SAP &amp; IT Support Intern &bull; Production Planning (PPC) &bull; S/4HANA Enterprise Systems</div>
-        </div>
-
-        <div class="quote-bottom-cta fade-up">
-          <span class="sparkle-red" style="color: #fff;">✦</span>
-          LET'S BUILD SOMETHING RELIABLE TOGETHER.
-        </div>
+    <div class="step">
+      <div class="no">03</div>
+      <div class="circ r"><svg class="i"><use href="#pen"/></svg></div>
+      <div>
+        <h4>DESIGN &amp; UI/UX</h4>
+        <p>Crafting intuitive responsive front-ends with SAP Fiori guidelines and modern Tailwind CSS.</p>
       </div>
     </div>
 
+    <div class="step">
+      <div class="no">04</div>
+      <div class="circ r"><svg class="i"><use href="#code"/></svg></div>
+      <div>
+        <h4>DEVELOP</h4>
+        <p>Building scalable backend microservices, clean business logic, and test suites.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="no">05</div>
+      <div class="circ r"><svg class="i"><use href="#send"/></svg></div>
+      <div>
+        <h4>DEPLOY</h4>
+        <p>Containerizing with Docker, automating CI/CD pipelines, and deploying to cloud infrastructure.</p>
+      </div>
+    </div>
   </div>
 
-
-  <!-- ═══════════════════════════════════════════════════════════
-       5. CONTACT & FOOTER
-  ═══════════════════════════════════════════════════════════ -->
-  <section id="contact">
-
-    <!-- Left Column: Big Heading & CTA -->
-    <div class="contact-col">
-      <h2 class="contact-heading fade-up">
-        LET'S WORK<br>TOGETHER <span class="sparkle-red">✦</span>
-      </h2>
-      <p class="contact-para fade-up">
-        Actively interviewing for Software Engineering, Full-Stack Developer, and SAP Consultant
-        roles. Open for high-impact internships, full-time positions, and enterprise projects.
-      </p>
-      <a href="mailto:anandjadhav42004@gmail.com" class="contact-cta-btn fade-up">
-        <span class="icon-btn large">
-          <svg class="icon" style="width: 22px; height: 22px;"><use href="#icon-arrow-diag"/></svg>
-        </span>
-        GET IN TOUCH DIRECTLY
-      </a>
+  <!-- Col 3: Quote & Philosophy -->
+  <div class="col quote rv">
+    <div class="q">&ldquo;</div>
+    <p>Good software engineering is not just writing code, it is designing reliable systems that solve real-world problems.</p>
+    <div class="sig">Anand Jadhav</div>
+    <div class="cta">
+      <span>LET'S CREATE SOMETHING IMPACTFUL</span>
+      <svg class="i" viewBox="0 0 24 24" style="fill:currentColor"><use href="#star"/></svg>
     </div>
+  </div>
+</section>
 
-    <!-- Middle Column: 4 Real Contact Rows -->
-    <div class="contact-col">
-      <!-- Email -->
-      <div class="contact-info-row fade-up">
-        <div class="icon-btn" aria-hidden="true">
-          <svg class="icon"><use href="#icon-mail"/></svg>
-        </div>
-        <a href="mailto:anandjadhav42004@gmail.com" class="contact-info-text" style="color: inherit;">
-          anandjadhav42004@gmail.com
-        </a>
-      </div>
+<!-- 5. CONTACT SECTION -->
+<section class="contact" id="contact">
+  <!-- Col 1: Heading & Action -->
+  <div class="rv">
+    <h2>LET'S WORK<br>TOGETHER <span class="red">✦</span></h2>
+    <p>Open for full-time Software Engineering roles, Full-Stack Developer positions, and SAP S/4HANA Cloud consulting opportunities.</p>
+    <a href="mailto:anand.m.jadhav12@gmail.com" class="cta2">
+      <div class="circ r"><svg class="i"><use href="#arrow"/></svg></div>
+      <span>AVAILABLE FOR DIRECT HIRES</span>
+    </a>
+  </div>
 
-      <!-- Phone -->
-      <div class="contact-info-row fade-up">
-        <div class="icon-btn" aria-hidden="true">
-          <svg class="icon"><use href="#icon-phone"/></svg>
-        </div>
-        <a href="tel:+918308008154" class="contact-info-text" style="color: inherit;">
-          +91 8308008154
-        </a>
+  <!-- Col 2: 4 Rows of Info -->
+  <div class="info rv">
+    <a href="mailto:anand.m.jadhav12@gmail.com" title="Email Anand Jadhav">
+      <div class="circ r"><svg class="i"><use href="#mail"/></svg></div>
+      <div class="txt">
+        <b>EMAIL DIRECTLY</b>
+        <span>anand.m.jadhav12@gmail.com</span>
       </div>
+    </a>
+    <a href="https://www.linkedin.com/in/anand-jadhav-b599801b5" target="_blank" rel="noreferrer" title="LinkedIn Profile">
+      <div class="circ r"><svg class="i"><use href="#globe"/></svg></div>
+      <div class="txt">
+        <b>LINKEDIN NETWORK</b>
+        <span>linkedin.com/in/anand-jadhav-b599801b5</span>
+      </div>
+    </a>
+    <a href="tel:+919172464700" title="Call or WhatsApp">
+      <div class="circ r"><svg class="i"><use href="#phone"/></svg></div>
+      <div class="txt">
+        <b>TELEPHONE &bull; WHATSAPP</b>
+        <span>+91 91724 64700</span>
+      </div>
+    </a>
+    <a href="#hero" title="Location Headquarters">
+      <div class="circ r"><svg class="i"><use href="#pin"/></svg></div>
+      <div class="txt">
+        <b>HEADQUARTERS</b>
+        <span>Mumbai / Vadodara, India</span>
+      </div>
+    </a>
+  </div>
 
-      <!-- LinkedIn -->
-      <div class="contact-info-row fade-up">
-        <div class="icon-btn" aria-hidden="true">
-          <svg class="icon"><use href="#icon-globe"/></svg>
-        </div>
-        <a href="https://www.linkedin.com/in/anand-jadhav-b599801b5" target="_blank" rel="noreferrer" class="contact-info-text" style="color: inherit;">
-          linkedin.com/in/anand-jadhav
-        </a>
+  <!-- Col 3: Isometric Laptop & Mug -->
+  <div class="laptop rv">
+    <div class="lap">
+      <div class="scr">
+        WE BUILD<br>DIGITAL EXPERIENCES
       </div>
-
-      <!-- Location -->
-      <div class="contact-info-row fade-up">
-        <div class="icon-btn" aria-hidden="true">
-          <svg class="icon"><use href="#icon-pin"/></svg>
-        </div>
-        <span class="contact-info-text">Vadodara / Mumbai, India</span>
-      </div>
+      <div class="base"></div>
     </div>
+    <div class="mug">AJ</div>
+  </div>
+</section>
 
-    <!-- Right Column: Laptop Mockup Visual + Coffee Mug with initial "A" -->
-    <div class="contact-col">
-      <div class="contact-mockup-wrap fade-up">
-        <!-- Pure CSS/SVG Mockup -->
-        <div class="laptop-frame">
-          <div class="laptop-screen">
-            <span class="laptop-screen-tag">ENGINEERING LAB // S/4HANA &bull; REACT</span>
-            <h3 class="laptop-screen-headline">
-              BUILDING SCALABLE<br><span>DIGITAL SYSTEMS</span>
-            </h3>
-          </div>
-        </div>
+<!-- 6. FOOTER -->
+<footer class="foot">
+  <div>&copy; 2026 <span>ANAND JADHAV</span> &bull; COMPUTER SCIENCE ENGINEER &bull; ALL RIGHTS RESERVED</div>
+  <div>HILTI MANUFACTURING INDIA INTERN &bull; PARUL UNIVERSITY</div>
+</footer>
 
-        <!-- Coffee mug with letter "A" for Anand -->
-        <div class="coffee-mug-graphic" title="Fueling Code" aria-hidden="true">
-          <span>A</span>
-        </div>
-      </div>
-    </div>
+<!-- ===== SCRIPT: PRELOADER, SMOOTH PARALLAX, COUNT-UP, SCROLL OBSERVER ===== -->
+<script>
+  // ── 1. Intro Curtain Preloader ──────────────────────────────
+  const intro = document.getElementById('intro');
+  const bar = document.getElementById('bar-i');
+  const pc = document.getElementById('pc');
 
-  </section>
+  let progress = 0;
+  const progressTimer = setInterval(() => {
+    progress += Math.floor(Math.random() * 9) + 4;
+    if (progress >= 100) {
+      progress = 100;
+      clearInterval(progressTimer);
+      bar.style.transform = 'scaleX(1)';
+      pc.textContent = '100%';
+      setTimeout(() => {
+        intro.classList.add('out');
+        document.body.classList.add('go');
+      }, 250);
+    } else {
+      bar.style.transform = `scaleX(${progress / 100})`;
+      pc.textContent = progress + '%';
+    }
+  }, 35);
 
+  // ── 2. Hero Mouse Parallax & Dynamic Ambient Glow ────────────
+  const hero = document.getElementById('hero');
+  const photo = document.getElementById('photo');
+  const big = document.getElementById('big');
+  const glow = document.getElementById('glow');
 
-  <!-- ─── SLIM FOOTER ─── -->
-  <footer id="footer">
-    <p class="footer-copy">&copy; 2026 <span>ANAND JADHAV</span> / COMPUTER SCIENCE ENGINEER &bull; ALL RIGHTS RESERVED.</p>
-    <nav class="footer-nav" aria-label="Social Links">
-      <a href="https://github.com/anandjadhav42004" target="_blank" rel="noreferrer">GITHUB</a>
-      <a href="https://www.linkedin.com/in/anand-jadhav-b599801b5" target="_blank" rel="noreferrer">LINKEDIN</a>
-      <a href="https://leetcode.com/u/Anand_42004/" target="_blank" rel="noreferrer">LEETCODE</a>
-      <a href="/resume.pdf" target="_blank" rel="noreferrer">RESUME.PDF</a>
-    </nav>
-  </footer>
-
-
-  <!-- ═══════════════════════════════════════════════════════════
-       VANILLA JAVASCRIPT: Fade-Up Observer + Count-Up Numbers + Smooth Scroll
-  ═══════════════════════════════════════════════════════════ -->
-  <script>
-    // ── Fade-up on load & scroll ──────────────────────────────
-    const fadeObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            fadeObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    document.querySelectorAll('.fade-up').forEach((el) => fadeObserver.observe(el));
-
-    // ── Count-Up for Stat Numbers on Page Load ────────────────
-    function animateCountUp(el) {
-      const target = parseInt(el.dataset.target, 10);
-      const duration = 1800; // ms
-      const frameRate = 16;  // ~60fps
-      const step = target / (duration / frameRate);
-      let current = 0;
-
-      const timer = setInterval(() => {
-        current += step;
-        if (current >= target) {
-          current = target;
-          clearInterval(timer);
-        }
-        el.textContent = Math.floor(current) + '+';
-      }, frameRate);
+  window.addEventListener('mousemove', (e) => {
+    // Ambient flashlight glow
+    if (glow) {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
     }
 
-    const statObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.querySelectorAll('.stat-num[data-target]').forEach(animateCountUp);
-            statObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.25 }
-    );
-    const statsContainer = document.querySelector('.hero-stats');
-    if (statsContainer) statObserver.observe(statsContainer);
+    // Hero 3D Parallax Depth
+    if (hero && photo && big && window.innerWidth > 760) {
+      const rect = hero.getBoundingClientRect();
+      if (rect.bottom > 0) {
+        const x = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
+        const y = (e.clientY - rect.height / 2) / (rect.height / 2);
+        photo.style.setProperty('--tx', (x * 16) + 'px');
+        photo.style.setProperty('--ty', (y * 10) + 'px');
+        big.style.setProperty('--bx', (-x * 12) + 'px');
+        big.style.setProperty('--by', (-y * 8) + 'px');
+      }
+    }
+  }, { passive: true });
 
-    // ── Smooth Scroll for Internal Anchors ───────────────────
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener('click', (e) => {
-        const targetId = anchor.getAttribute('href');
-        if (!targetId || targetId === '#') return;
-        const targetEl = document.querySelector(targetId);
-        if (targetEl) {
-          e.preventDefault();
-          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
+  // ── 3. Scroll Reveal Observer (Blur-to-Sharp Unblur) ────────
+  const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('on');
+        scrollObserver.unobserve(entry.target);
+      }
     });
+  }, { threshold: 0.15 });
 
-    // ── Ambient Cursor Spotlight Follower ────────────────────
-    const spotlight = document.createElement('div');
-    spotlight.className = 'cursor-spotlight';
-    document.body.appendChild(spotlight);
-    window.addEventListener('mousemove', (e) => {
-      spotlight.style.transform = `translate(${e.clientX - 325}px, ${e.clientY - 325}px)`;
-    }, { passive: true });
+  document.querySelectorAll('.rv, .row, .step').forEach((el) => {
+    scrollObserver.observe(el);
+  });
 
-    // ── Hero 3D Mouse Parallax ───────────────────────────────
-    const hero = document.getElementById('hero');
-    const heroBgWord = document.querySelector('.hero-bg-word');
-    const heroPhotoWrap = document.querySelector('.hero-photo-wrap');
-    if (hero && heroBgWord && heroPhotoWrap) {
-      hero.addEventListener('mousemove', (e) => {
-        const rect = hero.getBoundingClientRect();
-        const x = (e.clientX - (rect.left + rect.width / 2)) / 35;
-        const y = (e.clientY - (rect.top + rect.height / 2)) / 35;
-        heroPhotoWrap.style.transform = `translateX(calc(-34% + ${x * 0.8}px)) translateY(${y * 0.6}px)`;
-        heroBgWord.style.transform = `translateX(calc(-50% + ${-x * 0.4}px)) translateY(${-y * 0.4}px)`;
-      });
-      hero.addEventListener('mouseleave', () => {
-        heroPhotoWrap.style.transform = 'translateX(-34%) translateY(0px)';
-        heroBgWord.style.transform = 'translateX(-50%) translateY(0px)';
-      });
-    }
-  </script>
+  // ── 4. Live Count-Up Animation for Stat Numbers ──────────────
+  function countUp(el) {
+    const target = parseInt(el.getAttribute('data-target'), 10) || 0;
+    const duration = 1800; // ms
+    const stepTime = 25;
+    const totalSteps = duration / stepTime;
+    const increment = target / totalSteps;
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        el.textContent = target + '+';
+        clearInterval(timer);
+      } else {
+        el.textContent = Math.floor(current) + '+';
+      }
+    }, stepTime);
+  }
+
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.n[data-target]').forEach(countUp);
+        statObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.25 });
+
+  const stats = document.getElementById('stats');
+  if (stats) statObserver.observe(stats);
+</script>
 
 </body>
 </html>
