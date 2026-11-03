@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import HamburgerMenu from './components/HamburgerMenu';
 import HeroRevamp from './components/HeroRevamp';
 import Projects from './components/Projects';
@@ -6,9 +6,55 @@ import MidRow from './components/MidRow';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
+function MarqueeTicker() {
+  const tickerItems = [
+    'ANAND JADHAV',
+    'COMPUTER SCIENCE ENGINEER',
+    'HILTI MANUFACTURING INTERN (SAP S/4HANA CLOUD)',
+    'EX-UPTOSKILLS BACKEND INTERN',
+    'PARUL UNIVERSITY (B.TECH CSE)',
+    'SAP CERTIFIED ABAP CLOUD',
+    'FASTAPI & PYTHON AI',
+    'FULL-STACK REACT & NODE.JS',
+    'AVAILABLE FOR IMPACTFUL ROLES',
+  ];
+
+  return (
+    <div className="w-full bg-[#0d0506] border-y border-[#1f1f1f] overflow-hidden py-3 select-none">
+      <div className="animate-marquee flex items-center gap-8 whitespace-nowrap">
+        {[...tickerItems, ...tickerItems].map((item, idx) => (
+          <div key={idx} className="flex items-center gap-8 text-[11px] font-mono tracking-[0.22em] uppercase text-[#a0a0a0]">
+            <span className="hover:text-white transition-colors">{item}</span>
+            <span className="text-[#d3121f] animate-sparkle">✦</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function App() {
+  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   return (
     <div className="relative min-h-screen w-full bg-[#0a0a0a] text-white selection:bg-[#d3121f] selection:text-white font-sans overflow-x-hidden">
+      {/* ── Ambient Radial Cursor Glow (Smooth Tactical Lighting) ── */}
+      <div
+        className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 hidden md:block"
+        style={{
+          background: `radial-gradient(650px circle at ${mousePos.x}px ${mousePos.y}px, rgba(211, 18, 31, 0.08), transparent 45%)`,
+        }}
+        aria-hidden="true"
+      />
+
       {/* ── Top Bar / Header ── */}
       <HamburgerMenu />
 
@@ -16,6 +62,9 @@ function App() {
       <main className="w-full">
         {/* 1. Hero Section with Giant PORTFOLIO backdrop & Anand's portrait */}
         <HeroRevamp />
+
+        {/* ── Running Editorial Marquee Banner ── */}
+        <MarqueeTicker />
 
         {/* 2. Selected Engineering Projects Grid */}
         <Projects />

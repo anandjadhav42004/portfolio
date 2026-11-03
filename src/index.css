@@ -79,4 +79,68 @@ body {
   .quote-gradient {
     background: radial-gradient(120% 120% at 85% 15%, #5a070c 0%, #8b0a12 35%, #2a0508 75%, #0a0a0a 100%);
   }
+
+  /* ── Smooth Editorial Animations ── */
+  @keyframes floatPortrait {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-9px);
+    }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% {
+      opacity: 0.6;
+      filter: drop-shadow(0 0 15px rgba(211, 18, 31, 0.4));
+    }
+    50% {
+      opacity: 0.95;
+      filter: drop-shadow(0 0 28px rgba(211, 18, 31, 0.75));
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes sparkleRotate {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+    50% {
+      transform: rotate(180deg) scale(1.15);
+    }
+    100% {
+      transform: rotate(360deg) scale(1);
+    }
+  }
+
+  .animate-float {
+    animation: floatPortrait 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 4s ease-in-out infinite;
+  }
+
+  .animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 32s linear infinite;
+  }
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+
+  .animate-sparkle {
+    display: inline-block;
+    animation: sparkleRotate 8s linear infinite;
+  }
 }

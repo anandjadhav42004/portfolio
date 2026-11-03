@@ -119,6 +119,71 @@
       font-size: 14px;
       display: inline-block;
       line-height: 1;
+      animation: sparkleRotate 8s linear infinite;
+    }
+
+    @keyframes sparkleRotate {
+      0%   { transform: rotate(0deg) scale(1); }
+      50%  { transform: rotate(180deg) scale(1.15); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+
+    @keyframes floatPortrait {
+      0%, 100% { transform: translateY(0px); }
+      50%      { transform: translateY(-8px); }
+    }
+
+    @keyframes marqueeScroll {
+      0%   { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Ambient Spotlight Cursor */
+    .cursor-spotlight {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 650px;
+      height: 650px;
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(211, 18, 31, 0.08) 0%, transparent 65%);
+      z-index: 9999;
+      transform: translate(-1000px, -1000px);
+      transition: transform 0.06s ease-out;
+    }
+
+    /* Editorial Running Marquee Strip */
+    .marquee-strip {
+      width: 100%;
+      background: #0d0506;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+      padding: 12px 0;
+      user-select: none;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 32px;
+      width: max-content;
+      animation: marqueeScroll 32s linear infinite;
+      white-space: nowrap;
+    }
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+    .marquee-track span {
+      font-size: 11px;
+      font-family: monospace, var(--font-body);
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--body);
+      transition: color 0.2s;
+    }
+    .marquee-track span:hover {
+      color: #fff;
     }
 
     /* ─── ANIMATION (FADE-UP ON LOAD) ───────────────────────── */
@@ -257,6 +322,7 @@
       border-top: 1px solid rgba(255,255,255,0.08);
       border-left: 1px solid rgba(255,255,255,0.08);
       border-right: 1px solid rgba(255,255,255,0.08);
+      animation: floatPortrait 6s ease-in-out infinite;
     }
 
     /* Hero UI Elements (z-index 3) */
@@ -1395,6 +1461,31 @@
 
 
   <!-- ═══════════════════════════════════════════════════════════
+       2.5 RUNNING EDITORIAL MARQUEE TICKER
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span>ANAND JADHAV</span><i class="sparkle-red">✦</i>
+      <span>COMPUTER SCIENCE ENGINEER</span><i class="sparkle-red">✦</i>
+      <span>HILTI MANUFACTURING INTERN (SAP S/4HANA CLOUD)</span><i class="sparkle-red">✦</i>
+      <span>EX-UPTOSKILLS BACKEND INTERN</span><i class="sparkle-red">✦</i>
+      <span>FASTAPI &amp; PYTHON AI</span><i class="sparkle-red">✦</i>
+      <span>FULL-STACK REACT &amp; NODE.JS</span><i class="sparkle-red">✦</i>
+      <span>SAP BTP &amp; ABAP CLOUD</span><i class="sparkle-red">✦</i>
+      <span>PARUL UNIVERSITY (B.TECH CSE)</span><i class="sparkle-red">✦</i>
+      <span>ANAND JADHAV</span><i class="sparkle-red">✦</i>
+      <span>COMPUTER SCIENCE ENGINEER</span><i class="sparkle-red">✦</i>
+      <span>HILTI MANUFACTURING INTERN (SAP S/4HANA CLOUD)</span><i class="sparkle-red">✦</i>
+      <span>EX-UPTOSKILLS BACKEND INTERN</span><i class="sparkle-red">✦</i>
+      <span>FASTAPI &amp; PYTHON AI</span><i class="sparkle-red">✦</i>
+      <span>FULL-STACK REACT &amp; NODE.JS</span><i class="sparkle-red">✦</i>
+      <span>SAP BTP &amp; ABAP CLOUD</span><i class="sparkle-red">✦</i>
+      <span>PARUL UNIVERSITY (B.TECH CSE)</span><i class="sparkle-red">✦</i>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
        3. SELECTED PROJECTS
   ═══════════════════════════════════════════════════════════ -->
   <section id="projects">
@@ -1966,6 +2057,32 @@
         }
       });
     });
+
+    // ── Ambient Cursor Spotlight Follower ────────────────────
+    const spotlight = document.createElement('div');
+    spotlight.className = 'cursor-spotlight';
+    document.body.appendChild(spotlight);
+    window.addEventListener('mousemove', (e) => {
+      spotlight.style.transform = `translate(${e.clientX - 325}px, ${e.clientY - 325}px)`;
+    }, { passive: true });
+
+    // ── Hero 3D Mouse Parallax ───────────────────────────────
+    const hero = document.getElementById('hero');
+    const heroBgWord = document.querySelector('.hero-bg-word');
+    const heroPhotoWrap = document.querySelector('.hero-photo-wrap');
+    if (hero && heroBgWord && heroPhotoWrap) {
+      hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        const x = (e.clientX - (rect.left + rect.width / 2)) / 35;
+        const y = (e.clientY - (rect.top + rect.height / 2)) / 35;
+        heroPhotoWrap.style.transform = `translateX(calc(-34% + ${x * 0.8}px)) translateY(${y * 0.6}px)`;
+        heroBgWord.style.transform = `translateX(calc(-50% + ${-x * 0.4}px)) translateY(${-y * 0.4}px)`;
+      });
+      hero.addEventListener('mouseleave', () => {
+        heroPhotoWrap.style.transform = 'translateX(-34%) translateY(0px)';
+        heroBgWord.style.transform = 'translateX(-50%) translateY(0px)';
+      });
+    }
   </script>
 
 </body>

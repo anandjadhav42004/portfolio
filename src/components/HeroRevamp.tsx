@@ -28,16 +28,32 @@ function CountUp({ target, duration = 1.6 }: { target: number; duration?: number
 }
 
 export default function HeroRevamp() {
+  const [parallax, setParallax] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - (rect.left + rect.width / 2)) / 35;
+    const y = (e.clientY - (rect.top + rect.height / 2)) / 35;
+    setParallax({ x, y });
+  };
+
+  const handleMouseLeave = () => {
+    setParallax({ x: 0, y: 0 });
+  };
+
   return (
     <section
       id="hero"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       className="relative w-full min-h-[720px] md:min-h-[820px] bg-[#0a0a0a] border-b border-[#1f1f1f] flex flex-col justify-between overflow-hidden px-6 sm:px-12 pt-6 pb-12 select-none"
     >
-      {/* ── Giant Red Background Word (~25vw) ── */}
+      {/* ── Giant Red Background Word (~25vw) with Inverse Parallax ── */}
       <div
         aria-hidden="true"
-        className="absolute top-2 left-1/2 -translate-x-1/2 w-full text-center font-anton text-[26vw] sm:text-[23vw] leading-[0.8] tracking-tight uppercase pointer-events-none z-[1] opacity-75"
+        className="absolute top-2 left-1/2 -translate-x-1/2 w-full text-center font-anton text-[26vw] sm:text-[23vw] leading-[0.8] tracking-tight uppercase pointer-events-none z-[1] opacity-75 transition-transform duration-300 ease-out"
         style={{
+          transform: `translate(calc(-50% + ${-parallax.x * 0.4}px), ${-parallax.y * 0.4}px)`,
           background: 'linear-gradient(180deg, #d3121f 0%, #8b0a12 55%, #2a0508 90%, #0a0a0a 100%)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
@@ -47,22 +63,29 @@ export default function HeroRevamp() {
       </div>
 
       {/* ── Anand Jadhav's Portrait Photo (Overlapping Text, z-index 2) ── */}
-      <div className="absolute left-1/2 -translate-x-1/2 md:translate-x-[-15%] bottom-0 h-[68%] sm:h-[78%] md:h-[88%] z-[2] pointer-events-none flex items-end justify-center">
-        <img
-          src="/anand_profile.jpg"
-          onError={(e) => {
-            const target = e.currentTarget;
-            if (target.src.includes('anand_profile.jpg')) {
-              target.src = 'anand_profile.jpg';
-            }
-          }}
-          alt="Anand Jadhav — Computer Science Engineer"
-          className="h-full w-auto object-cover object-top brightness-95 contrast-105"
-          style={{
-            maskImage: 'linear-gradient(to bottom, black 0%, black 80%, transparent 100%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 80%, transparent 100%)',
-          }}
-        />
+      <div
+        className="absolute left-1/2 -translate-x-1/2 md:translate-x-[-15%] bottom-0 h-[68%] sm:h-[78%] md:h-[88%] z-[2] pointer-events-none flex items-end justify-center transition-transform duration-500 ease-out"
+        style={{
+          transform: `translate(calc(${typeof window !== 'undefined' && window.innerWidth >= 768 ? '-15%' : '-50%'} + ${parallax.x * 0.8}px), ${parallax.y * 0.6}px)`,
+        }}
+      >
+        <div className="animate-float h-full">
+          <img
+            src="/anand_profile.jpg"
+            onError={(e) => {
+              const target = e.currentTarget;
+              if (target.src.includes('anand_profile.jpg')) {
+                target.src = 'anand_profile.jpg';
+              }
+            }}
+            alt="Anand Jadhav — Computer Science Engineer"
+            className="h-full w-auto object-cover object-top brightness-95 contrast-105 filter drop-shadow-[0_10px_30px_rgba(211,18,31,0.3)]"
+            style={{
+              maskImage: 'linear-gradient(to bottom, black 0%, black 80%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 80%, transparent 100%)',
+            }}
+          />
+        </div>
       </div>
 
       {/* ── Spacer for Top Bar ── */}
@@ -94,9 +117,19 @@ export default function HeroRevamp() {
             {portfolioData.bio}
           </p>
 
-          <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.14em] text-[#d3121f] uppercase bg-black/40 px-3 py-1.5 rounded border border-[#1f1f1f]">
-            <Globe className="w-3.5 h-3.5 text-[#d3121f]" />
-            <span>MUMBAI / VADODARA, INDIA &bull; OPEN WORLDWIDE</span>
+          <div className="flex flex-wrap items-center gap-3 mb-2">
+            <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.14em] text-[#d3121f] uppercase bg-black/40 px-3 py-1.5 rounded border border-[#1f1f1f]">
+              <Globe className="w-3.5 h-3.5 text-[#d3121f]" />
+              <span>MUMBAI / VADODARA, INDIA &bull; OPEN WORLDWIDE</span>
+            </div>
+
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.14em] text-white uppercase bg-[#d3121f]/20 hover:bg-[#d3121f] px-3.5 py-1.5 rounded border border-[#d3121f] transition-all duration-300 hover:shadow-[0_0_20px_rgba(211,18,31,0.6)]"
+            >
+              <span>CONNECT NOW</span>
+              <span className="text-[#ff3344] group-hover:text-white">→</span>
+            </a>
           </div>
         </motion.div>
 
@@ -107,11 +140,11 @@ export default function HeroRevamp() {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="hidden lg:flex md:col-span-3 flex-col justify-end pb-4"
         >
-          <div className="flex items-center gap-4 bg-[#0a0a0a]/80 p-3 rounded-lg border border-[#1f1f1f] backdrop-blur-sm">
-            <div className="w-11 h-11 rounded-full border border-[#1f1f1f] flex items-center justify-center text-[#d3121f] text-lg flex-shrink-0">
-              ✦
+          <div className="flex items-center gap-4 bg-[#0a0a0a]/80 p-3 rounded-lg border border-[#1f1f1f] backdrop-blur-sm hover:border-[#d3121f]/50 transition-colors group">
+            <div className="w-11 h-11 rounded-full border border-[#1f1f1f] group-hover:border-[#d3121f] flex items-center justify-center text-[#d3121f] text-lg flex-shrink-0 transition-colors">
+              <span className="animate-sparkle">✦</span>
             </div>
-            <p className="text-xs font-medium text-[#a0a0a0] leading-snug">
+            <p className="text-xs font-medium text-[#a0a0a0] leading-snug group-hover:text-white transition-colors">
               Engineering reliable systems that solve real-world problems.
             </p>
           </div>
@@ -127,32 +160,32 @@ export default function HeroRevamp() {
           <div className="flex flex-col border-t border-[#1f1f1f] bg-[#0a0a0a]/80 backdrop-blur-sm">
             
             {/* Stat 1 */}
-            <div className="flex items-center justify-between py-4 border-b border-[#1f1f1f]">
-              <span className="font-anton text-4xl sm:text-5xl text-[#d3121f] tracking-tight">
+            <div className="group flex items-center justify-between py-4 border-b border-[#1f1f1f] hover:bg-[#d3121f]/5 px-2 transition-colors rounded">
+              <span className="font-anton text-4xl sm:text-5xl text-[#d3121f] tracking-tight group-hover:drop-shadow-[0_0_12px_rgba(211,18,31,0.7)] transition-all">
                 <CountUp target={stats.projectsCompleted || 7} />
               </span>
-              <span className="text-[11px] font-semibold tracking-[0.18em] text-[#6b6b6b] uppercase text-right">
+              <span className="text-[11px] font-semibold tracking-[0.18em] text-[#6b6b6b] group-hover:text-white uppercase text-right transition-colors">
                 PRODUCTION<br />PROJECTS
               </span>
             </div>
 
             {/* Stat 2 */}
-            <div className="flex items-center justify-between py-4 border-b border-[#1f1f1f]">
-              <span className="font-anton text-4xl sm:text-5xl text-[#d3121f] tracking-tight">
+            <div className="group flex items-center justify-between py-4 border-b border-[#1f1f1f] hover:bg-[#d3121f]/5 px-2 transition-colors rounded">
+              <span className="font-anton text-4xl sm:text-5xl text-[#d3121f] tracking-tight group-hover:drop-shadow-[0_0_12px_rgba(211,18,31,0.7)] transition-all">
                 <CountUp target={stats.certifications || 6} />
               </span>
-              <span className="text-[11px] font-semibold tracking-[0.18em] text-[#6b6b6b] uppercase text-right">
+              <span className="text-[11px] font-semibold tracking-[0.18em] text-[#6b6b6b] group-hover:text-white uppercase text-right transition-colors">
                 VERIFIED<br />CREDENTIALS
               </span>
             </div>
 
             {/* Stat 3 */}
-            <div className="flex items-center justify-between py-4 border-b border-[#1f1f1f]">
-              <span className="font-anton text-4xl sm:text-5xl text-[#d3121f] tracking-tight">
-                <CountUp target={stats.githubContributions || 620} />
+            <div className="group flex items-center justify-between py-4 border-b border-[#1f1f1f] hover:bg-[#d3121f]/5 px-2 transition-colors rounded">
+              <span className="font-anton text-4xl sm:text-5xl text-[#d3121f] tracking-tight group-hover:drop-shadow-[0_0_12px_rgba(211,18,31,0.7)] transition-all">
+                <CountUp target={stats.leetcodeSolved || 150} />
               </span>
-              <span className="text-[11px] font-semibold tracking-[0.18em] text-[#6b6b6b] uppercase text-right">
-                GITHUB<br />CONTRIBUTIONS
+              <span className="text-[11px] font-semibold tracking-[0.18em] text-[#6b6b6b] group-hover:text-white uppercase text-right transition-colors">
+                ALGORITHMS &amp;<br />PROBLEMS SOLVED
               </span>
             </div>
 
