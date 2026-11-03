@@ -90,9 +90,9 @@ export default function HeroRevamp() {
         }}
       />
 
-      {/* ── Anand Jadhav's Portrait Photo (Overlapping Text, z-index 2 - PHOTO v3) ── */}
+      {/* ── Anand Jadhav's Portrait Photo (Overlapping Text, z-index 2 - STUDIO EDITION) ── */}
       <div
-        className="absolute left-1/2 bottom-0 h-[80%] sm:h-[90%] md:h-[100%] z-[2] pointer-events-none flex items-end justify-center transition-transform duration-500 ease-out"
+        className="absolute left-1/2 bottom-0 h-[82%] sm:h-[92%] md:h-[100%] z-[2] pointer-events-none flex items-end justify-center transition-transform duration-500 ease-out"
         style={{
           transform: `translate(calc(-30% + ${parallax.x * 0.8}px), ${parallax.y * 0.6}px)`,
         }}
@@ -112,11 +112,11 @@ export default function HeroRevamp() {
               }
             }}
             alt="Anand Jadhav — Computer Science Engineer"
-            className="h-full w-auto object-cover object-top brightness-95 contrast-105 filter drop-shadow-[0_15px_35px_rgba(211,18,31,0.35)]"
+            className="h-full w-auto object-cover object-top brightness-100 contrast-105 filter drop-shadow-[0_20px_40px_rgba(211,18,31,0.38)] drop-shadow-[0_0_25px_rgba(211,18,31,0.22)]"
             style={{
-              WebkitMaskImage: 'linear-gradient(to right, transparent, #000 14%, #000 86%, transparent), linear-gradient(#000 72%, transparent 99%)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent, #000 12%, #000 88%, transparent), linear-gradient(#000 70%, transparent 99%)',
               WebkitMaskComposite: 'source-in',
-              maskImage: 'linear-gradient(to right, transparent, #000 14%, #000 86%, transparent), linear-gradient(#000 72%, transparent 99%)',
+              maskImage: 'linear-gradient(to right, transparent, #000 12%, #000 88%, transparent), linear-gradient(#000 70%, transparent 99%)',
               maskComposite: 'intersect',
             }}
           />
