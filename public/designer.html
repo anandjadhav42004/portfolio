@@ -65,12 +65,24 @@ body:not(.go) .hero *,body:not(.go) .hero{animation-play-state:paused}
 @keyframes breathe{0%,100%{opacity:.7;transform:translateX(-48%) scale(1)}50%{opacity:1;transform:translateX(-48%) scale(1.08)}}
 .hero:after{content:"";position:absolute;inset:auto 0 0 0;height:24%;background:linear-gradient(transparent,var(--bg));z-index:2;pointer-events:none}
 
-/* Anand's Portrait Cutout */
-.photo{position:absolute;z-index:2;left:50%;bottom:0;height:86%;transform-origin:50% 100%;pointer-events:none;
-  -webkit-mask-image:linear-gradient(to top,transparent 0%,#000 20%,#000 80%,transparent 100%);mask-image:linear-gradient(to top,transparent 0%,#000 20%,#000 80%,transparent 100%);
-  animation:photoin 1.8s var(--ease) .45s both;translate:var(--tx,0) var(--ty,0);scale:var(--ps,1);will-change:translate,scale;
-  filter:drop-shadow(0 15px 35px rgba(211,18,31,0.35))}
-@keyframes photoin{from{opacity:0;transform:translateX(-12%) translateY(7%) scale(1.12);filter:blur(10px)}to{opacity:1;transform:translateX(-12%);filter:blur(0)}}
+/* Anand's Portrait Cutout - PHOTO v3: full-height cutout, head overlaps PORTFOLIO */
+.photo{
+  position:absolute;z-index:2;left:50%;bottom:0;height:100%;pointer-events:none;
+  transform:translateX(-30%);
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 14%,#000 86%,transparent),linear-gradient(#000 72%,transparent 99%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to right,transparent,#000 14%,#000 86%,transparent),linear-gradient(#000 72%,transparent 99%);
+  mask-composite:intersect;
+  animation:photoin 1.8s var(--ease) .45s both;
+  translate:var(--tx,0) var(--ty,0);
+  scale:var(--ps,1);
+  will-change:translate,scale;
+  filter:drop-shadow(0 15px 35px rgba(211,18,31,0.35));
+}
+@keyframes photoin{
+  from{opacity:0;transform:translateX(-30%) translateY(7%) scale(1.14);filter:blur(10px)}
+  to{opacity:1;transform:translateX(-30%);filter:blur(0)}
+}
 
 /* Hero Foreground UI (z-index 3) */
 .hero-grid{position:relative;z-index:3;display:grid;grid-template-columns:1.2fr 0.8fr 1fr;align-items:end;padding:0 48px 48px;width:100%;max-width:1440px;margin:0 auto}

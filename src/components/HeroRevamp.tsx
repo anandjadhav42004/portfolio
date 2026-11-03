@@ -90,18 +90,18 @@ export default function HeroRevamp() {
         }}
       />
 
-      {/* ── Anand Jadhav's Portrait Photo (Overlapping Text, z-index 2) ── */}
+      {/* ── Anand Jadhav's Portrait Photo (Overlapping Text, z-index 2 - PHOTO v3) ── */}
       <div
-        className="absolute left-1/2 -translate-x-1/2 md:translate-x-[-15%] bottom-0 h-[68%] sm:h-[78%] md:h-[88%] z-[2] pointer-events-none flex items-end justify-center transition-transform duration-500 ease-out"
+        className="absolute left-1/2 bottom-0 h-[80%] sm:h-[90%] md:h-[100%] z-[2] pointer-events-none flex items-end justify-center transition-transform duration-500 ease-out"
         style={{
-          transform: `translate(calc(${typeof window !== 'undefined' && window.innerWidth >= 768 ? '-15%' : '-50%'} + ${parallax.x * 0.8}px), ${parallax.y * 0.6}px)`,
+          transform: `translate(calc(-30% + ${parallax.x * 0.8}px), ${parallax.y * 0.6}px)`,
         }}
       >
         <motion.div
-          initial={{ opacity: 0, y: '8%', scale: 1.12, filter: 'blur(10px)' }}
+          initial={{ opacity: 0, y: '7%', scale: 1.14, filter: 'blur(10px)' }}
           animate={{ opacity: 1, y: '0%', scale: 1, filter: 'blur(0px)' }}
           transition={{ duration: 1.6, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          className="animate-float h-full"
+          className="animate-float h-full flex items-end"
         >
           <img
             src="/anand_profile.jpg"
@@ -114,8 +114,10 @@ export default function HeroRevamp() {
             alt="Anand Jadhav — Computer Science Engineer"
             className="h-full w-auto object-cover object-top brightness-95 contrast-105 filter drop-shadow-[0_15px_35px_rgba(211,18,31,0.35)]"
             style={{
-              maskImage: 'linear-gradient(to top, transparent 0%, black 18%, black 82%, transparent 100%)',
-              WebkitMaskImage: 'linear-gradient(to top, transparent 0%, black 18%, black 82%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent, #000 14%, #000 86%, transparent), linear-gradient(#000 72%, transparent 99%)',
+              WebkitMaskComposite: 'source-in',
+              maskImage: 'linear-gradient(to right, transparent, #000 14%, #000 86%, transparent), linear-gradient(#000 72%, transparent 99%)',
+              maskComposite: 'intersect',
             }}
           />
         </motion.div>
