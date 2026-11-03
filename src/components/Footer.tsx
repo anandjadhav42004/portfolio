@@ -1,28 +1,34 @@
 import React from 'react';
 
-const Footer = () => {
+export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="bg-void border-t border-slate-200 dark:border-white/10 overflow-hidden relative text-slate-600 dark:text-slate-400">
-      <div className="py-12 px-6 lg:px-20 max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6 text-xs font-mono">
-        <div className="flex flex-col sm:flex-row items-center gap-2">
-          <span className="font-semibold text-slate-900 dark:text-white font-sans text-sm">Anand Jadhav</span>
-          <span className="hidden sm:inline text-slate-400 dark:text-slate-600">•</span>
-          <span>B.Tech CSE @ Parul University</span>
+    <footer className="w-full bg-[#0a0a0a] border-t border-[#1f1f1f] py-8 px-6 sm:px-12 text-xs">
+      <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        
+        {/* Left: Copyright */}
+        <div className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[#6b6b6b]">
+          &copy; {new Date().getFullYear()} <span className="text-white font-bold">ANAND JADHAV</span>. ALL RIGHTS RESERVED.
         </div>
 
-        <div className="flex items-center gap-6 text-slate-700 dark:text-slate-300 font-medium">
-          <a href="https://github.com/anandjadhav42004" target="_blank" rel="noreferrer" className="hover:text-cyan dark:hover:text-indigo-400 transition-colors">GitHub</a>
-          <a href="https://www.linkedin.com/in/anand-jadhav-b599801b5" target="_blank" rel="noreferrer" className="hover:text-cyan dark:hover:text-indigo-400 transition-colors">LinkedIn</a>
-          <a href="https://leetcode.com/u/Anand_42004/" target="_blank" rel="noreferrer" className="hover:text-cyan dark:hover:text-indigo-400 transition-colors">LeetCode</a>
-          <a href="mailto:anandjadhav42004@gmail.com" className="hover:text-cyan dark:hover:text-indigo-400 transition-colors">Email</a>
+        {/* Right: Nav Links */}
+        <div className="flex items-center gap-6 text-[11px] font-semibold tracking-[0.14em] uppercase text-[#6b6b6b]">
+          <a href="#projects" className="hover:text-[#d3121f] transition-colors">Projects</a>
+          <a href="#mid-row" className="hover:text-[#d3121f] transition-colors">Credentials</a>
+          <a href="#workflow" className="hover:text-[#d3121f] transition-colors">Workflow</a>
+          <a href="#contact" className="hover:text-[#d3121f] transition-colors">Contact</a>
+          <button
+            onClick={scrollToTop}
+            className="hover:text-[#d3121f] transition-colors flex items-center gap-1 cursor-pointer"
+          >
+            <span>TOP &uarr;</span>
+          </button>
         </div>
 
-        <div>
-          <span>© {new Date().getFullYear()} Anand Jadhav</span>
-        </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

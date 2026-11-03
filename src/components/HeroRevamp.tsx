@@ -1,281 +1,165 @@
-import React, { Suspense, lazy, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { TypeAnimation } from 'react-type-animation';
-import { ArrowRight, Mail, ExternalLink, Code2, Database, Layers, ChevronDown } from 'lucide-react';
+import { Globe } from 'lucide-react';
+import { portfolioData, stats } from '../data/portfolio';
 
-// Inline SVG icons for GitHub and LinkedIn (not in this lucide-react version)
-const GithubIcon = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-  </svg>
-);
+// Custom Count-Up component
+function CountUp({ target, duration = 1.6 }: { target: number; duration?: number }) {
+  const [count, setCount] = useState(0);
 
-const LinkedinIcon = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-  </svg>
-);
+  useEffect(() => {
+    let start = 0;
+    const end = target;
+    const stepTime = Math.abs(Math.floor((duration * 1000) / (end || 1)));
+    const timer = setInterval(() => {
+      start += Math.ceil(end / 40) || 1;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(start);
+      }
+    }, Math.max(stepTime, 25));
 
-const Interactive3DModel = lazy(() => import('./Interactive3DModel'));
+    return () => clearInterval(timer);
+  }, [target, duration]);
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.12, duration: 0.65, ease: [0.215, 0.61, 0.355, 1] },
-  }),
-};
-
-const techPills = [
-  { icon: Layers,   label: 'Full-Stack Development',   color: 'text-emerald-300 border-emerald-500/30 bg-emerald-500/8' },
-  { icon: Code2,    label: 'Software Engineering',      color: 'text-cyan-300   border-cyan-500/30   bg-cyan-500/8'   },
-  { icon: Database, label: 'Databases & Backend',       color: 'text-slate-300  border-white/20      bg-white/5'       },
-];
-
-function Model3DFallback() {
-  return (
-    <div className="w-full h-[300px] sm:h-[380px] flex items-center justify-center">
-      <div className="w-28 h-28 rounded-full border-2 border-emerald-500/30 flex items-center justify-center">
-        <Code2 className="w-10 h-10 text-emerald-400 opacity-60" />
-      </div>
-    </div>
-  );
+  return <span>{count}+</span>;
 }
 
 export default function HeroRevamp() {
-  const [scrollY, setScrollY] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const progress = ref.current ? Math.min(1, scrollY / ref.current.clientHeight) : 0;
-
-  const scrollToWork    = () => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
-  const scrollToContact = () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-
   return (
-    <motion.section
-      ref={ref}
-      animate={{ y: `${progress * 10}vh` }}
-      transition={{ type: 'spring', stiffness: 60, damping: 18 }}
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-16 pt-24 pb-12 bg-void overflow-hidden"
-      aria-label="Hero section"
+    <section
+      id="hero"
+      className="relative w-full min-h-[720px] md:min-h-[820px] bg-[#0a0a0a] border-b border-[#1f1f1f] flex flex-col justify-between overflow-hidden px-6 sm:px-12 pt-6 pb-12 select-none"
     >
-      {/* Single subtle accent glow */}
+      {/* ── Giant Red Background Word (~25vw) ── */}
       <div
-        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, rgba(52,211,153,0.07) 0%, rgba(56,189,248,0.04) 50%, transparent 70%)',
-          filter: 'blur(80px)',
-        }}
         aria-hidden="true"
-      />
+        className="absolute top-2 left-1/2 -translate-x-1/2 w-full text-center font-anton text-[26vw] sm:text-[23vw] leading-[0.8] tracking-tight uppercase pointer-events-none z-[1] opacity-75"
+        style={{
+          background: 'linear-gradient(180deg, #d3121f 0%, #8b0a12 55%, #2a0508 90%, #0a0a0a 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+        }}
+      >
+        PORTFOLIO
+      </div>
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col items-center text-center">
+      {/* ── Anand Jadhav's Portrait Photo (Overlapping Text, z-index 2) ── */}
+      <div className="absolute left-1/2 -translate-x-1/2 md:translate-x-[-15%] bottom-0 h-[68%] sm:h-[78%] md:h-[88%] z-[2] pointer-events-none flex items-end justify-center">
+        <img
+          src="/anand_profile.jpg"
+          onError={(e) => {
+            const target = e.currentTarget;
+            if (target.src.includes('anand_profile.jpg')) {
+              target.src = 'anand_profile.jpg';
+            }
+          }}
+          alt="Anand Jadhav — Computer Science Engineer"
+          className="h-full w-auto object-cover object-top brightness-95 contrast-105"
+          style={{
+            maskImage: 'linear-gradient(to bottom, black 0%, black 80%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 80%, transparent 100%)',
+          }}
+        />
+      </div>
 
-        {/* Status pill */}
+      {/* ── Spacer for Top Bar ── */}
+      <div className="w-full h-8" />
+
+      {/* ── Foreground Content Grid (z-index 3) ── */}
+      <div className="relative z-[3] w-full max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-end mt-auto">
+        
+        {/* Left Column: Script + Name + Bio (5 cols) */}
         <motion.div
-          custom={0} variants={fadeUp} initial="hidden" animate="visible"
-          className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full bg-white/5 border border-emerald-500/25 text-xs font-mono tracking-wider text-emerald-400 uppercase"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="md:col-span-5 flex flex-col items-start"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true" />
-          Available for Internships &amp; Roles — 2026
-        </motion.div>
-
-        {/* Name */}
-        <motion.p
-          custom={1} variants={fadeUp} initial="hidden" animate="visible"
-          className="text-sm sm:text-base font-mono text-slate-400 tracking-[0.25em] uppercase mb-3"
-        >
-          Anand Jadhav
-        </motion.p>
-
-        {/* Main headline — visible immediately, no animation dependency */}
-        <motion.h1
-          custom={2} variants={fadeUp} initial="hidden" animate="visible"
-          className="text-4xl sm:text-6xl lg:text-7xl font-bold font-display tracking-tight text-white leading-[1.08] max-w-4xl px-2 mb-5"
-        >
-          Building reliable software{' '}
-          <span
-            className="bg-clip-text text-transparent"
-            style={{ backgroundImage: 'linear-gradient(135deg, #34D399 0%, #38BDF8 100%)' }}
-          >
-            for real-world problems.
+          <span className="font-allura text-4xl sm:text-5xl text-white tracking-wide mb-1 font-normal">
+            Hello, I'm
           </span>
-        </motion.h1>
 
-        {/* Role typewriter */}
-        <motion.div
-          custom={3} variants={fadeUp} initial="hidden" animate="visible"
-          className="text-lg sm:text-2xl text-slate-400 font-light tracking-wide mb-5 h-9 flex items-center justify-center"
-          aria-label="Professional identity"
-        >
-          <TypeAnimation
-            sequence={[
-              'Computer Science Engineer', 2600,
-              'Full-Stack Developer', 2000,
-              'Software Engineer', 2000,
-              'SAP & Enterprise Developer', 2400,
-            ]}
-            wrapper="span"
-            cursor={true}
-            repeat={Infinity}
-            className="text-emerald-300 font-mono font-medium"
-          />
-        </motion.div>
+          <h1 className="font-anton text-6xl sm:text-7xl lg:text-8xl text-white tracking-tight leading-[0.88] uppercase mb-4">
+            ANAND<br />JADHAV
+          </h1>
 
-        {/* Supporting text */}
-        <motion.p
-          custom={4} variants={fadeUp} initial="hidden" animate="visible"
-          className="text-slate-400 text-sm sm:text-base leading-relaxed max-w-2xl mb-10 px-4"
-        >
-          I design and build web and mobile applications, working across frontend, backend, and
-          databases — from React UIs to SAP enterprise systems.
-        </motion.p>
+          <div className="text-xs sm:text-sm font-bold tracking-[0.18em] uppercase text-[#d3121f] mb-3">
+            COMPUTER SCIENCE ENGINEER &amp; FULL-STACK DEVELOPER
+          </div>
 
-        {/* CTA buttons */}
-        <motion.div
-          custom={5} variants={fadeUp} initial="hidden" animate="visible"
-          className="flex flex-col sm:flex-row items-center gap-3 mb-12 w-full sm:w-auto px-4"
-        >
-          <button
-            onClick={scrollToWork}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm text-void bg-emerald-400 hover:bg-emerald-300 transition-all duration-200 shadow-lg shadow-emerald-500/20 hover:-translate-y-0.5"
-            aria-label="Explore my work"
-          >
-            <span>Explore My Work</span>
-            <ArrowRight className="w-4 h-4" aria-hidden="true" />
-          </button>
+          <p className="text-sm text-[#a0a0a0] leading-relaxed max-w-sm mb-4">
+            {portfolioData.bio}
+          </p>
 
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noreferrer"
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm text-white border border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/25 transition-all duration-200"
-            aria-label="View resume"
-          >
-            <ExternalLink className="w-4 h-4" aria-hidden="true" />
-            <span>View Resume</span>
-          </a>
-
-          <button
-            onClick={scrollToContact}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm text-slate-300 hover:text-white transition-all duration-200"
-            aria-label="Get in touch"
-          >
-            <Mail className="w-4 h-4" aria-hidden="true" />
-            <span>Contact Me</span>
-          </button>
-        </motion.div>
-
-        {/* Technical indicator pills */}
-        <motion.div
-          custom={6} variants={fadeUp} initial="hidden" animate="visible"
-          className="flex flex-wrap items-center justify-center gap-2.5 mb-14"
-        >
-          {techPills.map(({ icon: Icon, label, color }) => (
-            <span
-              key={label}
-              className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-mono ${color}`}
-            >
-              <Icon className="w-3.5 h-3.5" aria-hidden="true" />
-              {label}
-            </span>
-          ))}
-        </motion.div>
-
-        {/* Identity card with 3D model */}
-        <motion.div
-          custom={7} variants={fadeUp} initial="hidden" animate="visible"
-          className="relative w-full max-w-5xl rounded-3xl border border-white/10 bg-void-2/80 backdrop-blur-xl overflow-hidden"
-          style={{ boxShadow: '0 24px 60px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(52,211,153,0.06)' }}
-        >
-          {/* Dot grid */}
-          <div
-            className="absolute inset-0 pointer-events-none opacity-[0.07]"
-            style={{ backgroundImage: 'radial-gradient(#34d399 1px, transparent 1px)', backgroundSize: '28px 28px' }}
-            aria-hidden="true"
-          />
-
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 items-center">
-
-            {/* Left: Identity */}
-            <div className="md:col-span-6 p-6 sm:p-10 text-left">
-              <div className="flex items-center gap-2 text-[11px] font-mono text-emerald-400 mb-5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
-                <span>anand@dev-workspace ~ % whoami</span>
-              </div>
-
-              <h2 className="text-2xl sm:text-3xl font-bold font-display text-white tracking-tight mb-3">
-                Anand Jadhav
-              </h2>
-              <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-6">
-                B.Tech CSE student (SAP IEP Track) at Parul Institute of Technology.
-                Building production web apps, enterprise SAP systems, and AI-powered tools.
-              </p>
-
-              {/* Tech tags */}
-              <div className="flex flex-wrap gap-2 mb-8">
-                {['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'SAP BTP', 'SwiftUI', 'Python'].map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 rounded-full bg-white/5 border border-emerald-500/20 text-xs text-slate-300 font-mono hover:border-emerald-400/40 hover:text-emerald-300 transition-colors"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              {/* Social links */}
-              <div className="flex items-center gap-3 flex-wrap">
-                <a
-                  href="https://github.com/anandjadhav42004"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:border-white/25 text-xs font-medium transition-all"
-                  aria-label="GitHub profile"
-                >
-                  <GithubIcon className="w-3.5 h-3.5" />
-                  <span>GitHub</span>
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/anand-jadhav-b599801b5"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:border-white/25 text-xs font-medium transition-all"
-                  aria-label="LinkedIn profile"
-                >
-                  <LinkedinIcon className="w-3.5 h-3.5" />
-                  <span>LinkedIn</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Right: 3D Model (lazy) */}
-            <div className="md:col-span-6 relative flex items-center justify-center border-t md:border-t-0 md:border-l border-white/8 min-h-[260px] sm:min-h-[360px]">
-              <Suspense fallback={<Model3DFallback />}>
-                <Interactive3DModel />
-              </Suspense>
-            </div>
+          <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.14em] text-[#d3121f] uppercase bg-black/40 px-3 py-1.5 rounded border border-[#1f1f1f]">
+            <Globe className="w-3.5 h-3.5 text-[#d3121f]" />
+            <span>MUMBAI / VADODARA, INDIA &bull; OPEN WORLDWIDE</span>
           </div>
         </motion.div>
 
-        {/* Scroll cue */}
+        {/* Middle Column: Tagline & Star Badge (3 cols) */}
         <motion.div
-          custom={8} variants={fadeUp} initial="hidden" animate="visible"
-          className="mt-10 flex flex-col items-center gap-1 text-slate-600 text-xs font-mono"
-          aria-hidden="true"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="hidden lg:flex md:col-span-3 flex-col justify-end pb-4"
         >
-          <span>scroll to explore</span>
-          <ChevronDown className="w-4 h-4 animate-bounce" />
+          <div className="flex items-center gap-4 bg-[#0a0a0a]/80 p-3 rounded-lg border border-[#1f1f1f] backdrop-blur-sm">
+            <div className="w-11 h-11 rounded-full border border-[#1f1f1f] flex items-center justify-center text-[#d3121f] text-lg flex-shrink-0">
+              ✦
+            </div>
+            <p className="text-xs font-medium text-[#a0a0a0] leading-snug">
+              Engineering reliable systems that solve real-world problems.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Right Column: 3 Live Stats (4 cols) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="md:col-span-7 lg:col-span-4 flex flex-col justify-end"
+        >
+          <div className="flex flex-col border-t border-[#1f1f1f] bg-[#0a0a0a]/80 backdrop-blur-sm">
+            
+            {/* Stat 1 */}
+            <div className="flex items-center justify-between py-4 border-b border-[#1f1f1f]">
+              <span className="font-anton text-4xl sm:text-5xl text-[#d3121f] tracking-tight">
+                <CountUp target={stats.projectsCompleted || 7} />
+              </span>
+              <span className="text-[11px] font-semibold tracking-[0.18em] text-[#6b6b6b] uppercase text-right">
+                PRODUCTION<br />PROJECTS
+              </span>
+            </div>
+
+            {/* Stat 2 */}
+            <div className="flex items-center justify-between py-4 border-b border-[#1f1f1f]">
+              <span className="font-anton text-4xl sm:text-5xl text-[#d3121f] tracking-tight">
+                <CountUp target={stats.certifications || 6} />
+              </span>
+              <span className="text-[11px] font-semibold tracking-[0.18em] text-[#6b6b6b] uppercase text-right">
+                VERIFIED<br />CREDENTIALS
+              </span>
+            </div>
+
+            {/* Stat 3 */}
+            <div className="flex items-center justify-between py-4 border-b border-[#1f1f1f]">
+              <span className="font-anton text-4xl sm:text-5xl text-[#d3121f] tracking-tight">
+                <CountUp target={stats.githubContributions || 620} />
+              </span>
+              <span className="text-[11px] font-semibold tracking-[0.18em] text-[#6b6b6b] uppercase text-right">
+                GITHUB<br />CONTRIBUTIONS
+              </span>
+            </div>
+
+          </div>
         </motion.div>
 
       </div>
-    </motion.section>
+    </section>
   );
 }

@@ -1,97 +1,35 @@
-import React, { useState } from 'react';
-import LoadingScreen from './components/LoadingScreen';
-import CustomCursor from './components/CustomCursor';
-import Background3D from './components/Background3D';
-import HeroRevamp from './components/HeroRevamp';
-import ParticleBackground from './components/ParticleBackground';
+import React from 'react';
 import HamburgerMenu from './components/HamburgerMenu';
-import About from './components/About';
+import HeroRevamp from './components/HeroRevamp';
 import Projects from './components/Projects';
-import Skills from './components/Skills';
-import LeetCodeStats from './components/LeetCodeStats';
-import ResumeAnalyzer from './components/ResumeAnalyzer';
-import Certifications from './components/Certifications';
-import LiveStats from './components/LiveStats';
-import LinkedInPost from './components/LinkedInPost';
+import MidRow from './components/MidRow';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
-// Global Helpers & Overlay upgrades
-import ScrollProgress from './components/ScrollProgress';
-import ThemeToggle from './components/ThemeToggle';
-import BackToTop from './components/BackToTop';
-import KonamiEasterEgg from './components/KonamiEasterEgg';
-import AIChatbot from './components/AIChatbot';
-
 function App() {
-  const [loading, setLoading] = useState(true);
-
-  React.useEffect(() => {
-    document.documentElement.classList.add('dark');
-    document.documentElement.classList.remove('light');
-  }, []);
-
   return (
-    <>
-      {/* Scroll indicator gradient bar at the absolute top of the viewport */}
-      <ScrollProgress />
+    <div className="relative min-h-screen w-full bg-[#0a0a0a] text-white selection:bg-[#d3121f] selection:text-white font-sans overflow-x-hidden">
+      {/* ── Top Bar / Header ── */}
+      <HamburgerMenu />
 
-      {/* Global Interactive Elements & Overlays */}
-      <CustomCursor />
-      <KonamiEasterEgg />
-      
-      {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
-      
-      {!loading && (
-        <div className="relative w-full min-h-screen bg-void text-off-white overflow-hidden transition-colors duration-300">
-          {/* Interactive Background */}
-          <ParticleBackground />
-          
-          {/* Global Sticky Navigation */}
-          <HamburgerMenu />
-          
-          {/* Main Content Sections */}
-          <main className="relative z-10 w-full">
-            {/* Hero Banner with Code Typewriter & IST Clock */}
-            <HeroRevamp />
-            
-            {/* About Profile & Business Card */}
-            <About />
-            
-            {/* Project grids & stars */}
-            <Projects />
-            
-            {/* Circular technical skills map */}
-            <Skills />
-            
-            {/* GraphQL LeetCode Analytics concentric charts */}
-            <LeetCodeStats />
-            
-            {/* AI Resume and Job Description Match diagnostics */}
-            <ResumeAnalyzer />
-            
-            {/* Credentials and Certifications */}
-            <Certifications />
-            
-            {/* Numeric Stats Grid */}
-            <LiveStats />
+      {/* ── Main Content Sections ── */}
+      <main className="w-full">
+        {/* 1. Hero Section with Giant PORTFOLIO backdrop & Anand's portrait */}
+        <HeroRevamp />
 
-            {/* Latest LinkedIn post preview */}
-            <LinkedInPost />
-            
-            {/* Interactive Contact submission forms with custom animations */}
-            <Contact />
-          </main>
-          
-          {/* Standard Footer */}
-          <Footer />
+        {/* 2. Selected Engineering Projects Grid */}
+        <Projects />
 
-          {/* Floaters for convenient navigation and quick recruitment access */}
-          <BackToTop />
-          <AIChatbot />
-        </div>
-      )}
-    </>
+        {/* 3. Three-Column Mid-Row: Academic Background, Credentials, Tech Stack, Engineering Workflow, Philosophy & Hilti Experience */}
+        <MidRow />
+
+        {/* 4. Contact & Direct Connection */}
+        <Contact />
+      </main>
+
+      {/* ── Editorial Footer ── */}
+      <Footer />
+    </div>
   );
 }
 

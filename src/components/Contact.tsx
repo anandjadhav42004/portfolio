@@ -1,101 +1,152 @@
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useState } from 'react';
+import { Mail, Phone, Globe, MapPin, ArrowUpRight, Send, Check } from 'lucide-react';
+import { portfolioData } from '../data/portfolio';
 
-gsap.registerPlugin(ScrollTrigger);
+export default function Contact() {
+  const [copied, setCopied] = useState(false);
 
-const Contact = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-    gsap.fromTo(
-      containerRef.current.children,
-      { y: 28, opacity: 0 },
-      {
-        y: 0, opacity: 1, duration: 0.65, stagger: 0.15, ease: 'power2.out',
-        scrollTrigger: { trigger: containerRef.current, start: 'top 80%' },
-      }
-    );
-  }, []);
+  const copyEmail = () => {
+    navigator.clipboard.writeText(portfolioData.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
-    <section
-      id="contact"
-      className="py-28 px-4 sm:px-6 lg:px-20 bg-void border-b border-white/8"
-      aria-labelledby="contact-heading"
-    >
-      <div ref={containerRef} className="max-w-7xl mx-auto flex flex-col items-center text-center">
+    <section id="contact" className="w-full bg-[#0a0a0a] border-b border-[#1f1f1f]">
+      <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12">
 
-        <span className="text-xs font-mono font-semibold tracking-wider text-emerald-400 uppercase mb-4">
-          // Let's Connect
-        </span>
+        {/* ── COLUMN 1: HEADING & CTA (5 cols) ── */}
+        <div className="lg:col-span-5 p-8 sm:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-[#1f1f1f] flex flex-col justify-between">
+          <div>
+            <h2 className="font-anton text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white uppercase leading-[0.95] mb-6">
+              LET'S WORK<br />
+              TOGETHER <span className="text-[#d3121f]">✦</span>
+            </h2>
 
-        <h2
-          id="contact-heading"
-          className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white tracking-tight mb-6 max-w-4xl"
-        >
-          Interested in working together?
-        </h2>
+            <p className="text-sm text-[#a0a0a0] leading-relaxed max-w-md mb-8">
+              Actively interviewing for Software Engineering, Full-Stack Developer, and SAP Consultant roles.
+              Open for high-impact internships, full-time positions, and enterprise software engineering projects.
+            </p>
+          </div>
 
-        <p className="text-slate-400 text-base max-w-xl mb-10 leading-relaxed">
-          Open for full-stack web development, SAP engineering, and software roles.
-          Reach out via email or LinkedIn.
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 w-full sm:w-auto px-4">
           <a
-            href="mailto:anandjadhav42004@gmail.com"
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-emerald-400 hover:bg-emerald-300 text-void font-semibold text-sm tracking-wide shadow-lg shadow-emerald-500/20 transition-all flex items-center justify-center gap-2 hover:-translate-y-0.5"
-            aria-label="Send email to Anand Jadhav"
+            href={`mailto:${portfolioData.email}`}
+            className="inline-flex items-center gap-4 group cursor-pointer w-fit"
           >
-            <span>Send Email</span>
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/anand-jadhav-b599801b5"
-            target="_blank"
-            rel="noreferrer"
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white font-semibold text-sm transition-all flex items-center justify-center gap-2"
-            aria-label="View LinkedIn profile"
-          >
-            LinkedIn Profile ↗
+            <div className="w-14 h-14 rounded-full border border-[#1f1f1f] flex items-center justify-center group-hover:border-[#d3121f] group-hover:bg-[#d3121f]/10 transition-colors">
+              <ArrowUpRight className="w-6 h-6 text-[#d3121f] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </div>
+            <span className="font-anton text-base sm:text-lg tracking-wider uppercase text-white group-hover:text-[#d3121f] transition-colors">
+              GET IN TOUCH DIRECTLY
+            </span>
           </a>
         </div>
 
-        {/* Contact info cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-left w-full max-w-4xl pt-12 border-t border-white/8">
-          <div className="glass-card p-6 rounded-2xl border border-white/8">
-            <p className="text-xs font-mono text-slate-500 mb-1">Direct Email</p>
-            <a
-              href="mailto:anandjadhav42004@gmail.com"
-              className="text-sm font-semibold text-white hover:text-emerald-300 transition-colors break-all"
+        {/* ── COLUMN 2: 4 CONTACT ROWS (4 cols) ── */}
+        <div className="lg:col-span-4 p-8 sm:p-12 lg:p-16 border-b md:border-b-0 lg:border-r border-[#1f1f1f] flex flex-col justify-center gap-6">
+          
+          {/* Email */}
+          <div className="flex items-center gap-4 group">
+            <button
+              onClick={copyEmail}
+              className="w-11 h-11 rounded-full border border-[#1f1f1f] flex items-center justify-center text-[#a0a0a0] group-hover:border-[#d3121f] group-hover:text-[#d3121f] transition-colors flex-shrink-0"
+              title="Copy Email"
             >
-              anandjadhav42004@gmail.com
-            </a>
+              {copied ? <Check className="w-4 h-4 text-[#d3121f]" /> : <Mail className="w-4 h-4" />}
+            </button>
+            <div className="flex flex-col">
+              <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#6b6b6b]">EMAIL</span>
+              <a
+                href={`mailto:${portfolioData.email}`}
+                className="text-xs sm:text-sm font-medium text-white hover:text-[#d3121f] transition-colors"
+              >
+                {portfolioData.email}
+              </a>
+            </div>
           </div>
-          <div className="glass-card p-6 rounded-2xl border border-white/8">
-            <p className="text-xs font-mono text-slate-500 mb-1">Phone</p>
+
+          {/* Phone */}
+          <div className="flex items-center gap-4 group">
             <a
-              href="tel:+918308008154"
-              className="text-sm font-semibold text-white hover:text-emerald-300 transition-colors"
+              href={`tel:${portfolioData.phone}`}
+              className="w-11 h-11 rounded-full border border-[#1f1f1f] flex items-center justify-center text-[#a0a0a0] group-hover:border-[#d3121f] group-hover:text-[#d3121f] transition-colors flex-shrink-0"
             >
-              +91 8308008154
+              <Phone className="w-4 h-4" />
             </a>
+            <div className="flex flex-col">
+              <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#6b6b6b]">PHONE</span>
+              <a
+                href={`tel:${portfolioData.phone}`}
+                className="text-xs sm:text-sm font-medium text-white hover:text-[#d3121f] transition-colors"
+              >
+                {portfolioData.phone}
+              </a>
+            </div>
           </div>
-          <div className="glass-card p-6 rounded-2xl border border-white/8">
-            <p className="text-xs font-mono text-slate-500 mb-1">Location</p>
-            <p className="text-sm font-semibold text-white">
-              Mumbai / Vadodara, India
+
+          {/* LinkedIn */}
+          <div className="flex items-center gap-4 group">
+            <a
+              href={`https://www.linkedin.com/in/${portfolioData.linkedin}`}
+              target="_blank"
+              rel="noreferrer"
+              className="w-11 h-11 rounded-full border border-[#1f1f1f] flex items-center justify-center text-[#a0a0a0] group-hover:border-[#d3121f] group-hover:text-[#d3121f] transition-colors flex-shrink-0"
+            >
+              <Globe className="w-4 h-4" />
+            </a>
+            <div className="flex flex-col">
+              <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#6b6b6b]">LINKEDIN</span>
+              <a
+                href={`https://www.linkedin.com/in/${portfolioData.linkedin}`}
+                target="_blank"
+                rel="noreferrer"
+                className="text-xs sm:text-sm font-medium text-white hover:text-[#d3121f] transition-colors"
+              >
+                linkedin.com/in/{portfolioData.linkedin}
+              </a>
+            </div>
+          </div>
+
+          {/* Location */}
+          <div className="flex items-center gap-4 group">
+            <div className="w-11 h-11 rounded-full border border-[#1f1f1f] flex items-center justify-center text-[#a0a0a0] flex-shrink-0">
+              <MapPin className="w-4 h-4 text-[#d3121f]" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#6b6b6b]">LOCATION</span>
+              <span className="text-xs sm:text-sm font-medium text-white">
+                {portfolioData.location}
+              </span>
+            </div>
+          </div>
+
+        </div>
+
+        {/* ── COLUMN 3: RESUME & PROVENANCE (3 cols) ── */}
+        <div className="lg:col-span-3 p-8 sm:p-12 lg:p-16 flex flex-col justify-between bg-[#0f0f0f]/40">
+          <div>
+            <div className="text-[10px] font-bold tracking-[0.22em] uppercase text-[#d3121f] mb-3">
+              OFFICIAL RESUME DOSSIER
+            </div>
+            <p className="text-xs text-[#a0a0a0] leading-relaxed mb-6">
+              Download the complete, ATS-formatted curriculum vitae of Anand Jadhav covering education, project metrics, verified SAP credentials, and internships.
             </p>
+
+            <a
+              href={`mailto:${portfolioData.email}?subject=Requesting%20Resume%20Dossier%20-%20Anand%20Jadhav`}
+              className="inline-flex items-center justify-center gap-2 w-full px-5 py-3 rounded-[4px] border border-[#d3121f] bg-[#d3121f]/10 text-white hover:bg-[#d3121f] text-xs font-semibold uppercase tracking-[0.16em] transition-all"
+            >
+              <Send className="w-3.5 h-3.5" />
+              <span>REQUEST RESUME CV</span>
+            </a>
+          </div>
+
+          <div className="pt-6 border-t border-[#1f1f1f] mt-8 text-[11px] text-[#6b6b6b] uppercase tracking-wider">
+            B.Tech CSE &bull; Parul University &bull; 2026 Batch
           </div>
         </div>
 
       </div>
     </section>
   );
-};
-
-export default Contact;
+}

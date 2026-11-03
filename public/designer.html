@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Anand Jadhav — Web Designer &amp; UI/UX Creator</title>
-  <meta name="description" content="Portfolio of Anand Jadhav — Web Designer, UI/UX Creator &amp; Full-Stack Engineer crafting premium digital experiences." />
+  <title>Anand Jadhav — Full-Stack Software Engineer &amp; SAP Developer</title>
+  <meta name="description" content="Resume &amp; Portfolio of Anand Jadhav — Computer Science Engineer, Full-Stack Developer &amp; SAP Certified Associate." />
 
   <!-- ═══════════════════════════════════════════════════════════
        GOOGLE FONTS: Anton (Display/Numbers), Allura (Script), Inter (Body)
@@ -200,8 +200,8 @@
     ═══════════════════════════════════════════════════════════ */
     #hero {
       position: relative;
-      height: min(92vw, 820px);
-      min-height: 680px;
+      height: min(92vw, 840px);
+      min-height: 700px;
       overflow: hidden;
       border-bottom: 1px solid var(--line);
       padding: 0 56px;
@@ -232,27 +232,31 @@
       background-clip: text;
     }
 
-    /* Transparent PNG photo overlapping in front of text */
+    /* Real photo of Anand Jadhav overlapping in front of text */
     .hero-photo-wrap {
       position: absolute;
       bottom: 0;
       left: 52%;
-      transform: translateX(-35%);
+      transform: translateX(-34%);
       height: 88%;
       max-height: 740px;
       z-index: 2;
       pointer-events: none;
       display: flex;
       align-items: flex-end;
-      -webkit-mask-image: linear-gradient(to top, transparent 0%, black 14%, black 100%);
-      mask-image: linear-gradient(to top, transparent 0%, black 14%, black 100%);
+      -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%, black 100%);
+      mask-image: linear-gradient(to top, transparent 0%, black 15%, black 100%);
     }
     .hero-photo-img {
       height: 100%;
       width: auto;
-      object-fit: contain;
-      object-position: bottom;
-      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.9));
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 20px 20px 0 0;
+      filter: drop-shadow(0 20px 45px rgba(0,0,0,0.95)) contrast(1.05);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-left: 1px solid rgba(255,255,255,0.08);
+      border-right: 1px solid rgba(255,255,255,0.08);
     }
 
     /* Hero UI Elements (z-index 3) */
@@ -261,14 +265,14 @@
       z-index: 3;
       width: 100%;
       display: grid;
-      grid-template-columns: 1.1fr 1fr 1fr;
+      grid-template-columns: 1.15fr 0.95fr 1fr;
       align-items: flex-end;
       padding-bottom: 48px;
     }
 
     /* Bottom-left block */
     .hero-left {
-      max-width: 380px;
+      max-width: 400px;
     }
     .hero-script {
       font-family: var(--font-script);
@@ -298,7 +302,7 @@
       font-size: 13.5px;
       color: var(--body);
       line-height: 1.75;
-      max-width: 300px;
+      max-width: 330px;
       margin-bottom: 24px;
     }
     .hero-worldwide {
@@ -327,17 +331,17 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      max-width: 230px;
-      background: rgba(10, 10, 10, 0.5);
+      max-width: 245px;
+      background: rgba(10, 10, 10, 0.6);
       backdrop-filter: blur(8px);
       padding: 10px 16px;
       border-radius: 40px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.07);
     }
     .hero-tagline-box .icon-btn {
       width: 38px;
       height: 38px;
-      border-color: rgba(211, 18, 31, 0.4);
+      border-color: rgba(211, 18, 31, 0.45);
       color: var(--red);
     }
     .hero-tagline-text {
@@ -432,6 +436,8 @@
     .project-card {
       cursor: pointer;
       transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
     }
     .project-card:hover {
       transform: translateY(-4px);
@@ -439,17 +445,17 @@
 
     .project-thumb {
       aspect-ratio: 16 / 9.4;
-      border: 1px solid #2c2c2c;
+      border: 1px solid #282828;
       border-radius: 4px;
       overflow: hidden;
       margin-bottom: 18px;
-      background: #121212;
+      background: #111111;
       transition: border-color 0.3s, box-shadow 0.3s;
       position: relative;
     }
     .project-card:hover .project-thumb {
       border-color: var(--red);
-      box-shadow: 0 10px 28px rgba(211, 18, 31, 0.22);
+      box-shadow: 0 10px 28px rgba(211, 18, 31, 0.25);
     }
     .project-thumb img {
       width: 100%;
@@ -508,11 +514,11 @@
     }
 
     /* ═══════════════════════════════════════════════════════════
-       4. THREE-COLUMN ROW (30% / FLEXIBLE / 28%)
+       4. THREE-COLUMN ROW (32% / FLEXIBLE / 30%)
     ═══════════════════════════════════════════════════════════ */
     #mid-row {
       display: grid;
-      grid-template-columns: 30% 1fr 28%;
+      grid-template-columns: 32% 1fr 30%;
       border-bottom: 1px solid var(--line);
     }
     .mid-col {
@@ -530,11 +536,11 @@
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--red);
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
     .edu-item {
-      margin-bottom: 22px;
-      padding-bottom: 22px;
+      margin-bottom: 18px;
+      padding-bottom: 18px;
       border-bottom: 1px solid var(--line);
     }
     .edu-item:last-of-type {
@@ -548,19 +554,19 @@
       gap: 12px;
     }
     .edu-degree {
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 600;
       color: var(--text);
       line-height: 1.35;
     }
     .edu-inst {
-      font-size: 12.5px;
+      font-size: 12px;
       color: var(--faint);
-      margin-top: 4px;
+      margin-top: 3px;
     }
     .edu-year {
       font-family: var(--font-display);
-      font-size: 16px;
+      font-size: 15px;
       color: var(--red);
       white-space: nowrap;
       flex-shrink: 0;
@@ -569,23 +575,23 @@
     .skills-divider {
       height: 1px;
       background: var(--line);
-      margin: 32px 0 28px;
+      margin: 28px 0 24px;
     }
     .skills-chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 14px;
+      gap: 7px;
+      margin-top: 12px;
     }
     .chip {
-      font-size: 10px;
+      font-size: 9.5px;
       font-weight: 600;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--body);
-      border: 1px solid #333333;
+      border: 1px solid #2d2d2d;
       border-radius: 4px;
-      padding: 6px 11px;
+      padding: 5px 10px;
       transition: border-color 0.2s, color 0.2s, background-color 0.2s;
       cursor: default;
     }
@@ -612,7 +618,7 @@
       display: flex;
       align-items: flex-start;
       gap: 18px;
-      padding-bottom: 32px;
+      padding-bottom: 30px;
       position: relative;
     }
     .step-left-combo {
@@ -639,7 +645,7 @@
       position: absolute;
       left: 50%;
       top: 44px;
-      bottom: -32px;
+      bottom: -30px;
       width: 1px;
       background: var(--line);
       transform: translateX(-50%);
@@ -650,19 +656,19 @@
     .step-title {
       font-family: var(--font-display);
       font-size: 18px;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--red);
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
     .step-desc {
       font-size: 13px;
       color: var(--body);
-      line-height: 1.6;
+      line-height: 1.55;
       max-width: 320px;
     }
 
-    /* ── C) QUOTE PANEL ── */
+    /* ── C) QUOTE & RESUME PANEL ── */
     .quote-panel {
       background: radial-gradient(circle at 35% 20%, #b50f1a 0%, var(--red-d) 48%, var(--red-x) 100%);
       position: relative;
@@ -670,13 +676,13 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 64px 40px;
+      padding: 64px 38px;
     }
     /* Subtle SVG noise grain */
     .quote-grain {
       position: absolute;
       inset: 0;
-      opacity: 0.14;
+      opacity: 0.15;
       pointer-events: none;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
@@ -690,37 +696,64 @@
     }
     .quote-mark {
       font-family: var(--font-display), Georgia, serif;
-      font-size: 120px;
+      font-size: 110px;
       line-height: 0.65;
       color: var(--red);
-      margin-bottom: 22px;
+      margin-bottom: 20px;
       user-select: none;
     }
     .quote-text {
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 400;
       line-height: 1.45;
       color: var(--text);
       font-style: normal;
-      margin-bottom: 30px;
+      margin-bottom: 24px;
     }
     .quote-signature {
       font-family: var(--font-script);
       font-size: 38px;
       color: rgba(255, 255, 255, 0.95);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
+
+    /* Experience mini badge inside quote panel */
+    .quote-exp-badge {
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 12px 14px;
+      margin-bottom: 20px;
+    }
+    .quote-exp-title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #ffb4b9;
+    }
+    .quote-exp-comp {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text);
+      margin-top: 2px;
+    }
+    .quote-exp-role {
+      font-size: 11px;
+      color: rgba(255,255,255,0.7);
+    }
+
     .quote-bottom-cta {
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.75);
+      color: rgba(255, 255, 255, 0.85);
       display: flex;
       align-items: center;
       gap: 8px;
       border-top: 1px solid rgba(255, 255, 255, 0.16);
-      padding-top: 22px;
+      padding-top: 18px;
     }
 
     /* ═══════════════════════════════════════════════════════════
@@ -753,7 +786,7 @@
       font-size: 14px;
       color: var(--body);
       line-height: 1.8;
-      max-width: 310px;
+      max-width: 320px;
       margin-bottom: 34px;
     }
     .contact-cta-btn {
@@ -811,7 +844,7 @@
       background: radial-gradient(circle at 80% 80%, rgba(211, 18, 31, 0.08), transparent 60%);
     }
 
-    /* CSS Laptop Graphic (matches reference perfectly without external image) */
+    /* CSS Laptop Graphic */
     .laptop-frame {
       width: 112%;
       max-width: 440px;
@@ -855,12 +888,12 @@
     }
     .laptop-screen-headline {
       font-family: var(--font-display);
-      font-size: 26px;
+      font-size: 24px;
       text-transform: uppercase;
-      line-height: 1;
+      line-height: 1.1;
       letter-spacing: 0.04em;
       color: var(--text);
-      margin-top: 6px;
+      margin-top: 8px;
       position: relative;
       z-index: 2;
     }
@@ -1131,28 +1164,28 @@
       <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
       <path d="M2 12h20"/>
     </symbol>
-    <!-- Search -->
+    <!-- Search / Architecture -->
     <symbol id="icon-search" viewBox="0 0 24 24">
       <circle cx="11" cy="11" r="8"/>
       <path d="m21 21-4.35-4.35"/>
     </symbol>
-    <!-- Lightbulb -->
+    <!-- Lightbulb / Ideate -->
     <symbol id="icon-lightbulb" viewBox="0 0 24 24">
       <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-1 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
       <path d="M9 18h6"/>
       <path d="M10 22h4"/>
     </symbol>
-    <!-- Pen / PenTool -->
+    <!-- Pen / Design -->
     <symbol id="icon-pen" viewBox="0 0 24 24">
       <path d="m18 2 4 4-12 12H6v-4L18 2z"/>
       <path d="m14 6 4 4"/>
     </symbol>
-    <!-- Code </> -->
+    <!-- Code </> / Development -->
     <symbol id="icon-code" viewBox="0 0 24 24">
       <polyline points="16 18 22 12 16 6"/>
       <polyline points="8 6 2 12 8 18"/>
     </symbol>
-    <!-- Paper Plane -->
+    <!-- Paper Plane / Deployment -->
     <symbol id="icon-plane" viewBox="0 0 24 24">
       <path d="m22 2-7 20-4-9-9-4Z"/>
       <path d="M22 2 11 13"/>
@@ -1189,14 +1222,12 @@
   ═══════════════════════════════════════════════════════════ -->
   <header id="topbar">
     <div class="topbar-brand">
-      <!-- REPLACE: Your primary title -->
-      <div class="role">WEB DESIGNER</div>
-      <!-- REPLACE: Subtitle -->
-      <div class="sub">DIGITAL CREATOR</div>
+      <div class="role">FULL-STACK SOFTWARE ENGINEER</div>
+      <div class="sub">SAP CERTIFIED ASSOCIATE &amp; CLOUD ARCHITECT</div>
     </div>
     <div class="topbar-avail">
       <span class="avail-pulse" aria-hidden="true"></span>
-      AVAILABLE FOR FREELANCE
+      OPEN FOR SOFTWARE &amp; SAP ROLES
       <em class="sparkle-red">✦</em>
     </div>
   </header>
@@ -1210,17 +1241,13 @@
     <!-- Giant "PORTFOLIO" Backdrop Word (~25vw, Centered Top) -->
     <div class="hero-bg-word" aria-hidden="true">PORTFOLIO</div>
 
-    <!-- Transparent PNG Cutout (Centered/Right, Overlaps Letters, Fade at Bottom) -->
+    <!-- Anand Jadhav's Real Photo (Centered/Right, Overlaps Letters, Fade at Bottom) -->
     <div class="hero-photo-wrap">
-      <!--
-        REPLACE: Swap with your cutout transparent PNG photo.
-        We have placed Anand's real photo at "/anand_profile.jpg" or you can use your transparent cutout.
-      -->
       <img
         class="hero-photo-img"
-        src="https://placehold.co/600x850/transparent/transparent?text=Your+Cutout+Photo"
+        src="anand_profile.jpg"
         onerror="this.src='/anand_profile.jpg'"
-        alt="Anand Jadhav — Portrait Cutout"
+        alt="Anand Jadhav — Full Stack Engineer"
       />
     </div>
 
@@ -1230,18 +1257,16 @@
       <!-- Bottom-Left Block -->
       <div class="hero-left fade-up">
         <div class="hero-script">Hello, I'm</div>
-        <!-- REPLACE: First and Last Name -->
         <h1 class="hero-name">ANAND<br>JADHAV</h1>
-        <div class="hero-subtitle">WEB DESIGNER &amp; UI/UX CREATOR</div>
+        <div class="hero-subtitle">COMPUTER SCIENCE ENGINEER &amp; FULL-STACK DEVELOPER</div>
         <p class="hero-bio">
-          <!-- REPLACE: Short bio (3-4 lines, max 300px) -->
-          I craft visually stunning, high-performance websites that blend bold
-          cinematic aesthetics with flawless user experience. Turning complex ideas
-          into clean, memorable digital products.
+          B.Tech Computer Science student (SAP IEP Track) at Parul University. Specializing in
+          high-performance web platforms (React, TypeScript, Node.js), enterprise SAP BTP architectures,
+          and production AI pipelines.
         </p>
         <div class="hero-worldwide">
           <svg class="icon"><use href="#icon-globe"/></svg>
-          AVAILABLE WORLDWIDE
+          MUMBAI / VADODARA, INDIA &bull; OPEN WORLDWIDE
         </div>
       </div>
 
@@ -1251,23 +1276,23 @@
           <button class="icon-btn" aria-label="Sparkle Badge">
             <span class="sparkle-red">✦</span>
           </button>
-          <p class="hero-tagline-text">Turning ideas into powerful digital experiences.</p>
+          <p class="hero-tagline-text">Engineering reliable systems that solve real-world problems.</p>
         </div>
       </div>
 
       <!-- Bottom-Right Stats Rows with Count-Up Animation -->
       <div class="hero-stats fade-up">
         <div class="stat-row">
-          <div class="stat-num" data-target="3">0</div>
-          <div class="stat-label">YEARS<br>EXPERIENCE</div>
+          <div class="stat-num" data-target="7">0</div>
+          <div class="stat-label">PRODUCTION<br>PROJECTS</div>
         </div>
         <div class="stat-row">
-          <div class="stat-num" data-target="40">0</div>
-          <div class="stat-label">PROJECTS<br>COMPLETED</div>
+          <div class="stat-num" data-target="6">0</div>
+          <div class="stat-label">CERTIFICATIONS<br>EARNED</div>
         </div>
         <div class="stat-row">
-          <div class="stat-num" data-target="20">0</div>
-          <div class="stat-label">HAPPY<br>CLIENTS</div>
+          <div class="stat-num" data-target="620">0</div>
+          <div class="stat-label">GITHUB<br>CONTRIBUTIONS</div>
         </div>
       </div>
 
@@ -1282,80 +1307,85 @@
   <section id="projects">
 
     <div class="projects-header fade-up">
-      <h2 class="projects-title">SELECTED PROJECTS</h2>
+      <h2 class="projects-title">SELECTED ENGINEERING PROJECTS</h2>
       <div class="projects-divider"></div>
-      <a class="projects-view-all" href="#projects">
-        VIEW ALL PROJECTS
+      <a class="projects-view-all" href="https://github.com/anandjadhav42004" target="_blank" rel="noreferrer">
+        VIEW ALL ON GITHUB
         <svg class="icon" style="width: 14px; height: 14px;"><use href="#icon-arrow"/></svg>
       </a>
     </div>
 
     <div class="projects-grid">
 
-      <!-- Project 01 — REPLACE: Screenshot, Title, Category -->
+      <!-- Project 01: Anti-Gravity AI -->
       <article class="project-card fade-up">
-        <div class="project-thumb">
-          <img
-            src="https://placehold.co/640x376/121212/282828?text=Veloce+Bikes+E-Commerce"
-            onerror="this.src='/antigravity_verification.jpg'"
-            alt="Veloce Bikes — E-Commerce Website"
-            loading="lazy"
-          />
-        </div>
-        <div class="project-meta">
-          <div class="project-num">01</div>
-          <div class="project-info">
-            <div class="project-name">VELOCE BIKES</div>
-            <div class="project-cat">E-Commerce Website</div>
+        <a href="https://www.elvoramedia.org" target="_blank" rel="noreferrer">
+          <div class="project-thumb">
+            <img
+              src="antigravity_verification.jpg"
+              onerror="this.src='/antigravity_verification.jpg'"
+              alt="Anti-Gravity — AI Authenticity Verification Platform"
+              loading="lazy"
+            />
           </div>
-          <div class="project-arrow">
-            <svg class="icon" style="width: 20px; height: 20px;"><use href="#icon-arrow"/></svg>
+          <div class="project-meta">
+            <div class="project-num">01</div>
+            <div class="project-info">
+              <div class="project-name">ANTI-GRAVITY AI PLATFORM</div>
+              <div class="project-cat">PyTorch &bull; FastAPI &bull; Deepfake Detection &bull; React</div>
+            </div>
+            <div class="project-arrow">
+              <svg class="icon" style="width: 20px; height: 20px;"><use href="#icon-arrow"/></svg>
+            </div>
           </div>
-        </div>
+        </a>
       </article>
 
-      <!-- Project 02 -->
+      <!-- Project 02: SAP Prognos -->
       <article class="project-card fade-up">
-        <div class="project-thumb">
-          <img
-            src="https://placehold.co/640x376/121212/282828?text=Woodcraft+Furniture+Store"
-            onerror="this.src='/sap_prognos_dashboard.jpg'"
-            alt="Woodcraft — Furniture Website"
-            loading="lazy"
-          />
-        </div>
-        <div class="project-meta">
-          <div class="project-num">02</div>
-          <div class="project-info">
-            <div class="project-name">WOODCRAFT</div>
-            <div class="project-cat">Furniture Website</div>
+        <a href="https://sap-forecast.vercel.app" target="_blank" rel="noreferrer">
+          <div class="project-thumb">
+            <img
+              src="sap_prognos_dashboard.jpg"
+              onerror="this.src='/sap_prognos_dashboard.jpg'"
+              alt="SAP Prognos — Enterprise Demand Forecasting"
+              loading="lazy"
+            />
           </div>
-          <div class="project-arrow">
-            <svg class="icon" style="width: 20px; height: 20px;"><use href="#icon-arrow"/></svg>
+          <div class="project-meta">
+            <div class="project-num">02</div>
+            <div class="project-info">
+              <div class="project-name">SAP PROGNOS FORECASTING</div>
+              <div class="project-cat">SAPUI5 &bull; XGBoost ML &bull; Python &bull; Horizon Dark</div>
+            </div>
+            <div class="project-arrow">
+              <svg class="icon" style="width: 20px; height: 20px;"><use href="#icon-arrow"/></svg>
+            </div>
           </div>
-        </div>
+        </a>
       </article>
 
-      <!-- Project 03 -->
+      <!-- Project 03: Elvora Media Platform -->
       <article class="project-card fade-up">
-        <div class="project-thumb">
-          <img
-            src="https://placehold.co/640x376/121212/282828?text=Urbanic+Fashion+Magazine"
-            onerror="this.src='https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&fit=crop'"
-            alt="Urbanic — Fashion Magazine"
-            loading="lazy"
-          />
-        </div>
-        <div class="project-meta">
-          <div class="project-num">03</div>
-          <div class="project-info">
-            <div class="project-name">URBANIC</div>
-            <div class="project-cat">Fashion Magazine</div>
+        <a href="https://www.elvoramedia.org" target="_blank" rel="noreferrer">
+          <div class="project-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&fit=crop"
+              alt="Elvora Media Agency Production Platform"
+              loading="lazy"
+            />
           </div>
-          <div class="project-arrow">
-            <svg class="icon" style="width: 20px; height: 20px;"><use href="#icon-arrow"/></svg>
+          <div class="project-meta">
+            <div class="project-num">03</div>
+            <div class="project-info">
+              <div class="project-name">ELVORA MEDIA PLATFORM</div>
+              <div class="project-cat">React &bull; TypeScript &bull; Tailwind CSS &bull; Production Architecture</div>
+            </div>
+            <div class="project-arrow">
+              <svg class="icon" style="width: 20px; height: 20px;"><use href="#icon-arrow"/></svg>
+            </div>
           </div>
-        </div>
+        </a>
       </article>
 
     </div>
@@ -1363,63 +1393,88 @@
 
 
   <!-- ═══════════════════════════════════════════════════════════
-       4. THREE-COLUMN ROW (30% / FLEXIBLE / 28%)
+       4. THREE-COLUMN ROW (32% / FLEXIBLE / 30%)
   ═══════════════════════════════════════════════════════════ -->
   <div id="mid-row">
 
-    <!-- ── A) EDUCATION & SKILLS (30%) ── -->
+    <!-- ── A) EDUCATION & CERTIFICATIONS (32%) ── -->
     <div class="mid-col">
-      <div class="section-label-red fade-up">EDUCATION</div>
+      <div class="section-label-red fade-up">ACADEMIC BACKGROUND</div>
 
-      <!-- REPLACE: Education Details from Resume -->
       <div class="edu-item fade-up">
         <div class="edu-top">
           <div>
-            <div class="edu-degree">B.Tech in Computer Science &amp; Eng.</div>
-            <div class="edu-inst">Parul Institute of Technology</div>
+            <div class="edu-degree">B.Tech in Computer Science &amp; Engineering</div>
+            <div class="edu-inst">Parul Institute of Technology (SAP IEP Track)</div>
           </div>
           <div class="edu-year">2022–2026</div>
         </div>
       </div>
 
+      <div class="skills-divider"></div>
+
+      <div class="section-label-red fade-up">VERIFIED CREDENTIALS</div>
+
       <div class="edu-item fade-up">
         <div class="edu-top">
           <div>
-            <div class="edu-degree">SAP Certified Associate — ABAP Cloud</div>
-            <div class="edu-inst">SAP SE Global Certification</div>
+            <div class="edu-degree">SAP Certified Associate: Back-End Developer</div>
+            <div class="edu-inst">ABAP Cloud &bull; SAP BTP &bull; RAP &bull; OData V4</div>
+          </div>
+          <div class="edu-year">2025–26</div>
+        </div>
+      </div>
+
+      <div class="edu-item fade-up">
+        <div class="edu-top">
+          <div>
+            <div class="edu-degree">Oracle Cloud Infrastructure AI Foundations</div>
+            <div class="edu-inst">OCI Machine Learning &amp; AI Architectures</div>
           </div>
           <div class="edu-year">2025</div>
         </div>
       </div>
 
+      <div class="edu-item fade-up">
+        <div class="edu-top">
+          <div>
+            <div class="edu-degree">Frontend Developer (React) &amp; SQL Specialist</div>
+            <div class="edu-inst">HackerRank Certified Professional</div>
+          </div>
+          <div class="edu-year">2025–26</div>
+        </div>
+      </div>
+
       <div class="skills-divider"></div>
 
-      <div class="section-label-red fade-up">SKILLS</div>
+      <div class="section-label-red fade-up">CORE ENGINEERING STACK</div>
       <div class="skills-chips fade-up">
-        <span class="chip">WEB DESIGN</span>
-        <span class="chip">UI/UX DESIGN</span>
-        <span class="chip">FIGMA</span>
-        <span class="chip">FRAMER</span>
-        <span class="chip">ADOBE XD</span>
-        <span class="chip">PHOTOSHOP</span>
-        <span class="chip">WEBFLOW</span>
-        <span class="chip">HTML / CSS</span>
-        <span class="chip">JAVASCRIPT</span>
-        <span class="chip">TYPESCRIPT</span>
         <span class="chip">REACT.JS</span>
         <span class="chip">NEXT.JS</span>
-        <span class="chip">GSAP ANIMATION</span>
-        <span class="chip">SEO BASICS</span>
+        <span class="chip">TYPESCRIPT</span>
+        <span class="chip">NODE.JS</span>
+        <span class="chip">EXPRESS</span>
+        <span class="chip">POSTGRESQL</span>
+        <span class="chip">PRISMA ORM</span>
+        <span class="chip">MONGODB</span>
+        <span class="chip">PYTHON</span>
+        <span class="chip">SAP BTP</span>
+        <span class="chip">ABAP CLOUD</span>
+        <span class="chip">SAPUI5 / FIORI</span>
+        <span class="chip">SWIFTUI (IOS)</span>
+        <span class="chip">DOCKER</span>
+        <span class="chip">GIT &amp; CI/CD</span>
+        <span class="chip">DATA STRUCTURES</span>
       </div>
     </div>
 
     <!-- ── B) WORK PROCESS (MIDDLE FLEXIBLE) ── -->
     <div class="mid-col">
-      <h2 class="process-title fade-up">WORK PROCESS</h2>
+      <h2 class="process-title fade-up">ENGINEERING WORKFLOW</h2>
 
       <div class="process-list">
 
-        <!-- 01 DISCOVER -->
+        <!-- 01 ARCHITECTURE -->
         <div class="process-step fade-up">
           <div class="step-left-combo">
             <span class="step-num">01</span>
@@ -1430,28 +1485,28 @@
             </div>
           </div>
           <div class="step-body">
-            <div class="step-title">DISCOVER</div>
-            <p class="step-desc">Understanding goals, audience, and project requirements.</p>
+            <div class="step-title">SYSTEM DESIGN</div>
+            <p class="step-desc">Analyzing business requirements, relational schemas, entity relationships, and API contract specifications.</p>
           </div>
         </div>
 
-        <!-- 02 IDEATE -->
+        <!-- 02 FULL-STACK BUILD -->
         <div class="process-step fade-up">
           <div class="step-left-combo">
             <span class="step-num">02</span>
             <div class="step-icon-wrap">
               <div class="icon-btn" aria-hidden="true">
-                <svg class="icon"><use href="#icon-lightbulb"/></svg>
+                <svg class="icon"><use href="#icon-code"/></svg>
               </div>
             </div>
           </div>
           <div class="step-body">
-            <div class="step-title">IDEATE</div>
-            <p class="step-desc">Planning, wireframing, and creating the right concept.</p>
+            <div class="step-title">FULL-STACK IMPLEMENTATION</div>
+            <p class="step-desc">Building modular React/TypeScript UI systems backed by high-throughput Node.js &amp; Express controllers.</p>
           </div>
         </div>
 
-        <!-- 03 DESIGN -->
+        <!-- 03 DATA & ENTERPRISE -->
         <div class="process-step fade-up">
           <div class="step-left-combo">
             <span class="step-num">03</span>
@@ -1462,28 +1517,28 @@
             </div>
           </div>
           <div class="step-body">
-            <div class="step-title">DESIGN</div>
-            <p class="step-desc">Crafting visual design with a focus on user experience.</p>
+            <div class="step-title">ENTERPRISE INTEGRATION</div>
+            <p class="step-desc">Orchestrating SAP BTP OData V4 services, HANA cloud bindings, and ML model inference pipelines.</p>
           </div>
         </div>
 
-        <!-- 04 DEVELOP -->
+        <!-- 04 TESTING & BENCHMARKING -->
         <div class="process-step fade-up">
           <div class="step-left-combo">
             <span class="step-num">04</span>
             <div class="step-icon-wrap">
               <div class="icon-btn" aria-hidden="true">
-                <svg class="icon"><use href="#icon-code"/></svg>
+                <svg class="icon"><use href="#icon-lightbulb"/></svg>
               </div>
             </div>
           </div>
           <div class="step-body">
-            <div class="step-title">DEVELOP</div>
-            <p class="step-desc">Building fast, responsive, and high-performing websites.</p>
+            <div class="step-title">TESTING &amp; OPTIMIZATION</div>
+            <p class="step-desc">Database query index profiling, TypeScript static safety, and Lighthouse Web Vitals audits.</p>
           </div>
         </div>
 
-        <!-- 05 DELIVER -->
+        <!-- 05 DEPLOYMENT & CI/CD -->
         <div class="process-step fade-up">
           <div class="step-left-combo">
             <span class="step-num">05</span>
@@ -1494,29 +1549,36 @@
             </div>
           </div>
           <div class="step-body">
-            <div class="step-title">DELIVER</div>
-            <p class="step-desc">Testing, optimizing, and launching with perfection.</p>
+            <div class="step-title">CLOUD DEPLOYMENT</div>
+            <p class="step-desc">Automated CI/CD shipping to Vercel and enterprise cloud endpoints with high availability and edge caching.</p>
           </div>
         </div>
 
       </div>
     </div>
 
-    <!-- ── C) QUOTE PANEL (28%) ── -->
+    <!-- ── C) PHILOSOPHY & WORK EXPERIENCE (30%) ── -->
     <div class="mid-col quote-panel">
       <div class="quote-grain" aria-hidden="true"></div>
       <div class="quote-inner">
         <div>
           <div class="quote-mark" aria-hidden="true">&ldquo;</div>
           <p class="quote-text fade-up">
-            Good design is not just how it looks, but how it works.
+            Engineering is not just writing code, it is designing reliable systems that solve real-world problems.
           </p>
-          <!-- REPLACE: Script Signature -->
-          <div class="quote-signature fade-up">Anand</div>
+          <div class="quote-signature fade-up">Anand Jadhav</div>
         </div>
+
+        <!-- Live Internship Highlight -->
+        <div class="quote-exp-badge fade-up">
+          <div class="quote-exp-title">// INDUSTRY EXPERIENCE</div>
+          <div class="quote-exp-comp">Hilti Manufacturing India Pvt. Ltd.</div>
+          <div class="quote-exp-role">SAP &amp; IT Support Intern &bull; Production Planning (PPC) &bull; S/4HANA Enterprise Systems</div>
+        </div>
+
         <div class="quote-bottom-cta fade-up">
           <span class="sparkle-red" style="color: #fff;">✦</span>
-          LET'S CREATE SOMETHING GREAT TOGETHER.
+          LET'S BUILD SOMETHING RELIABLE TOGETHER.
         </div>
       </div>
     </div>
@@ -1535,67 +1597,73 @@
         LET'S WORK<br>TOGETHER <span class="sparkle-red">✦</span>
       </h2>
       <p class="contact-para fade-up">
-        I'm currently open for new projects and collaborations. Let's create something
-        amazing that drives results.
+        Actively interviewing for Software Engineering, Full-Stack Developer, and SAP Consultant
+        roles. Open for high-impact internships, full-time positions, and enterprise projects.
       </p>
       <a href="mailto:anandjadhav42004@gmail.com" class="contact-cta-btn fade-up">
         <span class="icon-btn large">
           <svg class="icon" style="width: 22px; height: 22px;"><use href="#icon-arrow-diag"/></svg>
         </span>
-        AVAILABLE FOR FREELANCE
+        GET IN TOUCH DIRECTLY
       </a>
     </div>
 
-    <!-- Middle Column: 4 Rows Separated by Thin Red Lines -->
+    <!-- Middle Column: 4 Real Contact Rows -->
     <div class="contact-col">
-      <!-- REPLACE: Email -->
+      <!-- Email -->
       <div class="contact-info-row fade-up">
         <div class="icon-btn" aria-hidden="true">
           <svg class="icon"><use href="#icon-mail"/></svg>
         </div>
-        <span class="contact-info-text">anandjadhav42004@gmail.com</span>
+        <a href="mailto:anandjadhav42004@gmail.com" class="contact-info-text" style="color: inherit;">
+          anandjadhav42004@gmail.com
+        </a>
       </div>
 
-      <!-- REPLACE: Website -->
-      <div class="contact-info-row fade-up">
-        <div class="icon-btn" aria-hidden="true">
-          <svg class="icon"><use href="#icon-globe"/></svg>
-        </div>
-        <span class="contact-info-text">www.anandjadhav.com</span>
-      </div>
-
-      <!-- REPLACE: Phone -->
+      <!-- Phone -->
       <div class="contact-info-row fade-up">
         <div class="icon-btn" aria-hidden="true">
           <svg class="icon"><use href="#icon-phone"/></svg>
         </div>
-        <span class="contact-info-text">+91 8308008154</span>
+        <a href="tel:+918308008154" class="contact-info-text" style="color: inherit;">
+          +91 8308008154
+        </a>
       </div>
 
-      <!-- REPLACE: City / Country -->
+      <!-- LinkedIn -->
+      <div class="contact-info-row fade-up">
+        <div class="icon-btn" aria-hidden="true">
+          <svg class="icon"><use href="#icon-globe"/></svg>
+        </div>
+        <a href="https://www.linkedin.com/in/anand-jadhav-b599801b5" target="_blank" rel="noreferrer" class="contact-info-text" style="color: inherit;">
+          linkedin.com/in/anand-jadhav
+        </a>
+      </div>
+
+      <!-- Location -->
       <div class="contact-info-row fade-up">
         <div class="icon-btn" aria-hidden="true">
           <svg class="icon"><use href="#icon-pin"/></svg>
         </div>
-        <span class="contact-info-text">Mumbai / Vadodara, India</span>
+        <span class="contact-info-text">Vadodara / Mumbai, India</span>
       </div>
     </div>
 
     <!-- Right Column: Laptop Mockup Visual + Coffee Mug with initial "A" -->
     <div class="contact-col">
       <div class="contact-mockup-wrap fade-up">
-        <!-- Pure CSS/SVG Mockup matching reference -->
+        <!-- Pure CSS/SVG Mockup -->
         <div class="laptop-frame">
           <div class="laptop-screen">
-            <span class="laptop-screen-tag">DIGITAL DESIGN STUDIO</span>
+            <span class="laptop-screen-tag">ENGINEERING LAB // S/4HANA &bull; REACT</span>
             <h3 class="laptop-screen-headline">
-              WE DESIGN<br><span>DIGITAL EXPERIENCES</span>
+              BUILDING SCALABLE<br><span>DIGITAL SYSTEMS</span>
             </h3>
           </div>
         </div>
 
         <!-- Coffee mug with letter "A" for Anand -->
-        <div class="coffee-mug-graphic" title="Fresh Coffee" aria-hidden="true">
+        <div class="coffee-mug-graphic" title="Fueling Code" aria-hidden="true">
           <span>A</span>
         </div>
       </div>
@@ -1606,13 +1674,12 @@
 
   <!-- ─── SLIM FOOTER ─── -->
   <footer id="footer">
-    <!-- REPLACE: Name & Year -->
-    <p class="footer-copy">&copy; 2026 <span>ANAND JADHAV</span> / ALL RIGHTS RESERVED.</p>
+    <p class="footer-copy">&copy; 2026 <span>ANAND JADHAV</span> / COMPUTER SCIENCE ENGINEER &bull; ALL RIGHTS RESERVED.</p>
     <nav class="footer-nav" aria-label="Social Links">
       <a href="https://github.com/anandjadhav42004" target="_blank" rel="noreferrer">GITHUB</a>
       <a href="https://www.linkedin.com/in/anand-jadhav-b599801b5" target="_blank" rel="noreferrer">LINKEDIN</a>
-      <a href="https://twitter.com/anandjadhav" target="_blank" rel="noreferrer">TWITTER</a>
       <a href="https://leetcode.com/u/Anand_42004/" target="_blank" rel="noreferrer">LEETCODE</a>
+      <a href="/resume.pdf" target="_blank" rel="noreferrer">RESUME.PDF</a>
     </nav>
   </footer>
 
