@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Web Designer &amp; UI/UX Creator</title>
+
+  <!-- ═══════════════════════════════════
+       GOOGLE FONTS
+  ═══════════════════════════════════ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Allura&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       CSS VARIABLES — Edit here to retheme everything instantly
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --bg:           #0a0a0a;
+      --bg-2:         #111111;
+      --divider:      #161616;
+      --divider-red:  rgba(211, 18, 31, 0.35);
+      --accent:       #d3121f;
+      --accent-bright:#e51927;
+      --accent-dark:  #8b0a12;
+      --accent-deep:  #2a0508;
+      --text-white:   #ffffff;
+      --text-body:    #a0a0a0;
+      --text-muted:   #6b6b6b;
+      --border:       #222222;
+
+      --font-display: 'Bebas Neue', 'Anton', Impact, sans-serif;
+      --font-script:  'Allura', cursive;
+      --font-body:    'Inter', 'DM Sans', system-ui, sans-serif;
+    }
+
+    /* ─── RESET ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text-white);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── UTILITY ────────────────────────────────────────────── */
+    .label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .red { color: var(--accent); }
+    .star { color: var(--accent); font-style: normal; }
+    .thin-line {
+      flex: 1;
+      height: 1px;
+      background: var(--divider);
+    }
+
+    /* Fade-up animation (IntersectionObserver) */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─── CIRCULAR ICON BUTTON ──────────────────────────────── */
+    .icon-btn {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: inline-flex; align-items: center; justify-content: center;
+      color: var(--text-body);
+      transition: border-color 0.25s, color 0.25s, box-shadow 0.25s, transform 0.2s;
+      cursor: pointer;
+      background: transparent;
+      flex-shrink: 0;
+    }
+    .icon-btn svg {
+      width: 18px; height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .icon-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 16px rgba(211,18,31,.4);
+      transform: scale(1.05);
+    }
+    .icon-btn.large {
+      width: 60px; height: 60px;
+      font-size: 22px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       1. TOP BAR
+    ═══════════════════════════════════════════════════════════ */
+    #topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 56px;
+      border-bottom: 1px solid var(--divider);
+      position: relative;
+      z-index: 20;
+      background: var(--bg);
+    }
+    #topbar .brand .role {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    #topbar .brand .sub {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    #topbar .avail {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-body);
+    }
+    #topbar .avail .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(211,18,31,.7); }
+      50%      { box-shadow: 0 0 0 6px rgba(211,18,31,0); }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       2. HERO (REDESIGNED)
+    ═══════════════════════════════════════════════════════════ */
+    #hero {
+      position: relative;
+      min-height: 92vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px 56px 60px;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    /* Giant background word positioned at the TOP */
+    .hero-bg-text {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-display);
+      font-size: 25vw;
+      line-height: 0.85;
+      white-space: nowrap;
+      letter-spacing: -0.03em;
+      background: linear-gradient(180deg, #c4121a 0%, #8b0a12 40%, #2a0508 85%, transparent 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 1;
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Absolutely positioned centered-right cutout portrait photo */
+    .hero-photo-wrap {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-32%);
+      height: 90%;
+      max-height: 820px;
+      z-index: 2;
+      pointer-events: none;
+      display: flex;
+      align-items: flex-end;
+    }
+    .hero-photo {
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+      object-position: bottom;
+      filter: drop-shadow(0 20px 50px rgba(0,0,0,0.9));
+    }
+    /* Subtle bottom gradient fade to seamlessly blend cutout edge */
+    .hero-photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: -10%;
+      right: -10%;
+      height: 120px;
+      background: linear-gradient(to top, var(--bg) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    /* Main foreground content grid */
+    .hero-grid {
+      position: relative;
+      z-index: 4;
+      display: grid;
+      grid-template-columns: 1.15fr 0.95fr 1fr;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+    }
+
+    /* Left column */
+    .hero-left {
+      padding-top: 20px;
+    }
+    .hero-left .script {
+      font-family: var(--font-script);
+      font-size: 44px;
+      color: var(--text-white);
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+    .hero-left .name {
+      font-family: var(--font-display);
+      font-size: clamp(68px, 8vw, 112px);
+      line-height: 0.88;
+      color: var(--text-white);
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      margin-bottom: 14px;
+    }
+    .hero-left .title-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 22px;
+    }
+    .hero-left .bio {
+      max-width: 330px;
+      font-size: 14px;
+      color: var(--text-body);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+    .hero-left .worldwide {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-body);
+    }
+    .hero-left .worldwide svg {
+      color: var(--accent);
+      width: 17px; height: 17px;
+    }
+
+    /* Middle-Right tagline: positioned beside the photo */
+    .hero-tagline-col {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding-bottom: 40px;
+    }
+    .hero-tagline {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      max-width: 240px;
+      text-align: left;
+      background: rgba(10, 10, 10, 0.4);
+      backdrop-filter: blur(4px);
+      padding: 10px 14px;
+      border-radius: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .hero-tagline .icon-btn {
+      width: 40px; height: 40px;
+      border-color: rgba(211,18,31,0.4);
+      color: var(--accent);
+    }
+    .hero-tagline p {
+      font-size: 13px;
+      color: var(--text-body);
+      line-height: 1.5;
+    }
+
+    /* Right column: Stats as rows (Number on Left, Label on Right) */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      margin-left: auto;
+      width: 100%;
+      max-width: 300px;
+    }
+    .stat-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--divider);
+    }
+    .stat-row:first-child {
+      border-top: 1px solid var(--divider);
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: clamp(52px, 5.2vw, 76px);
+      color: var(--accent);
+      line-height: 1;
+      min-width: 90px;
+      letter-spacing: -0.01em;
+    }
+    .stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       3. SELECTED PROJECTS (REDESIGNED META LAYOUT)
+    ═══════════════════════════════════════════════════════════ */
+    #projects {
+      padding: 100px 56px;
+      border-bottom: 1px solid var(--divider);
+    }
+    .section-row {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 52px;
+    }
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 44px);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .view-all {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+      transition: color 0.2s, transform 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .view-all:hover { color: var(--accent); transform: translateX(3px); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .project-card {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .project-card:hover { transform: translateY(-5px); }
+
+    .card-img-wrap {
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin-bottom: 18px;
+      transition: border-color 0.35s ease, box-shadow 0.35s ease;
+      aspect-ratio: 16/10;
+      background: var(--bg-2);
+    }
+    .project-card:hover .card-img-wrap {
+      border-color: var(--accent);
+      box-shadow: 0 12px 30px rgba(211, 18, 31, 0.18);
+    }
+    .card-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s ease;
+    }
+    .project-card:hover .card-img-wrap img { transform: scale(1.05); }
+
+    /* Number LEFT, Name & Category MIDDLE, Arrow RIGHT */
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 4px 2px;
+    }
+    .card-num {
+      font-family: var(--font-display);
+      font-size: 32px;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .card-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .card-name {
+      font-family: var(--font-display);
+      font-size: 21px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-white);
+      line-height: 1.15;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .card-cat {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+    .card-arrow {
+      font-size: 22px;
+      color: var(--text-muted);
+      transition: color 0.25s, transform 0.25s;
+      flex-shrink: 0;
+    }
+    .project-card:hover .card-arrow {
+      color: var(--accent);
+      transform: translateX(6px);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       4 / 5 / 6 — THREE-COLUMN MIDDLE ROW
+    ═══════════════════════════════════════════════════════════ */
+    #middle {
+      display: grid;
+      grid-template-columns: 35% 1fr 280px;
+      gap: 0;
+      border-bottom: 1px solid var(--divider);
+    }
+    .mid-col {
+      padding: 72px 48px;
+      border-right: 1px solid var(--divider);
+    }
+    .mid-col:last-child { border-right: none; }
+
+    /* ─── 4. EDUCATION & SKILLS ─── */
+    .mid-section-title {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 2.2vw, 32px);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+      margin-bottom: 34px;
+    }
+    .red-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .edu-entry {
+      margin-bottom: 22px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--divider);
+    }
+    .edu-entry:last-of-type { border-bottom: none; }
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .edu-degree {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-white);
+      line-height: 1.35;
+    }
+    .edu-inst {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+    .edu-year {
+      font-family: var(--font-display);
+      font-size: 16px;
+      color: var(--accent);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .skill-chip {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-body);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 6px 12px;
+      transition: border-color 0.25s, color 0.25s, background-color 0.25s;
+      cursor: default;
+    }
+    .skill-chip:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background-color: rgba(211,18,31,0.04);
+    }
+
+    /* ─── 5. WORK PROCESS (STEP NUMBER + ICON IN ONE ROW) ─── */
+    .process-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .process-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding-bottom: 34px;
+      position: relative;
+    }
+    /* Number + Icon grouped together on left */
+    .step-left-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 16px;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      width: 20px;
+      text-align: right;
+    }
+    .step-icon-wrap {
+      position: relative;
+    }
+    /* Vertical connector line joining the icons */
+    .process-step:not(:last-child) .step-icon-wrap::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 44px;
+      bottom: -34px;
+      width: 1px;
+      background: var(--divider);
+      transform: translateX(-50%);
+    }
+    .step-content {
+      padding-top: 6px;
+      padding-left: 2px;
+    }
+    .step-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .step-desc {
+      font-size: 13px;
+      color: var(--text-body);
+      line-height: 1.6;
+      max-width: 300px;
+    }
+
+    /* ─── 6. QUOTE PANEL (STRONGER RED GRADIENT + BRIGHT QUOTE) ─── */
+    .quote-panel {
+      background: linear-gradient(165deg, #a50d18 0%, #68050b 45%, #200204 85%, #0a0102 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 64px 38px;
+    }
+    /* Grain texture overlay */
+    .quote-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E");
+      background-size: 180px;
+      opacity: 0.45;
+      pointer-events: none;
+    }
+    .quote-inner {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .quote-mark {
+      font-family: var(--font-display), Georgia, serif;
+      font-size: 110px;
+      line-height: 0.65;
+      color: var(--accent);
+      margin-bottom: 18px;
+      user-select: none;
+    }
+    .quote-text {
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--text-white);
+      font-style: normal;
+      margin-bottom: 28px;
+    }
+    .quote-sig {
+      font-family: var(--font-script);
+      font-size: 36px;
+      color: rgba(255,255,255,0.95);
+      margin-bottom: 24px;
+    }
+    .quote-cta {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-top: 1px solid rgba(255,255,255,0.14);
+      padding-top: 20px;
+    }
+    .quote-cta .star { color: var(--accent-bright); }
+
+    /* ═══════════════════════════════════════════════════════════
+       7. CONTACT / FOOTER (RED DIVIDERS & CORNER LAPTOP)
+    ═══════════════════════════════════════════════════════════ */
+    #contact {
+      display: grid;
+      grid-template-columns: 1fr 340px 380px;
+      gap: 0;
+      border-bottom: 1px solid var(--divider);
+      overflow: hidden;
+    }
+    .contact-col {
+      padding: 72px 56px;
+      border-right: 1px solid var(--divider);
+    }
+    .contact-col:last-child {
+      border-right: none;
+      padding: 0;
+    }
+
+    .contact-heading {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 4.2vw, 58px);
+      text-transform: uppercase;
+      line-height: 0.98;
+      margin-bottom: 22px;
+      letter-spacing: 0.02em;
+    }
+    .contact-para {
+      font-size: 14px;
+      color: var(--text-body);
+      line-height: 1.8;
+      max-width: 320px;
+      margin-bottom: 34px;
+    }
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-body);
+      transition: color 0.2s;
+    }
+    .contact-btn:hover { color: var(--accent); }
+    .contact-btn .icon-btn {
+      transition: border-color 0.25s, box-shadow 0.25s, color 0.25s;
+    }
+    .contact-btn:hover .icon-btn {
+      border-color: var(--accent);
+      box-shadow: 0 0 16px rgba(211,18,31,.4);
+      color: var(--accent);
+    }
+
+    /* Info rows separated by thin red lines */
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--divider-red);
+    }
+    .info-row:first-child {
+      border-top: 1px solid var(--divider-red);
+    }
+    .info-row .icon-btn {
+      color: var(--accent);
+      border-color: rgba(211, 18, 31, 0.45);
+      background: rgba(211, 18, 31, 0.03);
+    }
+    .info-row .info-text {
+      font-size: 13.5px;
+      color: var(--text-body);
+      letter-spacing: 0.02em;
+    }
+
+    /* Laptop mockup corner visual */
+    .contact-visual-wrap {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      overflow: hidden;
+      background: radial-gradient(circle at 80% 80%, rgba(211,18,31,0.06), transparent 60%);
+    }
+    .laptop-mockup {
+      width: 110%;
+      max-width: 440px;
+      margin-right: -10px;
+      margin-bottom: -15px;
+      border-radius: 6px 0 0 0;
+      border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      box-shadow: -20px -20px 60px rgba(0,0,0,0.8);
+      filter: contrast(1.05);
+    }
+    .coffee-mug {
+      width: 90px;
+      position: absolute;
+      bottom: 20px;
+      left: 30px;
+      border-radius: 50%;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9));
+    }
+
+    /* ─── FOOTER STRIP ─── */
+    #footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 56px;
+      border-top: 1px solid var(--divider);
+      background: var(--bg);
+    }
+    #footer p {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+    }
+    #footer .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+    #footer .footer-links a {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    #footer .footer-links a:hover { color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE — MOBILE / TABLET
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      #topbar, #projects, .contact-col, .mid-col, #footer { padding-left: 28px; padding-right: 28px; }
+      #hero { padding: 40px 28px 48px; }
+      #middle { grid-template-columns: 1fr; }
+      .mid-col { border-right: none; border-bottom: 1px solid var(--divider); padding: 56px 28px; }
+      .mid-col:last-child { border-bottom: none; }
+      #contact { grid-template-columns: 1fr; }
+      .contact-col { border-right: none; border-bottom: 1px solid var(--divider); padding: 56px 28px; }
+      .contact-col:last-child { border-bottom: none; }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero-photo-wrap {
+        position: relative;
+        transform: none;
+        left: 0;
+        height: 480px;
+        margin: 20px auto 0;
+      }
+      .hero-tagline-col { justify-content: flex-start; padding-bottom: 0; }
+      .hero-right { margin-left: 0; max-width: 100%; }
+    }
+
+    @media (max-width: 768px) {
+      #hero {
+        padding: 30px 20px 40px;
+        text-align: center;
+      }
+      .hero-bg-text {
+        font-size: 28vw;
+        top: 20px;
+      }
+      .hero-left .bio, .hero-left .worldwide {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-photo-wrap {
+        height: 380px;
+      }
+      .hero-tagline-col {
+        justify-content: center;
+      }
+      .hero-tagline {
+        margin: 0 auto;
+      }
+      .hero-right {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0;
+      }
+      .stat-row {
+        padding: 16px 20px;
+        border-bottom: none;
+        border-right: 1px solid var(--divider);
+        flex-direction: column;
+        text-align: center;
+        gap: 6px;
+      }
+      .stat-row:first-child {
+        border-top: none;
+        border-left: 1px solid var(--divider);
+      }
+      .stat-num {
+        min-width: unset;
+      }
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      #topbar {
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px 20px;
+        text-align: center;
+      }
+      #footer {
+        flex-direction: column;
+        gap: 14px;
+        padding: 20px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       1. TOP BAR
+  ═══════════════════════════════════════════════════════════ -->
+  <header id="topbar">
+    <div class="brand">
+      <div class="role">Web Designer</div>
+      <div class="sub">Digital Creator</div>
+    </div>
+    <div class="avail">
+      <span class="dot" aria-hidden="true"></span>
+      Available for Freelance
+      <em class="star">✦</em>
+    </div>
+  </header>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       2. HERO (REDESIGNED: GIANT WORD TOP, CENTERED CUTOUT OVERLAP)
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="hero">
+
+    <!-- Big background word at the TOP (~25vw, bright red gradient, full width) -->
+    <div class="hero-bg-text" aria-hidden="true">PORTFOLIO</div>
+
+    <!-- Centered-right cutout portrait photo overlapping in front of the letters -->
+    <div class="hero-photo-wrap">
+      <!--
+        REPLACE: Swap this src with your transparent cutout portrait PNG.
+        For best results, upload a PNG with background removed.
+        Example local path: "/profile.png" or your uploaded portrait.
+      -->
+      <img
+        class="hero-photo"
+        src="https://placehold.co/600x850/transparent/transparent?text=Your+Cutout+Photo"
+        alt="Portrait Cutout"
+      />
+    </div>
+
+    <!-- Foreground grid content -->
+    <div class="hero-grid">
+
+      <!-- Left block: Script + Big Name + Subtitle + Bio + Worldwide -->
+      <div class="hero-left fade-up">
+        <div class="script">Hello, I'm</div>
+        <!-- REPLACE: your name stacked on two lines -->
+        <h1 class="name">ANAND<br>JADHAV</h1>
+        <div class="title-tag">Web Designer &amp; UI/UX Creator</div>
+        <p class="bio">
+          <!-- REPLACE: your short bio (3-4 lines) -->
+          I craft visually stunning, high-performance websites that blend bold
+          cinematic aesthetics with flawless user experience. Turning complex ideas
+          into clean, memorable digital products is what I do best.
+        </p>
+        <div class="worldwide">
+          <!-- Thin-line SVG Globe -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+            <path d="M2 12h20"/>
+          </svg>
+          Available Worldwide
+        </div>
+      </div>
+
+      <!-- Middle-right: Tagline beside photo -->
+      <div class="hero-tagline-col fade-up" style="transition-delay: .15s">
+        <div class="hero-tagline">
+          <button class="icon-btn" aria-label="Sparkle">✦</button>
+          <p>Turning ideas into powerful digital experiences.</p>
+        </div>
+      </div>
+
+      <!-- Right column: Stats stacked as ROWS (Number on left, Label on right) -->
+      <div class="hero-right fade-up" style="transition-delay: .28s">
+        <div class="stat-row">
+          <div class="stat-num" data-target="3">0</div>
+          <div class="stat-label">Years<br>Experience</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-num" data-target="40">0</div>
+          <div class="stat-label">Projects<br>Completed</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-num" data-target="20">0</div>
+          <div class="stat-label">Happy<br>Clients</div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       3. SELECTED PROJECTS
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="projects">
+
+    <div class="section-row fade-up">
+      <h2 class="section-heading">Selected Projects</h2>
+      <div class="thin-line"></div>
+      <a class="view-all" href="#projects">View All Projects &rarr;</a>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Project 01 — REPLACE image src and info -->
+      <article class="project-card fade-up" style="transition-delay: .05s">
+        <div class="card-img-wrap">
+          <img
+            src="https://placehold.co/640x400/111111/2a2a2a?text=E-Commerce+Website+Mockup"
+            alt="E-Commerce Website mockup"
+            loading="lazy"
+          />
+        </div>
+        <div class="card-meta">
+          <div class="card-num">01</div>
+          <div class="card-info">
+            <div class="card-name">E-Commerce Website</div>
+            <div class="card-cat">Web Design / Development</div>
+          </div>
+          <div class="card-arrow">&rarr;</div>
+        </div>
+      </article>
+
+      <!-- Project 02 -->
+      <article class="project-card fade-up" style="transition-delay: .12s">
+        <div class="card-img-wrap">
+          <img
+            src="https://placehold.co/640x400/111111/2a2a2a?text=Furniture+Store+Mockup"
+            alt="Furniture Website mockup"
+            loading="lazy"
+          />
+        </div>
+        <div class="card-meta">
+          <div class="card-num">02</div>
+          <div class="card-info">
+            <div class="card-name">Furniture Website</div>
+            <div class="card-cat">UI/UX Design / Webflow</div>
+          </div>
+          <div class="card-arrow">&rarr;</div>
+        </div>
+      </article>
+
+      <!-- Project 03 -->
+      <article class="project-card fade-up" style="transition-delay: .2s">
+        <div class="card-img-wrap">
+          <img
+            src="https://placehold.co/640x400/111111/2a2a2a?text=Fashion+Editorial+Mockup"
+            alt="Fashion Magazine mockup"
+            loading="lazy"
+          />
+        </div>
+        <div class="card-meta">
+          <div class="card-num">03</div>
+          <div class="card-info">
+            <div class="card-name">Fashion Magazine</div>
+            <div class="card-cat">Editorial / Visual Design</div>
+          </div>
+          <div class="card-arrow">&rarr;</div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       MIDDLE ROW: 4. Education & Skills | 5. Work Process | 6. Quote
+  ═══════════════════════════════════════════════════════════ -->
+  <div id="middle">
+
+    <!-- ── 4. EDUCATION & SKILLS ── -->
+    <div class="mid-col">
+      <h2 class="mid-section-title fade-up">Education &amp; Skills</h2>
+
+      <div class="red-label fade-up">Education</div>
+
+      <!-- REPLACE: your degrees/certifications below -->
+      <div class="edu-entry fade-up" style="transition-delay: .06s">
+        <div class="edu-row">
+          <div>
+            <div class="edu-degree">B.Tech in Computer Science &amp; Engineering</div>
+            <div class="edu-inst">Parul Institute of Technology</div>
+          </div>
+          <div class="edu-year">2022–2026</div>
+        </div>
+      </div>
+
+      <div class="edu-entry fade-up" style="transition-delay: .12s">
+        <div class="edu-row">
+          <div>
+            <div class="edu-degree">Google UX Design Professional Certificate</div>
+            <div class="edu-inst">Coursera / Google</div>
+          </div>
+          <div class="edu-year">2024</div>
+        </div>
+      </div>
+
+      <div class="red-label fade-up" style="margin-top: 36px; transition-delay: .18s">Skills</div>
+      <div class="skills-wrap fade-up" style="transition-delay: .24s">
+        <span class="skill-chip">Web Design</span>
+        <span class="skill-chip">UI/UX Design</span>
+        <span class="skill-chip">Figma</span>
+        <span class="skill-chip">Framer</span>
+        <span class="skill-chip">Adobe XD</span>
+        <span class="skill-chip">Photoshop</span>
+        <span class="skill-chip">Webflow</span>
+        <span class="skill-chip">HTML / CSS</span>
+        <span class="skill-chip">JavaScript</span>
+        <span class="skill-chip">GSAP Animation</span>
+        <span class="skill-chip">SEO Basics</span>
+      </div>
+    </div>
+
+    <!-- ── 5. WORK PROCESS (NUMBER LEFT OF ICON IN ONE ROW) ── -->
+    <div class="mid-col">
+      <h2 class="mid-section-title fade-up">Work Process</h2>
+
+      <div class="process-list">
+
+        <!-- Step 01 -->
+        <div class="process-step fade-up" style="transition-delay: .05s">
+          <div class="step-left-group">
+            <span class="step-num">01</span>
+            <div class="step-icon-wrap">
+              <button class="icon-btn" aria-label="Discover">
+                <!-- SVG: Search -->
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="step-content">
+            <div class="step-title">Discover</div>
+            <p class="step-desc">Understanding goals, audience, and project requirements in depth.</p>
+          </div>
+        </div>
+
+        <!-- Step 02 -->
+        <div class="process-step fade-up" style="transition-delay: .12s">
+          <div class="step-left-group">
+            <span class="step-num">02</span>
+            <div class="step-icon-wrap">
+              <button class="icon-btn" aria-label="Ideate">
+                <!-- SVG: Lightbulb -->
+                <svg viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-1 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="step-content">
+            <div class="step-title">Ideate</div>
+            <p class="step-desc">Planning, wireframing, and creating the right concept for your vision.</p>
+          </div>
+        </div>
+
+        <!-- Step 03 -->
+        <div class="process-step fade-up" style="transition-delay: .19s">
+          <div class="step-left-group">
+            <span class="step-num">03</span>
+            <div class="step-icon-wrap">
+              <button class="icon-btn" aria-label="Design">
+                <!-- SVG: Pen / PenTool -->
+                <svg viewBox="0 0 24 24"><path d="m18 2 4 4-12 12H6v-4L18 2z"/><path d="m14 6 4 4"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="step-content">
+            <div class="step-title">Design</div>
+            <p class="step-desc">Crafting visual design with a razor-sharp focus on user experience.</p>
+          </div>
+        </div>
+
+        <!-- Step 04 -->
+        <div class="process-step fade-up" style="transition-delay: .26s">
+          <div class="step-left-group">
+            <span class="step-num">04</span>
+            <div class="step-icon-wrap">
+              <button class="icon-btn" aria-label="Develop">
+                <!-- SVG: Code </> -->
+                <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="step-content">
+            <div class="step-title">Develop</div>
+            <p class="step-desc">Building fast, responsive, and high-performing websites with clean code.</p>
+          </div>
+        </div>
+
+        <!-- Step 05 -->
+        <div class="process-step fade-up" style="transition-delay: .33s">
+          <div class="step-left-group">
+            <span class="step-num">05</span>
+            <div class="step-icon-wrap">
+              <button class="icon-btn" aria-label="Deliver">
+                <!-- SVG: Paper Plane -->
+                <svg viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="step-content">
+            <div class="step-title">Deliver</div>
+            <p class="step-desc">Testing, optimizing, and launching with perfection across all devices.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── 6. QUOTE PANEL (STRONGER GRADIENT + BRIGHT QUOTE MARK) ── -->
+    <div class="mid-col quote-panel">
+      <div class="quote-inner">
+        <div>
+          <div class="quote-mark" aria-hidden="true">&ldquo;</div>
+          <p class="quote-text fade-up">
+            Good design is not just how it looks, but how it works.
+          </p>
+          <!-- REPLACE: your signature name below -->
+          <div class="quote-sig fade-up" style="transition-delay: .1s">Anand</div>
+        </div>
+        <div class="quote-cta fade-up" style="transition-delay: .2s">
+          <em class="star">✦</em>
+          Let's create something great together.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       7. CONTACT / FOOTER (RED LINES & BOTTOM-RIGHT LAPTOP)
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="contact">
+
+    <!-- Left: CTA copy -->
+    <div class="contact-col">
+      <h2 class="contact-heading fade-up">
+        Let's Work<br>Together <em class="star">✦</em>
+      </h2>
+      <p class="contact-para fade-up" style="transition-delay: .08s">
+        I'm currently open for new projects and collaborations.
+        Let's create something amazing that drives real results.
+      </p>
+      <a href="mailto:anandjadhav42004@gmail.com" class="contact-btn fade-up" style="transition-delay: .16s">
+        <span class="icon-btn large">&rarr;</span>
+        Available for Freelance
+      </a>
+    </div>
+
+    <!-- Middle: contact info with thin red divider lines & red icons -->
+    <div class="contact-col">
+      <!-- Row 1: Email -->
+      <div class="info-row fade-up">
+        <button class="icon-btn" aria-label="Email">
+          <svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </button>
+        <!-- REPLACE: your email -->
+        <span class="info-text">anandjadhav42004@gmail.com</span>
+      </div>
+
+      <!-- Row 2: Website -->
+      <div class="info-row fade-up" style="transition-delay: .07s">
+        <button class="icon-btn" aria-label="Website">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        </button>
+        <!-- REPLACE: your website link -->
+        <span class="info-text">www.anandjadhav.com</span>
+      </div>
+
+      <!-- Row 3: Phone -->
+      <div class="info-row fade-up" style="transition-delay: .14s">
+        <button class="icon-btn" aria-label="Phone">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </button>
+        <!-- REPLACE: your phone number -->
+        <span class="info-text">+91 8308008154</span>
+      </div>
+
+      <!-- Row 4: Location -->
+      <div class="info-row fade-up" style="transition-delay: .21s">
+        <button class="icon-btn" aria-label="Location">
+          <svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        </button>
+        <!-- REPLACE: your city / country -->
+        <span class="info-text">Vadodara / Mumbai, India</span>
+      </div>
+    </div>
+
+    <!-- Right: Laptop mockup visual fading into dark background with dark coffee mug -->
+    <div class="contact-col">
+      <div class="contact-visual-wrap fade-up" style="transition-delay: .2s">
+        <!-- REPLACE: swap with your real laptop mockup PNG/JPG -->
+        <img
+          class="laptop-mockup"
+          src="https://placehold.co/600x420/111111/1f1f1f?text=Portfolio+on+Laptop"
+          alt="Portfolio on Laptop Mockup"
+          loading="lazy"
+        />
+        <!-- REPLACE: swap with your dark coffee mug top-down image -->
+        <img
+          class="coffee-mug"
+          src="https://placehold.co/120x120/141414/222222?text=Coffee+Mug"
+          alt="Dark Coffee Mug"
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ─── FOOTER STRIP ─── -->
+  <footer id="footer">
+    <p>&copy; 2026 <span class="red">ANAND JADHAV</span>. ALL RIGHTS RESERVED.</p>
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="https://github.com/anandjadhav42004" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/anand-jadhav-b599801b5" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href="https://twitter.com/anandjadhav" target="_blank" rel="noreferrer">Twitter</a>
+      <a href="https://leetcode.com/u/Anand_42004/" target="_blank" rel="noreferrer">LeetCode</a>
+    </nav>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       JAVASCRIPT — Animations & Interactions
+  ═══════════════════════════════════════════════════════════ -->
+  <script>
+    // ── Fade-up on scroll (IntersectionObserver) ──────────────
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+
+
+    // ── Count-up numbers for Stats ────────────────────────────
+    function countUp(el) {
+      const target = parseInt(el.dataset.target, 10);
+      const duration = 1800; // ms
+      const step = 16;       // ~60fps
+      const increment = target / (duration / step);
+      let current = 0;
+
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        el.textContent = Math.floor(current) + '+';
+      }, step);
+    }
+
+    // Trigger count-up when the stat section enters viewport
+    const statObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll('[data-target]').forEach(countUp);
+            statObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    const heroRight = document.querySelector('.hero-right');
+    if (heroRight) statObserver.observe(heroRight);
+
+
+    // ── Smooth scroll for anchor buttons ─────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (e) => {
+        const id = anchor.getAttribute('href');
+        const target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
