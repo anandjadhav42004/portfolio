@@ -2,109 +2,147 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio — Web Designer &amp; UI/UX Creator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Anand Jadhav — Web Designer &amp; UI/UX Creator</title>
+  <meta name="description" content="Portfolio of Anand Jadhav — Web Designer, UI/UX Creator &amp; Full-Stack Engineer crafting premium digital experiences." />
 
-  <!-- ═══════════════════════════════════
-       GOOGLE FONTS
-  ═══════════════════════════════════ -->
+  <!-- ═══════════════════════════════════════════════════════════
+       GOOGLE FONTS: Anton (Display/Numbers), Allura (Script), Inter (Body)
+  ═══════════════════════════════════════════════════════════ -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Allura&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Anton&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     /* ═══════════════════════════════════════════════════════════
-       CSS VARIABLES — Edit here to retheme everything instantly
+       DESIGN TOKENS (CSS Variables on :root)
     ═══════════════════════════════════════════════════════════ */
     :root {
-      --bg:           #0a0a0a;
-      --bg-2:         #111111;
-      --divider:      #161616;
-      --divider-red:  rgba(211, 18, 31, 0.35);
-      --accent:       #d3121f;
-      --accent-bright:#e51927;
-      --accent-dark:  #8b0a12;
-      --accent-deep:  #2a0508;
-      --text-white:   #ffffff;
-      --text-body:    #a0a0a0;
-      --text-muted:   #6b6b6b;
-      --border:       #222222;
+      --bg:     #0a0a0a;
+      --line:   #1f1f1f;
+      --red:    #d3121f;
+      --red-d:  #8b0a12;
+      --red-x:  #2a0508;
+      --text:   #ffffff;
+      --body:   #a0a0a0;
+      --faint:  #6b6b6b;
 
-      --font-display: 'Bebas Neue', 'Anton', Impact, sans-serif;
+      --font-display: 'Anton', Impact, sans-serif;
       --font-script:  'Allura', cursive;
-      --font-body:    'Inter', 'DM Sans', system-ui, sans-serif;
+      --font-body:    'Inter', system-ui, -apple-system, sans-serif;
     }
 
-    /* ─── RESET ─────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    /* ─── BASE RESET ────────────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+    }
     body {
       background: var(--bg);
-      color: var(--text-white);
+      color: var(--text);
       font-family: var(--font-body);
       font-size: 15px;
       line-height: 1.6;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    img { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-
-    /* ─── UTILITY ────────────────────────────────────────────── */
-    .label {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
+    img {
+      display: block;
+      max-width: 100%;
     }
-    .red { color: var(--accent); }
-    .star { color: var(--accent); font-style: normal; }
-    .thin-line {
-      flex: 1;
-      height: 1px;
-      background: var(--divider);
+    a {
+      color: inherit;
+      text-decoration: none;
     }
-
-    /* Fade-up animation (IntersectionObserver) */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    /* ─── CIRCULAR ICON BUTTON ──────────────────────────────── */
-    .icon-btn {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      display: inline-flex; align-items: center; justify-content: center;
-      color: var(--text-body);
-      transition: border-color 0.25s, color 0.25s, box-shadow 0.25s, transform 0.2s;
+    button {
+      background: none;
+      border: none;
+      font: inherit;
+      color: inherit;
       cursor: pointer;
-      background: transparent;
-      flex-shrink: 0;
     }
-    .icon-btn svg {
-      width: 18px; height: 18px;
+
+    /* ─── ACCESSIBILITY / FOCUS ─────────────────────────────── */
+    :focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 3px;
+    }
+
+    /* ─── ICON SPRITE HELPER ────────────────────────────────── */
+    .icon {
+      width: 18px;
+      height: 18px;
       stroke: currentColor;
       fill: none;
       stroke-width: 1.5;
       stroke-linecap: round;
       stroke-linejoin: round;
+      display: inline-block;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+
+    /* ─── SHARED BUTTONS & BADGES ───────────────────────────── */
+    .icon-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--body);
+      transition: border-color 0.25s, color 0.25s, box-shadow 0.25s, transform 0.2s;
+      flex-shrink: 0;
+      background: transparent;
     }
     .icon-btn:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      box-shadow: 0 0 16px rgba(211,18,31,.4);
+      border-color: var(--red);
+      color: var(--red);
+      box-shadow: 0 0 14px rgba(211, 18, 31, 0.45);
       transform: scale(1.05);
     }
     .icon-btn.large {
-      width: 60px; height: 60px;
-      font-size: 22px;
+      width: 58px;
+      height: 58px;
+    }
+
+    .sparkle-red {
+      color: var(--red);
+      font-style: normal;
+      font-size: 14px;
+      display: inline-block;
+      line-height: 1;
+    }
+
+    /* ─── ANIMATION (FADE-UP ON LOAD) ───────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .fade-up {
+        opacity: 1 !important;
+        transform: none !important;
+      }
     }
 
     /* ═══════════════════════════════════════════════════════════
@@ -115,275 +153,276 @@
       justify-content: space-between;
       align-items: center;
       padding: 16px 56px;
-      border-bottom: 1px solid var(--divider);
+      border-bottom: 1px solid var(--line);
       position: relative;
       z-index: 20;
       background: var(--bg);
     }
-    #topbar .brand .role {
+    .topbar-brand .role {
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--red);
     }
-    #topbar .brand .sub {
+    .topbar-brand .sub {
       font-size: 10px;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--faint);
       margin-top: 2px;
     }
-    #topbar .avail {
+    .topbar-avail {
       display: flex;
       align-items: center;
       gap: 10px;
       font-size: 10px;
       font-weight: 600;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--text-body);
+      color: var(--body);
     }
-    #topbar .avail .dot {
-      width: 7px; height: 7px;
+    .avail-pulse {
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background: var(--accent);
+      background: var(--red);
+      box-shadow: 0 0 0 0 rgba(211, 18, 31, 0.7);
       animation: pulse 2s infinite;
     }
     @keyframes pulse {
-      0%,100% { box-shadow: 0 0 0 0 rgba(211,18,31,.7); }
-      50%      { box-shadow: 0 0 0 6px rgba(211,18,31,0); }
+      0%, 100% { box-shadow: 0 0 0 0 rgba(211, 18, 31, 0.7); }
+      50%      { box-shadow: 0 0 0 7px rgba(211, 18, 31, 0); }
     }
 
     /* ═══════════════════════════════════════════════════════════
-       2. HERO (REDESIGNED)
+       2. HERO
     ═══════════════════════════════════════════════════════════ */
     #hero {
       position: relative;
-      min-height: 92vh;
+      height: min(92vw, 820px);
+      min-height: 680px;
       overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      padding: 0 56px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding: 40px 56px 60px;
-      border-bottom: 1px solid var(--divider);
+      justify-content: flex-end;
     }
 
-    /* Giant background word positioned at the TOP */
-    .hero-bg-text {
+    /* Giant "PORTFOLIO" word centered at top */
+    .hero-bg-word {
       position: absolute;
       top: 0;
       left: 50%;
       transform: translateX(-50%);
       font-family: var(--font-display);
-      font-size: 25vw;
-      line-height: 0.85;
+      font-size: clamp(140px, 25vw, 360px);
+      line-height: 0.82;
+      letter-spacing: -0.02em;
       white-space: nowrap;
-      letter-spacing: -0.03em;
-      background: linear-gradient(180deg, #c4121a 0%, #8b0a12 40%, #2a0508 85%, transparent 100%);
+      text-align: center;
+      width: 100%;
+      user-select: none;
+      pointer-events: none;
+      z-index: 1;
+      background: linear-gradient(180deg, var(--red) 0%, #a30e17 40%, var(--red-x) 85%, transparent 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      opacity: 1;
-      pointer-events: none;
-      user-select: none;
-      z-index: 1;
-      width: 100%;
-      text-align: center;
     }
 
-    /* Absolutely positioned centered-right cutout portrait photo */
+    /* Transparent PNG photo overlapping in front of text */
     .hero-photo-wrap {
       position: absolute;
       bottom: 0;
-      left: 50%;
-      transform: translateX(-32%);
-      height: 90%;
-      max-height: 820px;
+      left: 52%;
+      transform: translateX(-35%);
+      height: 88%;
+      max-height: 740px;
       z-index: 2;
       pointer-events: none;
       display: flex;
       align-items: flex-end;
+      -webkit-mask-image: linear-gradient(to top, transparent 0%, black 14%, black 100%);
+      mask-image: linear-gradient(to top, transparent 0%, black 14%, black 100%);
     }
-    .hero-photo {
+    .hero-photo-img {
       height: 100%;
       width: auto;
       object-fit: contain;
       object-position: bottom;
-      filter: drop-shadow(0 20px 50px rgba(0,0,0,0.9));
-    }
-    /* Subtle bottom gradient fade to seamlessly blend cutout edge */
-    .hero-photo-wrap::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: -10%;
-      right: -10%;
-      height: 120px;
-      background: linear-gradient(to top, var(--bg) 0%, transparent 100%);
-      pointer-events: none;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.9));
     }
 
-    /* Main foreground content grid */
-    .hero-grid {
+    /* Hero UI Elements (z-index 3) */
+    .hero-content {
       position: relative;
-      z-index: 4;
-      display: grid;
-      grid-template-columns: 1.15fr 0.95fr 1fr;
-      align-items: center;
-      gap: 20px;
+      z-index: 3;
       width: 100%;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 1fr;
+      align-items: flex-end;
+      padding-bottom: 48px;
     }
 
-    /* Left column */
+    /* Bottom-left block */
     .hero-left {
-      padding-top: 20px;
+      max-width: 380px;
     }
-    .hero-left .script {
+    .hero-script {
       font-family: var(--font-script);
-      font-size: 44px;
-      color: var(--text-white);
+      font-size: 46px;
+      color: var(--text);
       line-height: 1;
       margin-bottom: 2px;
     }
-    .hero-left .name {
+    .hero-name {
       font-family: var(--font-display);
-      font-size: clamp(68px, 8vw, 112px);
-      line-height: 0.88;
-      color: var(--text-white);
+      font-size: clamp(64px, 7.5vw, 108px);
+      line-height: 0.9;
+      color: var(--text);
       text-transform: uppercase;
-      letter-spacing: 0.01em;
-      margin-bottom: 14px;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
     }
-    .hero-left .title-tag {
+    .hero-subtitle {
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 22px;
+      color: var(--red);
+      margin-bottom: 18px;
     }
-    .hero-left .bio {
-      max-width: 330px;
-      font-size: 14px;
-      color: var(--text-body);
-      line-height: 1.8;
-      margin-bottom: 28px;
+    .hero-bio {
+      font-size: 13.5px;
+      color: var(--body);
+      line-height: 1.75;
+      max-width: 300px;
+      margin-bottom: 24px;
     }
-    .hero-left .worldwide {
+    .hero-worldwide {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--text-body);
+      color: var(--body);
     }
-    .hero-left .worldwide svg {
-      color: var(--accent);
-      width: 17px; height: 17px;
+    .hero-worldwide .icon {
+      color: var(--red);
+      width: 16px;
+      height: 16px;
     }
 
-    /* Middle-Right tagline: positioned beside the photo */
-    .hero-tagline-col {
+    /* Middle-right tagline */
+    .hero-mid {
       display: flex;
       justify-content: center;
-      align-items: flex-end;
-      padding-bottom: 40px;
+      padding-bottom: 28px;
     }
-    .hero-tagline {
+    .hero-tagline-box {
       display: flex;
       align-items: center;
       gap: 14px;
-      max-width: 240px;
-      text-align: left;
-      background: rgba(10, 10, 10, 0.4);
-      backdrop-filter: blur(4px);
-      padding: 10px 14px;
+      max-width: 230px;
+      background: rgba(10, 10, 10, 0.5);
+      backdrop-filter: blur(8px);
+      padding: 10px 16px;
       border-radius: 40px;
-      border: 1px solid rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
-    .hero-tagline .icon-btn {
-      width: 40px; height: 40px;
-      border-color: rgba(211,18,31,0.4);
-      color: var(--accent);
+    .hero-tagline-box .icon-btn {
+      width: 38px;
+      height: 38px;
+      border-color: rgba(211, 18, 31, 0.4);
+      color: var(--red);
     }
-    .hero-tagline p {
-      font-size: 13px;
-      color: var(--text-body);
-      line-height: 1.5;
+    .hero-tagline-text {
+      font-size: 12.5px;
+      color: var(--body);
+      line-height: 1.45;
     }
 
-    /* Right column: Stats as rows (Number on Left, Label on Right) */
-    .hero-right {
+    /* Bottom-right stats rows */
+    .hero-stats {
       display: flex;
       flex-direction: column;
-      align-self: center;
+      align-self: flex-end;
       margin-left: auto;
       width: 100%;
-      max-width: 300px;
+      max-width: 290px;
     }
     .stat-row {
       display: flex;
       align-items: center;
       gap: 18px;
-      padding: 24px 0;
-      border-bottom: 1px solid var(--divider);
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
     }
     .stat-row:first-child {
-      border-top: 1px solid var(--divider);
+      border-top: 1px solid var(--line);
     }
     .stat-num {
       font-family: var(--font-display);
-      font-size: clamp(52px, 5.2vw, 76px);
-      color: var(--accent);
+      font-size: clamp(48px, 4.8vw, 68px);
+      color: var(--red);
       line-height: 1;
-      min-width: 90px;
-      letter-spacing: -0.01em;
+      min-width: 85px;
+      letter-spacing: 0.01em;
     }
     .stat-label {
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--faint);
       line-height: 1.45;
     }
 
     /* ═══════════════════════════════════════════════════════════
-       3. SELECTED PROJECTS (REDESIGNED META LAYOUT)
+       3. SELECTED PROJECTS
     ═══════════════════════════════════════════════════════════ */
     #projects {
-      padding: 100px 56px;
-      border-bottom: 1px solid var(--divider);
+      padding: 96px 56px;
+      border-bottom: 1px solid var(--line);
     }
-    .section-row {
+    .projects-header {
       display: flex;
       align-items: center;
       gap: 24px;
-      margin-bottom: 52px;
+      margin-bottom: 48px;
     }
-    .section-heading {
+    .projects-title {
       font-family: var(--font-display);
-      font-size: clamp(28px, 3.5vw, 44px);
+      font-size: clamp(28px, 3.2vw, 44px);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       white-space: nowrap;
     }
-    .view-all {
+    .projects-divider {
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+    .projects-view-all {
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--faint);
       white-space: nowrap;
       transition: color 0.2s, transform 0.2s;
       display: inline-flex;
       align-items: center;
       gap: 6px;
     }
-    .view-all:hover { color: var(--accent); transform: translateX(3px); }
+    .projects-view-all:hover {
+      color: var(--red);
+      transform: translateX(4px);
+    }
 
     .projects-grid {
       display: grid;
@@ -394,164 +433,176 @@
       cursor: pointer;
       transition: transform 0.3s ease;
     }
-    .project-card:hover { transform: translateY(-5px); }
+    .project-card:hover {
+      transform: translateY(-4px);
+    }
 
-    .card-img-wrap {
+    .project-thumb {
+      aspect-ratio: 16 / 9.4;
+      border: 1px solid #2c2c2c;
       border-radius: 4px;
       overflow: hidden;
-      border: 1px solid var(--border);
       margin-bottom: 18px;
-      transition: border-color 0.35s ease, box-shadow 0.35s ease;
-      aspect-ratio: 16/10;
-      background: var(--bg-2);
+      background: #121212;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      position: relative;
     }
-    .project-card:hover .card-img-wrap {
-      border-color: var(--accent);
-      box-shadow: 0 12px 30px rgba(211, 18, 31, 0.18);
+    .project-card:hover .project-thumb {
+      border-color: var(--red);
+      box-shadow: 0 10px 28px rgba(211, 18, 31, 0.22);
     }
-    .card-img-wrap img {
-      width: 100%; height: 100%;
+    .project-thumb img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      transition: transform 0.55s ease;
+      transition: transform 0.5s ease;
     }
-    .project-card:hover .card-img-wrap img { transform: scale(1.05); }
+    .project-card:hover .project-thumb img {
+      transform: scale(1.05);
+    }
 
-    /* Number LEFT, Name & Category MIDDLE, Arrow RIGHT */
-    .card-meta {
+    /* Meta row: red number LEFT, title & category MIDDLE, arrow RIGHT */
+    .project-meta {
       display: flex;
       align-items: center;
       gap: 16px;
-      padding: 4px 2px;
+      padding: 2px 0;
     }
-    .card-num {
+    .project-num {
       font-family: var(--font-display);
       font-size: 32px;
-      color: var(--accent);
-      letter-spacing: 0.05em;
+      color: var(--red);
       line-height: 1;
       flex-shrink: 0;
     }
-    .card-info {
+    .project-info {
       flex: 1;
       min-width: 0;
     }
-    .card-name {
-      font-family: var(--font-display);
-      font-size: 21px;
+    .project-name {
+      font-size: 13.5px;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--text-white);
-      line-height: 1.15;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      line-height: 1.25;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .card-cat {
+    .project-cat {
       font-size: 11px;
-      color: var(--text-muted);
+      color: var(--faint);
       letter-spacing: 0.12em;
       text-transform: uppercase;
       margin-top: 3px;
     }
-    .card-arrow {
-      font-size: 22px;
-      color: var(--text-muted);
+    .project-arrow {
+      color: var(--faint);
       transition: color 0.25s, transform 0.25s;
       flex-shrink: 0;
     }
-    .project-card:hover .card-arrow {
-      color: var(--accent);
+    .project-card:hover .project-arrow {
+      color: var(--red);
       transform: translateX(6px);
     }
 
     /* ═══════════════════════════════════════════════════════════
-       4 / 5 / 6 — THREE-COLUMN MIDDLE ROW
+       4. THREE-COLUMN ROW (30% / FLEXIBLE / 28%)
     ═══════════════════════════════════════════════════════════ */
-    #middle {
+    #mid-row {
       display: grid;
-      grid-template-columns: 35% 1fr 280px;
-      gap: 0;
-      border-bottom: 1px solid var(--divider);
+      grid-template-columns: 30% 1fr 28%;
+      border-bottom: 1px solid var(--line);
     }
     .mid-col {
       padding: 72px 48px;
-      border-right: 1px solid var(--divider);
+      border-right: 1px solid var(--line);
     }
-    .mid-col:last-child { border-right: none; }
+    .mid-col:last-child {
+      border-right: none;
+    }
 
-    /* ─── 4. EDUCATION & SKILLS ─── */
-    .mid-section-title {
-      font-family: var(--font-display);
-      font-size: clamp(24px, 2.2vw, 32px);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-weight: 700;
-      margin-bottom: 34px;
-    }
-    .red-label {
+    /* ── A) EDUCATION & SKILLS ── */
+    .section-label-red {
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
+      color: var(--red);
+      margin-bottom: 18px;
     }
-    .edu-entry {
+    .edu-item {
       margin-bottom: 22px;
       padding-bottom: 22px;
-      border-bottom: 1px solid var(--divider);
+      border-bottom: 1px solid var(--line);
     }
-    .edu-entry:last-of-type { border-bottom: none; }
-    .edu-row {
+    .edu-item:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .edu-top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 10px;
+      gap: 12px;
     }
     .edu-degree {
-      font-size: 14.5px;
+      font-size: 14px;
       font-weight: 600;
-      color: var(--text-white);
+      color: var(--text);
       line-height: 1.35;
     }
     .edu-inst {
       font-size: 12.5px;
-      color: var(--text-muted);
-      margin-top: 3px;
+      color: var(--faint);
+      margin-top: 4px;
     }
     .edu-year {
       font-family: var(--font-display);
       font-size: 16px;
-      color: var(--accent);
+      color: var(--red);
       white-space: nowrap;
       flex-shrink: 0;
     }
 
-    .skills-wrap {
+    .skills-divider {
+      height: 1px;
+      background: var(--line);
+      margin: 32px 0 28px;
+    }
+    .skills-chips {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 16px;
+      margin-top: 14px;
     }
-    .skill-chip {
+    .chip {
       font-size: 10px;
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--text-body);
-      border: 1px solid var(--border);
+      color: var(--body);
+      border: 1px solid #333333;
       border-radius: 4px;
-      padding: 6px 12px;
-      transition: border-color 0.25s, color 0.25s, background-color 0.25s;
+      padding: 6px 11px;
+      transition: border-color 0.2s, color 0.2s, background-color 0.2s;
       cursor: default;
     }
-    .skill-chip:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background-color: rgba(211,18,31,0.04);
+    .chip:hover {
+      border-color: var(--red);
+      color: var(--red);
+      background: rgba(211, 18, 31, 0.05);
     }
 
-    /* ─── 5. WORK PROCESS (STEP NUMBER + ICON IN ONE ROW) ─── */
+    /* ── B) WORK PROCESS ── */
+    .process-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 32px;
+    }
     .process-list {
       display: flex;
       flex-direction: column;
@@ -560,12 +611,11 @@
     .process-step {
       display: flex;
       align-items: flex-start;
-      gap: 20px;
-      padding-bottom: 34px;
+      gap: 18px;
+      padding-bottom: 32px;
       position: relative;
     }
-    /* Number + Icon grouped together on left */
-    .step-left-group {
+    .step-left-combo {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -574,68 +624,65 @@
     }
     .step-num {
       font-family: var(--font-display);
-      font-size: 16px;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      width: 20px;
+      font-size: 18px;
+      letter-spacing: 0.05em;
+      color: var(--red);
+      width: 22px;
       text-align: right;
     }
     .step-icon-wrap {
       position: relative;
     }
-    /* Vertical connector line joining the icons */
+    /* Vertical connecting line */
     .process-step:not(:last-child) .step-icon-wrap::after {
       content: '';
       position: absolute;
       left: 50%;
       top: 44px;
-      bottom: -34px;
+      bottom: -32px;
       width: 1px;
-      background: var(--divider);
+      background: var(--line);
       transform: translateX(-50%);
     }
-    .step-content {
-      padding-top: 6px;
-      padding-left: 2px;
+    .step-body {
+      padding-top: 5px;
     }
     .step-title {
       font-family: var(--font-display);
       font-size: 18px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--red);
       margin-bottom: 4px;
     }
     .step-desc {
       font-size: 13px;
-      color: var(--text-body);
+      color: var(--body);
       line-height: 1.6;
-      max-width: 300px;
+      max-width: 320px;
     }
 
-    /* ─── 6. QUOTE PANEL (STRONGER RED GRADIENT + BRIGHT QUOTE) ─── */
+    /* ── C) QUOTE PANEL ── */
     .quote-panel {
-      background: linear-gradient(165deg, #a50d18 0%, #68050b 45%, #200204 85%, #0a0102 100%);
+      background: radial-gradient(circle at 35% 20%, #b50f1a 0%, var(--red-d) 48%, var(--red-x) 100%);
       position: relative;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 64px 38px;
+      padding: 64px 40px;
     }
-    /* Grain texture overlay */
-    .quote-panel::before {
-      content: '';
+    /* Subtle SVG noise grain */
+    .quote-grain {
       position: absolute;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E");
-      background-size: 180px;
-      opacity: 0.45;
+      opacity: 0.14;
       pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
     .quote-inner {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -643,53 +690,51 @@
     }
     .quote-mark {
       font-family: var(--font-display), Georgia, serif;
-      font-size: 110px;
+      font-size: 120px;
       line-height: 0.65;
-      color: var(--accent);
-      margin-bottom: 18px;
+      color: var(--red);
+      margin-bottom: 22px;
       user-select: none;
     }
     .quote-text {
       font-size: 22px;
       font-weight: 400;
       line-height: 1.45;
-      color: var(--text-white);
+      color: var(--text);
       font-style: normal;
-      margin-bottom: 28px;
+      margin-bottom: 30px;
     }
-    .quote-sig {
+    .quote-signature {
       font-family: var(--font-script);
-      font-size: 36px;
-      color: rgba(255,255,255,0.95);
+      font-size: 38px;
+      color: rgba(255, 255, 255, 0.95);
       margin-bottom: 24px;
     }
-    .quote-cta {
+    .quote-bottom-cta {
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
+      color: rgba(255, 255, 255, 0.75);
       display: flex;
       align-items: center;
       gap: 8px;
-      border-top: 1px solid rgba(255,255,255,0.14);
-      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      padding-top: 22px;
     }
-    .quote-cta .star { color: var(--accent-bright); }
 
     /* ═══════════════════════════════════════════════════════════
-       7. CONTACT / FOOTER (RED DIVIDERS & CORNER LAPTOP)
+       5. CONTACT & FOOTER
     ═══════════════════════════════════════════════════════════ */
     #contact {
       display: grid;
       grid-template-columns: 1fr 340px 380px;
-      gap: 0;
-      border-bottom: 1px solid var(--divider);
+      border-bottom: 1px solid var(--line);
       overflow: hidden;
     }
     .contact-col {
       padding: 72px 56px;
-      border-right: 1px solid var(--divider);
+      border-right: 1px solid var(--line);
     }
     .contact-col:last-child {
       border-right: none;
@@ -698,7 +743,7 @@
 
     .contact-heading {
       font-family: var(--font-display);
-      font-size: clamp(34px, 4.2vw, 58px);
+      font-size: clamp(34px, 4.2vw, 56px);
       text-transform: uppercase;
       line-height: 0.98;
       margin-bottom: 22px;
@@ -706,12 +751,12 @@
     }
     .contact-para {
       font-size: 14px;
-      color: var(--text-body);
+      color: var(--body);
       line-height: 1.8;
-      max-width: 320px;
+      max-width: 310px;
       margin-bottom: 34px;
     }
-    .contact-btn {
+    .contact-cta-btn {
       display: inline-flex;
       align-items: center;
       gap: 14px;
@@ -719,43 +764,41 @@
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--text-body);
+      color: var(--body);
       transition: color 0.2s;
     }
-    .contact-btn:hover { color: var(--accent); }
-    .contact-btn .icon-btn {
-      transition: border-color 0.25s, box-shadow 0.25s, color 0.25s;
+    .contact-cta-btn:hover {
+      color: var(--red);
     }
-    .contact-btn:hover .icon-btn {
-      border-color: var(--accent);
-      box-shadow: 0 0 16px rgba(211,18,31,.4);
-      color: var(--accent);
+    .contact-cta-btn .icon-btn {
+      border-color: rgba(211, 18, 31, 0.4);
+      color: var(--red);
     }
 
-    /* Info rows separated by thin red lines */
-    .info-row {
+    /* Middle info rows separated by thin red lines */
+    .contact-info-row {
       display: flex;
       align-items: center;
       gap: 16px;
       padding: 20px 0;
-      border-bottom: 1px solid var(--divider-red);
+      border-bottom: 1px solid rgba(211, 18, 31, 0.35);
     }
-    .info-row:first-child {
-      border-top: 1px solid var(--divider-red);
+    .contact-info-row:first-child {
+      border-top: 1px solid rgba(211, 18, 31, 0.35);
     }
-    .info-row .icon-btn {
-      color: var(--accent);
+    .contact-info-row .icon-btn {
+      color: var(--red);
       border-color: rgba(211, 18, 31, 0.45);
-      background: rgba(211, 18, 31, 0.03);
+      background: rgba(211, 18, 31, 0.04);
     }
-    .info-row .info-text {
+    .contact-info-text {
       font-size: 13.5px;
-      color: var(--text-body);
+      color: var(--body);
       letter-spacing: 0.02em;
     }
 
-    /* Laptop mockup corner visual */
-    .contact-visual-wrap {
+    /* Right column: laptop mockup + coffee mug */
+    .contact-mockup-wrap {
       position: relative;
       width: 100%;
       height: 100%;
@@ -765,136 +808,312 @@
       justify-content: flex-end;
       align-items: flex-end;
       overflow: hidden;
-      background: radial-gradient(circle at 80% 80%, rgba(211,18,31,0.06), transparent 60%);
-    }
-    .laptop-mockup {
-      width: 110%;
-      max-width: 440px;
-      margin-right: -10px;
-      margin-bottom: -15px;
-      border-radius: 6px 0 0 0;
-      border-top: 1px solid var(--border);
-      border-left: 1px solid var(--border);
-      box-shadow: -20px -20px 60px rgba(0,0,0,0.8);
-      filter: contrast(1.05);
-    }
-    .coffee-mug {
-      width: 90px;
-      position: absolute;
-      bottom: 20px;
-      left: 30px;
-      border-radius: 50%;
-      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9));
+      background: radial-gradient(circle at 80% 80%, rgba(211, 18, 31, 0.08), transparent 60%);
     }
 
-    /* ─── FOOTER STRIP ─── */
+    /* CSS Laptop Graphic (matches reference perfectly without external image) */
+    .laptop-frame {
+      width: 112%;
+      max-width: 440px;
+      margin-right: -20px;
+      margin-bottom: -10px;
+      transform: perspective(900px) rotateY(-8deg) rotateX(4deg);
+      border-radius: 8px 8px 0 0;
+      background: #141414;
+      padding: 12px 12px 0 12px;
+      border: 1px solid #2a2a2a;
+      box-shadow: -20px -20px 60px rgba(0,0,0,0.85);
+    }
+    .laptop-screen {
+      background: #0d0d0d;
+      border-radius: 4px 4px 0 0;
+      border: 1px solid #1f1f1f;
+      height: 240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .laptop-screen::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle, rgba(211,18,31,0.18) 0%, transparent 70%);
+    }
+    .laptop-screen-tag {
+      font-size: 9px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--red);
+      font-weight: 700;
+      position: relative;
+      z-index: 2;
+    }
+    .laptop-screen-headline {
+      font-family: var(--font-display);
+      font-size: 26px;
+      text-transform: uppercase;
+      line-height: 1;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin-top: 6px;
+      position: relative;
+      z-index: 2;
+    }
+    .laptop-screen-headline span {
+      color: var(--red);
+    }
+
+    /* Coffee mug */
+    .coffee-mug-graphic {
+      position: absolute;
+      bottom: 24px;
+      left: 36px;
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      background: #151515;
+      border: 3px solid #222222;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--faint);
+      font-family: var(--font-display);
+      font-size: 22px;
+      letter-spacing: 0.05em;
+    }
+    .coffee-mug-graphic::after {
+      content: '';
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: #0f0a0a;
+      border: 1px solid rgba(211,18,31,0.3);
+      position: absolute;
+    }
+    .coffee-mug-graphic span {
+      position: relative;
+      z-index: 2;
+      color: var(--red);
+    }
+
+    /* ─── SLIM FOOTER ─── */
     #footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 56px;
-      border-top: 1px solid var(--divider);
+      padding: 20px 56px;
+      border-top: 1px solid var(--line);
       background: var(--bg);
     }
-    #footer p {
+    .footer-copy {
       font-size: 11px;
-      color: var(--text-muted);
-      letter-spacing: 0.12em;
+      color: var(--faint);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
     }
-    #footer .footer-links {
+    .footer-copy span {
+      color: var(--red);
+    }
+    .footer-nav {
       display: flex;
       gap: 24px;
     }
-    #footer .footer-links a {
+    .footer-nav a {
       font-size: 11px;
-      color: var(--text-muted);
-      letter-spacing: 0.12em;
+      color: var(--faint);
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       transition: color 0.2s;
     }
-    #footer .footer-links a:hover { color: var(--accent); }
-
-    /* ═══════════════════════════════════════════════════════════
-       RESPONSIVE — MOBILE / TABLET
-    ═══════════════════════════════════════════════════════════ */
-    @media (max-width: 1024px) {
-      #topbar, #projects, .contact-col, .mid-col, #footer { padding-left: 28px; padding-right: 28px; }
-      #hero { padding: 40px 28px 48px; }
-      #middle { grid-template-columns: 1fr; }
-      .mid-col { border-right: none; border-bottom: 1px solid var(--divider); padding: 56px 28px; }
-      .mid-col:last-child { border-bottom: none; }
-      #contact { grid-template-columns: 1fr; }
-      .contact-col { border-right: none; border-bottom: 1px solid var(--divider); padding: 56px 28px; }
-      .contact-col:last-child { border-bottom: none; }
-      .projects-grid { grid-template-columns: repeat(2, 1fr); }
-      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
-      .hero-photo-wrap {
-        position: relative;
-        transform: none;
-        left: 0;
-        height: 480px;
-        margin: 20px auto 0;
-      }
-      .hero-tagline-col { justify-content: flex-start; padding-bottom: 0; }
-      .hero-right { margin-left: 0; max-width: 100%; }
+    .footer-nav a:hover {
+      color: var(--red);
     }
 
-    @media (max-width: 768px) {
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE RULES
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 1000px) {
+      #topbar, #projects, .contact-col, .mid-col, #footer {
+        padding-left: 32px;
+        padding-right: 32px;
+      }
       #hero {
-        padding: 30px 20px 40px;
-        text-align: center;
+        padding: 0 32px;
+        height: auto;
+        min-height: 720px;
       }
-      .hero-bg-text {
-        font-size: 28vw;
-        top: 20px;
+      #mid-row {
+        grid-template-columns: 1fr 1fr;
       }
-      .hero-left .bio, .hero-left .worldwide {
-        margin-left: auto;
-        margin-right: auto;
+      .mid-col:nth-child(2) {
+        border-right: none;
       }
-      .hero-photo-wrap {
-        height: 380px;
+      .mid-col:last-child {
+        grid-column: span 2;
+        border-top: 1px solid var(--line);
       }
-      .hero-tagline-col {
-        justify-content: center;
+      #contact {
+        grid-template-columns: 1fr 1fr;
       }
-      .hero-tagline {
-        margin: 0 auto;
+      .contact-col:nth-child(2) {
+        border-right: none;
       }
-      .hero-right {
+      .contact-col:last-child {
+        grid-column: span 2;
+        border-top: 1px solid var(--line);
+      }
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .hero-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+      .hero-mid {
+        justify-content: flex-start;
+      }
+      .hero-stats {
+        grid-column: span 2;
+        max-width: 100%;
+        margin-left: 0;
         flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 0;
+        justify-content: space-between;
       }
       .stat-row {
-        padding: 16px 20px;
+        border-right: 1px solid var(--line);
         border-bottom: none;
-        border-right: 1px solid var(--divider);
+        padding: 16px 20px;
         flex-direction: column;
-        text-align: center;
+        align-items: flex-start;
         gap: 6px;
       }
       .stat-row:first-child {
         border-top: none;
-        border-left: 1px solid var(--divider);
       }
-      .stat-num {
-        min-width: unset;
+      .stat-row:last-child {
+        border-right: none;
       }
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
+    }
+
+    @media (max-width: 720px) {
       #topbar {
         flex-direction: column;
         gap: 12px;
         padding: 16px 20px;
         text-align: center;
       }
+      #hero {
+        padding: 24px 20px 36px;
+        min-height: unset;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      .hero-bg-word {
+        font-size: 30vw;
+        top: 10px;
+      }
+      .hero-photo-wrap {
+        position: relative;
+        left: unset;
+        transform: none;
+        height: 380px;
+        margin: 20px auto 0;
+        z-index: 2;
+      }
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-bottom: 0;
+        gap: 28px;
+        margin-top: 10px;
+      }
+      .hero-left {
+        max-width: 100%;
+      }
+      .hero-bio {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-worldwide {
+        justify-content: center;
+      }
+      .hero-mid {
+        padding-bottom: 0;
+      }
+      .hero-tagline-box {
+        margin: 0 auto;
+      }
+      .hero-stats {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        padding: 8px 0;
+      }
+      .stat-row {
+        border: none;
+        padding: 10px 8px;
+        align-items: center;
+        text-align: center;
+      }
+      .stat-num {
+        min-width: unset;
+        font-size: 38px;
+      }
+      .stat-label {
+        font-size: 9.5px;
+      }
+
+      #projects {
+        padding: 64px 20px;
+      }
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #mid-row {
+        grid-template-columns: 1fr;
+      }
+      .mid-col {
+        padding: 48px 20px;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+      .mid-col:last-child {
+        grid-column: span 1;
+      }
+
+      #contact {
+        grid-template-columns: 1fr;
+      }
+      .contact-col {
+        padding: 48px 20px;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+      .contact-col:last-child {
+        grid-column: span 1;
+      }
+      .laptop-frame {
+        width: 100%;
+        margin-right: 0;
+      }
+
       #footer {
         flex-direction: column;
         gap: 14px;
-        padding: 20px;
+        padding: 24px 20px;
         text-align: center;
       }
     }
@@ -903,90 +1122,152 @@
 <body>
 
   <!-- ═══════════════════════════════════════════════════════════
+       INLINE SVG SPRITE (Clean stroke-width 1.5, No emojis)
+  ═══════════════════════════════════════════════════════════ -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <!-- Globe -->
+    <symbol id="icon-globe" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+      <path d="M2 12h20"/>
+    </symbol>
+    <!-- Search -->
+    <symbol id="icon-search" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8"/>
+      <path d="m21 21-4.35-4.35"/>
+    </symbol>
+    <!-- Lightbulb -->
+    <symbol id="icon-lightbulb" viewBox="0 0 24 24">
+      <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-1 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
+      <path d="M9 18h6"/>
+      <path d="M10 22h4"/>
+    </symbol>
+    <!-- Pen / PenTool -->
+    <symbol id="icon-pen" viewBox="0 0 24 24">
+      <path d="m18 2 4 4-12 12H6v-4L18 2z"/>
+      <path d="m14 6 4 4"/>
+    </symbol>
+    <!-- Code </> -->
+    <symbol id="icon-code" viewBox="0 0 24 24">
+      <polyline points="16 18 22 12 16 6"/>
+      <polyline points="8 6 2 12 8 18"/>
+    </symbol>
+    <!-- Paper Plane -->
+    <symbol id="icon-plane" viewBox="0 0 24 24">
+      <path d="m22 2-7 20-4-9-9-4Z"/>
+      <path d="M22 2 11 13"/>
+    </symbol>
+    <!-- Mail -->
+    <symbol id="icon-mail" viewBox="0 0 24 24">
+      <rect width="20" height="16" x="2" y="4" rx="2"/>
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+    </symbol>
+    <!-- Phone -->
+    <symbol id="icon-phone" viewBox="0 0 24 24">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+    </symbol>
+    <!-- Map Pin -->
+    <symbol id="icon-pin" viewBox="0 0 24 24">
+      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+      <circle cx="12" cy="10" r="3"/>
+    </symbol>
+    <!-- Arrow Right -->
+    <symbol id="icon-arrow" viewBox="0 0 24 24">
+      <path d="M5 12h14"/>
+      <path d="m12 5 7 7-7 7"/>
+    </symbol>
+    <!-- Arrow Diagonal -->
+    <symbol id="icon-arrow-diag" viewBox="0 0 24 24">
+      <path d="M7 17L17 7"/>
+      <path d="M7 7h10v10"/>
+    </symbol>
+  </svg>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
        1. TOP BAR
   ═══════════════════════════════════════════════════════════ -->
   <header id="topbar">
-    <div class="brand">
-      <div class="role">Web Designer</div>
-      <div class="sub">Digital Creator</div>
+    <div class="topbar-brand">
+      <!-- REPLACE: Your primary title -->
+      <div class="role">WEB DESIGNER</div>
+      <!-- REPLACE: Subtitle -->
+      <div class="sub">DIGITAL CREATOR</div>
     </div>
-    <div class="avail">
-      <span class="dot" aria-hidden="true"></span>
-      Available for Freelance
-      <em class="star">✦</em>
+    <div class="topbar-avail">
+      <span class="avail-pulse" aria-hidden="true"></span>
+      AVAILABLE FOR FREELANCE
+      <em class="sparkle-red">✦</em>
     </div>
   </header>
 
 
   <!-- ═══════════════════════════════════════════════════════════
-       2. HERO (REDESIGNED: GIANT WORD TOP, CENTERED CUTOUT OVERLAP)
+       2. HERO
   ═══════════════════════════════════════════════════════════ -->
   <section id="hero">
 
-    <!-- Big background word at the TOP (~25vw, bright red gradient, full width) -->
-    <div class="hero-bg-text" aria-hidden="true">PORTFOLIO</div>
+    <!-- Giant "PORTFOLIO" Backdrop Word (~25vw, Centered Top) -->
+    <div class="hero-bg-word" aria-hidden="true">PORTFOLIO</div>
 
-    <!-- Centered-right cutout portrait photo overlapping in front of the letters -->
+    <!-- Transparent PNG Cutout (Centered/Right, Overlaps Letters, Fade at Bottom) -->
     <div class="hero-photo-wrap">
       <!--
-        REPLACE: Swap this src with your transparent cutout portrait PNG.
-        For best results, upload a PNG with background removed.
-        Example local path: "/profile.png" or your uploaded portrait.
+        REPLACE: Swap with your cutout transparent PNG photo.
+        We have placed Anand's real photo at "/anand_profile.jpg" or you can use your transparent cutout.
       -->
       <img
-        class="hero-photo"
+        class="hero-photo-img"
         src="https://placehold.co/600x850/transparent/transparent?text=Your+Cutout+Photo"
-        alt="Portrait Cutout"
+        onerror="this.src='/anand_profile.jpg'"
+        alt="Anand Jadhav — Portrait Cutout"
       />
     </div>
 
-    <!-- Foreground grid content -->
-    <div class="hero-grid">
+    <!-- Hero Content (z-index 3) -->
+    <div class="hero-content">
 
-      <!-- Left block: Script + Big Name + Subtitle + Bio + Worldwide -->
+      <!-- Bottom-Left Block -->
       <div class="hero-left fade-up">
-        <div class="script">Hello, I'm</div>
-        <!-- REPLACE: your name stacked on two lines -->
-        <h1 class="name">ANAND<br>JADHAV</h1>
-        <div class="title-tag">Web Designer &amp; UI/UX Creator</div>
-        <p class="bio">
-          <!-- REPLACE: your short bio (3-4 lines) -->
+        <div class="hero-script">Hello, I'm</div>
+        <!-- REPLACE: First and Last Name -->
+        <h1 class="hero-name">ANAND<br>JADHAV</h1>
+        <div class="hero-subtitle">WEB DESIGNER &amp; UI/UX CREATOR</div>
+        <p class="hero-bio">
+          <!-- REPLACE: Short bio (3-4 lines, max 300px) -->
           I craft visually stunning, high-performance websites that blend bold
           cinematic aesthetics with flawless user experience. Turning complex ideas
-          into clean, memorable digital products is what I do best.
+          into clean, memorable digital products.
         </p>
-        <div class="worldwide">
-          <!-- Thin-line SVG Globe -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
-            <path d="M2 12h20"/>
-          </svg>
-          Available Worldwide
+        <div class="hero-worldwide">
+          <svg class="icon"><use href="#icon-globe"/></svg>
+          AVAILABLE WORLDWIDE
         </div>
       </div>
 
-      <!-- Middle-right: Tagline beside photo -->
-      <div class="hero-tagline-col fade-up" style="transition-delay: .15s">
-        <div class="hero-tagline">
-          <button class="icon-btn" aria-label="Sparkle">✦</button>
-          <p>Turning ideas into powerful digital experiences.</p>
+      <!-- Middle-Right Tagline -->
+      <div class="hero-mid fade-up">
+        <div class="hero-tagline-box">
+          <button class="icon-btn" aria-label="Sparkle Badge">
+            <span class="sparkle-red">✦</span>
+          </button>
+          <p class="hero-tagline-text">Turning ideas into powerful digital experiences.</p>
         </div>
       </div>
 
-      <!-- Right column: Stats stacked as ROWS (Number on left, Label on right) -->
-      <div class="hero-right fade-up" style="transition-delay: .28s">
+      <!-- Bottom-Right Stats Rows with Count-Up Animation -->
+      <div class="hero-stats fade-up">
         <div class="stat-row">
           <div class="stat-num" data-target="3">0</div>
-          <div class="stat-label">Years<br>Experience</div>
+          <div class="stat-label">YEARS<br>EXPERIENCE</div>
         </div>
         <div class="stat-row">
           <div class="stat-num" data-target="40">0</div>
-          <div class="stat-label">Projects<br>Completed</div>
+          <div class="stat-label">PROJECTS<br>COMPLETED</div>
         </div>
         <div class="stat-row">
           <div class="stat-num" data-target="20">0</div>
-          <div class="stat-label">Happy<br>Clients</div>
+          <div class="stat-label">HAPPY<br>CLIENTS</div>
         </div>
       </div>
 
@@ -1000,68 +1281,80 @@
   ═══════════════════════════════════════════════════════════ -->
   <section id="projects">
 
-    <div class="section-row fade-up">
-      <h2 class="section-heading">Selected Projects</h2>
-      <div class="thin-line"></div>
-      <a class="view-all" href="#projects">View All Projects &rarr;</a>
+    <div class="projects-header fade-up">
+      <h2 class="projects-title">SELECTED PROJECTS</h2>
+      <div class="projects-divider"></div>
+      <a class="projects-view-all" href="#projects">
+        VIEW ALL PROJECTS
+        <svg class="icon" style="width: 14px; height: 14px;"><use href="#icon-arrow"/></svg>
+      </a>
     </div>
 
     <div class="projects-grid">
 
-      <!-- Project 01 — REPLACE image src and info -->
-      <article class="project-card fade-up" style="transition-delay: .05s">
-        <div class="card-img-wrap">
+      <!-- Project 01 — REPLACE: Screenshot, Title, Category -->
+      <article class="project-card fade-up">
+        <div class="project-thumb">
           <img
-            src="https://placehold.co/640x400/111111/2a2a2a?text=E-Commerce+Website+Mockup"
-            alt="E-Commerce Website mockup"
+            src="https://placehold.co/640x376/121212/282828?text=Veloce+Bikes+E-Commerce"
+            onerror="this.src='/antigravity_verification.jpg'"
+            alt="Veloce Bikes — E-Commerce Website"
             loading="lazy"
           />
         </div>
-        <div class="card-meta">
-          <div class="card-num">01</div>
-          <div class="card-info">
-            <div class="card-name">E-Commerce Website</div>
-            <div class="card-cat">Web Design / Development</div>
+        <div class="project-meta">
+          <div class="project-num">01</div>
+          <div class="project-info">
+            <div class="project-name">VELOCE BIKES</div>
+            <div class="project-cat">E-Commerce Website</div>
           </div>
-          <div class="card-arrow">&rarr;</div>
+          <div class="project-arrow">
+            <svg class="icon" style="width: 20px; height: 20px;"><use href="#icon-arrow"/></svg>
+          </div>
         </div>
       </article>
 
       <!-- Project 02 -->
-      <article class="project-card fade-up" style="transition-delay: .12s">
-        <div class="card-img-wrap">
+      <article class="project-card fade-up">
+        <div class="project-thumb">
           <img
-            src="https://placehold.co/640x400/111111/2a2a2a?text=Furniture+Store+Mockup"
-            alt="Furniture Website mockup"
+            src="https://placehold.co/640x376/121212/282828?text=Woodcraft+Furniture+Store"
+            onerror="this.src='/sap_prognos_dashboard.jpg'"
+            alt="Woodcraft — Furniture Website"
             loading="lazy"
           />
         </div>
-        <div class="card-meta">
-          <div class="card-num">02</div>
-          <div class="card-info">
-            <div class="card-name">Furniture Website</div>
-            <div class="card-cat">UI/UX Design / Webflow</div>
+        <div class="project-meta">
+          <div class="project-num">02</div>
+          <div class="project-info">
+            <div class="project-name">WOODCRAFT</div>
+            <div class="project-cat">Furniture Website</div>
           </div>
-          <div class="card-arrow">&rarr;</div>
+          <div class="project-arrow">
+            <svg class="icon" style="width: 20px; height: 20px;"><use href="#icon-arrow"/></svg>
+          </div>
         </div>
       </article>
 
       <!-- Project 03 -->
-      <article class="project-card fade-up" style="transition-delay: .2s">
-        <div class="card-img-wrap">
+      <article class="project-card fade-up">
+        <div class="project-thumb">
           <img
-            src="https://placehold.co/640x400/111111/2a2a2a?text=Fashion+Editorial+Mockup"
-            alt="Fashion Magazine mockup"
+            src="https://placehold.co/640x376/121212/282828?text=Urbanic+Fashion+Magazine"
+            onerror="this.src='https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&fit=crop'"
+            alt="Urbanic — Fashion Magazine"
             loading="lazy"
           />
         </div>
-        <div class="card-meta">
-          <div class="card-num">03</div>
-          <div class="card-info">
-            <div class="card-name">Fashion Magazine</div>
-            <div class="card-cat">Editorial / Visual Design</div>
+        <div class="project-meta">
+          <div class="project-num">03</div>
+          <div class="project-info">
+            <div class="project-name">URBANIC</div>
+            <div class="project-cat">Fashion Magazine</div>
           </div>
-          <div class="card-arrow">&rarr;</div>
+          <div class="project-arrow">
+            <svg class="icon" style="width: 20px; height: 20px;"><use href="#icon-arrow"/></svg>
+          </div>
         </div>
       </article>
 
@@ -1070,161 +1363,160 @@
 
 
   <!-- ═══════════════════════════════════════════════════════════
-       MIDDLE ROW: 4. Education & Skills | 5. Work Process | 6. Quote
+       4. THREE-COLUMN ROW (30% / FLEXIBLE / 28%)
   ═══════════════════════════════════════════════════════════ -->
-  <div id="middle">
+  <div id="mid-row">
 
-    <!-- ── 4. EDUCATION & SKILLS ── -->
+    <!-- ── A) EDUCATION & SKILLS (30%) ── -->
     <div class="mid-col">
-      <h2 class="mid-section-title fade-up">Education &amp; Skills</h2>
+      <div class="section-label-red fade-up">EDUCATION</div>
 
-      <div class="red-label fade-up">Education</div>
-
-      <!-- REPLACE: your degrees/certifications below -->
-      <div class="edu-entry fade-up" style="transition-delay: .06s">
-        <div class="edu-row">
+      <!-- REPLACE: Education Details from Resume -->
+      <div class="edu-item fade-up">
+        <div class="edu-top">
           <div>
-            <div class="edu-degree">B.Tech in Computer Science &amp; Engineering</div>
+            <div class="edu-degree">B.Tech in Computer Science &amp; Eng.</div>
             <div class="edu-inst">Parul Institute of Technology</div>
           </div>
           <div class="edu-year">2022–2026</div>
         </div>
       </div>
 
-      <div class="edu-entry fade-up" style="transition-delay: .12s">
-        <div class="edu-row">
+      <div class="edu-item fade-up">
+        <div class="edu-top">
           <div>
-            <div class="edu-degree">Google UX Design Professional Certificate</div>
-            <div class="edu-inst">Coursera / Google</div>
+            <div class="edu-degree">SAP Certified Associate — ABAP Cloud</div>
+            <div class="edu-inst">SAP SE Global Certification</div>
           </div>
-          <div class="edu-year">2024</div>
+          <div class="edu-year">2025</div>
         </div>
       </div>
 
-      <div class="red-label fade-up" style="margin-top: 36px; transition-delay: .18s">Skills</div>
-      <div class="skills-wrap fade-up" style="transition-delay: .24s">
-        <span class="skill-chip">Web Design</span>
-        <span class="skill-chip">UI/UX Design</span>
-        <span class="skill-chip">Figma</span>
-        <span class="skill-chip">Framer</span>
-        <span class="skill-chip">Adobe XD</span>
-        <span class="skill-chip">Photoshop</span>
-        <span class="skill-chip">Webflow</span>
-        <span class="skill-chip">HTML / CSS</span>
-        <span class="skill-chip">JavaScript</span>
-        <span class="skill-chip">GSAP Animation</span>
-        <span class="skill-chip">SEO Basics</span>
+      <div class="skills-divider"></div>
+
+      <div class="section-label-red fade-up">SKILLS</div>
+      <div class="skills-chips fade-up">
+        <span class="chip">WEB DESIGN</span>
+        <span class="chip">UI/UX DESIGN</span>
+        <span class="chip">FIGMA</span>
+        <span class="chip">FRAMER</span>
+        <span class="chip">ADOBE XD</span>
+        <span class="chip">PHOTOSHOP</span>
+        <span class="chip">WEBFLOW</span>
+        <span class="chip">HTML / CSS</span>
+        <span class="chip">JAVASCRIPT</span>
+        <span class="chip">TYPESCRIPT</span>
+        <span class="chip">REACT.JS</span>
+        <span class="chip">NEXT.JS</span>
+        <span class="chip">GSAP ANIMATION</span>
+        <span class="chip">SEO BASICS</span>
       </div>
     </div>
 
-    <!-- ── 5. WORK PROCESS (NUMBER LEFT OF ICON IN ONE ROW) ── -->
+    <!-- ── B) WORK PROCESS (MIDDLE FLEXIBLE) ── -->
     <div class="mid-col">
-      <h2 class="mid-section-title fade-up">Work Process</h2>
+      <h2 class="process-title fade-up">WORK PROCESS</h2>
 
       <div class="process-list">
 
-        <!-- Step 01 -->
-        <div class="process-step fade-up" style="transition-delay: .05s">
-          <div class="step-left-group">
+        <!-- 01 DISCOVER -->
+        <div class="process-step fade-up">
+          <div class="step-left-combo">
             <span class="step-num">01</span>
             <div class="step-icon-wrap">
-              <button class="icon-btn" aria-label="Discover">
-                <!-- SVG: Search -->
-                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-              </button>
+              <div class="icon-btn" aria-hidden="true">
+                <svg class="icon"><use href="#icon-search"/></svg>
+              </div>
             </div>
           </div>
-          <div class="step-content">
-            <div class="step-title">Discover</div>
-            <p class="step-desc">Understanding goals, audience, and project requirements in depth.</p>
+          <div class="step-body">
+            <div class="step-title">DISCOVER</div>
+            <p class="step-desc">Understanding goals, audience, and project requirements.</p>
           </div>
         </div>
 
-        <!-- Step 02 -->
-        <div class="process-step fade-up" style="transition-delay: .12s">
-          <div class="step-left-group">
+        <!-- 02 IDEATE -->
+        <div class="process-step fade-up">
+          <div class="step-left-combo">
             <span class="step-num">02</span>
             <div class="step-icon-wrap">
-              <button class="icon-btn" aria-label="Ideate">
-                <!-- SVG: Lightbulb -->
-                <svg viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-1 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
-              </button>
+              <div class="icon-btn" aria-hidden="true">
+                <svg class="icon"><use href="#icon-lightbulb"/></svg>
+              </div>
             </div>
           </div>
-          <div class="step-content">
-            <div class="step-title">Ideate</div>
-            <p class="step-desc">Planning, wireframing, and creating the right concept for your vision.</p>
+          <div class="step-body">
+            <div class="step-title">IDEATE</div>
+            <p class="step-desc">Planning, wireframing, and creating the right concept.</p>
           </div>
         </div>
 
-        <!-- Step 03 -->
-        <div class="process-step fade-up" style="transition-delay: .19s">
-          <div class="step-left-group">
+        <!-- 03 DESIGN -->
+        <div class="process-step fade-up">
+          <div class="step-left-combo">
             <span class="step-num">03</span>
             <div class="step-icon-wrap">
-              <button class="icon-btn" aria-label="Design">
-                <!-- SVG: Pen / PenTool -->
-                <svg viewBox="0 0 24 24"><path d="m18 2 4 4-12 12H6v-4L18 2z"/><path d="m14 6 4 4"/></svg>
-              </button>
+              <div class="icon-btn" aria-hidden="true">
+                <svg class="icon"><use href="#icon-pen"/></svg>
+              </div>
             </div>
           </div>
-          <div class="step-content">
-            <div class="step-title">Design</div>
-            <p class="step-desc">Crafting visual design with a razor-sharp focus on user experience.</p>
+          <div class="step-body">
+            <div class="step-title">DESIGN</div>
+            <p class="step-desc">Crafting visual design with a focus on user experience.</p>
           </div>
         </div>
 
-        <!-- Step 04 -->
-        <div class="process-step fade-up" style="transition-delay: .26s">
-          <div class="step-left-group">
+        <!-- 04 DEVELOP -->
+        <div class="process-step fade-up">
+          <div class="step-left-combo">
             <span class="step-num">04</span>
             <div class="step-icon-wrap">
-              <button class="icon-btn" aria-label="Develop">
-                <!-- SVG: Code </> -->
-                <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-              </button>
+              <div class="icon-btn" aria-hidden="true">
+                <svg class="icon"><use href="#icon-code"/></svg>
+              </div>
             </div>
           </div>
-          <div class="step-content">
-            <div class="step-title">Develop</div>
-            <p class="step-desc">Building fast, responsive, and high-performing websites with clean code.</p>
+          <div class="step-body">
+            <div class="step-title">DEVELOP</div>
+            <p class="step-desc">Building fast, responsive, and high-performing websites.</p>
           </div>
         </div>
 
-        <!-- Step 05 -->
-        <div class="process-step fade-up" style="transition-delay: .33s">
-          <div class="step-left-group">
+        <!-- 05 DELIVER -->
+        <div class="process-step fade-up">
+          <div class="step-left-combo">
             <span class="step-num">05</span>
             <div class="step-icon-wrap">
-              <button class="icon-btn" aria-label="Deliver">
-                <!-- SVG: Paper Plane -->
-                <svg viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-              </button>
+              <div class="icon-btn" aria-hidden="true">
+                <svg class="icon"><use href="#icon-plane"/></svg>
+              </div>
             </div>
           </div>
-          <div class="step-content">
-            <div class="step-title">Deliver</div>
-            <p class="step-desc">Testing, optimizing, and launching with perfection across all devices.</p>
+          <div class="step-body">
+            <div class="step-title">DELIVER</div>
+            <p class="step-desc">Testing, optimizing, and launching with perfection.</p>
           </div>
         </div>
 
       </div>
     </div>
 
-    <!-- ── 6. QUOTE PANEL (STRONGER GRADIENT + BRIGHT QUOTE MARK) ── -->
+    <!-- ── C) QUOTE PANEL (28%) ── -->
     <div class="mid-col quote-panel">
+      <div class="quote-grain" aria-hidden="true"></div>
       <div class="quote-inner">
         <div>
           <div class="quote-mark" aria-hidden="true">&ldquo;</div>
           <p class="quote-text fade-up">
             Good design is not just how it looks, but how it works.
           </p>
-          <!-- REPLACE: your signature name below -->
-          <div class="quote-sig fade-up" style="transition-delay: .1s">Anand</div>
+          <!-- REPLACE: Script Signature -->
+          <div class="quote-signature fade-up">Anand</div>
         </div>
-        <div class="quote-cta fade-up" style="transition-delay: .2s">
-          <em class="star">✦</em>
-          Let's create something great together.
+        <div class="quote-bottom-cta fade-up">
+          <span class="sparkle-red" style="color: #fff;">✦</span>
+          LET'S CREATE SOMETHING GREAT TOGETHER.
         </div>
       </div>
     </div>
@@ -1233,160 +1525,157 @@
 
 
   <!-- ═══════════════════════════════════════════════════════════
-       7. CONTACT / FOOTER (RED LINES & BOTTOM-RIGHT LAPTOP)
+       5. CONTACT & FOOTER
   ═══════════════════════════════════════════════════════════ -->
   <section id="contact">
 
-    <!-- Left: CTA copy -->
+    <!-- Left Column: Big Heading & CTA -->
     <div class="contact-col">
       <h2 class="contact-heading fade-up">
-        Let's Work<br>Together <em class="star">✦</em>
+        LET'S WORK<br>TOGETHER <span class="sparkle-red">✦</span>
       </h2>
-      <p class="contact-para fade-up" style="transition-delay: .08s">
-        I'm currently open for new projects and collaborations.
-        Let's create something amazing that drives real results.
+      <p class="contact-para fade-up">
+        I'm currently open for new projects and collaborations. Let's create something
+        amazing that drives results.
       </p>
-      <a href="mailto:anandjadhav42004@gmail.com" class="contact-btn fade-up" style="transition-delay: .16s">
-        <span class="icon-btn large">&rarr;</span>
-        Available for Freelance
+      <a href="mailto:anandjadhav42004@gmail.com" class="contact-cta-btn fade-up">
+        <span class="icon-btn large">
+          <svg class="icon" style="width: 22px; height: 22px;"><use href="#icon-arrow-diag"/></svg>
+        </span>
+        AVAILABLE FOR FREELANCE
       </a>
     </div>
 
-    <!-- Middle: contact info with thin red divider lines & red icons -->
+    <!-- Middle Column: 4 Rows Separated by Thin Red Lines -->
     <div class="contact-col">
-      <!-- Row 1: Email -->
-      <div class="info-row fade-up">
-        <button class="icon-btn" aria-label="Email">
-          <svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        </button>
-        <!-- REPLACE: your email -->
-        <span class="info-text">anandjadhav42004@gmail.com</span>
+      <!-- REPLACE: Email -->
+      <div class="contact-info-row fade-up">
+        <div class="icon-btn" aria-hidden="true">
+          <svg class="icon"><use href="#icon-mail"/></svg>
+        </div>
+        <span class="contact-info-text">anandjadhav42004@gmail.com</span>
       </div>
 
-      <!-- Row 2: Website -->
-      <div class="info-row fade-up" style="transition-delay: .07s">
-        <button class="icon-btn" aria-label="Website">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-        </button>
-        <!-- REPLACE: your website link -->
-        <span class="info-text">www.anandjadhav.com</span>
+      <!-- REPLACE: Website -->
+      <div class="contact-info-row fade-up">
+        <div class="icon-btn" aria-hidden="true">
+          <svg class="icon"><use href="#icon-globe"/></svg>
+        </div>
+        <span class="contact-info-text">www.anandjadhav.com</span>
       </div>
 
-      <!-- Row 3: Phone -->
-      <div class="info-row fade-up" style="transition-delay: .14s">
-        <button class="icon-btn" aria-label="Phone">
-          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        </button>
-        <!-- REPLACE: your phone number -->
-        <span class="info-text">+91 8308008154</span>
+      <!-- REPLACE: Phone -->
+      <div class="contact-info-row fade-up">
+        <div class="icon-btn" aria-hidden="true">
+          <svg class="icon"><use href="#icon-phone"/></svg>
+        </div>
+        <span class="contact-info-text">+91 8308008154</span>
       </div>
 
-      <!-- Row 4: Location -->
-      <div class="info-row fade-up" style="transition-delay: .21s">
-        <button class="icon-btn" aria-label="Location">
-          <svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-        </button>
-        <!-- REPLACE: your city / country -->
-        <span class="info-text">Vadodara / Mumbai, India</span>
+      <!-- REPLACE: City / Country -->
+      <div class="contact-info-row fade-up">
+        <div class="icon-btn" aria-hidden="true">
+          <svg class="icon"><use href="#icon-pin"/></svg>
+        </div>
+        <span class="contact-info-text">Mumbai / Vadodara, India</span>
       </div>
     </div>
 
-    <!-- Right: Laptop mockup visual fading into dark background with dark coffee mug -->
+    <!-- Right Column: Laptop Mockup Visual + Coffee Mug with initial "A" -->
     <div class="contact-col">
-      <div class="contact-visual-wrap fade-up" style="transition-delay: .2s">
-        <!-- REPLACE: swap with your real laptop mockup PNG/JPG -->
-        <img
-          class="laptop-mockup"
-          src="https://placehold.co/600x420/111111/1f1f1f?text=Portfolio+on+Laptop"
-          alt="Portfolio on Laptop Mockup"
-          loading="lazy"
-        />
-        <!-- REPLACE: swap with your dark coffee mug top-down image -->
-        <img
-          class="coffee-mug"
-          src="https://placehold.co/120x120/141414/222222?text=Coffee+Mug"
-          alt="Dark Coffee Mug"
-          loading="lazy"
-        />
+      <div class="contact-mockup-wrap fade-up">
+        <!-- Pure CSS/SVG Mockup matching reference -->
+        <div class="laptop-frame">
+          <div class="laptop-screen">
+            <span class="laptop-screen-tag">DIGITAL DESIGN STUDIO</span>
+            <h3 class="laptop-screen-headline">
+              WE DESIGN<br><span>DIGITAL EXPERIENCES</span>
+            </h3>
+          </div>
+        </div>
+
+        <!-- Coffee mug with letter "A" for Anand -->
+        <div class="coffee-mug-graphic" title="Fresh Coffee" aria-hidden="true">
+          <span>A</span>
+        </div>
       </div>
     </div>
 
   </section>
 
 
-  <!-- ─── FOOTER STRIP ─── -->
+  <!-- ─── SLIM FOOTER ─── -->
   <footer id="footer">
-    <p>&copy; 2026 <span class="red">ANAND JADHAV</span>. ALL RIGHTS RESERVED.</p>
-    <nav class="footer-links" aria-label="Footer links">
-      <a href="https://github.com/anandjadhav42004" target="_blank" rel="noreferrer">GitHub</a>
-      <a href="https://www.linkedin.com/in/anand-jadhav-b599801b5" target="_blank" rel="noreferrer">LinkedIn</a>
-      <a href="https://twitter.com/anandjadhav" target="_blank" rel="noreferrer">Twitter</a>
-      <a href="https://leetcode.com/u/Anand_42004/" target="_blank" rel="noreferrer">LeetCode</a>
+    <!-- REPLACE: Name & Year -->
+    <p class="footer-copy">&copy; 2026 <span>ANAND JADHAV</span> / ALL RIGHTS RESERVED.</p>
+    <nav class="footer-nav" aria-label="Social Links">
+      <a href="https://github.com/anandjadhav42004" target="_blank" rel="noreferrer">GITHUB</a>
+      <a href="https://www.linkedin.com/in/anand-jadhav-b599801b5" target="_blank" rel="noreferrer">LINKEDIN</a>
+      <a href="https://twitter.com/anandjadhav" target="_blank" rel="noreferrer">TWITTER</a>
+      <a href="https://leetcode.com/u/Anand_42004/" target="_blank" rel="noreferrer">LEETCODE</a>
     </nav>
   </footer>
 
 
   <!-- ═══════════════════════════════════════════════════════════
-       JAVASCRIPT — Animations & Interactions
+       VANILLA JAVASCRIPT: Fade-Up Observer + Count-Up Numbers + Smooth Scroll
   ═══════════════════════════════════════════════════════════ -->
   <script>
-    // ── Fade-up on scroll (IntersectionObserver) ──────────────
-    const observer = new IntersectionObserver(
+    // ── Fade-up on load & scroll ──────────────────────────────
+    const fadeObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
+            fadeObserver.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0.1 }
     );
-    document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+    document.querySelectorAll('.fade-up').forEach((el) => fadeObserver.observe(el));
 
-
-    // ── Count-up numbers for Stats ────────────────────────────
-    function countUp(el) {
+    // ── Count-Up for Stat Numbers on Page Load ────────────────
+    function animateCountUp(el) {
       const target = parseInt(el.dataset.target, 10);
       const duration = 1800; // ms
-      const step = 16;       // ~60fps
-      const increment = target / (duration / step);
+      const frameRate = 16;  // ~60fps
+      const step = target / (duration / frameRate);
       let current = 0;
 
       const timer = setInterval(() => {
-        current += increment;
+        current += step;
         if (current >= target) {
           current = target;
           clearInterval(timer);
         }
         el.textContent = Math.floor(current) + '+';
-      }, step);
+      }, frameRate);
     }
 
-    // Trigger count-up when the stat section enters viewport
     const statObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.querySelectorAll('[data-target]').forEach(countUp);
+            entry.target.querySelectorAll('.stat-num[data-target]').forEach(animateCountUp);
             statObserver.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.25 }
     );
-    const heroRight = document.querySelector('.hero-right');
-    if (heroRight) statObserver.observe(heroRight);
+    const statsContainer = document.querySelector('.hero-stats');
+    if (statsContainer) statObserver.observe(statsContainer);
 
-
-    // ── Smooth scroll for anchor buttons ─────────────────────
+    // ── Smooth Scroll for Internal Anchors ───────────────────
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener('click', (e) => {
-        const id = anchor.getAttribute('href');
-        const target = document.querySelector(id);
-        if (target) {
+        const targetId = anchor.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
           e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
     });
