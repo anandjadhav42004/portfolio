@@ -514,6 +514,99 @@
     }
 
     /* ═══════════════════════════════════════════════════════════
+       INTERNSHIPS SECTION
+    ═══════════════════════════════════════════════════════════ */
+    #internships {
+      border-bottom: 1px solid var(--line);
+      background: #0a0a0a;
+    }
+    .internship-topbar {
+      border-bottom: 1px solid var(--line);
+      background: #0d0d0d;
+      padding: 18px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .internship-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .internship-card {
+      padding: 48px;
+      border-right: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .internship-card:last-child {
+      border-right: none;
+    }
+    .internship-badge-current {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: rgba(211, 18, 31, 0.15);
+      border: 1px solid var(--red);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: #ff3848;
+      text-transform: uppercase;
+    }
+    .internship-badge-completed {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid #333;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: var(--body);
+      text-transform: uppercase;
+    }
+    .internship-comp {
+      font-family: var(--font-display);
+      font-size: 26px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #fff;
+      margin-top: 14px;
+      margin-bottom: 4px;
+    }
+    .internship-role {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--red);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .internship-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .internship-bullets li {
+      font-size: 13px;
+      color: #c4c4c4;
+      line-height: 1.55;
+      display: flex;
+      gap: 8px;
+    }
+    .internship-bullets li span.bullet-star {
+      color: var(--red);
+      flex-shrink: 0;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
        4. THREE-COLUMN ROW (32% / FLEXIBLE / 30%)
     ═══════════════════════════════════════════════════════════ */
     #mid-row {
@@ -1317,31 +1410,7 @@
 
     <div class="projects-grid">
 
-      <!-- Project 01: Anti-Gravity AI -->
-      <article class="project-card fade-up">
-        <a href="https://www.elvoramedia.org" target="_blank" rel="noreferrer">
-          <div class="project-thumb">
-            <img
-              src="antigravity_verification.jpg"
-              onerror="this.src='/antigravity_verification.jpg'"
-              alt="Anti-Gravity — AI Authenticity Verification Platform"
-              loading="lazy"
-            />
-          </div>
-          <div class="project-meta">
-            <div class="project-num">01</div>
-            <div class="project-info">
-              <div class="project-name">ANTI-GRAVITY AI PLATFORM</div>
-              <div class="project-cat">PyTorch &bull; FastAPI &bull; Deepfake Detection &bull; React</div>
-            </div>
-            <div class="project-arrow">
-              <svg class="icon" style="width: 20px; height: 20px;"><use href="#icon-arrow"/></svg>
-            </div>
-          </div>
-        </a>
-      </article>
-
-      <!-- Project 02: SAP Prognos -->
+      <!-- Project 01: SAP Prognos -->
       <article class="project-card fade-up">
         <a href="https://sap-forecast.vercel.app" target="_blank" rel="noreferrer">
           <div class="project-thumb">
@@ -1353,10 +1422,10 @@
             />
           </div>
           <div class="project-meta">
-            <div class="project-num">02</div>
+            <div class="project-num">01</div>
             <div class="project-info">
               <div class="project-name">SAP PROGNOS FORECASTING</div>
-              <div class="project-cat">SAPUI5 &bull; XGBoost ML &bull; Python &bull; Horizon Dark</div>
+              <div class="project-cat">SAPUI5 &bull; FastAPI &bull; Python &bull; XGBoost &bull; Prophet</div>
             </div>
             <div class="project-arrow">
               <svg class="icon" style="width: 20px; height: 20px;"><use href="#icon-arrow"/></svg>
@@ -1365,21 +1434,21 @@
         </a>
       </article>
 
-      <!-- Project 03: Elvora Media Platform -->
+      <!-- Project 02: Inventory Pro -->
       <article class="project-card fade-up">
-        <a href="https://www.elvoramedia.org" target="_blank" rel="noreferrer">
+        <a href="https://github.com/anandjadhav42004" target="_blank" rel="noreferrer">
           <div class="project-thumb">
             <img
-              src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&fit=crop"
-              alt="Elvora Media Agency Production Platform"
+              src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&fit=crop"
+              alt="Inventory Pro Warehouse Management System"
               loading="lazy"
             />
           </div>
           <div class="project-meta">
-            <div class="project-num">03</div>
+            <div class="project-num">02</div>
             <div class="project-info">
-              <div class="project-name">ELVORA MEDIA PLATFORM</div>
-              <div class="project-cat">React &bull; TypeScript &bull; Tailwind CSS &bull; Production Architecture</div>
+              <div class="project-name">INVENTORY PRO WAREHOUSE</div>
+              <div class="project-cat">SAPUI5 &bull; SAP Fiori &bull; OData &bull; SAP BTP &bull; KPI Dashboards</div>
             </div>
             <div class="project-arrow">
               <svg class="icon" style="width: 20px; height: 20px;"><use href="#icon-arrow"/></svg>
@@ -1387,6 +1456,137 @@
           </div>
         </a>
       </article>
+
+      <!-- Project 03: ProFlow SaaS -->
+      <article class="project-card fade-up">
+        <a href="https://github.com/anandjadhav42004" target="_blank" rel="noreferrer">
+          <div class="project-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&fit=crop"
+              alt="ProFlow SaaS Project Management Platform"
+              loading="lazy"
+            />
+          </div>
+          <div class="project-meta">
+            <div class="project-num">03</div>
+            <div class="project-info">
+              <div class="project-name">PROFLOW SAAS PLATFORM</div>
+              <div class="project-cat">Angular &bull; Node.js &bull; MongoDB &bull; Gemini AI &bull; JWT Auth</div>
+            </div>
+            <div class="project-arrow">
+              <svg class="icon" style="width: 20px; height: 20px;"><use href="#icon-arrow"/></svg>
+            </div>
+          </div>
+        </a>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       3.5 WORK EXPERIENCE & INTERNSHIPS (HILTI & UPTOSKILLS)
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="internships">
+    <div class="internship-topbar">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <svg class="icon" style="stroke: var(--red);"><use href="#icon-briefcase"/></svg>
+        <span style="font-family: var(--font-display); font-size: 19px; letter-spacing: 0.12em; text-transform: uppercase;">
+          INDUSTRY WORK EXPERIENCE &amp; INTERNSHIPS
+        </span>
+      </div>
+      <span style="font-family: monospace; font-size: 11px; letter-spacing: 0.16em; color: var(--red); text-transform: uppercase;">
+        // 2 VERIFIED INDUSTRY ROLES
+      </span>
+    </div>
+
+    <div class="internship-grid">
+
+      <!-- 1. HILTI (CURRENT) -->
+      <div class="internship-card" style="background: linear-gradient(135deg, #160406 0%, #0a0a0a 70%);">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span class="internship-badge-current">
+              <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--red);"></span>
+              CURRENT INTERNSHIP (ON-SITE PLANT)
+            </span>
+            <span style="font-family: var(--font-display); font-size: 15px; color: var(--red);">July 2026 – Present</span>
+          </div>
+
+          <h3 class="internship-comp">Hilti Manufacturing India Pvt. Ltd.</h3>
+          <div class="internship-role">SAP and Information Technology Intern</div>
+
+          <div style="display: flex; gap: 20px; font-size: 12px; color: var(--body); margin-bottom: 20px;">
+            <span>📍 Vadodara, Gujarat, India (Plant)</span>
+            <span>🏢 Production Planning and Control (PPC)</span>
+          </div>
+
+          <ul class="internship-bullets">
+            <li>
+              <span class="bullet-star">✦</span>
+              <span>Work in the <strong>Production Planning and Control (PPC)</strong> team on <strong>SAP S/4HANA Cloud</strong> at the Vadodara plant.</span>
+            </li>
+            <li>
+              <span class="bullet-star">✦</span>
+              <span>Supporting <strong>SAP Production Planning (PP)</strong> processes and collaborating actively with cross-functional business users.</span>
+            </li>
+            <li>
+              <span class="bullet-star">✦</span>
+              <span>Developing hands-on understanding of how enterprise technology, manufacturing operations, and business logic integrate at plant scale.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; padding-top: 16px; border-top: 1px solid var(--line);">
+          <span class="chip">SAP S/4HANA CLOUD</span>
+          <span class="chip">PRODUCTION PLANNING (PP)</span>
+          <span class="chip">PPC OPERATIONS</span>
+          <span class="chip">ENTERPRISE IT</span>
+        </div>
+      </div>
+
+      <!-- 2. UPTOSKILLS (COMPLETED) -->
+      <div class="internship-card">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span class="internship-badge-completed">
+              COMPLETED INTERNSHIP (REMOTE)
+            </span>
+            <span style="font-family: var(--font-display); font-size: 15px; color: var(--body);">May 2026 – August 2026</span>
+          </div>
+
+          <h3 class="internship-comp">UptoSkills</h3>
+          <div class="internship-role">Backend Developer Intern</div>
+
+          <div style="display: flex; gap: 20px; font-size: 12px; color: var(--body); margin-bottom: 20px;">
+            <span>🌐 Remote Engineering Team</span>
+            <span>⚡ Node.js &amp; Express Microservices</span>
+          </div>
+
+          <ul class="internship-bullets">
+            <li>
+              <span class="bullet-star">✦</span>
+              <span>Developed and maintained backend features in a production codebase using <strong>Node.js</strong>, <strong>Express.js</strong>, and <strong>MongoDB</strong>.</span>
+            </li>
+            <li>
+              <span class="bullet-star">✦</span>
+              <span>Took ownership of assigned backend modules, resolved functional defects, and applied code review feedback to maintain code quality.</span>
+            </li>
+            <li>
+              <span class="bullet-star">✦</span>
+              <span>Optimized REST API endpoint latency and implemented automated validation pipelines.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; padding-top: 16px; border-top: 1px solid var(--line);">
+          <span class="chip">NODE.JS</span>
+          <span class="chip">EXPRESS.JS</span>
+          <span class="chip">MONGODB</span>
+          <span class="chip">REST APIS</span>
+          <span class="chip">CODE REVIEWS</span>
+        </div>
+      </div>
 
     </div>
   </section>
@@ -1404,10 +1604,30 @@
       <div class="edu-item fade-up">
         <div class="edu-top">
           <div>
-            <div class="edu-degree">B.Tech in Computer Science &amp; Engineering</div>
-            <div class="edu-inst">Parul Institute of Technology (SAP IEP Track)</div>
+            <div class="edu-degree">B.Tech. in Computer Science &amp; Engineering</div>
+            <div class="edu-inst">Parul Institute of Technology (SAP IEP Track) &bull; <strong style="color: #ff3344;">CGPA: 6.67 / 10</strong></div>
           </div>
-          <div class="edu-year">2022–2026</div>
+          <div class="edu-year">2023–2027</div>
+        </div>
+      </div>
+
+      <div class="edu-item fade-up">
+        <div class="edu-top">
+          <div>
+            <div class="edu-degree">HSC (Science)</div>
+            <div class="edu-inst">Dayanand Science College, Latur &bull; <strong style="color: #ff3344;">94.67%</strong></div>
+          </div>
+          <div class="edu-year">2021</div>
+        </div>
+      </div>
+
+      <div class="edu-item fade-up">
+        <div class="edu-top">
+          <div>
+            <div class="edu-degree">SSC (CBSE)</div>
+            <div class="edu-inst">Yashwant International School, Kodoli &bull; <strong style="color: #ff3344;">75.40%</strong></div>
+          </div>
+          <div class="edu-year">2019</div>
         </div>
       </div>
 
@@ -1421,25 +1641,25 @@
             <div class="edu-degree">SAP Certified Associate: Back-End Developer</div>
             <div class="edu-inst">ABAP Cloud &bull; SAP BTP &bull; RAP &bull; OData V4</div>
           </div>
-          <div class="edu-year">2025–26</div>
+          <div class="edu-year">July 2025</div>
         </div>
       </div>
 
       <div class="edu-item fade-up">
         <div class="edu-top">
           <div>
-            <div class="edu-degree">Oracle Cloud Infrastructure AI Foundations</div>
+            <div class="edu-degree">Oracle Cloud Infrastructure 2025 AI Foundations</div>
             <div class="edu-inst">OCI Machine Learning &amp; AI Architectures</div>
           </div>
-          <div class="edu-year">2025</div>
+          <div class="edu-year">Sept 2025</div>
         </div>
       </div>
 
       <div class="edu-item fade-up">
         <div class="edu-top">
           <div>
-            <div class="edu-degree">Frontend Developer (React) &amp; SQL Specialist</div>
-            <div class="edu-inst">HackerRank Certified Professional</div>
+            <div class="edu-degree">HackerRank Certified: React, SQL &amp; Java</div>
+            <div class="edu-inst">Frontend Developer (React), SQL Intermediate, Java</div>
           </div>
           <div class="edu-year">2025–26</div>
         </div>
