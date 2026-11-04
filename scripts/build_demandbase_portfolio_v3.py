@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Demandbase UI/UX Designer & Frontend Engineer Portfolio PDF Generator (v3 Final)
+Demandbase UI/UX Designer & Frontend Engineer Portfolio PDF Generator (v3 Final Refined)
 Generates an award-winning, editorial A4 Landscape (297mm x 210mm) 9-page portfolio PDF
 with authentic resume metrics, genuine screenshots, visual case study storytelling,
-interactive component tokens, and a scannable QR code.
+interactive component tokens, high-contrast readable text, and a verified scannable QR code.
 """
 
 import os
@@ -34,7 +34,6 @@ def build_portfolio_html():
 
     qr_svg_path = f"{base_dir}/Demandbase_Portfolio_Submission/Portfolio_Source_Files/live_portfolio_qr.svg"
     qr_svg_content = get_file_content(qr_svg_path)
-    # Strip xml header if present
     if "<?xml" in qr_svg_content:
         qr_svg_content = qr_svg_content.split("?>", 1)[-1].strip()
 
@@ -110,7 +109,7 @@ def build_portfolio_html():
     font-family: 'JetBrains Mono', monospace;
     font-size: 8px;
     letter-spacing: 0.16em;
-    color: #6b6b6b;
+    color: #888888;
     text-transform: uppercase;
   }}
   .page-header .brand {{
@@ -129,7 +128,7 @@ def build_portfolio_html():
     font-family: 'JetBrains Mono', monospace;
     font-size: 7.5px;
     letter-spacing: 0.14em;
-    color: #555555;
+    color: #777777;
     text-transform: uppercase;
   }}
   .page-footer .pg-num {{
@@ -155,7 +154,7 @@ def build_portfolio_html():
     color: #d3121f;
   }}
   .text-muted {{
-    color: #a0a0a0;
+    color: #c5c5c5;
   }}
 
   /* Section Intro Headers */
@@ -188,7 +187,7 @@ def build_portfolio_html():
   }}
   .section-subtitle {{
     font-size: 8.8px;
-    color: #888888;
+    color: #b0b0b0;
     margin-top: 1mm;
     line-height: 1.35;
   }}
@@ -218,7 +217,7 @@ def build_portfolio_html():
     text-transform: uppercase;
     background: #181818;
     border: 1px solid #2a2a2a;
-    color: #999;
+    color: #b5b5b5;
   }}
   .badge-red {{
     background: rgba(211, 18, 31, 0.15);
@@ -252,7 +251,7 @@ def build_portfolio_html():
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 0.2em; color: #d3121f; font-weight: 700; text-transform: uppercase;">
             CAMPUS PLACEMENT DOSSIER // 2026-2027
           </div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 7.5px; letter-spacing: 0.12em; color: #666; text-transform: uppercase; margin-top: 0.8mm;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 7.5px; letter-spacing: 0.12em; color: #888; text-transform: uppercase; margin-top: 0.8mm;">
             PARUL UNIVERSITY &bull; ENROLLMENT: 2303031570026
           </div>
         </div>
@@ -284,7 +283,7 @@ def build_portfolio_html():
           </div>
 
           <!-- Concise, Authentic Professional Summary -->
-          <div style="font-size: 9.8px; color: #d0d0d0; line-height: 1.6; max-width: 95%; margin-bottom: 5.5mm;">
+          <div style="font-size: 9.8px; color: #dcdcdc; line-height: 1.6; max-width: 95%; margin-bottom: 5.5mm;">
             Designing and engineering responsive, user-friendly enterprise interfaces with React 18, TypeScript, and SAPUI5. Experienced in reducing task navigation friction, translating complex multidimensional data into clear KPI cockpits, and writing clean, component-driven production code.
           </div>
 
@@ -293,17 +292,17 @@ def build_portfolio_html():
             <div class="card card-highlight" style="padding: 2.5mm 4mm; text-align: left;">
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 7px; color: #ff4d5a; text-transform: uppercase;">Current Role</div>
               <div style="font-weight: 700; font-size: 9px; color: #fff; margin-top: 0.5mm;">Hilti Manufacturing India</div>
-              <div style="font-size: 7.5px; color: #888;">SAP S/4HANA Cloud (PPC)</div>
+              <div style="font-size: 7.5px; color: #aaa;">SAP S/4HANA Cloud (PPC)</div>
             </div>
             <div class="card" style="padding: 2.5mm 4mm; text-align: left;">
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 7px; color: #d3121f; text-transform: uppercase;">Documented UX Metric</div>
               <div style="font-weight: 700; font-size: 9px; color: #fff; margin-top: 0.5mm;">-30% Task Navigation Time</div>
-              <div style="font-size: 7.5px; color: #888;">Inventory Pro Redesign</div>
+              <div style="font-size: 7.5px; color: #aaa;">Inventory Pro Redesign</div>
             </div>
             <div class="card" style="padding: 2.5mm 4mm; text-align: left;">
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 7px; color: #10b981; text-transform: uppercase;">Verified Live Demo</div>
               <div style="font-weight: 700; font-size: 9px; color: #fff; margin-top: 0.5mm;">SAP Prognos Platform</div>
-              <div style="font-size: 7.5px; color: #888;">Live on Vercel</div>
+              <div style="font-size: 7.5px; color: #aaa;">sap-forecast.vercel.app</div>
             </div>
           </div>
         </div>
@@ -316,7 +315,7 @@ def build_portfolio_html():
             <div style="position: absolute; bottom: 3mm; left: 3.5mm; right: 3.5mm; display: flex; justify-content: space-between; align-items: flex-end;">
               <div>
                 <div style="font-family: 'JetBrains Mono', monospace; font-size: 8px; color: #d3121f; font-weight: 700;">ANAND JADHAV</div>
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 7px; color: #aaa;">UI/UX &bull; FRONTEND ENGINEER</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 7px; color: #ccc;">UI/UX &bull; FRONTEND ENGINEER</div>
               </div>
               <span class="badge badge-red" style="font-size: 6.5px;">2026/2027</span>
             </div>
@@ -325,11 +324,13 @@ def build_portfolio_html():
 
       </div>
 
-      <!-- Cover Footer -->
-      <div style="border-top: 1px solid #1f1f1f; padding-top: 2.5mm; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 7.5px; color: #777;">
-        <div>LIVE PORTFOLIO: portfolio-eosin-seven-23.vercel.app</div>
-        <div>EMAIL: anandjadhav42004@gmail.com</div>
-        <div>PHONE: +91 83080 08154</div>
+      <!-- Cover Footer with Clickable Live Portfolio Link -->
+      <div style="border-top: 1px solid #1f1f1f; padding-top: 2.5mm; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 7.5px; color: #888;">
+        <div>
+          LIVE PORTFOLIO: <a href="https://portfolio-eosin-seven-23.vercel.app" target="_blank" style="color: #ff4d5a; font-weight: 700; text-decoration: underline;">portfolio-eosin-seven-23.vercel.app</a>
+        </div>
+        <div>EMAIL: <a href="mailto:anandjadhav42004@gmail.com" style="color: #fff;">anandjadhav42004@gmail.com</a></div>
+        <div>PHONE: <a href="tel:+918308008154" style="color: #fff;">+91 83080 08154</a></div>
         <div style="color: #d3121f; font-weight: 700;">PAGE 01 / 09</div>
       </div>
 
@@ -365,16 +366,16 @@ def build_portfolio_html():
             <div style="font-family: 'JetBrains Mono', monospace; font-size: 8px; color: #d3121f; font-weight: 700; margin-bottom: 2mm;">
               DESIGN PHILOSOPHY
             </div>
-            <p style="font-size: 8.5px; color: #a0a0a0; line-height: 1.55; margin-bottom: 3mm;">
+            <p style="font-size: 8.5px; color: #b8b8b8; line-height: 1.55; margin-bottom: 3mm;">
               Enterprise B2B software handles vast arrays of data, but it should never feel punishing to use. I design with <strong style="color: #fff;">progressive disclosure</strong>—shielding users from cognitive overload by surfacing critical telemetry first, with depth available on demand.
             </p>
-            <p style="font-size: 8.5px; color: #a0a0a0; line-height: 1.55;">
-              My core value is serving as an <strong style="color: #d3121f;">uncompromising bridge</strong> between design and engineering: translating Figma tokens into production React 18 code with zero visual drift.
+            <p style="font-size: 8.5px; color: #b8b8b8; line-height: 1.55;">
+              My core strength is serving as an <strong style="color: #d3121f;">uncompromising bridge</strong> between design and engineering: translating Figma tokens into production React 18 code with zero visual drift.
             </p>
           </div>
           <div style="background: #161616; padding: 2.5mm 3.5mm; border-radius: 6px; border: 1px solid #262626; margin-top: 3mm;">
             <div style="font-size: 8px; color: #fff; font-weight: 600;">&ldquo;Good design in B2B is invisible efficiency.&rdquo;</div>
-            <div style="font-size: 7px; color: #888; font-family: 'JetBrains Mono', monospace; margin-top: 1mm;">Focused on task duration &amp; error reduction</div>
+            <div style="font-size: 7px; color: #aaa; font-family: 'JetBrains Mono', monospace; margin-top: 1mm;">Focused on task duration &amp; error reduction</div>
           </div>
         </div>
 
@@ -398,7 +399,7 @@ def build_portfolio_html():
                   <span class="badge badge-red" style="font-size: 6.5px;">JUL 2026 – PRESENT</span>
                 </div>
                 <div style="font-size: 7.5px; color: #ff4d5a; font-family: 'JetBrains Mono', monospace;">SAP and IT Intern &bull; PPC Operations</div>
-                <div style="font-size: 7.5px; color: #999; margin-top: 0.5mm;">Support Production Planning &amp; Control on SAP S/4HANA Cloud at Vadodara plant; analyze operational manufacturing workflows directly with business users.</div>
+                <div style="font-size: 7.5px; color: #b0b0b0; margin-top: 0.5mm;">Support Production Planning &amp; Control on SAP S/4HANA Cloud at Vadodara plant; analyze operational manufacturing workflows directly with business users.</div>
               </div>
             </div>
 
@@ -414,7 +415,7 @@ def build_portfolio_html():
                   <span class="badge" style="font-size: 6.5px;">MAY – AUG 2026</span>
                 </div>
                 <div style="font-size: 7.5px; color: #bbb; font-family: 'JetBrains Mono', monospace;">Backend Developer Intern &bull; Remote</div>
-                <div style="font-size: 7.5px; color: #999; margin-top: 0.5mm;">Developed and maintained backend features in a production codebase using Node.js, Express.js, and MongoDB.</div>
+                <div style="font-size: 7.5px; color: #b0b0b0; margin-top: 0.5mm;">Developed and maintained backend features in a production codebase using Node.js, Express.js, and MongoDB.</div>
               </div>
             </div>
 
@@ -429,7 +430,7 @@ def build_portfolio_html():
                   <span class="badge" style="font-size: 6.5px;">2023 – 2027</span>
                 </div>
                 <div style="font-size: 7.5px; color: #bbb; font-family: 'JetBrains Mono', monospace;">B.Tech Computer Science (SAP IEP Track)</div>
-                <div style="font-size: 7.5px; color: #999; margin-top: 0.5mm;">Undergraduate degree in CS with enterprise SAP focus; engineered SAP Prognos and Inventory Pro with measurable navigation improvements.</div>
+                <div style="font-size: 7.5px; color: #b0b0b0; margin-top: 0.5mm;">Undergraduate degree in CS with enterprise SAP focus; engineered SAP Prognos and Inventory Pro with measurable navigation improvements.</div>
               </div>
             </div>
 
@@ -445,26 +446,26 @@ def build_portfolio_html():
             
             <div style="margin-bottom: 2mm;">
               <div style="font-weight: 700; font-size: 8.5px; color: #fff;">B.Tech Computer Science (SAP Track)</div>
-              <div style="font-size: 7.5px; color: #888;">Parul University (2023–2027)</div>
+              <div style="font-size: 7.5px; color: #aaa;">Parul University (2023–2027)</div>
             </div>
 
             <div style="margin-bottom: 2mm;">
               <div style="font-weight: 700; font-size: 8.5px; color: #fff;">HSC 12th Science: 94.67%</div>
-              <div style="font-size: 7.5px; color: #888;">Dayanand Science College, Latur (2021)</div>
+              <div style="font-size: 7.5px; color: #aaa;">Dayanand Science College, Latur (2021)</div>
             </div>
 
             <div style="margin-bottom: 2mm;">
               <div style="font-weight: 700; font-size: 8.5px; color: #fff;">SSC 10th CBSE: 75.40%</div>
-              <div style="font-size: 7.5px; color: #888;">Yashwant International School (2019)</div>
+              <div style="font-size: 7.5px; color: #aaa;">Yashwant International School (2019)</div>
             </div>
 
             <div style="border-top: 1px solid #1f1f1f; padding-top: 2.5mm; margin-top: 1.5mm;">
               <div style="font-size: 7.5px; font-weight: 700; color: #d3121f; font-family: 'JetBrains Mono', monospace; margin-bottom: 1mm;">
                 KEY CERTIFICATIONS
               </div>
-              <div style="font-size: 7.5px; color: #aaa;">&bull; SAP Certified Associate: ABAP Cloud (2025)</div>
-              <div style="font-size: 7.5px; color: #aaa;">&bull; Oracle Cloud Infrastructure AI Foundations</div>
-              <div style="font-size: 7.5px; color: #aaa;">&bull; HackerRank Frontend Developer (React)</div>
+              <div style="font-size: 7.5px; color: #ccc;">&bull; SAP Certified Associate: ABAP Cloud (2025)</div>
+              <div style="font-size: 7.5px; color: #ccc;">&bull; Oracle Cloud Infrastructure AI Foundations</div>
+              <div style="font-size: 7.5px; color: #ccc;">&bull; HackerRank Frontend Developer (React)</div>
             </div>
           </div>
         </div>
@@ -509,14 +510,14 @@ def build_portfolio_html():
             <div class="font-anton" style="font-size: 12px; color: #fff;">01 // UI DESIGN</div>
             <span class="badge badge-red">Figma</span>
           </div>
-          <p style="font-size: 7.8px; color: #a0a0a0; line-height: 1.45; margin-bottom: 2mm;">
+          <p style="font-size: 7.8px; color: #b5b5b5; line-height: 1.45; margin-bottom: 2mm;">
             Crafting tokenized component libraries, typography scales, 8px layout grids, and accessible color ramps.
           </p>
           <div style="display: flex; flex-wrap: wrap; gap: 1mm;">
             <span class="badge">Figma Components</span>
             <span class="badge">SAP Fiori Horizon</span>
             <span class="badge">8px Grid System</span>
-            <span class="badge">Accessible Contrast</span>
+            <span class="badge">Contrast Ratios</span>
           </div>
         </div>
 
@@ -526,7 +527,7 @@ def build_portfolio_html():
             <div class="font-anton" style="font-size: 12px; color: #fff;">02 // UX RESEARCH</div>
             <span class="badge">User-Centered</span>
           </div>
-          <p style="font-size: 7.8px; color: #a0a0a0; line-height: 1.45; margin-bottom: 2mm;">
+          <p style="font-size: 7.8px; color: #b5b5b5; line-height: 1.45; margin-bottom: 2mm;">
             Analyzing user friction, modeling operational personas, and conducting task flow optimization audits.
           </p>
           <div style="display: flex; flex-wrap: wrap; gap: 1mm;">
@@ -543,7 +544,7 @@ def build_portfolio_html():
             <div class="font-anton" style="font-size: 12px; color: #fff;">03 // WIREFRAMING &amp; IA</div>
             <span class="badge">Structure</span>
           </div>
-          <p style="font-size: 7.8px; color: #a0a0a0; line-height: 1.45; margin-bottom: 2mm;">
+          <p style="font-size: 7.8px; color: #b5b5b5; line-height: 1.45; margin-bottom: 2mm;">
             Progressive disclosure layouts; restructuring complex multi-tier navigation into intuitive decision views.
           </p>
           <div style="display: flex; flex-wrap: wrap; gap: 1mm;">
@@ -560,7 +561,7 @@ def build_portfolio_html():
             <div class="font-anton" style="font-size: 12px; color: #fff;">04 // MOTION &amp; PROTO</div>
             <span class="badge badge-red">Framer Motion</span>
           </div>
-          <p style="font-size: 7.8px; color: #a0a0a0; line-height: 1.45; margin-bottom: 2mm;">
+          <p style="font-size: 7.8px; color: #b5b5b5; line-height: 1.45; margin-bottom: 2mm;">
             Implementing natural spring physics, micro-interactions, layout transitions, and feedback loops.
           </p>
           <div style="display: flex; flex-wrap: wrap; gap: 1mm;">
@@ -577,7 +578,7 @@ def build_portfolio_html():
             <div class="font-anton" style="font-size: 12px; color: #fff;">05 // FRONTEND DEV</div>
             <span class="badge badge-red">React 18 &bull; TS</span>
           </div>
-          <p style="font-size: 7.8px; color: #a0a0a0; line-height: 1.45; margin-bottom: 2mm;">
+          <p style="font-size: 7.8px; color: #b5b5b5; line-height: 1.45; margin-bottom: 2mm;">
             Writing type-safe, reusable component architectures in React 18, TypeScript, Tailwind CSS, and SAPUI5.
           </p>
           <div style="display: flex; flex-wrap: wrap; gap: 1mm;">
@@ -595,7 +596,7 @@ def build_portfolio_html():
             <div class="font-anton" style="font-size: 12px; color: #fff;">06 // DATA &amp; APIS</div>
             <span class="badge">Full-Stack</span>
           </div>
-          <p style="font-size: 7.8px; color: #a0a0a0; line-height: 1.45; margin-bottom: 2mm;">
+          <p style="font-size: 7.8px; color: #b5b5b5; line-height: 1.45; margin-bottom: 2mm;">
             Connecting UI controls with RESTful endpoints, Python telemetry backends, and enterprise cloud data.
           </p>
           <div style="display: flex; flex-wrap: wrap; gap: 1mm;">
@@ -614,22 +615,22 @@ def build_portfolio_html():
         
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5mm; border-bottom: 1px solid #1c1c1c; padding-bottom: 1.5mm;">
           <span style="font-family: 'JetBrains Mono', monospace; font-size: 8px; color: #d3121f; font-weight: 700;">VISUAL COMPONENT SYSTEM &amp; DESIGN TOKENS</span>
-          <span style="font-family: 'JetBrains Mono', monospace; font-size: 7.5px; color: #888;">FIGMA VARIABLES &rarr; TAILWIND CONFIG &rarr; REACT PROPS</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 7.5px; color: #aaa;">FIGMA VARIABLES &rarr; TAILWIND CONFIG &rarr; REACT PROPS</span>
         </div>
 
         <div style="display: grid; grid-template-columns: 1.1fr 1.4fr 1.5fr; gap: 4mm; align-items: center;">
           
           <!-- Column 1: Color Palette Tokens -->
           <div>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 7.2px; color: #aaa; margin-bottom: 1mm;">COLOR TOKENS:</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 7.2px; color: #ccc; margin-bottom: 1mm;">COLOR TOKENS:</div>
             <div style="display: flex; gap: 2mm; align-items: center;">
               <div style="display: flex; flex-direction: column; align-items: center; gap: 1px;">
                 <div style="width: 14px; height: 14px; border-radius: 3px; background: #0a0a0a; border: 1px solid #333;"></div>
-                <span style="font-size: 6px; color: #666; font-family: 'JetBrains Mono';">#0A</span>
+                <span style="font-size: 6px; color: #888; font-family: 'JetBrains Mono';">#0A</span>
               </div>
               <div style="display: flex; flex-direction: column; align-items: center; gap: 1px;">
                 <div style="width: 14px; height: 14px; border-radius: 3px; background: #141414; border: 1px solid #333;"></div>
-                <span style="font-size: 6px; color: #666; font-family: 'JetBrains Mono';">#14</span>
+                <span style="font-size: 6px; color: #888; font-family: 'JetBrains Mono';">#14</span>
               </div>
               <div style="display: flex; flex-direction: column; align-items: center; gap: 1px;">
                 <div style="width: 14px; height: 14px; border-radius: 3px; background: #d3121f;"></div>
@@ -645,15 +646,15 @@ def build_portfolio_html():
               </div>
               <div style="display: flex; flex-direction: column; align-items: center; gap: 1px;">
                 <div style="width: 14px; height: 14px; border-radius: 3px; background: #ffffff;"></div>
-                <span style="font-size: 6px; color: #aaa; font-family: 'JetBrains Mono';">#FF</span>
+                <span style="font-size: 6px; color: #ccc; font-family: 'JetBrains Mono';">#FF</span>
               </div>
             </div>
           </div>
 
           <!-- Column 2: Typography Hierarchy -->
           <div style="border-left: 1px solid #202020; padding-left: 3.5mm;">
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 7.2px; color: #aaa; margin-bottom: 1mm;">TYPOGRAPHY HIERARCHY:</div>
-            <div style="display: flex; flex-direction: column; gap: 1px; font-size: 7px; color: #999;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 7.2px; color: #ccc; margin-bottom: 1mm;">TYPOGRAPHY HIERARCHY:</div>
+            <div style="display: flex; flex-direction: column; gap: 1px; font-size: 7px; color: #b5b5b5;">
               <div><strong style="color: #fff; font-family: 'Anton'; font-size: 8px;">ANTON:</strong> Hero &amp; High-Impact Numbers</div>
               <div><strong style="color: #fff; font-family: 'Space Grotesk'; font-size: 7.5px;">SPACE GROTESK:</strong> Section Titles &amp; Headings</div>
               <div><strong style="color: #fff; font-family: 'Inter'; font-size: 7.5px;">INTER:</strong> Accessible UI Labels &amp; Body Copy</div>
@@ -663,7 +664,7 @@ def build_portfolio_html():
 
           <!-- Column 3: Reusable UI Component Elements -->
           <div style="border-left: 1px solid #202020; padding-left: 3.5mm;">
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 7.2px; color: #aaa; margin-bottom: 1.5mm;">SAMPLE UI ATOMS (REACT/FIGMA):</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 7.2px; color: #ccc; margin-bottom: 1.5mm;">SAMPLE UI ATOMS (REACT/FIGMA):</div>
             <div style="display: flex; gap: 2mm; align-items: center;">
               <!-- Primary Button -->
               <div style="background: linear-gradient(135deg, #d3121f, #a50e18); color: #fff; font-family: 'Space Grotesk'; font-weight: 700; font-size: 7px; padding: 2px 7px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.2);">
@@ -730,13 +731,13 @@ def build_portfolio_html():
             <div style="font-size: 7.5px; color: #ff4d5a; font-family: 'JetBrains Mono', monospace; margin-bottom: 1.5mm;">
               SAPUI5 &bull; FASTAPI &bull; PROPHET &bull; XGBOOST
             </div>
-            <p style="font-size: 8px; color: #a0a0a0; line-height: 1.45; margin-bottom: 2mm;">
-              Built a full-stack predictive platform (final year project) with interactive actual-vs-forecast visualizations and role-based dashboard views in SAPUI5; compared XGBoost and Prophet by MAPE and deployed on Vercel.
+            <p style="font-size: 8px; color: #b5b5b5; line-height: 1.45; margin-bottom: 2mm;">
+              Built a full-stack predictive platform (final year project) with interactive actual-vs-forecast visualizations and role-based dashboard views in SAPUI5; compared XGBoost and Prophet by MAPE.
             </p>
           </div>
           <div style="border-top: 1px solid #222; padding-top: 1.5mm; display: flex; justify-content: space-between; font-size: 7.5px; font-family: 'JetBrains Mono', monospace;">
             <span style="color: #10b981;">Dual Model Comparison</span>
-            <span style="color: #aaa;">Live on Vercel</span>
+            <a href="https://sap-forecast.vercel.app" target="_blank" style="color: #ff4d5a; text-decoration: underline;">sap-forecast.vercel.app</a>
           </div>
         </div>
 
@@ -754,13 +755,13 @@ def build_portfolio_html():
             <div style="font-size: 7.5px; color: #bbb; font-family: 'JetBrains Mono', monospace; margin-bottom: 1.5mm;">
               SAPUI5 &bull; SAP FIORI &bull; ODATA &bull; SAP BTP
             </div>
-            <p style="font-size: 8px; color: #a0a0a0; line-height: 1.45; margin-bottom: 2mm;">
+            <p style="font-size: 8px; color: #b5b5b5; line-height: 1.45; margin-bottom: 2mm;">
               Developed a warehouse management app (MVC, OData) with KPI dashboards and Excel export; redesigned navigation with custom UI components, cutting task navigation time by 30%.
             </p>
           </div>
           <div style="border-top: 1px solid #222; padding-top: 1.5mm; display: flex; justify-content: space-between; font-size: 7.5px; font-family: 'JetBrains Mono', monospace;">
             <span style="color: #10b981;">30% Nav Time Cut</span>
-            <span style="color: #aaa;">SAP BTP Deployed</span>
+            <span style="color: #ccc;">SAP BTP Deployed</span>
           </div>
         </div>
 
@@ -778,13 +779,13 @@ def build_portfolio_html():
             <div style="font-size: 7.5px; color: #bbb; font-family: 'JetBrains Mono', monospace; margin-bottom: 1.5mm;">
               ANGULAR &bull; NODE.JS &bull; MONGODB &bull; GEMINI API
             </div>
-            <p style="font-size: 8px; color: #a0a0a0; line-height: 1.45; margin-bottom: 2mm;">
+            <p style="font-size: 8px; color: #b5b5b5; line-height: 1.45; margin-bottom: 2mm;">
               Engineered a full-stack SaaS platform on the MEAN stack with RBAC and JWT auth. Integrated Google Gemini API to automate task generation and sprint planning, improving team productivity by 55% and task completion by 40%.
             </p>
           </div>
           <div style="border-top: 1px solid #222; padding-top: 1.5mm; display: flex; justify-content: space-between; font-size: 7.5px; font-family: 'JetBrains Mono', monospace;">
             <span style="color: #10b981;">+55% Team Velocity</span>
-            <span style="color: #aaa;">JWT Multitenant</span>
+            <span style="color: #ccc;">JWT Multitenant</span>
           </div>
         </div>
 
@@ -828,7 +829,7 @@ def build_portfolio_html():
             <span class="badge badge-red">01</span>
             <div style="font-weight: 700; font-size: 8.5px; color: #fff;">Problem Context</div>
           </div>
-          <p style="font-size: 7.5px; color: #999; line-height: 1.45;">
+          <p style="font-size: 7.5px; color: #b0b0b0; line-height: 1.45;">
             Enterprise planners previously handled demand forecasting across disconnected Excel spreadsheets and terminal scripts, lacking unified side-by-side trend visibility.
           </p>
         </div>
@@ -839,7 +840,7 @@ def build_portfolio_html():
             <span class="badge badge-red">02</span>
             <div style="font-weight: 700; font-size: 8.5px; color: #fff;">Persona: Vikram Sharma (38)</div>
           </div>
-          <p style="font-size: 7.5px; color: #bbb; line-height: 1.45;">
+          <p style="font-size: 7.5px; color: #cccccc; line-height: 1.45;">
             <strong>Lead Inventory Planner:</strong> Needs transparent model validation between Prophet and XGBoost without having to write code or debug statistical scripts in terminal.
           </p>
         </div>
@@ -853,22 +854,22 @@ def build_portfolio_html():
           <div style="display: flex; justify-content: space-between; align-items: center; font-size: 6.8px; font-family: 'JetBrains Mono', monospace; text-align: center;">
             <div style="background: #181818; padding: 1.5mm 1.8mm; border-radius: 4px; border: 1px solid #282828; flex: 1;">
               <div style="color: #ff4d5a; font-weight: 700;">STEP 1</div>
-              <div style="color: #aaa;">Ingest CSV</div>
+              <div style="color: #bbb;">Ingest CSV</div>
             </div>
             <div style="color: #d3121f; padding: 0 1mm; font-weight: 700;">&rarr;</div>
             <div style="background: #181818; padding: 1.5mm 1.8mm; border-radius: 4px; border: 1px solid #282828; flex: 1;">
               <div style="color: #ff4d5a; font-weight: 700;">STEP 2</div>
-              <div style="color: #aaa;">Run Models</div>
+              <div style="color: #bbb;">Run Models</div>
             </div>
             <div style="color: #d3121f; padding: 0 1mm; font-weight: 700;">&rarr;</div>
             <div style="background: #181818; padding: 1.5mm 1.8mm; border-radius: 4px; border: 1px solid #282828; flex: 1;">
               <div style="color: #ff4d5a; font-weight: 700;">STEP 3</div>
-              <div style="color: #aaa;">MAPE Curves</div>
+              <div style="color: #bbb;">MAPE Curves</div>
             </div>
             <div style="color: #d3121f; padding: 0 1mm; font-weight: 700;">&rarr;</div>
             <div style="background: #181818; padding: 1.5mm 1.8mm; border-radius: 4px; border: 1px solid #282828; flex: 1;">
               <div style="color: #ff4d5a; font-weight: 700;">STEP 4</div>
-              <div style="color: #aaa;">Role Cockpit</div>
+              <div style="color: #bbb;">Role Cockpit</div>
             </div>
           </div>
         </div>
@@ -884,19 +885,18 @@ def build_portfolio_html():
             <div style="font-family: 'JetBrains Mono', monospace; font-size: 8px; color: #d3121f; font-weight: 700; margin-bottom: 2mm;">
               KEY DESIGN DECISIONS &amp; RATIONALE
             </div>
-            <p style="font-size: 7.5px; color: #aaa; line-height: 1.45; margin-bottom: 2mm;">
+            <p style="font-size: 7.5px; color: #b5b5b5; line-height: 1.45; margin-bottom: 2mm;">
               <strong>1. Model Comparison Layout:</strong> Implemented a side-by-side time-series chart allowing planners to visually cross-check Prophet and XGBoost forecast trajectories against actual sales.
             </p>
-            <p style="font-size: 7.5px; color: #aaa; line-height: 1.45; margin-bottom: 2mm;">
+            <p style="font-size: 7.5px; color: #b5b5b5; line-height: 1.45; margin-bottom: 2mm;">
               <strong>2. Progressive Disclosure:</strong> Separated high-level MAPE accuracy indicators from granular parameter tuners, keeping the main interface focused on operational action.
             </p>
-            <p style="font-size: 7.5px; color: #aaa; line-height: 1.45;">
+            <p style="font-size: 7.5px; color: #b5b5b5; line-height: 1.45;">
               <strong>3. Role-Based Views:</strong> Designed dedicated dashboard perspectives in SAPUI5 for production planners vs. inventory management.
             </p>
           </div>
           <div style="background: #161616; padding: 2mm 3mm; border-radius: 4px; border: 1px solid #282828; font-size: 7.5px; font-family: 'JetBrains Mono', monospace;">
-            <span style="color: #10b981;">&bull; DUAL FORECAST CHARTS</span> &bull; 
-            <span style="color: #fff;">DEPLOYED ON VERCEL</span>
+            <a href="https://sap-forecast.vercel.app" target="_blank" style="color: #10b981; font-weight: 700; text-decoration: underline;">&bull; LIVE COCKPIT DEMO: sap-forecast.vercel.app</a>
           </div>
         </div>
 
@@ -943,7 +943,7 @@ def build_portfolio_html():
         <div class="card" style="padding: 4mm 3mm; text-align: left;">
           <div class="font-anton" style="font-size: 15px; color: #d3121f; margin-bottom: 1.5mm;">01</div>
           <div style="font-weight: 700; font-size: 8.5px; color: #fff; margin-bottom: 1mm;">DISCOVER</div>
-          <div style="font-size: 7.5px; color: #888; line-height: 1.4; margin-bottom: 2.5mm;">User shadowing, workflow analysis, pain point identification.</div>
+          <div style="font-size: 7.5px; color: #b0b0b0; line-height: 1.4; margin-bottom: 2.5mm;">User shadowing, workflow analysis, pain point identification.</div>
           <span class="badge" style="font-size: 6.5px;">Problem Canvas</span>
         </div>
 
@@ -951,7 +951,7 @@ def build_portfolio_html():
         <div class="card" style="padding: 4mm 3mm; text-align: left;">
           <div class="font-anton" style="font-size: 15px; color: #d3121f; margin-bottom: 1.5mm;">02</div>
           <div style="font-weight: 700; font-size: 8.5px; color: #fff; margin-bottom: 1mm;">DEFINE</div>
-          <div style="font-size: 7.5px; color: #888; line-height: 1.4; margin-bottom: 2.5mm;">User persona formulation, empathy mapping, workflow mapping.</div>
+          <div style="font-size: 7.5px; color: #b0b0b0; line-height: 1.4; margin-bottom: 2.5mm;">User persona formulation, empathy mapping, workflow mapping.</div>
           <span class="badge" style="font-size: 6.5px;">User Personas</span>
         </div>
 
@@ -959,7 +959,7 @@ def build_portfolio_html():
         <div class="card" style="padding: 4mm 3mm; text-align: left;">
           <div class="font-anton" style="font-size: 15px; color: #d3121f; margin-bottom: 1.5mm;">03</div>
           <div style="font-weight: 700; font-size: 8.5px; color: #fff; margin-bottom: 1mm;">IDEATE</div>
-          <div style="font-size: 7.5px; color: #888; line-height: 1.4; margin-bottom: 2.5mm;">Information architecture, progressive disclosure trees, task flows.</div>
+          <div style="font-size: 7.5px; color: #b0b0b0; line-height: 1.4; margin-bottom: 2.5mm;">Information architecture, progressive disclosure trees, task flows.</div>
           <span class="badge" style="font-size: 6.5px;">IA Maps</span>
         </div>
 
@@ -967,7 +967,7 @@ def build_portfolio_html():
         <div class="card" style="padding: 4mm 3mm; text-align: left;">
           <div class="font-anton" style="font-size: 15px; color: #d3121f; margin-bottom: 1.5mm;">04</div>
           <div style="font-weight: 700; font-size: 8.5px; color: #fff; margin-bottom: 1mm;">WIREFRAME</div>
-          <div style="font-size: 7.5px; color: #888; line-height: 1.4; margin-bottom: 2.5mm;">Low-fi sketches to validate spatial hierarchy before coding.</div>
+          <div style="font-size: 7.5px; color: #b0b0b0; line-height: 1.4; margin-bottom: 2.5mm;">Low-fi sketches to validate spatial hierarchy before coding.</div>
           <span class="badge" style="font-size: 6.5px;">Lo-Fi Decks</span>
         </div>
 
@@ -975,7 +975,7 @@ def build_portfolio_html():
         <div class="card card-highlight" style="padding: 4mm 3mm; text-align: left;">
           <div class="font-anton" style="font-size: 15px; color: #d3121f; margin-bottom: 1.5mm;">05</div>
           <div style="font-weight: 700; font-size: 8.5px; color: #fff; margin-bottom: 1mm;">DESIGN</div>
-          <div style="font-size: 7.5px; color: #aaa; line-height: 1.4; margin-bottom: 2.5mm;">Figma component libraries, 8px grid, accessible color contrast.</div>
+          <div style="font-size: 7.5px; color: #ccc; line-height: 1.4; margin-bottom: 2.5mm;">Figma component libraries, 8px grid, accessible color contrast.</div>
           <span class="badge badge-red" style="font-size: 6.5px;">Design Tokens</span>
         </div>
 
@@ -983,8 +983,8 @@ def build_portfolio_html():
         <div class="card card-highlight" style="padding: 4mm 3mm; text-align: left;">
           <div class="font-anton" style="font-size: 15px; color: #10b981; margin-bottom: 1.5mm;">06</div>
           <div style="font-weight: 700; font-size: 8.5px; color: #10b981; margin-bottom: 1mm;">VALIDATE</div>
-          <div style="font-size: 7.5px; color: #aaa; line-height: 1.4; margin-bottom: 2.5mm;">Interactive React component testing, code review, user feedback.</div>
-          <span class="badge badge-green" style="font-size: 6.5px;">Usability Audit</span>
+          <div style="font-size: 7.5px; color: #ccc; line-height: 1.4; margin-bottom: 2.5mm;">Interactive React component testing, code review, user feedback.</div>
+          <span class="badge badge-green" style="font-size: 6.5px;">Usability Review</span>
         </div>
 
       </div>
@@ -995,7 +995,7 @@ def build_portfolio_html():
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 8px; color: #d3121f; font-weight: 700; margin-bottom: 1.5mm;">
             1. ZERO DESIGN DRIFT
           </div>
-          <p style="font-size: 7.5px; color: #888; line-height: 1.45;">
+          <p style="font-size: 7.5px; color: #b0b0b0; line-height: 1.45;">
             Maintaining 1:1 parity between Figma variables and Tailwind CSS custom properties, ensuring visual integrity during frontend sprint implementation.
           </p>
         </div>
@@ -1003,7 +1003,7 @@ def build_portfolio_html():
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 8px; color: #d3121f; font-weight: 700; margin-bottom: 1.5mm;">
             2. ACCESSIBILITY-FIRST
           </div>
-          <p style="font-size: 7.5px; color: #888; line-height: 1.45;">
+          <p style="font-size: 7.5px; color: #b0b0b0; line-height: 1.45;">
             Ensuring high-contrast dark mode readability, visible keyboard focus rings, and touch-safe minimum 44px tap targets across all viewports.
           </p>
         </div>
@@ -1011,7 +1011,7 @@ def build_portfolio_html():
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 8px; color: #d3121f; font-weight: 700; margin-bottom: 1.5mm;">
             3. MEASURABLE EFFICIENCY
           </div>
-          <p style="font-size: 7.5px; color: #888; line-height: 1.45;">
+          <p style="font-size: 7.5px; color: #b0b0b0; line-height: 1.45;">
             Design success is evaluated through reduced operational task duration, lower cognitive error rates, and clean navigation ergonomics.
           </p>
         </div>
@@ -1053,7 +1053,7 @@ def build_portfolio_html():
           
           <div class="card card-highlight" style="padding: 3.5mm;">
             <div class="font-anton" style="font-size: 12px; color: #fff; margin-bottom: 1mm;">01. Atomic Components</div>
-            <p style="font-size: 7.5px; color: #a0a0a0; line-height: 1.45; margin-bottom: 2mm;">
+            <p style="font-size: 7.5px; color: #b5b5b5; line-height: 1.45; margin-bottom: 2mm;">
               Structuring interfaces into Atoms (Buttons, Badges), Molecules (KPI Cards), and Organisms (Forecast Cockpit) with strict TypeScript prop contracts.
             </p>
             <span class="badge badge-red" style="font-size: 6.5px;">React 18 &bull; TypeScript</span>
@@ -1061,24 +1061,24 @@ def build_portfolio_html():
 
           <div class="card card-highlight" style="padding: 3.5mm;">
             <div class="font-anton" style="font-size: 12px; color: #fff; margin-bottom: 1mm;">02. Tokenized CSS</div>
-            <p style="font-size: 7.5px; color: #a0a0a0; line-height: 1.45; margin-bottom: 2mm;">
+            <p style="font-size: 7.5px; color: #b5b5b5; line-height: 1.45; margin-bottom: 2mm;">
               Figma color tokens map directly to Tailwind CSS variables (<code style="color: #ff4d5a;">--bg</code>, <code style="color: #ff4d5a;">--red</code>, <code style="color: #ff4d5a;">--line</code>), maintaining strict 8px layout rhythm.
             </p>
             <span class="badge badge-red" style="font-size: 6.5px;">Tailwind CSS Tokens</span>
           </div>
 
           <div class="card" style="padding: 3.5mm;">
-            <div class="font-anton" style="font-size: 12px; color: #fff; margin-bottom: 1mm;">03. Responsive Fluidity</div>
-            <p style="font-size: 7.5px; color: #a0a0a0; line-height: 1.45; margin-bottom: 2mm;">
-              Fluid clamp typography (<code style="color: #fff;">clamp(44px, 10vw, 98px)</code>) and strict <code style="color: #d3121f;">overflow-x: clip</code> rules prevent horizontal layout breakage.
+            <div class="font-anton" style="font-size: 12px; color: #fff; margin-bottom: 1mm;">03. Responsive Design</div>
+            <p style="font-size: 7.5px; color: #b5b5b5; line-height: 1.45; margin-bottom: 2mm;">
+              Designing for responsive viewports (360px mobile to 1440px desktop) with flexible fluid typography and overflow protection.
             </p>
-            <span class="badge" style="font-size: 6.5px;">Mobile to 1440px</span>
+            <span class="badge" style="font-size: 6.5px;">Fluid Viewports</span>
           </div>
 
           <div class="card" style="padding: 3.5mm;">
             <div class="font-anton" style="font-size: 12px; color: #fff; margin-bottom: 1mm;">04. Smooth Motion</div>
-            <p style="font-size: 7.5px; color: #a0a0a0; line-height: 1.45; margin-bottom: 2mm;">
-              Hardware-accelerated GPU transforms with Apple Expo Out easing. Touch devices gracefully disable tilt effects to respect battery life.
+            <p style="font-size: 7.5px; color: #b5b5b5; line-height: 1.45; margin-bottom: 2mm;">
+              Hardware-accelerated transforms with Apple Expo Out easing. Touch devices gracefully disable tilt effects to respect battery life.
             </p>
             <span class="badge" style="font-size: 6.5px;">Framer Motion</span>
           </div>
@@ -1089,9 +1089,9 @@ def build_portfolio_html():
         <div class="card" style="background: #090909; border-color: #262626; display: flex; flex-direction: column; justify-content: space-between; padding: 4mm;">
           <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1a1a1a; padding-bottom: 1.5mm; margin-bottom: 2mm;">
             <span style="font-family: 'JetBrains Mono', monospace; font-size: 7.5px; color: #d3121f; font-weight: 700;">// PRODUCTION TYPE-SAFE MOTION INTERFACE</span>
-            <span style="font-family: 'JetBrains Mono', monospace; font-size: 7px; color: #666;">src/lib/motion.ts</span>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 7px; color: #888;">src/lib/motion.ts</span>
           </div>
-          <pre style="font-family: 'JetBrains Mono', monospace; font-size: 7.5px; color: #ccc; line-height: 1.45; overflow: hidden;">
+          <pre style="font-family: 'JetBrains Mono', monospace; font-size: 7.5px; color: #ddd; line-height: 1.45; overflow: hidden;">
 // Apple Expo Out Easing Curve
 export const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -1110,7 +1110,7 @@ export const springTransition = {{
   stiffness: 350,
   damping: 25,
 }};</pre>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 7px; color: #888; border-top: 1px solid #1a1a1a; padding-top: 1.5mm;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 7px; color: #aaa; border-top: 1px solid #1a1a1a; padding-top: 1.5mm;">
             Ensures smooth transitions without layout shifts.
           </div>
         </div>
@@ -1153,13 +1153,13 @@ export const springTransition = {{
         <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 4mm;">
           <div>
             <div style="height: 48mm; border-radius: 6px; overflow: hidden; border: 1px solid #2a2a2a; background: #141414; padding: 3mm; display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 2.5mm;">
-              <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 7.5px; color: #888;">
+              <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 7.5px; color: #aaa;">
                 <span>GEOSPATIAL SOS PLATFORM</span>
                 <span style="color: #ff4d5a;">LIVE ALERTS</span>
               </div>
               <div>
                 <div style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #fff;">DisasterLink</div>
-                <div style="font-size: 7.5px; color: #aaa;">Low-Bandwidth Crisis Response</div>
+                <div style="font-size: 7.5px; color: #ccc;">Low-Bandwidth Crisis Response</div>
               </div>
               <div style="display: flex; gap: 1mm;">
                 <span class="badge" style="font-size: 6.5px;">Next.js</span>
@@ -1167,7 +1167,7 @@ export const springTransition = {{
               </div>
             </div>
             <div class="font-anton" style="font-size: 12px; color: #fff; margin-bottom: 1mm;">DISASTERLINK PLATFORM</div>
-            <p style="font-size: 7.5px; color: #a0a0a0; line-height: 1.45; margin-bottom: 2mm;">
+            <p style="font-size: 7.5px; color: #b5b5b5; line-height: 1.45; margin-bottom: 2mm;">
               Real-time platform connecting survivors, volunteers, and emergency authorities through SOS alerts, live geospatial mapping, and low-bandwidth communication protocols.
             </p>
           </div>
@@ -1181,7 +1181,7 @@ export const springTransition = {{
               <img src="{robot_b64}" alt="Robotics Simulator" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
             <div class="font-anton" style="font-size: 12px; color: #fff; margin-bottom: 1mm;">ROBOTICS TELEMETRY SIMULATOR</div>
-            <p style="font-size: 7.5px; color: #a0a0a0; line-height: 1.45; margin-bottom: 2mm;">
+            <p style="font-size: 7.5px; color: #b5b5b5; line-height: 1.45; margin-bottom: 2mm;">
               Tactical hardware simulation cockpit displaying real-time kinematic motor angles, battery drain telemetry, and camera diagnostics for physical prototypes.
             </p>
           </div>
@@ -1193,23 +1193,23 @@ export const springTransition = {{
           <div>
             <div style="height: 48mm; border-radius: 6px; overflow: hidden; border: 1px solid #2a2a2a; background: #160c0d; padding: 3mm; display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 2.5mm;">
               <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 7.5px; color: #ff4d5a;">
-                <span>PRODUCTION UI LAB</span>
-                <span class="badge badge-red" style="font-size: 6.5px;">LIVE</span>
+                <span>PROTOTYPE UI LAB</span>
+                <span class="badge badge-red" style="font-size: 6.5px;">INTERACTION</span>
               </div>
               <div>
                 <div style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #fff;">Contextual Cursor &amp; Slider</div>
-                <div style="font-size: 7.5px; color: #bbb;">Live on Anand's Portfolio</div>
+                <div style="font-size: 7.5px; color: #ddd;">Prototyped for Anand's Portfolio</div>
               </div>
-              <div style="font-size: 7px; color: #888; font-family: 'JetBrains Mono', monospace;">
+              <div style="font-size: 7px; color: #aaa; font-family: 'JetBrains Mono', monospace;">
                 Framer Motion &bull; Lenis Smooth Scroll
               </div>
             </div>
             <div class="font-anton" style="font-size: 12px; color: #fff; margin-bottom: 1mm;">INTERACTION LAB</div>
-            <p style="font-size: 7.5px; color: #a0a0a0; line-height: 1.45; margin-bottom: 2mm;">
-              Engineered agency-grade micro-interactions in the live portfolio: contextual follower cursor (<code style="color: #ff4d5a;">VIEW</code>, <code style="color: #ff4d5a;">DRAG</code>), draggable before/after transformation slider, and scroll progress lines.
+            <p style="font-size: 7.5px; color: #b5b5b5; line-height: 1.45; margin-bottom: 2mm;">
+              Designed agency-grade micro-interactions: contextual follower cursor (<code style="color: #ff4d5a;">VIEW</code>, <code style="color: #ff4d5a;">DRAG</code>), draggable before/after transformation slider, and scroll progress lines.
             </p>
           </div>
-          <span class="badge badge-green" style="align-self: flex-start; font-size: 6.5px;">Live in Production</span>
+          <span class="badge badge-green" style="align-self: flex-start; font-size: 6.5px;">Prototype &amp; Lab</span>
         </div>
 
       </div>
@@ -1255,12 +1255,12 @@ export const springTransition = {{
             <p style="font-size: 9.5px; color: #e5e5e5; line-height: 1.6; margin-bottom: 3.5mm;">
               &ldquo;Modern B2B marketing and sales intelligence platforms succeed based on how effortlessly users can extract insight from overwhelming data volumes. My background—unifying human-centered research, enterprise design systems like SAP Fiori, and production-grade React 18 / TypeScript code—directly aligns with Demandbase&rsquo;s vision of delivering best-in-class UI/UX. I am eager to contribute immediately to your frontend engineering team.&rdquo;
             </p>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 8px; color: #aaa;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 8px; color: #ccc;">
               &mdash; <strong style="color: #fff;">Anand Jadhav</strong>, Candidate for UI / Frontend Engineer
             </div>
           </div>
 
-          <div style="border-top: 1px solid #222; padding-top: 2.5mm; font-family: 'JetBrains Mono', monospace; font-size: 7.5px; color: #777;">
+          <div style="border-top: 1px solid #222; padding-top: 2.5mm; font-family: 'JetBrains Mono', monospace; font-size: 7.5px; color: #999;">
             <div>INSTITUTION: Parul Institute of Technology, Parul University</div>
             <div>STUDENT ENROLLMENT: 2303031570026 &bull; B.Tech CSE (SAP IEP Track)</div>
           </div>
@@ -1275,28 +1275,28 @@ export const springTransition = {{
 
             <div style="display: flex; flex-direction: column; gap: 2mm; font-size: 8px;">
               <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #1a1a1a; padding-bottom: 1.5mm;">
-                <span style="color: #666; font-family: 'JetBrains Mono', monospace;">EMAIL:</span>
+                <span style="color: #888; font-family: 'JetBrains Mono', monospace;">EMAIL:</span>
                 <a href="mailto:anandjadhav42004@gmail.com" style="color: #fff; font-weight: 600;">anandjadhav42004@gmail.com</a>
               </div>
               <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #1a1a1a; padding-bottom: 1.5mm;">
-                <span style="color: #666; font-family: 'JetBrains Mono', monospace;">PHONE:</span>
+                <span style="color: #888; font-family: 'JetBrains Mono', monospace;">PHONE:</span>
                 <a href="tel:+918308008154" style="color: #fff; font-weight: 600;">+91 83080 08154</a>
               </div>
               <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #1a1a1a; padding-bottom: 1.5mm;">
-                <span style="color: #666; font-family: 'JetBrains Mono', monospace;">LOCATION:</span>
+                <span style="color: #888; font-family: 'JetBrains Mono', monospace;">LOCATION:</span>
                 <span style="color: #fff; font-weight: 600;">Vadodara, Gujarat, India</span>
               </div>
               <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #1a1a1a; padding-bottom: 1.5mm;">
-                <span style="color: #666; font-family: 'JetBrains Mono', monospace;">LINKEDIN:</span>
+                <span style="color: #888; font-family: 'JetBrains Mono', monospace;">LINKEDIN:</span>
                 <a href="https://www.linkedin.com/in/anand-jadhav-b599801b5" target="_blank" style="color: #ff4d5a; font-weight: 600;">linkedin.com/in/anand-jadhav-b599801b5</a>
               </div>
               <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #1a1a1a; padding-bottom: 1.5mm;">
-                <span style="color: #666; font-family: 'JetBrains Mono', monospace;">GITHUB:</span>
+                <span style="color: #888; font-family: 'JetBrains Mono', monospace;">GITHUB:</span>
                 <a href="https://github.com/anandjadhav42004" target="_blank" style="color: #ff4d5a; font-weight: 600;">github.com/anandjadhav42004</a>
               </div>
               <div style="display: flex; justify-content: space-between;">
-                <span style="color: #666; font-family: 'JetBrains Mono', monospace;">LIVE WEB:</span>
-                <a href="https://portfolio-eosin-seven-23.vercel.app" target="_blank" style="color: #fff; font-weight: 600;">portfolio-eosin-seven-23.vercel.app</a>
+                <span style="color: #888; font-family: 'JetBrains Mono', monospace;">LIVE WEB:</span>
+                <a href="https://portfolio-eosin-seven-23.vercel.app" target="_blank" style="color: #ff4d5a; font-weight: 700; text-decoration: underline;">portfolio-eosin-seven-23.vercel.app</a>
               </div>
             </div>
           </div>
@@ -1308,7 +1308,7 @@ export const springTransition = {{
             </div>
             <div>
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 7.5px; color: #ff4d5a; font-weight: 700;">SCAN TO OPEN LIVE PORTFOLIO</div>
-              <div style="font-size: 7px; color: #aaa; margin-top: 0.5mm;">Directly links to: <br><strong style="color: #fff;">portfolio-eosin-seven-23.vercel.app</strong></div>
+              <div style="font-size: 7px; color: #ccc; margin-top: 0.5mm;">Directly links to: <br><strong style="color: #fff;">portfolio-eosin-seven-23.vercel.app</strong></div>
             </div>
           </div>
 
