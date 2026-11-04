@@ -1,63 +1,67 @@
 ================================================================================
-ANAND JADHAV — UI/UX DESIGNER & COMPUTER SCIENCE ENGINEER
-PORTFOLIO & CASE STUDY DOSSIER (2026/2027)
+ANAND JADHAV — UI/UX DESIGNER & FRONTEND ENGINEER
+OFFICIAL PORTFOLIO & CASE STUDY DOSSIER (2026/2027)
 ================================================================================
 
 Candidate Name:       Anand Jadhav
-Target Role:          UI/UX Designer / Full-Stack Frontend Engineer
-Education:            B.Tech Computer Science & Engineering (SAP IEP Track, CGPA 8.71)
+Target Role:          UI/UX Designer / Frontend Engineer
+Target Company:       Demandbase
 Institution:          Parul Institute of Technology, Parul University
+Degree:               B.Tech in Computer Science & Engineering (SAP IEP Track)
+Student Enrollment:   2303031570026
+Academic Record:      HSC Science: 94.67% (Dayanand Science College, Latur, 2021)
+                      SSC CBSE: 75.40% (Yashwant International School, Kodoli, 2019)
 Current Internship:   SAP & IT Intern, Production Planning & Control (PPC)
-                      Hilti Manufacturing India Pvt. Ltd. (Vadodara Plant)
+                      Hilti Manufacturing India Pvt. Ltd. (Vadodara Plant, July 2026 – Present)
 Email:                anandjadhav42004@gmail.com
 Phone:                +91 83080 08154
 Location:             Vadodara, Gujarat, India
 
 --------------------------------------------------------------------------------
-PORTFOLIO & LIVE PLATFORM LINKS:
+VERIFIED LIVE PLATFORM & CONTACT LINKS:
 --------------------------------------------------------------------------------
-1. Interactive Portfolio Website:
-   https://github.com/anandjadhav42004/portfolio
+1. Live Portfolio Website:
+   https://portfolio-eosin-seven-23.vercel.app
 
-2. Flagship UI/UX Case Study (SAP Prognos Live Platform):
-   https://sap-forecast.vercel.app
-
-3. LinkedIn Profile:
+2. LinkedIn Profile:
    https://www.linkedin.com/in/anand-jadhav-b599801b5
 
-4. GitHub Engineering Repositories:
+3. GitHub Engineering Repositories:
    https://github.com/anandjadhav42004
 
+4. Live Portfolio Code Repository:
+   https://github.com/anandjadhav42004/portfolio
+
 --------------------------------------------------------------------------------
-FEATURED UI/UX CASE STUDIES SUMMARY:
+DELIVERABLE SUBMISSION FILES (DEMANDBASE SELECTION):
+--------------------------------------------------------------------------------
+Primary Recommended PDF (v3 Refined):
+Path: Demandbase_Portfolio_Submission/Anand_Jadhav_UIUX_Portfolio_Final_v3.pdf
+Public Copy: public/Anand_Jadhav_UIUX_Portfolio_Final_v3.pdf
+Format: A4 Landscape (297mm x 210mm) | 9 Pages | 4.01 MB
+
+Previous Archived Versions:
+- Demandbase_Portfolio_Submission/Anand_Jadhav_UIUX_Portfolio_Final_v2.pdf (3.88 MB)
+- Demandbase_Portfolio_Submission/Anand_Jadhav_UIUX_Portfolio_Final.pdf (3.24 MB)
+- Demandbase_Portfolio_Submission/Anand_Jadhav_UIUX_Portfolio.pdf (3.79 MB)
+
+--------------------------------------------------------------------------------
+FEATURED PRODUCTION CASE STUDIES & VERIFIED METRICS:
 --------------------------------------------------------------------------------
 
 1. SAP PROGNOS — AI DEMAND FORECASTING & ANALYTICS COCKPIT
-   • Methodology: 8-Step Double Diamond Design Process
-   • Discovery: 4 In-depth contextual interviews with manufacturing planners
-   • Solution: 3-stage progressive disclosure workflow (Ingest -> Validate -> Sync)
-   • Visual System: SAP Fiori 3.0 Horizon tokens, 4.5:1 WCAG 2.1 AA accessibility
-   • Validation Metrics:
-     - 34% faster weekly planning workflow
-     - 88/100 System Usability Scale (SUS) Score (Grade A)
-     - 100% first-trial task completion rate
-   • Live Demo: https://sap-forecast.vercel.app
+   • Tech Stack: SAPUI5, FastAPI, Python, Prophet, XGBoost, Vercel
+   • Problem Solved: Replaced fragmented multi-sheet Excel forecasting with a single auditable cockpit
+   • UX Architecture: Role-based views, progressive disclosure, interactive time-series curve comparison
+   • Model Evaluation: XGBoost vs Prophet compared via Mean Absolute Percentage Error (MAPE)
+   • Live Deployment: Deployed and tested on Vercel
 
 2. INVENTORY PRO — WAREHOUSE MANAGEMENT SYSTEM
-   • Platform: SAP BTP, SAPUI5, SAP Fiori, OData V2
-   • Solution: Rebuilt complex picking lists into custom visual KPI cards
-   • Outcome: 30% reduction in warehouse task navigation time
+   • Tech Stack: SAP BTP, SAPUI5, SAP Fiori 3.0 Horizon, OData
+   • Solution: Redesigned multi-tier warehouse navigation with custom visual UI components & KPI cards
+   • Documented Outcome: 30% reduction in warehouse task navigation time (verified from resume)
 
-3. PROFLOW — SAAS PROJECT MANAGEMENT PLATFORM
-   • Stack: Angular, Node.js, MongoDB, Google Gemini AI API, JWT
-   • Solution: AI-assisted sprint planning canvas and role-based access control
-   • Outcome: 55% team velocity improvement
-
---------------------------------------------------------------------------------
-CORE UI/UX TOOLING & SKILLS:
---------------------------------------------------------------------------------
-• Design: Figma, Wireframing, User Research, Journey Mapping, Usability Testing (SUS),
-          Information Architecture, WCAG 2.1 AA Accessibility, SAP Fiori Horizon.
-• Tech:   React.js, Next.js, TypeScript, SAPUI5, Tailwind CSS, Framer Motion, Python.
-================================================================================
-
+3. PROFLOW — SAAS SPRINT & PROJECT MANAGEMENT
+   • Tech Stack: Angular, Node.js, Express, MongoDB, Google Gemini API
+   • Solution: Automated sprint task breakdown and backlog grooming via Gemini API integration
+   • Documented Outcome: +55% team productivity and +40% task completion rate (verified from resume)
