@@ -91,8 +91,67 @@ export default function HeroRevamp() {
         }}
       />
 
-      {/* ── Cinematic Atmosphere: Subtle Distant Red Bokeh Orbs & Rim Light Streaks ── */}
+      {/* ── UI/UX Designer Studio Theme: Fine Coordinate Grid, Crosshairs & Wireframe Elements ── */}
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none z-[1] overflow-hidden select-none">
+        {/* Fine 48px Coordinate Grid */}
+        <div
+          className="absolute inset-0 opacity-[0.14]"
+          style={{
+            backgroundImage: 'linear-gradient(to right, #282828 1px, transparent 1px), linear-gradient(to bottom, #282828 1px, transparent 1px)',
+            backgroundSize: '48px 48px',
+            maskImage: 'radial-gradient(ellipse 70% 60% at 50% 45%, #000 60%, transparent 100%)',
+            WebkitMaskImage: 'radial-gradient(ellipse 70% 60% at 50% 45%, #000 60%, transparent 100%)',
+          }}
+        />
+
+        {/* Designer Viewport Coordinates & Crosshairs */}
+        <div className="hidden lg:flex items-center justify-between absolute top-12 left-10 right-10 text-[10px] font-mono tracking-widest text-[#4a4a4a] select-none">
+          <span>+ 0.00° / LATENCY &lt; 16MS</span>
+          <span className="text-[#d3121f]/70 font-semibold">[ GRID 12-COL // VIEWPORT 1440×900 ]</span>
+          <span>ARTBOARD 01 +</span>
+        </div>
+
+        {/* Floating Minimal UI Wireframe Card 1 (Top Right) */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 0.6 }}
+          className="hidden xl:block absolute right-[7%] top-[18%] w-[190px] p-3 rounded-lg border border-[#222] bg-[#0c0c0c]/75 backdrop-blur-sm shadow-[0_10px_30px_rgba(0,0,0,0.5)] font-mono text-[9px] text-[#777]"
+        >
+          <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#1c1c1c] text-[#a0a0a0]">
+            <span className="text-[#d3121f]">● UI COMPONENT</span>
+            <span>v2.4</span>
+          </div>
+          <div className="space-y-1.5">
+            <div className="h-1.5 w-3/4 bg-[#222] rounded-full" />
+            <div className="h-1.5 w-1/2 bg-[#1a1a1a] rounded-full" />
+            <div className="flex items-center gap-1.5 pt-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#d3121f] animate-ping" />
+              <span className="text-[8px] text-[#888]">SUS SCORE 88.0 (GRADE A)</span>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Floating Minimal UI Wireframe Card 2 (Bottom Left) */}
+        <motion.div
+          initial={{ opacity: 0, y: -15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 0.8 }}
+          className="hidden xl:block absolute left-[5%] bottom-[16%] w-[170px] p-2.5 rounded-lg border border-[#222] bg-[#0c0c0c]/75 backdrop-blur-sm font-mono text-[9px] text-[#666]"
+        >
+          <div className="flex items-center gap-1.5 mb-1.5 text-[#888]">
+            <span className="w-1 h-1 bg-[#d3121f] rounded-full" />
+            <span>IA // 3-CLICK FLOW</span>
+          </div>
+          <div className="flex items-center gap-1 text-[8px] text-[#555]">
+            <span className="px-1 py-0.5 rounded bg-[#161616] border border-[#262626]">DATA</span>
+            <span>→</span>
+            <span className="px-1 py-0.5 rounded bg-[#161616] border border-[#262626]">EVAL</span>
+            <span>→</span>
+            <span className="px-1 py-0.5 rounded bg-[#161616] border border-[#262626] text-[#d3121f]">SYNC</span>
+          </div>
+        </motion.div>
+
         {/* Bokeh Orb 1: Upper right shoulder rim */}
         <div
           className="absolute right-[18%] md:right-[26%] top-[25%] md:top-[28%] w-[160px] md:w-[240px] h-[160px] md:h-[240px] rounded-full opacity-25 filter blur-[50px] animate-pulse-glow"
