@@ -4,6 +4,7 @@ import { motion, useScroll, useSpring } from 'framer-motion';
 import HamburgerMenu from './components/HamburgerMenu';
 import HeroRevamp from './components/HeroRevamp';
 import Projects from './components/Projects';
+import DesignProcess from './components/DesignProcess';
 import MidRow from './components/MidRow';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -164,10 +165,13 @@ function App() {
         {/* ── Running Editorial Marquee Banner ── */}
         <MarqueeTicker />
 
-        {/* 2. Selected Engineering Projects Grid */}
+        {/* 2. Selected Engineering Projects Gallery / Showcase */}
         <Projects />
 
-        {/* 3. Three-Column Mid-Row: Academic Background, Credentials, Tech Stack, Engineering Workflow, Philosophy & Hilti Experience */}
+        {/* 3. Design Thinking Methodology: Animated Timeline with Progressive Line Fill */}
+        <DesignProcess />
+
+        {/* 4. Three-Column Mid-Row: Academic Background, Credentials, Tech Stack, Engineering Workflow, Philosophy & Hilti Experience */}
         <MidRow />
 
         {/* 4. Contact & Direct Connection */}

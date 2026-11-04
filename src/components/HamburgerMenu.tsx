@@ -3,6 +3,7 @@ import { portfolioData } from '../data/portfolio';
 
 const navItems = [
   { id: 'projects', label: 'Projects', href: '#projects' },
+  { id: 'process', label: 'Design Process', href: '#process' },
   { id: 'mid-row', label: 'Experience & Credentials', href: '#mid-row' },
   { id: 'contact', label: 'Contact', href: '#contact' },
 ];
@@ -14,7 +15,7 @@ export default function HamburgerMenu() {
   // Active section tracking with IntersectionObserver
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const ids = ['hero', 'projects', 'mid-row', 'contact'];
+    const ids = ['hero', 'projects', 'process', 'mid-row', 'contact'];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

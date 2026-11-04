@@ -419,6 +419,28 @@ export default function HeroRevamp() {
         </div>
 
       </div>
+
+      {/* ── Apple-style Bouncing Scroll Indicator ── */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.8, duration: 1 }}
+        className="w-full flex justify-center items-center py-4 sm:py-6 z-[3] relative select-none"
+      >
+        <a
+          href="#projects"
+          className="group flex flex-col items-center gap-1.5 text-[10px] font-mono tracking-[0.25em] uppercase text-[#666] hover:text-[#d3121f] transition-colors cursor-pointer"
+        >
+          <span className="group-hover:translate-y-0.5 transition-transform">SCROLL TO EXPLORE</span>
+          <div className="w-5 h-8 rounded-full border border-[#2a2a2a] group-hover:border-[#d3121f] flex justify-center pt-1.5 transition-colors">
+            <motion.div
+              animate={{ y: [0, 8, 0], opacity: [0.3, 1, 0.3] }}
+              transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
+              className="w-1 h-2 rounded-full bg-[#d3121f]"
+            />
+          </div>
+        </a>
+      </motion.div>
     </section>
   );
 }
