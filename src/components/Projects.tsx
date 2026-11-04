@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, TrendingUp } from 'lucide-react';
+import { ArrowUpRight, TrendingUp, Sparkles } from 'lucide-react';
 import { projects } from '../data/portfolio';
 import { fadeUp, stagger, buttonHover, buttonTap, springTransition } from '../lib/motion';
 import { TiltCard } from './motion/TiltCard';
 import { Magnetic } from './motion/Magnetic';
+import { UXCaseStudyModal } from './UXCaseStudyModal';
 
 export default function Projects() {
   const [showAll, setShowAll] = useState(false);
+  const [caseStudyOpen, setCaseStudyOpen] = useState(false);
 
   // Take top 3 for initial view or all when expanded
   const displayProjects = showAll ? projects : projects.slice(0, 3);
@@ -122,6 +124,27 @@ export default function Projects() {
                         </div>
                       </div>
 
+                      {/* Interactive UX Case Study Trigger for Project 01 */}
+                      {p.id === 1 && (
+                        <div className="mt-2 mb-1 pt-2">
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              setCaseStudyOpen(true);
+                            }}
+                            className="w-full py-2 px-3 rounded bg-gradient-to-r from-[#d3121f]/20 to-transparent border border-[#d3121f]/50 hover:border-[#d3121f] text-[#ff4d5a] hover:text-white flex items-center justify-between text-[11px] font-bold tracking-[0.12em] uppercase transition-all shadow-[0_0_15px_rgba(211,18,31,0.2)] hover:shadow-[0_0_20px_rgba(211,18,31,0.5)] group/btn cursor-pointer"
+                          >
+                            <span className="flex items-center gap-1.5">
+                              <Sparkles className="w-3.5 h-3.5 text-[#d3121f] animate-pulse" />
+                              <span>View UX Case Study (8-Step Process)</span>
+                            </span>
+                            <span className="text-xs group-hover/btn:translate-x-1 transition-transform">→</span>
+                          </button>
+                        </div>
+                      )}
+
                       {/* Recruiter Outcome Highlight Pill */}
                       {p.description && (
                         <div className="mt-auto pt-3 border-t border-[#1a1a1a] flex items-center gap-2 text-[11px] text-[#a0a0a0] leading-relaxed">
@@ -156,11 +179,12 @@ export default function Projects() {
         </motion.div>
 
       </motion.div>
-    </section>
-  );
-}
 
-      </motion.div>
+      {/* ── 8-Step UX Case Study Modal (SAP Prognos) ── */}
+      <UXCaseStudyModal
+        isOpen={caseStudyOpen}
+        onClose={() => setCaseStudyOpen(false)}
+      />
     </section>
   );
 }
