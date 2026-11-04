@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 import { Globe, FileText, ArrowDown } from 'lucide-react';
 import { portfolioData, stats } from '../data/portfolio';
 import { ease, buttonHover, buttonTap, springTransition } from '../lib/motion';
@@ -37,6 +37,20 @@ export default function HeroRevamp() {
 
   const handleMouseLeave = () => {
     setParallax({ x: 0, y: 0 });
+  };
+
+  const [eggClicks, setEggClicks] = useState(0);
+  const [eggUnlocked, setEggUnlocked] = useState(false);
+
+  const handlePortraitClick = () => {
+    setEggClicks((prev) => {
+      const next = prev + 1;
+      if (next >= 3) {
+        setEggUnlocked(true);
+        return 0;
+      }
+      return next;
+    });
   };
 
   const letters = 'PORTFOLIO'.split('');
@@ -191,6 +205,8 @@ export default function HeroRevamp() {
           >
             <img
               src="/anand_profile.jpg"
+              onClick={handlePortraitClick}
+              data-cursor="CLICK ×3"
               onError={(e) => {
                 const target = e.currentTarget;
                 if (target.src.includes('anand_profile.jpg')) {
@@ -198,7 +214,7 @@ export default function HeroRevamp() {
                 }
               }}
               alt="Anand Jadhav — Computer Science Engineer"
-              className="h-full w-auto object-cover object-top brightness-[1.03] contrast-[1.08] saturate-[1.04] filter drop-shadow-[0_20px_45px_rgba(211,18,31,0.44)] drop-shadow-[0_0_25px_rgba(211,18,31,0.26)]"
+              className="h-full w-auto object-cover object-top brightness-[1.03] contrast-[1.08] saturate-[1.04] filter drop-shadow-[0_20px_45px_rgba(211,18,31,0.44)] drop-shadow-[0_0_25px_rgba(211,18,31,0.26)] pointer-events-auto cursor-pointer"
               style={{
                 WebkitMaskImage: 'linear-gradient(to right, transparent, #000 12%, #000 88%, transparent), linear-gradient(#000 70%, transparent 99%)',
                 WebkitMaskComposite: 'source-in',
@@ -288,8 +304,9 @@ export default function HeroRevamp() {
               >
                 <img
                   src="/anand_profile.jpg"
+                  onClick={handlePortraitClick}
                   alt="Anand Jadhav"
-                  className="w-full h-full object-cover object-top brightness-[1.03] contrast-[1.08] saturate-[1.04] filter drop-shadow-[0_15px_35px_rgba(211,18,31,0.42)]"
+                  className="w-full h-full object-cover object-top brightness-[1.03] contrast-[1.08] saturate-[1.04] filter drop-shadow-[0_15px_35px_rgba(211,18,31,0.42)] cursor-pointer"
                   style={{
                     WebkitMaskImage: 'linear-gradient(to bottom, #000 78%, transparent 100%)',
                     maskImage: 'linear-gradient(to bottom, #000 78%, transparent 100%)',
@@ -441,6 +458,39 @@ export default function HeroRevamp() {
           </div>
         </a>
       </motion.div>
+      {/* ── Easter Egg Floating Toast ── */}
+      <AnimatePresence>
+        {eggUnlocked && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.88, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.88, y: 20 }}
+            transition={{ duration: 0.4, ease }}
+            className="fixed bottom-6 right-6 z-[120] max-w-sm p-5 rounded-xl bg-[#0e0e0e]/95 border-2 border-[#d3121f] backdrop-blur-xl shadow-[0_20px_50px_rgba(211,18,31,0.4)] text-white"
+          >
+            <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#222]">
+              <span className="text-[10px] font-mono font-bold tracking-widest text-[#d3121f] uppercase flex items-center gap-1.5">
+                <span className="animate-spin text-sm">✦</span>
+                <span>EASTER EGG UNLOCKED</span>
+              </span>
+              <button
+                type="button"
+                onClick={() => setEggUnlocked(false)}
+                className="w-6 h-6 rounded flex items-center justify-center text-xs text-[#888] hover:text-white hover:bg-white/10 transition-colors"
+                aria-label="Close Easter Egg"
+              >
+                ✕
+              </button>
+            </div>
+            <p className="font-serif italic text-white text-sm leading-snug mb-2">
+              &ldquo;Good design is as little design as possible.&rdquo;
+            </p>
+            <p className="text-[11px] text-[#a0a0a0] font-mono leading-relaxed">
+              &mdash; Dieter Rams. You found the hidden interaction! Thank you for taking the time to inspect the craft behind this portfolio.
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

@@ -5,6 +5,7 @@ import {
   Award, Search, Compass, MousePointerClick, Layers, ShieldCheck, FileCheck
 } from 'lucide-react';
 import { ease } from '../lib/motion';
+import { BeforeAfterSlider } from './BeforeAfterSlider';
 
 interface UXCaseStudyModalProps {
   isOpen: boolean;
@@ -179,6 +180,9 @@ export function UXCaseStudyModal({ isOpen, onClose }: UXCaseStudyModalProps) {
               );
             })}
           </div>
+
+          {/* ── Interactive Before & After Transformation Slider ── */}
+          <BeforeAfterSlider />
 
           {/* Key Design Impact Banner */}
           <div className="p-5 rounded-lg bg-gradient-to-r from-[#180a0c] via-[#121212] to-[#121212] border border-[#d3121f]/40 mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">

@@ -143,6 +143,7 @@ export default function Projects() {
                         href={targetUrl}
                         target="_blank"
                         rel="noreferrer"
+                        data-cursor="VIEW"
                         className="group flex flex-col h-[520px] bg-[#0d0d0d] p-5 rounded-xl border border-[#1f1f1f] hover:border-[#d3121f]/60 transition-colors focus-visible:outline-[#d3121f]"
                       >
                         {/* Thumbnail with Smooth Image Zoom & Overlay */}
@@ -245,6 +246,7 @@ export default function Projects() {
                         href={targetUrl}
                         target="_blank"
                         rel="noreferrer"
+                        data-cursor="VIEW"
                         className="group flex flex-col h-full bg-[#0d0d0d] p-4 rounded-lg border border-[#1f1f1f] hover:border-[#d3121f]/60 transition-colors focus-visible:outline-[#d3121f]"
                       >
                         <div className="relative w-full aspect-[16/10] bg-[#121212] rounded-[4px] border border-[#1f1f1f] group-hover:border-[#d3121f] group-hover:shadow-[0_8px_30px_rgba(211,18,31,0.25)] transition-all duration-500 overflow-hidden mb-4">
