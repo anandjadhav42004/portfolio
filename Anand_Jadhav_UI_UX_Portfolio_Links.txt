@@ -60,3 +60,4 @@ CORE UI/UX TOOLING & SKILLS:
           Information Architecture, WCAG 2.1 AA Accessibility, SAP Fiori Horizon.
 • Tech:   React.js, Next.js, TypeScript, SAPUI5, Tailwind CSS, Framer Motion, Python.
 ================================================================================
+
