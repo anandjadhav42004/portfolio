@@ -1,8 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { portfolioData } from '../data/portfolio';
+
+const navItems = [
+  { id: 'projects', label: 'Projects', href: '#projects' },
+  { id: 'mid-row', label: 'Experience & Credentials', href: '#mid-row' },
+  { id: 'contact', label: 'Contact', href: '#contact' },
+];
 
 export default function HamburgerMenu() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
+
+  // Active section tracking with IntersectionObserver
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const ids = ['hero', 'projects', 'mid-row', 'contact'];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-40% 0px -40% 0px' }
+    );
+
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 w-full bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#1f1f1f]">
@@ -18,33 +48,45 @@ export default function HamburgerMenu() {
           </span>
         </a>
 
-        {/* Center Desktop Navigation */}
+        {/* Center Desktop Navigation with Underline & Active Highlight */}
         <nav className="hidden md:flex items-center gap-8">
-          <a href="#projects" className="text-xs font-semibold uppercase tracking-[0.15em] text-[#a0a0a0] hover:text-[#d3121f] transition-colors">
-            Projects
-          </a>
-          <a href="#mid-row" className="text-xs font-semibold uppercase tracking-[0.15em] text-[#a0a0a0] hover:text-[#d3121f] transition-colors">
-            Credentials &amp; Skills
-          </a>
-          <a href="#workflow" className="text-xs font-semibold uppercase tracking-[0.15em] text-[#a0a0a0] hover:text-[#d3121f] transition-colors">
-            Workflow
-          </a>
-          <a href="#contact" className="text-xs font-semibold uppercase tracking-[0.15em] text-[#a0a0a0] hover:text-[#d3121f] transition-colors">
-            Contact
-          </a>
+          {navItems.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <a
+                key={item.id}
+                href={item.href}
+                className={`relative text-xs font-semibold uppercase tracking-[0.15em] transition-colors group py-1 ${
+                  isActive ? 'text-white' : 'text-[#a0a0a0] hover:text-white'
+                }`}
+              >
+                <span>{item.label}</span>
+                {/* Active Indicator Dot */}
+                {isActive && (
+                  <span className="absolute -left-2.5 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#d3121f]" />
+                )}
+                {/* Left-to-right growing hover underline */}
+                <span
+                  className={`absolute bottom-0 left-0 h-[2px] bg-[#d3121f] transition-all duration-300 ${
+                    isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
+                />
+              </a>
+            );
+          })}
         </nav>
 
         {/* Right: Availability Status Badge */}
         <div className="flex items-center gap-4">
           <div className="hidden sm:flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-[#a0a0a0]">
-            <span>OPEN FOR SOFTWARE &amp; SAP ROLES</span>
+            <span>OPEN FOR ROLES</span>
             <span className="text-[#d3121f] text-sm animate-pulse">✦</span>
           </div>
 
           {/* Mobile Hamburger Toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden w-10 h-10 rounded-full border border-[#1f1f1f] flex flex-col items-center justify-center gap-1 text-white hover:border-[#d3121f] transition-colors"
+            className="md:hidden w-10 h-10 rounded-full border border-[#1f1f1f] flex flex-col items-center justify-center gap-1 text-white hover:border-[#d3121f] transition-colors focus-visible:outline-[#d3121f]"
             aria-label="Toggle Navigation Menu"
           >
             <span className={`w-4 h-0.5 bg-white transition-all ${mobileOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
@@ -58,38 +100,28 @@ export default function HamburgerMenu() {
       {/* Mobile Drawer */}
       {mobileOpen && (
         <div className="md:hidden border-t border-[#1f1f1f] bg-[#0a0a0a] px-6 py-6 flex flex-col gap-4">
+          {navItems.map((item) => (
+            <a
+              key={item.id}
+              href={item.href}
+              onClick={() => setMobileOpen(false)}
+              className={`text-sm font-semibold uppercase tracking-[0.15em] transition-colors ${
+                activeSection === item.id ? 'text-[#d3121f]' : 'text-[#a0a0a0] hover:text-[#d3121f]'
+              }`}
+            >
+              {item.label}
+            </a>
+          ))}
           <a
-            href="#projects"
+            href="/Anand_Jadhav_Resume.pdf"
+            target="_blank"
+            rel="noreferrer"
             onClick={() => setMobileOpen(false)}
-            className="text-sm font-semibold uppercase tracking-[0.15em] text-[#a0a0a0] hover:text-[#d3121f]"
+            className="text-sm font-semibold uppercase tracking-[0.15em] text-[#d3121f] flex items-center justify-between pt-2 border-t border-[#1f1f1f]"
           >
-            Projects
+            <span>Download Resume PDF</span>
+            <span>↓</span>
           </a>
-          <a
-            href="#mid-row"
-            onClick={() => setMobileOpen(false)}
-            className="text-sm font-semibold uppercase tracking-[0.15em] text-[#a0a0a0] hover:text-[#d3121f]"
-          >
-            Credentials &amp; Skills
-          </a>
-          <a
-            href="#workflow"
-            onClick={() => setMobileOpen(false)}
-            className="text-sm font-semibold uppercase tracking-[0.15em] text-[#a0a0a0] hover:text-[#d3121f]"
-          >
-            Engineering Workflow
-          </a>
-          <a
-            href="#contact"
-            onClick={() => setMobileOpen(false)}
-            className="text-sm font-semibold uppercase tracking-[0.15em] text-[#a0a0a0] hover:text-[#d3121f]"
-          >
-            Contact Anand
-          </a>
-          <div className="pt-4 border-t border-[#1f1f1f] flex items-center justify-between text-xs text-[#a0a0a0]">
-            <span>OPEN FOR ROLES</span>
-            <span className="text-[#d3121f]">✦</span>
-          </div>
         </div>
       )}
     </header>

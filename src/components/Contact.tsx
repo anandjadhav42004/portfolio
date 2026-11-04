@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Mail, Phone, Globe, MapPin, ArrowUpRight, Send, Check } from 'lucide-react';
+import { Mail, Phone, Globe, MapPin, ArrowUpRight, FileText, Check } from 'lucide-react';
 import { portfolioData } from '../data/portfolio';
+import { Magnetic } from './motion/Magnetic';
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -29,17 +30,19 @@ export default function Contact() {
             </p>
           </div>
 
-          <a
-            href={`mailto:${portfolioData.email}`}
-            className="inline-flex items-center gap-4 group cursor-pointer w-fit"
-          >
-            <div className="w-14 h-14 rounded-full border border-[#1f1f1f] flex items-center justify-center group-hover:border-[#d3121f] group-hover:bg-[#d3121f]/10 transition-colors">
-              <ArrowUpRight className="w-6 h-6 text-[#d3121f] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </div>
-            <span className="font-anton text-base sm:text-lg tracking-wider uppercase text-white group-hover:text-[#d3121f] transition-colors">
-              GET IN TOUCH DIRECTLY
-            </span>
-          </a>
+          <Magnetic>
+            <a
+              href={`mailto:${portfolioData.email}`}
+              className="inline-flex items-center gap-4 group cursor-pointer w-fit"
+            >
+              <div className="w-14 h-14 rounded-full border border-[#1f1f1f] flex items-center justify-center group-hover:border-[#d3121f] group-hover:bg-[#d3121f]/10 transition-colors">
+                <ArrowUpRight className="w-6 h-6 text-[#d3121f] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </div>
+              <span className="font-anton text-base sm:text-lg tracking-wider uppercase text-white group-hover:text-[#d3121f] transition-colors">
+                GET IN TOUCH DIRECTLY
+              </span>
+            </a>
+          </Magnetic>
         </div>
 
         {/* ── COLUMN 2: 4 CONTACT ROWS (4 cols) ── */}
@@ -132,13 +135,17 @@ export default function Contact() {
               Download the complete, ATS-formatted curriculum vitae of Anand Jadhav covering education, project metrics, verified SAP credentials, and internships.
             </p>
 
-            <a
-              href={`mailto:${portfolioData.email}?subject=Requesting%20Resume%20Dossier%20-%20Anand%20Jadhav`}
-              className="inline-flex items-center justify-center gap-2 w-full px-5 py-3 rounded-[4px] border border-[#d3121f] bg-[#d3121f]/10 text-white hover:bg-[#d3121f] text-xs font-semibold uppercase tracking-[0.16em] transition-all"
-            >
-              <Send className="w-3.5 h-3.5" />
-              <span>REQUEST RESUME CV</span>
-            </a>
+            <Magnetic className="w-full">
+              <a
+                href="/Anand_Jadhav_Resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 w-full px-5 py-3 rounded-[4px] border border-[#d3121f] bg-[#d3121f] text-white hover:bg-[#e01422] text-xs font-semibold uppercase tracking-[0.16em] transition-all shadow-[0_0_15px_rgba(211,18,31,0.5)]"
+              >
+                <FileText className="w-3.5 h-3.5" />
+                <span>DOWNLOAD RESUME (PDF)</span>
+              </a>
+            </Magnetic>
           </div>
 
           <div className="pt-6 border-t border-[#1f1f1f] mt-8 text-[11px] text-[#6b6b6b] uppercase tracking-wider">

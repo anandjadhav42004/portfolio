@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Building2, Briefcase, Calendar, MapPin, ArrowUpRight, Award, GraduationCap, CheckCircle2 } from 'lucide-react';
 import { experience, education, certifications, skills } from '../data/portfolio';
+import { fadeUp, stagger, buttonHover, buttonTap, springTransition } from '../lib/motion';
+import { ScrollText } from './motion/ScrollText';
 
 const flatSkills = [
   'REACT.JS',
@@ -29,7 +31,13 @@ export default function MidRow() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION TITLE BAR: WORK EXPERIENCE & INTERNSHIPS
       ═══════════════════════════════════════════════════════════ */}
-      <div className="border-b border-[#1f1f1f] bg-[#0d0d0d] px-6 sm:px-12 py-5">
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: '-60px' }}
+        className="border-b border-[#1f1f1f] bg-[#0d0d0d] px-6 sm:px-12 py-5"
+      >
         <div className="max-w-[1440px] mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Briefcase className="w-4 h-4 text-[#d3121f]" />
@@ -41,16 +49,25 @@ export default function MidRow() {
             // 2 INDUSTRY ROLES
           </span>
         </div>
-      </div>
+      </motion.div>
 
       {/* ═══════════════════════════════════════════════════════════
           INTERNSHIP CARDS ROW (SIDE BY SIDE: CURRENT + PREVIOUS)
       ═══════════════════════════════════════════════════════════ */}
-      <div className="border-b border-[#1f1f1f]">
+      <motion.div
+        variants={stagger}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: '-60px' }}
+        className="border-b border-[#1f1f1f]"
+      >
         <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2">
 
           {/* 1. HILTI (CURRENT INTERNSHIP) */}
-          <div className="p-8 sm:p-12 border-b lg:border-b-0 lg:border-r border-[#1f1f1f] flex flex-col justify-between bg-gradient-to-br from-[#120506] via-[#0a0a0a] to-[#0a0a0a] relative group">
+          <motion.div
+            variants={fadeUp}
+            className="p-8 sm:p-12 border-b lg:border-b-0 lg:border-r border-[#1f1f1f] flex flex-col justify-between bg-gradient-to-br from-[#120506] via-[#0a0a0a] to-[#0a0a0a] relative group"
+          >
             <div>
               {/* Badge Row */}
               <div className="flex items-center justify-between gap-4 mb-4">
@@ -114,10 +131,13 @@ export default function MidRow() {
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* 2. UPTOSKILLS (COMPLETED INTERNSHIP) */}
-          <div className="p-8 sm:p-12 flex flex-col justify-between bg-[#0a0a0a] relative group">
+          <motion.div
+            variants={fadeUp}
+            className="p-8 sm:p-12 flex flex-col justify-between bg-[#0a0a0a] relative group"
+          >
             <div>
               {/* Badge Row */}
               <div className="flex items-center justify-between gap-4 mb-4">
@@ -180,15 +200,21 @@ export default function MidRow() {
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
 
         </div>
-      </div>
+      </motion.div>
 
       {/* ═══════════════════════════════════════════════════════════
           LOWER 3-COLUMN ROW: EDUCATION / SKILLS / CERTIFICATIONS
       ═══════════════════════════════════════════════════════════ */}
-      <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12">
+      <motion.div
+        variants={stagger}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: '-60px' }}
+        className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12"
+      >
 
         {/* ── COL 1: FORMAL EDUCATION (4 cols) ── */}
         <div className="lg:col-span-4 p-8 sm:p-12 border-b lg:border-b-0 lg:border-r border-[#1f1f1f] flex flex-col justify-between">
@@ -287,9 +313,10 @@ export default function MidRow() {
               &ldquo;
             </div>
 
-            <p className="font-inter text-sm text-white font-medium leading-relaxed mb-3">
-              Engineering is not just writing code, it is designing reliable systems that solve real-world problems.
-            </p>
+            <ScrollText
+              text="Engineering is not just writing code, it is designing reliable systems that solve real-world problems."
+              className="font-inter text-sm text-white font-medium leading-relaxed mb-3"
+            />
 
             <div className="font-allura text-2xl text-white font-normal">
               Anand Jadhav
@@ -302,7 +329,7 @@ export default function MidRow() {
           </div>
         </div>
 
-      </div>
+      </motion.div>
 
     </section>
   );

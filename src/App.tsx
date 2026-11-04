@@ -1,10 +1,27 @@
 import React, { useState, useEffect } from 'react';
+import Lenis from 'lenis';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import HamburgerMenu from './components/HamburgerMenu';
 import HeroRevamp from './components/HeroRevamp';
 import Projects from './components/Projects';
 import MidRow from './components/MidRow';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import { Cursor } from './components/motion/Cursor';
+
+/** Top Crimson Scroll Progress Indicator */
+function ScrollProgressBar() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 140, damping: 22, restDelta: 0.001 });
+
+  return (
+    <motion.div
+      style={{ scaleX, transformOrigin: '0 0' }}
+      className="fixed top-0 left-0 right-0 h-[3px] bg-[#d3121f] z-50 pointer-events-none shadow-[0_0_14px_rgba(211,18,31,0.7)]"
+      aria-hidden="true"
+    />
+  );
+}
 
 function IntroCurtain() {
   const [percent, setPercent] = useState(0);
@@ -15,12 +32,12 @@ function IntroCurtain() {
       setPercent((prev) => {
         if (prev >= 100) {
           clearInterval(timer);
-          setTimeout(() => setIsDone(true), 300);
+          setTimeout(() => setIsDone(true), 250);
           return 100;
         }
-        return prev + Math.floor(Math.random() * 8) + 4;
+        return prev + Math.floor(Math.random() * 10) + 6;
       });
-    }, 32);
+    }, 28);
     return () => clearInterval(timer);
   }, []);
 
@@ -28,7 +45,7 @@ function IntroCurtain() {
 
   return (
     <div
-      className={`fixed inset-0 z-50 bg-[#070707] flex flex-col items-center justify-center gap-6 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+      className={`fixed inset-0 z-50 bg-[#070707] flex flex-col items-center justify-center gap-6 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
         percent >= 100 ? '-translate-y-full opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >
@@ -78,6 +95,36 @@ function MarqueeTicker() {
 function App() {
   const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
 
+  // ── 1. Smooth Scrolling with Lenis ──
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    // Respect reduced motion preference
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    const lenis = new Lenis({
+      duration: 1.15,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      smoothWheel: true,
+    });
+
+    let rafId: number;
+    const raf = (time: number) => {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    };
+    rafId = requestAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+    };
+  }, []);
+
+  // ── 2. Subtle Mouse Spotlight Listener ──
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY });
@@ -88,6 +135,12 @@ function App() {
 
   return (
     <div className="relative min-h-screen w-full bg-[#0a0a0a] text-white selection:bg-[#d3121f] selection:text-white font-sans overflow-x-hidden">
+      {/* ── Custom Interactive Red Dot Cursor (Desktop Only) ── */}
+      <Cursor />
+
+      {/* ── Top Red Scroll Progress Bar ── */}
+      <ScrollProgressBar />
+
       {/* ── Cinematic Preloader Curtain ── */}
       <IntroCurtain />
 
