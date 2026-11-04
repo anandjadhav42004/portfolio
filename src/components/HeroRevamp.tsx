@@ -91,6 +91,25 @@ export default function HeroRevamp() {
         }}
       />
 
+      {/* ── Cinematic Atmosphere: Subtle Distant Red Bokeh Orbs & Rim Light Streaks ── */}
+      <div aria-hidden="true" className="absolute inset-0 pointer-events-none z-[1] overflow-hidden select-none">
+        {/* Bokeh Orb 1: Upper right shoulder rim */}
+        <div
+          className="absolute right-[18%] md:right-[26%] top-[25%] md:top-[28%] w-[160px] md:w-[240px] h-[160px] md:h-[240px] rounded-full opacity-25 filter blur-[50px] animate-pulse-glow"
+          style={{ background: 'radial-gradient(circle, #d3121f 0%, rgba(211,18,31,0.25) 55%, transparent 100%)' }}
+        />
+        {/* Bokeh Orb 2: Distant left depth */}
+        <div
+          className="absolute left-[20%] md:left-[32%] top-[35%] w-[130px] md:w-[190px] h-[130px] md:h-[190px] rounded-full opacity-20 filter blur-[45px] animate-pulse-glow"
+          style={{ background: 'radial-gradient(circle, #8b0a12 0%, rgba(139,10,18,0.18) 55%, transparent 100%)', animationDelay: '2.5s' }}
+        />
+        {/* Faint Red Rim Light Streak behind shoulders */}
+        <div
+          className="absolute left-1/2 -translate-x-[25%] bottom-[10%] w-[320px] md:w-[420px] h-[280px] md:h-[340px] rounded-full opacity-35 filter blur-[60px]"
+          style={{ background: 'radial-gradient(ellipse at center, rgba(211,18,31,0.48) 0%, rgba(139,10,18,0.2) 50%, transparent 80%)' }}
+        />
+      </div>
+
       {/* ── Desktop Portrait (Layered & Overlapping Typography, translateX(-30%)) ── */}
       {isDesktop && (
         <div
@@ -120,7 +139,7 @@ export default function HeroRevamp() {
                 }
               }}
               alt="Anand Jadhav — Computer Science Engineer"
-              className="h-full w-auto object-cover object-top brightness-100 contrast-105 filter drop-shadow-[0_20px_40px_rgba(211,18,31,0.38)] drop-shadow-[0_0_25px_rgba(211,18,31,0.22)]"
+              className="h-full w-auto object-cover object-top brightness-[1.03] contrast-[1.08] saturate-[1.04] filter drop-shadow-[0_20px_45px_rgba(211,18,31,0.44)] drop-shadow-[0_0_25px_rgba(211,18,31,0.26)]"
               style={{
                 WebkitMaskImage: 'linear-gradient(to right, transparent, #000 12%, #000 88%, transparent), linear-gradient(#000 70%, transparent 99%)',
                 WebkitMaskComposite: 'source-in',
@@ -211,7 +230,7 @@ export default function HeroRevamp() {
                 <img
                   src="/anand_profile.jpg"
                   alt="Anand Jadhav"
-                  className="w-full h-full object-cover object-top filter drop-shadow-[0_15px_30px_rgba(211,18,31,0.4)]"
+                  className="w-full h-full object-cover object-top brightness-[1.03] contrast-[1.08] saturate-[1.04] filter drop-shadow-[0_15px_35px_rgba(211,18,31,0.42)]"
                   style={{
                     WebkitMaskImage: 'linear-gradient(to bottom, #000 78%, transparent 100%)',
                     maskImage: 'linear-gradient(to bottom, #000 78%, transparent 100%)',
