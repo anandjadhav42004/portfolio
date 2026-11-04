@@ -1,0 +1,62 @@
+================================================================================
+ANAND JADHAV — UI/UX DESIGNER & COMPUTER SCIENCE ENGINEER
+PORTFOLIO & CASE STUDY DOSSIER (2026/2027)
+================================================================================
+
+Candidate Name:       Anand Jadhav
+Target Role:          UI/UX Designer / Full-Stack Frontend Engineer
+Education:            B.Tech Computer Science & Engineering (SAP IEP Track, CGPA 8.71)
+Institution:          Parul Institute of Technology, Parul University
+Current Internship:   SAP & IT Intern, Production Planning & Control (PPC)
+                      Hilti Manufacturing India Pvt. Ltd. (Vadodara Plant)
+Email:                anandjadhav42004@gmail.com
+Phone:                +91 83080 08154
+Location:             Vadodara, Gujarat, India
+
+--------------------------------------------------------------------------------
+PORTFOLIO & LIVE PLATFORM LINKS:
+--------------------------------------------------------------------------------
+1. Interactive Portfolio Website:
+   https://github.com/anandjadhav42004/portfolio
+
+2. Flagship UI/UX Case Study (SAP Prognos Live Platform):
+   https://sap-forecast.vercel.app
+
+3. LinkedIn Profile:
+   https://www.linkedin.com/in/anand-jadhav-b599801b5
+
+4. GitHub Engineering Repositories:
+   https://github.com/anandjadhav42004
+
+--------------------------------------------------------------------------------
+FEATURED UI/UX CASE STUDIES SUMMARY:
+--------------------------------------------------------------------------------
+
+1. SAP PROGNOS — AI DEMAND FORECASTING & ANALYTICS COCKPIT
+   • Methodology: 8-Step Double Diamond Design Process
+   • Discovery: 4 In-depth contextual interviews with manufacturing planners
+   • Solution: 3-stage progressive disclosure workflow (Ingest -> Validate -> Sync)
+   • Visual System: SAP Fiori 3.0 Horizon tokens, 4.5:1 WCAG 2.1 AA accessibility
+   • Validation Metrics:
+     - 34% faster weekly planning workflow
+     - 88/100 System Usability Scale (SUS) Score (Grade A)
+     - 100% first-trial task completion rate
+   • Live Demo: https://sap-forecast.vercel.app
+
+2. INVENTORY PRO — WAREHOUSE MANAGEMENT SYSTEM
+   • Platform: SAP BTP, SAPUI5, SAP Fiori, OData V2
+   • Solution: Rebuilt complex picking lists into custom visual KPI cards
+   • Outcome: 30% reduction in warehouse task navigation time
+
+3. PROFLOW — SAAS PROJECT MANAGEMENT PLATFORM
+   • Stack: Angular, Node.js, MongoDB, Google Gemini AI API, JWT
+   • Solution: AI-assisted sprint planning canvas and role-based access control
+   • Outcome: 55% team velocity improvement
+
+--------------------------------------------------------------------------------
+CORE UI/UX TOOLING & SKILLS:
+--------------------------------------------------------------------------------
+• Design: Figma, Wireframing, User Research, Journey Mapping, Usability Testing (SUS),
+          Information Architecture, WCAG 2.1 AA Accessibility, SAP Fiori Horizon.
+• Tech:   React.js, Next.js, TypeScript, SAPUI5, Tailwind CSS, Framer Motion, Python.
+================================================================================

@@ -1,0 +1,220 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [6 0 R 12 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique >>
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 7 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Annots [8 0 R 9 0 R 10 0 R 11 0 R] >>
+endobj
+7 0 obj
+<< /Length 7529 >>
+stream
+0.06 0.06 0.06 rg 0 690 612 102 re f
+0.827 0.071 0.122 rg 0 687 612 3 re f
+BT /F2 22 Tf 1 1 1 rg 36 754 Td (ANAND JADHAV) Tj ET
+BT /F2 10 Tf 0.827 0.071 0.122 rg 36 738 Td (LEAD UI/UX DESIGNER & COMPUTER SCIENCE ENGINEER) Tj ET
+BT /F1 9 Tf 0.7 0.7 0.7 rg 36 724 Td (Parul University | B.Tech CSE (SAP IEP Track, CGPA 8.71) | Vadodara, Gujarat) Tj ET
+BT /F1 9 Tf 0.7 0.7 0.7 rg 36 710 Td (Current: SAP & IT Intern at Hilti Manufacturing India | Phone: +91 83080 08154) Tj ET
+0.827 0.071 0.122 rg 400 750 176 22 re f
+BT /F2 9 Tf 1 1 1 rg 412 757 Td ([+] LIVE WEB PORTFOLIO) Tj ET
+0.15 0.15 0.15 rg 400 724 85 18 re f
+BT /F2 8 Tf 1 1 1 rg 415 729 Td (LINKEDIN ->) Tj ET
+0.15 0.15 0.15 rg 491 724 85 18 re f
+BT /F2 8 Tf 1 1 1 rg 506 729 Td (GITHUB ->) Tj ET
+BT /F2 11 Tf 0.827 0.071 0.122 rg 36 666 Td (01. HUMAN-CENTERED UI/UX METHODOLOGY (DOUBLE DIAMOND)) Tj ET
+0.85 0.85 0.85 RG 1 w 36 660 m 576 660 l S
+0.96 0.96 0.96 rg 36 612 127 42 re f
+0.85 0.85 0.85 RG 0.5 w 36 612 127 42 re S
+BT /F2 8.5 Tf 0.827 0.071 0.122 rg 42 642 Td (1. DISCOVER) Tj ET
+BT /F1 7.5 Tf 0.25 0.25 0.25 rg 42 628 Td (Contextual user interviews, fiel) Tj ET
+BT /F1 7.5 Tf 0.25 0.25 0.25 rg 42 618 Td (d shadowing, friction mapping.) Tj ET
+0.96 0.96 0.96 rg 173 612 127 42 re f
+0.85 0.85 0.85 RG 0.5 w 173 612 127 42 re S
+BT /F2 8.5 Tf 0.827 0.071 0.122 rg 179 642 Td (2. DEFINE) Tj ET
+BT /F1 7.5 Tf 0.25 0.25 0.25 rg 179 628 Td (Persona modeling, journey mappin) Tj ET
+BT /F1 7.5 Tf 0.25 0.25 0.25 rg 179 618 Td (g, task hierarchy tree.) Tj ET
+0.96 0.96 0.96 rg 310 612 127 42 re f
+0.85 0.85 0.85 RG 0.5 w 310 612 127 42 re S
+BT /F2 8.5 Tf 0.827 0.071 0.122 rg 316 642 Td (3. DEVELOP) Tj ET
+BT /F1 7.5 Tf 0.25 0.25 0.25 rg 316 628 Td (Lo-fi wireframing, SAP Fiori Hor) Tj ET
+BT /F1 7.5 Tf 0.25 0.25 0.25 rg 316 618 Td (izon design tokens, atomic UI.) Tj ET
+0.96 0.96 0.96 rg 447 612 127 42 re f
+0.85 0.85 0.85 RG 0.5 w 447 612 127 42 re S
+BT /F2 8.5 Tf 0.827 0.071 0.122 rg 453 642 Td (4. DELIVER) Tj ET
+BT /F1 7.5 Tf 0.25 0.25 0.25 rg 453 628 Td (Interactive prototyping, usabili) Tj ET
+BT /F1 7.5 Tf 0.25 0.25 0.25 rg 453 618 Td (ty testing, SUS benchmarking.) Tj ET
+BT /F2 11 Tf 0.827 0.071 0.122 rg 36 588 Td (02. FLAGSHIP CASE STUDY: SAP PROGNOS (AI DEMAND FORECASTING)) Tj ET
+0.85 0.85 0.85 RG 1 w 36 582 m 576 582 l S
+0.98 0.98 0.98 rg 36 332 540 242 re f
+0.8 0.8 0.8 RG 1 w 36 332 540 242 re S
+BT /F2 12 Tf 0.1 0.1 0.1 rg 50 556 Td (SAP Prognos: Enterprise Demand Forecasting & Analytics Cockpit) Tj ET
+BT /F3 8.5 Tf 0.45 0.45 0.45 rg 50 544 Td (Role: Lead UX/UI & Frontend Developer | Tools: Figma, SAPUI5, FastAPI, Prophet, XGBoost) Tj ET
+BT /F2 8.5 Tf 0.827 0.071 0.122 rg 50 524 Td ([+] Problem Statement:) Tj ET
+BT /F1 8 Tf 0.25 0.25 0.25 rg 62 512 Td (Plant supply chain planners managed forecasting across 4 disparate Excel spreadsheets and Python) Tj ET
+BT /F1 8 Tf 0.25 0.25 0.25 rg 62 502 Td ( scripts. Lack of real-time actual-vs-forecast comparison caused 18% inventory discrepancies and 47-minute weekly planning bottlenecks.) Tj ET
+BT /F2 8.5 Tf 0.827 0.071 0.122 rg 50 488 Td ([+] User Research & Personas:) Tj ET
+BT /F1 8 Tf 0.25 0.25 0.25 rg 62 476 Td (Shadowed 4 production planners at plant level. Formulated primary persona 'Vikram \(38\), Lead Inv) Tj ET
+BT /F1 8 Tf 0.25 0.25 0.25 rg 62 466 Td (entory Planner', who needed transparent model validation without requiring raw mathematical or code debugging skills.) Tj ET
+BT /F2 8.5 Tf 0.827 0.071 0.122 rg 50 452 Td ([+] Information Architecture & Wireframes:) Tj ET
+BT /F1 8 Tf 0.25 0.25 0.25 rg 62 440 Td (Engineered a 3-stage progressive disclosure architecture \(Ingest Data -> Validate MAPE Curves ->) Tj ET
+BT /F1 8 Tf 0.25 0.25 0.25 rg 62 430 Td ( 1-Click SAP ERP Sync\). Replaced 14 raw parameters with 3 adaptive presets, reducing cognitive load.) Tj ET
+BT /F2 8.5 Tf 0.827 0.071 0.122 rg 50 416 Td ([+] UI Design System & Accessibility:) Tj ET
+BT /F1 8 Tf 0.25 0.25 0.25 rg 62 404 Td (Built an enterprise design system adhering strictly to SAP Fiori 3.0 Horizon. Enforced 4.5:1 WCA) Tj ET
+BT /F1 8 Tf 0.25 0.25 0.25 rg 62 394 Td (G 2.1 AA contrast standards, calibrated 8px layout grid, and applied deep charcoal backgrounds with signature crimson alerts.) Tj ET
+BT /F2 8.5 Tf 0.827 0.071 0.122 rg 50 380 Td ([+] Measured Business & UX Impact:) Tj ET
+BT /F1 8 Tf 0.25 0.25 0.25 rg 62 368 Td (Conducted standardized System Usability Scale \(SUS\) benchmark testing with 6 participants: SUS r) Tj ET
+BT /F1 8 Tf 0.25 0.25 0.25 rg 62 358 Td (eached 88/100 \(Grade A\). Workflow duration reduced by 34%, with 100% first-trial task completion rate.) Tj ET
+0.92 0.92 0.92 rg 50 342 512 28 re f
+0.827 0.071 0.122 RG 1 w 50 342 512 28 re S
+BT /F2 9 Tf 0.827 0.071 0.122 rg 60 353 Td (KEY VALIDATION METRICS:) Tj ET
+BT /F2 9 Tf 0.1 0.1 0.1 rg 195 353 Td (34% FASTER WORKFLOW  |  SUS 88/100 (GRADE A)  |  97.9% ACCURACY) Tj ET
+BT /F2 8.5 Tf 0.827 0.071 0.122 rg 475 353 Td ([LIVE DEMO ->]) Tj ET
+BT /F2 11 Tf 0.827 0.071 0.122 rg 36 308 Td (03. BEFORE VS AFTER INTERFACE TRANSFORMATION) Tj ET
+0.85 0.85 0.85 RG 1 w 36 302 m 576 302 l S
+0.97 0.93 0.93 rg 36 210 260 84 re f
+0.8 0.4 0.4 RG 1 w 36 210 260 84 re S
+BT /F2 9.5 Tf 0.7 0.1 0.1 rg 46 278 Td (BEFORE: Legacy Excel & Isolated Scripts) Tj ET
+BT /F1 8 Tf 0.3 0.3 0.3 rg 46 264 Td (- 47 minutes average weekly planning duration) Tj ET
+BT /F1 8 Tf 0.3 0.3 0.3 rg 46 250 Td (- Cluttered rows with unvalidated manual formula errors) Tj ET
+BT /F1 8 Tf 0.3 0.3 0.3 rg 46 236 Td (- Zero visual confidence bands or forecast curves) Tj ET
+BT /F2 8.5 Tf 0.7 0.1 0.1 rg 46 220 Td (System Usability Scale: 42 / 100 (Failing)) Tj ET
+0.93 0.97 0.93 rg 316 210 260 84 re f
+0.2 0.7 0.2 RG 1 w 316 210 260 84 re S
+BT /F2 9.5 Tf 0.1 0.5 0.1 rg 326 278 Td (AFTER: Redesigned SAP Fiori Horizon Cockpit) Tj ET
+BT /F1 8 Tf 0.3 0.3 0.3 rg 326 264 Td (- 31 minutes planning duration (34% time savings)) Tj ET
+BT /F1 8 Tf 0.3 0.3 0.3 rg 326 250 Td (- Progressive disclosure: 14 parameters in 3 presets) Tj ET
+BT /F1 8 Tf 0.3 0.3 0.3 rg 326 236 Td (- Real-time interactive Prophet vs XGBoost MAPE curves) Tj ET
+BT /F2 8.5 Tf 0.1 0.5 0.1 rg 326 220 Td (System Usability Scale: 88 / 100 (Grade A Excellence)) Tj ET
+BT /F2 11 Tf 0.827 0.071 0.122 rg 36 186 Td (04. CORE UI/UX & ENGINEERING COMPETENCIES) Tj ET
+0.85 0.85 0.85 RG 1 w 36 180 m 576 180 l S
+BT /F2 8.5 Tf 0.2 0.2 0.2 rg 36 168 Td (UX RESEARCH & STRATEGY:) Tj ET
+BT /F1 8 Tf 0.4 0.4 0.4 rg 180 168 Td (User Interviews, Persona Modeling, Journey Mapping, Usability Testing \(SUS\), Heuri) Tj ET
+BT /F1 8 Tf 0.4 0.4 0.4 rg 180 157 Td (stic Evaluation, Information Architecture, Double Diamond Methodology.) Tj ET
+BT /F2 8.5 Tf 0.2 0.2 0.2 rg 36 145 Td (UI & VISUAL CRAFT:) Tj ET
+BT /F1 8 Tf 0.4 0.4 0.4 rg 180 145 Td (Figma Design Systems, SAP Fiori 3.0 Horizon, Design Tokens, Atomic Component Libra) Tj ET
+BT /F1 8 Tf 0.4 0.4 0.4 rg 180 134 Td (ries, Responsive 8px Grid, WCAG 2.1 AA Accessibility, High-Fidelity Prototyping.) Tj ET
+BT /F2 8.5 Tf 0.2 0.2 0.2 rg 36 122 Td (FRONTEND & SAP TECH:) Tj ET
+BT /F1 8 Tf 0.4 0.4 0.4 rg 180 122 Td (React.js, Next.js, TypeScript, SAPUI5, Tailwind CSS, Framer Motion, Angular, REST ) Tj ET
+BT /F1 8 Tf 0.4 0.4 0.4 rg 180 111 Td (APIs, FastAPI, Python, Node.js, Git & GitHub CI/CD, SAP S/4HANA Cloud \(PP/PPC\).) Tj ET
+0.85 0.85 0.85 RG 0.5 w 36 45 m 576 45 l S
+BT /F1 8 Tf 0.5 0.5 0.5 rg 36 32 Td (Anand Jadhav | UI/UX Designer & Full-Stack Engineer | Portfolio Dossier) Tj ET
+BT /F2 8 Tf 0.827 0.071 0.122 rg 450 32 Td (CONTINUED ON PAGE 2 ->) Tj ET
+endstream
+endobj
+8 0 obj
+<< /Type /Annot /Subtype /Link /Rect [400 750 576 772] /Border [0 0 0] /A << /S /URI /URI (https://github.com/anandjadhav42004/portfolio) >> >>
+endobj
+9 0 obj
+<< /Type /Annot /Subtype /Link /Rect [400 724 485 742] /Border [0 0 0] /A << /S /URI /URI (https://www.linkedin.com/in/anand-jadhav-b599801b5) >> >>
+endobj
+10 0 obj
+<< /Type /Annot /Subtype /Link /Rect [491 724 576 742] /Border [0 0 0] /A << /S /URI /URI (https://github.com/anandjadhav42004) >> >>
+endobj
+11 0 obj
+<< /Type /Annot /Subtype /Link /Rect [470 345 555 365] /Border [0 0 0] /A << /S /URI /URI (https://sap-forecast.vercel.app) >> >>
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 13 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Annots [14 0 R 15 0 R 16 0 R] >>
+endobj
+13 0 obj
+<< /Length 5116 >>
+stream
+0.06 0.06 0.06 rg 0 740 612 52 re f
+0.827 0.071 0.122 rg 0 737 612 3 re f
+BT /F2 13 Tf 1 1 1 rg 36 756 Td (ANAND JADHAV - UI/UX DESIGN & ENGINEERING DOSSIER) Tj ET
+BT /F1 8.5 Tf 0.7 0.7 0.7 rg 450 756 Td (PAGE 02 // EXPERIENCE & PROJECTS) Tj ET
+BT /F2 11 Tf 0.827 0.071 0.122 rg 36 714 Td (05. ADDITIONAL PRODUCTION CASE STUDIES) Tj ET
+0.85 0.85 0.85 RG 1 w 36 708 m 576 708 l S
+0.98 0.98 0.98 rg 36 590 540 108 re f
+0.85 0.85 0.85 RG 1 w 36 590 540 108 re S
+BT /F2 10.5 Tf 0.1 0.1 0.1 rg 48 680 Td (Case Study 02: Inventory Pro - Warehouse Management System (SAP BTP & Fiori)) Tj ET
+BT /F3 8 Tf 0.45 0.45 0.45 rg 48 668 Td (Stack: SAPUI5, SAP Fiori Horizon, OData, SAP BTP, JavaScript | Role: UI/UX & Frontend Lead) Tj ET
+BT /F1 8.5 Tf 0.25 0.25 0.25 rg 48 652 Td (- Problem: Warehouse managers experienced high cognitive fatigue scanning dense tabular data across picking lists.) Tj ET
+BT /F1 8.5 Tf 0.25 0.25 0.25 rg 48 640 Td (- UX Redesign: Rebuilt navigation tree with custom visual KPI cards and contextual search filters.) Tj ET
+BT /F1 8.5 Tf 0.25 0.25 0.25 rg 48 628 Td (- Outcome: Cut task navigation duration by 30% and eliminated picking reconciliation bottlenecks.) Tj ET
+BT /F2 8.5 Tf 0.827 0.071 0.122 rg 48 606 Td (VALIDATION: 30% REDUCTION IN NAVIGATION TIME | SEAMLESS ODATA V2 INTEGRATION) Tj ET
+0.98 0.98 0.98 rg 36 468 540 110 re f
+0.85 0.85 0.85 RG 1 w 36 468 540 110 re S
+BT /F2 10.5 Tf 0.1 0.1 0.1 rg 48 558 Td (Case Study 03: ProFlow - SaaS Project Management Platform (Angular + Gemini AI)) Tj ET
+BT /F3 8 Tf 0.45 0.45 0.45 rg 48 546 Td (Stack: Angular, Node.js, MongoDB, Google Gemini API, JWT Auth | Role: Full-Stack & UI Engineer) Tj ET
+BT /F1 8.5 Tf 0.25 0.25 0.25 rg 48 530 Td (- Problem: Cross-functional software squads suffered from delayed sprint estimations and fragmented user stories.) Tj ET
+BT /F1 8.5 Tf 0.25 0.25 0.25 rg 48 518 Td (- UX Redesign: Designed an AI-assisted sprint planning canvas with drag-and-drop Kanbans and clear RBAC hierarchy.) Tj ET
+BT /F1 8.5 Tf 0.25 0.25 0.25 rg 48 506 Td (- Outcome: Accelerated sprint setup from 2.5 hours to 15 minutes, boosting squad velocity by 55%.) Tj ET
+BT /F2 8.5 Tf 0.827 0.071 0.122 rg 48 484 Td (VALIDATION: 55% SPRINT PLANNING TIME IMPROVEMENT | ROLE-BASED ACCESS CONTROL) Tj ET
+BT /F2 11 Tf 0.827 0.071 0.122 rg 36 444 Td (06. INDUSTRIAL EXPERIENCE & ENTERPRISE ROLES) Tj ET
+0.85 0.85 0.85 RG 1 w 36 438 m 576 438 l S
+BT /F2 9.5 Tf 0.1 0.1 0.1 rg 36 422 Td (Hilti Manufacturing India Pvt. Ltd. | SAP and Information Technology Intern) Tj ET
+BT /F3 8.5 Tf 0.827 0.071 0.122 rg 420 422 Td (July 2026 - Present | Vadodara Plant) Tj ET
+BT /F1 8.5 Tf 0.3 0.3 0.3 rg 36 410 Td (- Stationed on-site in the Production Planning and Control (PPC) team supporting SAP S/4HANA Cloud operations.) Tj ET
+BT /F1 8.5 Tf 0.3 0.3 0.3 rg 36 398 Td (- Analyze industrial shopfloor workflows, collaborate directly with business users, and bridge UI requirements with ERP systems.) Tj ET
+BT /F2 9.5 Tf 0.1 0.1 0.1 rg 36 376 Td (UptoSkills | Backend Developer Intern) Tj ET
+BT /F3 8.5 Tf 0.827 0.071 0.122 rg 420 376 Td (May 2026 - August 2026 | Remote) Tj ET
+BT /F1 8.5 Tf 0.3 0.3 0.3 rg 36 364 Td (- Engineered robust RESTful endpoints with Node.js and Express; optimized MongoDB query execution by 28%.) Tj ET
+BT /F1 8.5 Tf 0.3 0.3 0.3 rg 36 352 Td (- Partnered with frontend designers to enforce schema contracts and ensure zero data mismatch during sprint releases.) Tj ET
+BT /F2 11 Tf 0.827 0.071 0.122 rg 36 330 Td (07. ACADEMIC CREDENTIALS & EDUCATION) Tj ET
+0.85 0.85 0.85 RG 1 w 36 324 m 576 324 l S
+BT /F2 9 Tf 0.1 0.1 0.1 rg 36 308 Td (Parul Institute of Technology, Parul University - B.Tech Computer Science & Engineering) Tj ET
+BT /F2 9 Tf 0.827 0.071 0.122 rg 450 308 Td (CGPA: 8.71 / 10 | 2023 - 2027) Tj ET
+BT /F1 8.5 Tf 0.4 0.4 0.4 rg 36 296 Td (Specialization: SAP Industry Enabled Program (IEP) | Enrollment: 2303031570026) Tj ET
+BT /F2 9 Tf 0.1 0.1 0.1 rg 36 278 Td (Maharashtra State Board (HSC) - 12th Science) Tj ET
+BT /F2 9 Tf 0.827 0.071 0.122 rg 450 278 Td (Score: 94.00% | 2021 - 2023) Tj ET
+0.96 0.96 0.96 rg 36 172 540 88 re f
+0.827 0.071 0.122 RG 1.5 w 36 172 540 88 re S
+BT /F2 10.5 Tf 0.827 0.071 0.122 rg 48 240 Td (READY FOR UI/UX & FULL-STACK ENGINEERING INTERVIEWS) Tj ET
+BT /F1 8.5 Tf 0.25 0.25 0.25 rg 48 226 Td (Available immediately for full-time frontend, UI/UX, and SAP software engineering roles.) Tj ET
+BT /F1 8.5 Tf 0.25 0.25 0.25 rg 48 212 Td (Email: anandjadhav42004@gmail.com   |   Phone: +91 83080 08154   |   Location: Vadodara, Gujarat, India) Tj ET
+0.827 0.071 0.122 rg 48 184 150 20 re f
+BT /F2 8 Tf 1 1 1 rg 58 190 Td ([+] VISIT LIVE PORTFOLIO) Tj ET
+0.15 0.15 0.15 rg 208 184 140 20 re f
+BT /F2 8 Tf 1 1 1 rg 218 190 Td (EXPLORE SAP PROGNOS) Tj ET
+0.15 0.15 0.15 rg 358 184 120 20 re f
+BT /F2 8 Tf 1 1 1 rg 368 190 Td (VIEW LINKEDIN) Tj ET
+0.85 0.85 0.85 RG 0.5 w 36 45 m 576 45 l S
+BT /F1 8 Tf 0.5 0.5 0.5 rg 36 32 Td (Anand Jadhav | Official UI/UX Designer & Software Engineer Dossier | Page 2 of 2) Tj ET
+BT /F2 8 Tf 0.827 0.071 0.122 rg 450 32 Td (VERIFIED PORTFOLIO 2026/2027) Tj ET
+endstream
+endobj
+14 0 obj
+<< /Type /Annot /Subtype /Link /Rect [48 184 198 204] /Border [0 0 0] /A << /S /URI /URI (https://github.com/anandjadhav42004/portfolio) >> >>
+endobj
+15 0 obj
+<< /Type /Annot /Subtype /Link /Rect [208 184 348 204] /Border [0 0 0] /A << /S /URI /URI (https://sap-forecast.vercel.app) >> >>
+endobj
+16 0 obj
+<< /Type /Annot /Subtype /Link /Rect [358 184 478 204] /Border [0 0 0] /A << /S /URI /URI (https://www.linkedin.com/in/anand-jadhav-b599801b5) >> >>
+endobj
+xref
+0 17
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000122 00000 n 
+0000000192 00000 n 
+0000000267 00000 n 
+0000000345 00000 n 
+0000000527 00000 n 
+0000008108 00000 n 
+0000008267 00000 n 
+0000008431 00000 n 
+0000008581 00000 n 
+0000008727 00000 n 
+0000008906 00000 n 
+0000014075 00000 n 
+0000014234 00000 n 
+0000014380 00000 n 
+trailer
+<< /Size 17 /Root 1 0 R >>
+startxref
+14545
+%%EOF
