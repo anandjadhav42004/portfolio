@@ -13,7 +13,7 @@ export default function Projects() {
   const displayProjects = showAll ? projects : projects.slice(0, 3);
 
   return (
-    <section id="projects" className="w-full bg-[#0a0a0a] border-b border-[#1f1f1f] py-20 px-6 sm:px-12 select-none">
+    <section id="projects" className="w-full bg-[#0a0a0a] border-b border-[#1f1f1f] py-16 md:py-32 px-5 sm:px-8 md:px-12 overflow-x-clip select-none">
       <motion.div
         variants={stagger}
         initial="hidden"
@@ -23,9 +23,12 @@ export default function Projects() {
       >
 
         {/* ── Section Header with Scroll Reveal ── */}
-        <motion.div variants={fadeUp} className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-12">
-          <div className="flex items-center gap-6 flex-1">
-            <h2 className="font-anton text-2xl sm:text-3xl tracking-[0.1em] text-white uppercase whitespace-nowrap">
+        <motion.div variants={fadeUp} className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-6 mb-10 md:mb-14">
+          <div className="flex items-center gap-4 sm:gap-6 flex-1">
+            <h2
+              className="font-anton tracking-[0.1em] text-white uppercase"
+              style={{ fontSize: 'clamp(20px, 4vw, 32px)' }}
+            >
               SELECTED ENGINEERING PROJECTS
             </h2>
             <div className="hidden sm:block flex-1 h-[1px] bg-gradient-to-r from-[#d3121f]/60 via-[#1f1f1f] to-transparent" />
@@ -39,7 +42,7 @@ export default function Projects() {
               whileHover={buttonHover}
               whileTap={buttonTap}
               transition={springTransition}
-              className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.16em] uppercase text-[#a0a0a0] hover:text-[#d3121f] transition-colors group px-2 py-1"
+              className="inline-flex items-center gap-2 min-h-[44px] text-xs font-semibold tracking-[0.16em] uppercase text-[#a0a0a0] hover:text-[#d3121f] transition-colors group px-3 py-2"
             >
               <span>VIEW ALL ON GITHUB</span>
               <ArrowUpRight className="w-4 h-4 text-[#6b6b6b] group-hover:text-[#d3121f] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -142,7 +145,7 @@ export default function Projects() {
               whileHover={buttonHover}
               whileTap={buttonTap}
               transition={springTransition}
-              className="group px-7 py-3 rounded border border-[#2a2a2a] bg-[#0d0d0d] text-xs font-semibold uppercase tracking-[0.2em] text-[#a0a0a0] hover:text-white hover:border-[#d3121f] hover:shadow-[0_0_20px_rgba(211,18,31,0.4)] transition-all flex items-center gap-3"
+              className="group min-h-[44px] px-7 py-3 rounded border border-[#2a2a2a] bg-[#0d0d0d] text-xs font-semibold uppercase tracking-[0.2em] text-[#a0a0a0] hover:text-white hover:border-[#d3121f] hover:shadow-[0_0_20px_rgba(211,18,31,0.4)] transition-all flex items-center gap-3"
             >
               <span>{showAll ? 'Show Fewer Projects' : `View All ${projects.length} Engineering Projects`}</span>
               <span className="text-[#d3121f] group-hover:translate-y-0.5 transition-transform">

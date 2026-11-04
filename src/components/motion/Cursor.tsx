@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { useIsDesktop } from '../../hooks/useIsDesktop';
 
 export function Cursor() {
+  const isDesktop = useIsDesktop();
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
   const sx = useSpring(x, { stiffness: 500, damping: 38 });
@@ -10,9 +12,7 @@ export function Cursor() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    // Don't render or listen on touch devices
-    if (window.matchMedia('(pointer: coarse)').matches) return;
+    if (!isDesktop) return;
 
     const move = (e: MouseEvent) => {
       setVisible(true);
@@ -30,7 +30,10 @@ export function Cursor() {
       window.removeEventListener('mousemove', move);
       document.removeEventListener('mouseleave', leave);
     };
-  }, [x, y]);
+  }, [isDesktop, x, y]);
+
+  // Completely unmounted on touch/mobile
+  if (!isDesktop) return null;
 
   return (
     <motion.div
@@ -43,7 +46,7 @@ export function Cursor() {
         scale: { type: 'spring', stiffness: 350, damping: 24 },
         opacity: { duration: 0.15 },
       }}
-      className="fixed top-0 left-0 w-4 h-4 rounded-full bg-[#d3121f] pointer-events-none z-[100] hidden md:block shadow-[0_0_15px_rgba(211,18,31,0.85)] mix-blend-screen"
+      className="fixed top-0 left-0 w-4 h-4 rounded-full bg-[#d3121f] pointer-events-none z-[100] shadow-[0_0_15px_rgba(211,18,31,0.85)] mix-blend-screen"
       aria-hidden="true"
     />
   );

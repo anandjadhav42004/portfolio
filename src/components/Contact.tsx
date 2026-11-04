@@ -13,13 +13,16 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="w-full bg-[#0a0a0a] border-b border-[#1f1f1f]">
+    <section id="contact" className="w-full bg-[#0a0a0a] border-b border-[#1f1f1f] overflow-x-clip">
       <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12">
 
         {/* ── COLUMN 1: HEADING & CTA (5 cols) ── */}
-        <div className="lg:col-span-5 p-8 sm:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-[#1f1f1f] flex flex-col justify-between">
+        <div className="lg:col-span-5 p-6 sm:p-8 md:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-[#1f1f1f] flex flex-col justify-between">
           <div>
-            <h2 className="font-anton text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white uppercase leading-[0.95] mb-6">
+            <h2
+              className="font-anton tracking-tight text-white uppercase leading-[0.95] mb-6"
+              style={{ fontSize: 'clamp(32px, 7vw, 56px)' }}
+            >
               LET'S WORK<br />
               TOGETHER <span className="text-[#d3121f]">✦</span>
             </h2>
@@ -33,10 +36,10 @@ export default function Contact() {
           <Magnetic>
             <a
               href={`mailto:${portfolioData.email}`}
-              className="inline-flex items-center gap-4 group cursor-pointer w-fit"
+              className="inline-flex items-center gap-4 group cursor-pointer w-fit min-h-[44px]"
             >
-              <div className="w-14 h-14 rounded-full border border-[#1f1f1f] flex items-center justify-center group-hover:border-[#d3121f] group-hover:bg-[#d3121f]/10 transition-colors">
-                <ArrowUpRight className="w-6 h-6 text-[#d3121f] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-[#1f1f1f] flex items-center justify-center group-hover:border-[#d3121f] group-hover:bg-[#d3121f]/10 transition-colors">
+                <ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6 text-[#d3121f] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </div>
               <span className="font-anton text-base sm:text-lg tracking-wider uppercase text-white group-hover:text-[#d3121f] transition-colors">
                 GET IN TOUCH DIRECTLY
@@ -46,10 +49,10 @@ export default function Contact() {
         </div>
 
         {/* ── COLUMN 2: 4 CONTACT ROWS (4 cols) ── */}
-        <div className="lg:col-span-4 p-8 sm:p-12 lg:p-16 border-b md:border-b-0 lg:border-r border-[#1f1f1f] flex flex-col justify-center gap-6">
+        <div className="lg:col-span-4 p-6 sm:p-8 md:p-12 lg:p-16 border-b md:border-b-0 lg:border-r border-[#1f1f1f] flex flex-col justify-center gap-6">
           
           {/* Email */}
-          <div className="flex items-center gap-4 group">
+          <div className="flex items-center gap-4 group min-h-[44px]">
             <button
               onClick={copyEmail}
               className="w-11 h-11 rounded-full border border-[#1f1f1f] flex items-center justify-center text-[#a0a0a0] group-hover:border-[#d3121f] group-hover:text-[#d3121f] transition-colors flex-shrink-0"
@@ -61,7 +64,7 @@ export default function Contact() {
               <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#6b6b6b]">EMAIL</span>
               <a
                 href={`mailto:${portfolioData.email}`}
-                className="text-xs sm:text-sm font-medium text-white hover:text-[#d3121f] transition-colors"
+                className="text-xs sm:text-sm font-medium text-white hover:text-[#d3121f] transition-colors break-all"
               >
                 {portfolioData.email}
               </a>
@@ -69,7 +72,7 @@ export default function Contact() {
           </div>
 
           {/* Phone */}
-          <div className="flex items-center gap-4 group">
+          <div className="flex items-center gap-4 group min-h-[44px]">
             <a
               href={`tel:${portfolioData.phone}`}
               className="w-11 h-11 rounded-full border border-[#1f1f1f] flex items-center justify-center text-[#a0a0a0] group-hover:border-[#d3121f] group-hover:text-[#d3121f] transition-colors flex-shrink-0"
@@ -88,7 +91,7 @@ export default function Contact() {
           </div>
 
           {/* LinkedIn */}
-          <div className="flex items-center gap-4 group">
+          <div className="flex items-center gap-4 group min-h-[44px]">
             <a
               href={`https://www.linkedin.com/in/${portfolioData.linkedin}`}
               target="_blank"
@@ -103,7 +106,7 @@ export default function Contact() {
                 href={`https://www.linkedin.com/in/${portfolioData.linkedin}`}
                 target="_blank"
                 rel="noreferrer"
-                className="text-xs sm:text-sm font-medium text-white hover:text-[#d3121f] transition-colors"
+                className="text-xs sm:text-sm font-medium text-white hover:text-[#d3121f] transition-colors break-all"
               >
                 linkedin.com/in/{portfolioData.linkedin}
               </a>
@@ -111,7 +114,7 @@ export default function Contact() {
           </div>
 
           {/* Location */}
-          <div className="flex items-center gap-4 group">
+          <div className="flex items-center gap-4 group min-h-[44px]">
             <div className="w-11 h-11 rounded-full border border-[#1f1f1f] flex items-center justify-center text-[#a0a0a0] flex-shrink-0">
               <MapPin className="w-4 h-4 text-[#d3121f]" />
             </div>
@@ -126,7 +129,7 @@ export default function Contact() {
         </div>
 
         {/* ── COLUMN 3: RESUME & PROVENANCE (3 cols) ── */}
-        <div className="lg:col-span-3 p-8 sm:p-12 lg:p-16 flex flex-col justify-between bg-[#0f0f0f]/40">
+        <div className="lg:col-span-3 p-6 sm:p-8 md:p-12 lg:p-16 flex flex-col justify-between bg-[#0f0f0f]/40">
           <div>
             <div className="text-[10px] font-bold tracking-[0.22em] uppercase text-[#d3121f] mb-3">
               OFFICIAL RESUME DOSSIER

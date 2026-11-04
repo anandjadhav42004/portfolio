@@ -36,14 +36,14 @@ export default function HamburgerMenu() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#1f1f1f]">
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-12 py-4 flex items-center justify-between">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-12 py-3 md:py-4 flex items-center justify-between">
         
         {/* Left: Engineering Titles */}
-        <a href="#hero" className="flex flex-col text-left group">
-          <span className="font-anton text-sm tracking-[0.16em] uppercase text-[#d3121f] group-hover:text-red-400 transition-colors">
+        <a href="#hero" className="flex flex-col text-left group py-1">
+          <span className="font-anton text-xs sm:text-sm tracking-[0.16em] uppercase text-[#d3121f] group-hover:text-red-400 transition-colors">
             COMPUTER SCIENCE ENGINEER
           </span>
-          <span className="text-[11px] font-medium tracking-[0.12em] text-[#6b6b6b] uppercase">
+          <span className="text-[10px] sm:text-[11px] font-medium tracking-[0.12em] text-[#6b6b6b] uppercase">
             FULL-STACK &amp; SAP DEVELOPER
           </span>
         </a>
@@ -56,7 +56,7 @@ export default function HamburgerMenu() {
               <a
                 key={item.id}
                 href={item.href}
-                className={`relative text-xs font-semibold uppercase tracking-[0.15em] transition-colors group py-1 ${
+                className={`relative text-xs font-semibold uppercase tracking-[0.15em] transition-colors group py-2 min-h-[44px] flex items-center ${
                   isActive ? 'text-white' : 'text-[#a0a0a0] hover:text-white'
                 }`}
               >
@@ -83,29 +83,29 @@ export default function HamburgerMenu() {
             <span className="text-[#d3121f] text-sm animate-pulse">✦</span>
           </div>
 
-          {/* Mobile Hamburger Toggle */}
+          {/* Mobile Hamburger Toggle (Min 44px tap target) */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden w-10 h-10 rounded-full border border-[#1f1f1f] flex flex-col items-center justify-center gap-1 text-white hover:border-[#d3121f] transition-colors focus-visible:outline-[#d3121f]"
+            className="md:hidden w-11 h-11 min-w-[44px] min-h-[44px] rounded-full border border-[#1f1f1f] flex flex-col items-center justify-center gap-1.5 text-white hover:border-[#d3121f] transition-colors focus-visible:outline-[#d3121f]"
             aria-label="Toggle Navigation Menu"
           >
-            <span className={`w-4 h-0.5 bg-white transition-all ${mobileOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
+            <span className={`w-4 h-0.5 bg-white transition-all ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`} />
             <span className={`w-4 h-0.5 bg-white transition-opacity ${mobileOpen ? 'opacity-0' : ''}`} />
-            <span className={`w-4 h-0.5 bg-white transition-all ${mobileOpen ? '-rotate-45 -translate-y-1.5' : ''}`} />
+            <span className={`w-4 h-0.5 bg-white transition-all ${mobileOpen ? '-rotate-45 -translate-y-2' : ''}`} />
           </button>
         </div>
 
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer (44px tap targets for every touch item) */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-[#1f1f1f] bg-[#0a0a0a] px-6 py-6 flex flex-col gap-4">
+        <div className="md:hidden border-t border-[#1f1f1f] bg-[#0a0a0a] px-5 sm:px-8 py-4 flex flex-col gap-1">
           {navItems.map((item) => (
             <a
               key={item.id}
               href={item.href}
               onClick={() => setMobileOpen(false)}
-              className={`text-sm font-semibold uppercase tracking-[0.15em] transition-colors ${
+              className={`min-h-[44px] flex items-center text-sm font-semibold uppercase tracking-[0.15em] transition-colors ${
                 activeSection === item.id ? 'text-[#d3121f]' : 'text-[#a0a0a0] hover:text-[#d3121f]'
               }`}
             >
@@ -117,7 +117,7 @@ export default function HamburgerMenu() {
             target="_blank"
             rel="noreferrer"
             onClick={() => setMobileOpen(false)}
-            className="text-sm font-semibold uppercase tracking-[0.15em] text-[#d3121f] flex items-center justify-between pt-2 border-t border-[#1f1f1f]"
+            className="min-h-[44px] flex items-center justify-between text-sm font-semibold uppercase tracking-[0.15em] text-[#d3121f] pt-2 border-t border-[#1f1f1f]"
           >
             <span>Download Resume PDF</span>
             <span>↓</span>

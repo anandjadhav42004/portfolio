@@ -79,7 +79,7 @@ function MarqueeTicker() {
   ];
 
   return (
-    <div className="w-full bg-[#0d0506] border-y border-[#1f1f1f] overflow-hidden py-3 select-none">
+    <div className="w-full max-w-[100vw] bg-[#0d0506] border-y border-[#1f1f1f] overflow-x-clip py-3 select-none">
       <div className="animate-marquee flex items-center gap-8 whitespace-nowrap">
         {[...tickerItems, ...tickerItems].map((item, idx) => (
           <div key={idx} className="flex items-center gap-8 text-[11px] font-mono tracking-[0.22em] uppercase text-[#a0a0a0]">
@@ -134,7 +134,7 @@ function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen w-full bg-[#0a0a0a] text-white selection:bg-[#d3121f] selection:text-white font-sans overflow-x-hidden">
+    <div className="relative min-h-screen w-full max-w-[100vw] bg-[#0a0a0a] text-white selection:bg-[#d3121f] selection:text-white font-sans overflow-x-clip">
       {/* ── Custom Interactive Red Dot Cursor (Desktop Only) ── */}
       <Cursor />
 

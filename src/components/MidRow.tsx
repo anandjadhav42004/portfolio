@@ -26,7 +26,7 @@ const flatSkills = [
 
 export default function MidRow() {
   return (
-    <section id="mid-row" className="w-full bg-[#0a0a0a] border-b border-[#1f1f1f]">
+    <section id="mid-row" className="w-full bg-[#0a0a0a] border-b border-[#1f1f1f] overflow-x-clip">
       
       {/* ═══════════════════════════════════════════════════════════
           SECTION TITLE BAR: WORK EXPERIENCE & INTERNSHIPS
@@ -36,17 +36,20 @@ export default function MidRow() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: '-60px' }}
-        className="border-b border-[#1f1f1f] bg-[#0d0d0d] px-6 sm:px-12 py-5"
+        className="border-b border-[#1f1f1f] bg-[#0d0d0d] px-5 sm:px-8 md:px-12 py-4 md:py-5"
       >
         <div className="max-w-[1440px] mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3">
             <Briefcase className="w-4 h-4 text-[#d3121f]" />
-            <span className="font-anton text-lg tracking-[0.12em] uppercase text-white">
+            <span
+              className="font-anton tracking-[0.12em] uppercase text-white"
+              style={{ fontSize: 'clamp(14px, 3.2vw, 18px)' }}
+            >
               INDUSTRY WORK EXPERIENCE &amp; INTERNSHIPS
             </span>
           </div>
-          <span className="text-[11px] font-mono tracking-[0.16em] uppercase text-[#d3121f]">
-            // 2 INDUSTRY ROLES
+          <span className="text-[10px] sm:text-[11px] font-mono tracking-[0.16em] uppercase text-[#d3121f] whitespace-nowrap">
+            // 2 ROLES
           </span>
         </div>
       </motion.div>
@@ -66,7 +69,7 @@ export default function MidRow() {
           {/* 1. HILTI (CURRENT INTERNSHIP) */}
           <motion.div
             variants={fadeUp}
-            className="p-8 sm:p-12 border-b lg:border-b-0 lg:border-r border-[#1f1f1f] flex flex-col justify-between bg-gradient-to-br from-[#120506] via-[#0a0a0a] to-[#0a0a0a] relative group"
+            className="p-6 sm:p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-[#1f1f1f] flex flex-col justify-between bg-gradient-to-br from-[#120506] via-[#0a0a0a] to-[#0a0a0a] relative group"
           >
             <div>
               {/* Badge Row */}
@@ -136,7 +139,7 @@ export default function MidRow() {
           {/* 2. UPTOSKILLS (COMPLETED INTERNSHIP) */}
           <motion.div
             variants={fadeUp}
-            className="p-8 sm:p-12 flex flex-col justify-between bg-[#0a0a0a] relative group"
+            className="p-6 sm:p-8 md:p-12 flex flex-col justify-between bg-[#0a0a0a] relative group"
           >
             <div>
               {/* Badge Row */}
@@ -217,7 +220,7 @@ export default function MidRow() {
       >
 
         {/* ── COL 1: FORMAL EDUCATION (4 cols) ── */}
-        <div className="lg:col-span-4 p-8 sm:p-12 border-b lg:border-b-0 lg:border-r border-[#1f1f1f] flex flex-col justify-between">
+        <div className="lg:col-span-4 p-6 sm:p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-[#1f1f1f] flex flex-col justify-between">
           <div>
             <div className="flex items-center gap-2 text-[10px] font-bold tracking-[0.22em] uppercase text-[#d3121f] mb-6">
               <GraduationCap className="w-4 h-4 text-[#d3121f]" />
@@ -252,7 +255,7 @@ export default function MidRow() {
         </div>
 
         {/* ── COL 2: VERIFIED CREDENTIALS & CERTIFICATIONS (4 cols) ── */}
-        <div className="lg:col-span-4 p-8 sm:p-12 border-b lg:border-b-0 lg:border-r border-[#1f1f1f] flex flex-col justify-between">
+        <div className="lg:col-span-4 p-6 sm:p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-[#1f1f1f] flex flex-col justify-between">
           <div>
             <div className="flex items-center gap-2 text-[10px] font-bold tracking-[0.22em] uppercase text-[#d3121f] mb-6">
               <Award className="w-4 h-4 text-[#d3121f]" />
@@ -292,7 +295,7 @@ export default function MidRow() {
         </div>
 
         {/* ── COL 3: TECHNICAL SKILLS & QUOTE (4 cols) ── */}
-        <div className="lg:col-span-4 p-8 sm:p-12 flex flex-col justify-between quote-gradient relative">
+        <div className="lg:col-span-4 p-6 sm:p-8 md:p-12 flex flex-col justify-between quote-gradient relative">
           <div>
             <div className="text-[10px] font-bold tracking-[0.22em] uppercase text-[#d3121f] mb-4">
               TECHNICAL STACK CHIPS
